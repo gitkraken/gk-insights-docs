@@ -2,7 +2,7 @@
 title: Dashboard Management in GitKraken Insights
 description: Learn how to add and interpret key DORA and Pull Request metrics, arrange your layout, and use filters to analyze data on dashboards.
 taxonomy:
-    category: gk-dev
+    category: gk-insights
 ---
 <kbd>Last updated: January 2026</kbd>
 

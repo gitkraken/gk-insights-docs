@@ -2,7 +2,7 @@
 title: Getting Started with GitKraken Insights
 description: Learn how to request access, understand plan availability, and connect your data in GitKraken Insights.
 taxonomy:
-    category: gk-dev
+    category: gk-insights
 ---
 <kbd>Last updated: December 2025</kbd>
 
