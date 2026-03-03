@@ -1,10 +1,10 @@
 ---
-title: Dashboard Management in GitKraken Insights
-description: Learn how to add and interpret key DORA and Pull Request metrics, arrange your layout, and use filters to analyze data on dashboards.
+title: Dashboard Configuration in GitKraken Insights
+description: Learn how to create dashboards, add metrics, arrange widget layouts, apply trendlines, and filter data in GitKraken Insights.
 taxonomy:
     category: gk-dev
 ---
-<kbd>Last updated: January 2026</kbd>
+<kbd>Last updated: March 2026</kbd>
 
 
 ## Overview
@@ -13,9 +13,9 @@ GitKraken Insights brings your Git data, pull requests, issues, and CI/CD result
 
 ### Key benefits
 
-- **In your workflow:** Metrics come straight from the tools you already use: Git, PRs, CI/CD, issue trackers. No duplicate work, no disruption.  
-- **Useful context:** See how code changes connect to tickets, review quality, and team goals. Less vanity stats, more signal.  
-- **Clear next steps:** Spot inefficiencies and get practical ways to improve, whether it’s review speed, investment in features vs. fixes, or build times.  
+- **In your workflow:** Metrics come straight from the tools you already use: Git, PRs, CI/CD, issue trackers. No duplicate work, no disruption.
+- **Useful context:** See how code changes connect to tickets, review quality, and team goals. Less vanity stats, more signal.
+- **Clear next steps:** Spot inefficiencies and get practical ways to improve, whether it's review speed, investment in features vs. fixes, or build times.
 
 ---
 
@@ -50,8 +50,6 @@ In the modal, enter a **Title** and optional **Description** to help distinguish
   <figcaption style="text-align: center; color: #888">Name your dashboard and optionally add a description to clarify its focus.</figcaption>
 </figure>
 
-
-
 ### Add a metric
 
 1. In the Dashboard view, click the **Add Metric** button in the top-right corner.
@@ -65,14 +63,14 @@ In the modal, enter a **Title** and optional **Description** to help distinguish
 
 ### Available metrics
 
-**[DORA metrics](/gk-dev/gk-dev-dashboard-management/#dora-metrics)**
+**[DORA metrics](/gk-dev/gk-dev-dora-metrics)**
 
 - Deploy Frequency
 - Change lead time
 - Mean time to repair/recover
 - Defect rate (% of deploy with severe defect)
 
-**[Pull Request metrics](/gk-dev/gk-dev-dashboard-management/#pull-request-metrics)**
+**[Pull Request metrics](/gk-dev/gk-dev-pr-metrics)**
 
 - First response time ("Pickup time")
 - Cycle time ("first commit" to "merge")
@@ -85,7 +83,7 @@ In the modal, enter a **Title** and optional **Description** to help distinguish
 - PR Size/Effort
 - Code Review Hours
 
-**[AI Impact metrics](/gk-dev/gk-dev-dashboard-management/#ai-impact)**
+**[AI Impact metrics](/gk-dev/gk-dev-ai-impact-metrics)**
 
 - Copy/paste vs moved percent
 - Duplicated code
@@ -151,7 +149,7 @@ You can add trendlines to any chart in GitKraken Insights to help visualize patt
 
 > **Tip:** Use trendlines to spot steady improvements, regressions, or shifts in behavior across delivery, review, or quality metrics.
 
-***
+---
 
 ## Filters
 
