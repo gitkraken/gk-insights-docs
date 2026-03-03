@@ -12,3 +12,4 @@
 - [Code Quality Metrics](https://help.gitkraken.com/gk-insights/gk-insights-code-quality-metrics/): Learn about Code Quality metrics in GitKraken Insights, including Bug Work Percent, Documentation and Test Percent, Code Change Rate, and Code Change by Operation.
 - [Velocity and Delivery Consistency Metrics](https://help.gitkraken.com/gk-insights/gk-insights-velocity-metrics/): Learn about Velocity and Delivery Consistency metrics in GitKraken Insights, including Commit Count and Estimated Coding Hours.
 - [Metric Settings](https://help.gitkraken.com/gk-insights/gk-insights-metric-settings/): Learn how to configure release tracking, issue detection, issue tracker projects, critical defect terms, and measurement settings in GitKraken Insights.
+- [FAQ](https://help.gitkraken.com/gk-insights/gk-insights-faq/): Answers to common questions about GitKraken Insights for developer leaders, including access, integrations, available metrics, and customization.
