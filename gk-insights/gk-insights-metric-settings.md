@@ -15,7 +15,7 @@ taxonomy:
 
 ## Release Tracking
 
-Configure how GitKraken Insights will detect when a new release has been made for your repositories.
+Configure how GitKraken Insights detects new releases for your repositories.
 
 ### Rules to detect releases
 
@@ -26,7 +26,7 @@ The **Rules to detect releases** list shows all active release rules for your or
 - The number of releases and repositories matched
 - Who created the rule
 
-The following rule types may appear in your list:
+The following rule types appear in your list:
 
 - **Contains Branch Prefix** — Matches commits pushed to a branch that starts with a specified string.
 - **Merged Pull Request To Branch Prefix** — Matches commits that merge a pull request to a branch with a specified prefix.
@@ -43,7 +43,7 @@ To remove a rule, click the **✕** icon on the right side of the rule.
 
 ### Create a new release rule
 
-To add a new rule, click **Create a new release rule**. GitKraken Insights will attempt to apply the rule to all connected repositories.
+To add a new rule, click **Create a new release rule**. GitKraken Insights attempts to apply the rule to all connected repositories.
 
 In the rule creation form, select how GitKraken Insights should identify releases. As you configure each option, the **Matching commits** panel on the right previews commits that match your current input.
 
@@ -92,7 +92,7 @@ Identifies a release when a commit message exactly matches a specified string.
 Identifies a release when any commit is pushed to a selected branch.
 
 - **Input:** Select a branch from the dropdown.
-- **Note:** Any commit pushed to this branch after today will be counted as a release. Historic commits are not applied retroactively.
+- **Note:** GitKraken Insights counts any commit pushed to this branch after today as a release. It does not apply historic commits retroactively.
 
 #### When a commit is pushed to a branch that starts with this string
 
@@ -100,7 +100,7 @@ Identifies a release when a commit is pushed to a branch whose name starts with 
 
 - **Input:** Enter a case-sensitive prefix for a deploy branch.
 - **Option:** Check **A number must occur in the branch name to be deemed a release** to further restrict matches.
-- **Note:** Any commit pushed to a branch starting with this prefix after today will be counted as a release. This release rule applies to commits made to the branch from the present onward. Historic releases may not be detected.
+- **Note:** GitKraken Insights counts any commit pushed to a matching branch after today as a release. It does not detect historic releases.
 
 #### When any git tag is pushed
 
