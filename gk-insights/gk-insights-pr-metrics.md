@@ -4,7 +4,7 @@ description: Learn about Pull Request metrics in GitKraken Insights, including c
 taxonomy:
     category: gk-dev
 ---
-<kbd>Last updated: February 2026</kbd>
+<kbd>Last updated: March 2026</kbd>
 
 Pull Request metrics help teams understand how quickly and smoothly code changes move through review and deployment.
 

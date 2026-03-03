@@ -4,7 +4,7 @@ description: Learn about DORA metrics in GitKraken Insights, including Deploy Fr
 taxonomy:
     category: gk-dev
 ---
-<kbd>Last updated: February 2026</kbd>
+<kbd>Last updated: March 2026</kbd>
 
 DORA (DevOps Research and Assessment) metrics are a standardized set of four key performance indicators: deployment frequency, lead time for changes, change failure rate, and time to restore service.
 

@@ -4,7 +4,7 @@ description: Learn about AI Impact metrics in GitKraken Insights, including code
 taxonomy:
     category: gk-dev
 ---
-<kbd>Last updated: February 2026</kbd>
+<kbd>Last updated: March 2026</kbd>
 
 AI Impact metrics help teams understand how AI coding tools affect code quality and developer efficiency. By tracking rework, duplication, and post-PR changes, teams can see measurable improvements in code and workflow, proving ROI and guiding smarter use of AI tools.
 
