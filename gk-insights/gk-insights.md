@@ -31,7 +31,7 @@ GitKraken Insights is available by request only. To get started, [request a guid
 
 Once your access is approved, you can connect Insights to your repositories and configure settings for your organization.  
 
-Currently, Insights supports connections with GitHub, GitLab, Bitbucket and Jira Cloud. Support for Azure DevOps is coming soon. 
+Currently, Insights supports connections with GitHub, GitLab, Bitbucket, Azure Devops and Jira Cloud.
 
 In addition, you can connect AI providers to enable AI Impact insights (like Duplicated Code, Prompt Acceptance Rate, and more).
 ---
@@ -39,8 +39,7 @@ In addition, you can connect AI providers to enable AI Impact insights (like Dup
 ### 1. Repo import
 
 1. In GitKraken.dev, go to **Insights > Data Connection**.  
-2. Click to connect with GitHub, GitLab, Cursor, GitHub CoPilot, Bitbucket or Jira Cloud.  
-   > Support for Azure DevOps, is coming soon.  
+2. Click to connect with GitHub, GitLab, Azure Devops, Claude Code, Cursor, GitHub CoPilot, Bitbucket or Jira Cloud. 
 3. Authorize GitKraken Insights by GitClear to connect with GitHub.  
 4. Select which repositories to track. Use the filter option at the top of the page to quickly narrow down the list.  
 
@@ -73,15 +72,15 @@ After the initial import is complete, rate limit issues are unlikely to recur.
 
 ### AI Provider Connection (Optional)
 
-As of December 2025, GitKraken Insights only supports connections with Cursor and GitHub Copilot to enable AI insights.
+As of February 2026, GitKraken Insights only supports connections with Claude Code, Cursor and GitHub Copilot to enable AI insights.
 
 To enable AI Impact insights, connect your preferred AI provider:
 1. In GitKraken.dev, go to [**Insights > Data Connection**](https://gitkraken.dev/insights/data-connections).
-2. Click to `Manage` with Cursor or Github Copilot.
+2. Click to `Manage` with Claude Code,Cursor or Github Copilot.
 3. In the new window, select the AI provider you wish to connect with and enter the provider Token.
 4. Click **Connect AI Provider** to finish the connection.
 <figure>
-  <img src="/wp-content/uploads/gk-dev-ai-provider-connection.png" srcset="/wp-content/uploads/gk-dev-ai-provider-connection@2x.png" class="help-center-img img-bordered" alt="Screenshot of AI provider connection" />
+  <img src="/wp-content/uploads/gk-dev-ai-provider-connection@2x.png" class="help-center-img img-bordered" alt="Screenshot of AI provider connection" />
   <figcaption style="text-align: center; color: #888">Connect your AI provider to enable AI Impact insights</figcaption>
 </figure>
 
@@ -94,7 +93,7 @@ After connecting repositories, confirm your personal details:
 - Job role  
 
 <figure>
-  <img src="/wp-content/uploads/set-role-oct-2025.png" srcset="/wp-content/uploads/set-role-oct-2025@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/set-role-oct-2025@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
   <figcaption style="text-align: center; color: #888">Confirm your details before continuing</figcaption>
 </figure>
 
@@ -110,6 +109,6 @@ Once setup is complete, Insights will begin importing your repository data.
 - Track import progress anytime from the **Dashboard** tab.  
 
 <figure>
-  <img src="/wp-content/uploads/import-progress.png" srcset="/wp-content/uploads/import-progress@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/import-progress@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
   <figcaption style="text-align: center; color: #888">Monitor import progress while Insights processes your data</figcaption>
 </figure>
