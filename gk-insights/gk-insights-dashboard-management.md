@@ -52,6 +52,39 @@ In the modal, enter a **Title** and optional **Description** to help distinguish
 
 
 
+### Duplicate a dashboard
+
+You can duplicate an existing dashboard to quickly create a new version with the same configuration, filters, and widgets. This is useful when you want to reuse a dashboard as a starting point without modifying the original.
+
+#### Steps
+
+1. Navigate to **Dashboards** in GitKraken Insights.
+2. Locate the dashboard you want to duplicate.
+3. Click the **Actions** dropdown on the right side of the dashboard row.
+4. Select **Duplicate**.
+
+<figure>
+  <img src="/wp-content/uploads/gki-duplicate-dashboard.png" class="help-center-img img-bordered" alt="Duplicate dashboard option in the Actions dropdown menu" />
+  <figcaption style="text-align: center; color: #888">Select Duplicate from the Actions menu</figcaption>
+</figure>
+
+5. In the **Copy dashboard** dialog, review or update the following fields:
+   - **Title**: Enter a name for the new dashboard.
+   - **Description**: (Optional) Update the description.
+6. Click **Make copy**.
+
+<figure>
+  <img src="/wp-content/uploads/gki-copy-dashboard-dialog.png" class="help-center-img img-bordered" alt="Copy dashboard dialog showing title and description fields" />
+  <figcaption style="text-align: center; color: #888">Update the dashboard details, then click Make copy</figcaption>
+</figure>
+
+The duplicated dashboard will appear in your dashboard list with the same configuration as the original.
+
+#### Notes
+
+- Duplicating a dashboard does not affect the original dashboard.
+- The new dashboard is created with the same widgets and filters as the original.
+
 ### Add a metric
 
 1. In the Dashboard view, click the **Add Metric** button in the top-right corner.
