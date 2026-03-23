@@ -7,7 +7,7 @@ audience: all
 plan_required: GitKraken Insights
 status: GA
 taxonomy:
-    category: gk-dev
+    category: gk-insights
 ---
 <kbd>Last updated: March 2026</kbd>
 

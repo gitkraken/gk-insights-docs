@@ -8,7 +8,7 @@ plan_required: GitKraken Insights
 integrations: [GitHub, GitLab, Bitbucket]
 status: GA
 taxonomy:
-    category: gk-dev
+    category: gk-insights
 ---
 <kbd>Last updated: March 2026</kbd>
 
