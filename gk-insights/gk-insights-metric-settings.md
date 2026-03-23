@@ -16,7 +16,7 @@ GitKraken Insights Metric Settings control how the platform detects releases, ma
 > **Plan:** GitKraken Insights
 > **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
-> **Prerequisite:** Connected repositories and issue tracker (see [Getting Started](/gk-dev/gk-dev-insights))
+> **Prerequisite:** Connected repositories and issue tracker (see [Getting Started](/gk-insights/gk-insights))
 
 | Setting | Purpose | Affects |
 |---|---|---|

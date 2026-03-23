@@ -17,7 +17,7 @@ GitKraken Insights tracks eight AI Impact metrics that measure how AI coding too
 > **Plan:** GitKraken Insights
 > **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
-> **Prerequisite:** Connected AI provider (Cursor or GitHub Copilot). See [Getting Started](/gk-dev/gk-dev-insights#ai-provider-connection-optional).
+> **Prerequisite:** Connected AI provider (Cursor or GitHub Copilot). See [Getting Started](/gk-insights/gk-insights#ai-provider-connection-optional).
 
 | Metric | Definition |
 |---|---|

@@ -11,7 +11,7 @@ taxonomy:
 ---
 <kbd>Last updated: March 2026</kbd>
 
-Answers to common questions about GitKraken Insights, an engineering metrics platform that turns Git activity, pull requests, issues, and CI/CD results into actionable metrics. GitKraken Insights is accessed via [gitkraken.dev](https://gitkraken.dev). For setup instructions, see [Getting Started with GitKraken Insights](/gk-dev/gk-dev-insights).
+Answers to common questions about GitKraken Insights, an engineering metrics platform that turns Git activity, pull requests, issues, and CI/CD results into actionable metrics. GitKraken Insights is accessed via [gitkraken.dev](https://gitkraken.dev). For setup instructions, see [Getting Started with GitKraken Insights](/gk-insights/gk-insights).
 
 > **Plan:** GitKraken Insights (available by request)
 > **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
@@ -57,11 +57,11 @@ GitKraken Insights covers five metric categories:
 
 | Category | Metrics | Page |
 |---|---|---|
-| DORA | Deploy Frequency, Change Lead Time, Mean Time to Repair/Recover, Defect Rate | [DORA Metrics](/gk-dev/gk-dev-dora-metrics) |
-| Pull Requests | First Response Time, Cycle Time, Lead Time, Number of Reviews, Open Time, PRs Abandoned, PRs Merged Without Review, PR Comments, PR Size/Effort, Code Review Hours | [PR Metrics](/gk-dev/gk-dev-pr-metrics) |
-| AI Impact | Copy/Paste vs Moved %, Duplicated Code, Percent of Code Rework, Post PR Work Occurring, Active Users, Suggestions, Prompt Acceptance Rate, Tab Acceptance Rate | [AI Impact Metrics](/gk-dev/gk-dev-ai-impact-metrics) |
-| Code Quality | Bug Work Percent, Documentation and Test Percent, Code Change Rate, Code Change by Operation | [Code Quality Metrics](/gk-dev/gk-dev-code-quality-metrics) |
-| Velocity | Commit Count, Estimated Coding Hours | [Velocity Metrics](/gk-dev/gk-dev-velocity-metrics) |
+| DORA | Deploy Frequency, Change Lead Time, Mean Time to Repair/Recover, Defect Rate | [DORA Metrics](/gk-insights/gk-insights-dora-metrics) |
+| Pull Requests | First Response Time, Cycle Time, Lead Time, Number of Reviews, Open Time, PRs Abandoned, PRs Merged Without Review, PR Comments, PR Size/Effort, Code Review Hours | [PR Metrics](/gk-insights/gk-insights-pr-metrics) |
+| AI Impact | Copy/Paste vs Moved %, Duplicated Code, Percent of Code Rework, Post PR Work Occurring, Active Users, Suggestions, Prompt Acceptance Rate, Tab Acceptance Rate | [AI Impact Metrics](/gk-insights/gk-insights-ai-impact-metrics) |
+| Code Quality | Bug Work Percent, Documentation and Test Percent, Code Change Rate, Code Change by Operation | [Code Quality Metrics](/gk-insights/gk-insights-code-quality-metrics) |
+| Velocity | Commit Count, Estimated Coding Hours | [Velocity Metrics](/gk-insights/gk-insights-velocity-metrics) |
 
 ---
 

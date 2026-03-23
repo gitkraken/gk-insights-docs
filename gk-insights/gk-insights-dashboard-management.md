@@ -19,7 +19,7 @@ GitKraken Insights dashboards display Git activity, pull requests, issues, and C
 > **Plan:** GitKraken Insights
 > **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
-> **Prerequisite:** Connected repositories (see [Getting Started](/gk-dev/gk-dev-insights))
+> **Prerequisite:** Connected repositories (see [Getting Started](/gk-insights/gk-insights))
 > **Limitation:** Each user can currently create one dashboard per organization.
 
 ---
@@ -30,7 +30,7 @@ Before you can add metrics, complete these setup steps:
 
 1. [Request a guided tour to get access](https://www.gitkraken.com/insights#form).
 2. Connect GitKraken Insights to your GitHub account.
-3. Wait for your repositories to finish importing. For detailed instructions, see the [Getting Started guide](https://help.gitkraken.com/gk-dev/gk-dev-insights).
+3. Wait for your repositories to finish importing. For detailed instructions, see the [Getting Started guide](https://help.gitkraken.com/gk-insights/gk-insights).
 
 Once setup is complete, open the **Insights > Dashboard** tab from [gitkraken.dev](https://gitkraken.dev).
 
@@ -106,34 +106,34 @@ The duplicated dashboard will appear in your dashboard list with the same config
 
 | Metric | Category | Description |
 |---|---|---|
-| Deploy Frequency | [DORA](/gk-dev/gk-dev-dora-metrics) | Total deployments per period |
-| Change Lead Time | [DORA](/gk-dev/gk-dev-dora-metrics) | First commit to deployment |
-| Mean Time to Repair/Recover | [DORA](/gk-dev/gk-dev-dora-metrics) | Defect detected to fix deployed |
-| Defect Rate | [DORA](/gk-dev/gk-dev-dora-metrics) | % of deployments with critical defect |
-| First Response Time | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | PR opened to first review/comment |
-| Cycle Time | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | First commit to PR merge |
-| Lead Time | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | First commit to deployed |
-| Number of Reviews | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | Review volume per period |
-| Open Time | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | PR opened to merged |
-| PRs Abandoned | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | PRs closed without merge |
-| PRs Merged Without Review | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | PRs merged with no review |
-| PR Comments | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | Total comments on PRs |
-| PR Size/Effort | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | Aggregate diff delta of merged PRs |
-| Code Review Hours | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | Avg review time per committer |
-| Copy/Paste vs Moved % | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | Duplicated vs refactored code |
-| Duplicated Code | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | Lines in duplicate blocks |
-| Percent of Code Rework | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | Recently written code modified again |
-| Post PR Work Occurring | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | Follow-up work after merge |
-| Active Users | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | Unique users in AI providers |
-| Suggestions | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | AI-generated suggestions (by total lines) |
-| Prompt Acceptance Rate | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | % of prompt suggestions accepted |
-| Tab Acceptance Rate | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | % of tab suggestions accepted |
-| Bug Work Percent | [Code Quality](/gk-dev/gk-dev-code-quality-metrics) | Bug fix work vs all other work |
-| Documentation and Test % | [Code Quality](/gk-dev/gk-dev-code-quality-metrics) | Work related to tests and documentation |
-| Code Change Rate | [Code Quality](/gk-dev/gk-dev-code-quality-metrics) | Age of code being changed |
-| Code Change by Operation | [Code Quality](/gk-dev/gk-dev-code-quality-metrics) | Changes by type (test, doc, FE, BE) |
-| Commit Count | [Velocity](/gk-dev/gk-dev-velocity-metrics) | Commits to connected repositories |
-| Estimated Coding Hours | [Velocity](/gk-dev/gk-dev-velocity-metrics) | Estimated time spent coding |
+| Deploy Frequency | [DORA](/gk-insights/gk-insights-dora-metrics) | Total deployments per period |
+| Change Lead Time | [DORA](/gk-insights/gk-insights-dora-metrics) | First commit to deployment |
+| Mean Time to Repair/Recover | [DORA](/gk-insights/gk-insights-dora-metrics) | Defect detected to fix deployed |
+| Defect Rate | [DORA](/gk-insights/gk-insights-dora-metrics) | % of deployments with critical defect |
+| First Response Time | [Pull Requests](/gk-insights/gk-insights-pr-metrics) | PR opened to first review/comment |
+| Cycle Time | [Pull Requests](/gk-insights/gk-insights-pr-metrics) | First commit to PR merge |
+| Lead Time | [Pull Requests](/gk-insights/gk-insights-pr-metrics) | First commit to deployed |
+| Number of Reviews | [Pull Requests](/gk-insights/gk-insights-pr-metrics) | Review volume per period |
+| Open Time | [Pull Requests](/gk-insights/gk-insights-pr-metrics) | PR opened to merged |
+| PRs Abandoned | [Pull Requests](/gk-insights/gk-insights-pr-metrics) | PRs closed without merge |
+| PRs Merged Without Review | [Pull Requests](/gk-insights/gk-insights-pr-metrics) | PRs merged with no review |
+| PR Comments | [Pull Requests](/gk-insights/gk-insights-pr-metrics) | Total comments on PRs |
+| PR Size/Effort | [Pull Requests](/gk-insights/gk-insights-pr-metrics) | Aggregate diff delta of merged PRs |
+| Code Review Hours | [Pull Requests](/gk-insights/gk-insights-pr-metrics) | Avg review time per committer |
+| Copy/Paste vs Moved % | [AI Impact](/gk-insights/gk-insights-ai-impact-metrics) | Duplicated vs refactored code |
+| Duplicated Code | [AI Impact](/gk-insights/gk-insights-ai-impact-metrics) | Lines in duplicate blocks |
+| Percent of Code Rework | [AI Impact](/gk-insights/gk-insights-ai-impact-metrics) | Recently written code modified again |
+| Post PR Work Occurring | [AI Impact](/gk-insights/gk-insights-ai-impact-metrics) | Follow-up work after merge |
+| Active Users | [AI Impact](/gk-insights/gk-insights-ai-impact-metrics) | Unique users in AI providers |
+| Suggestions | [AI Impact](/gk-insights/gk-insights-ai-impact-metrics) | AI-generated suggestions (by total lines) |
+| Prompt Acceptance Rate | [AI Impact](/gk-insights/gk-insights-ai-impact-metrics) | % of prompt suggestions accepted |
+| Tab Acceptance Rate | [AI Impact](/gk-insights/gk-insights-ai-impact-metrics) | % of tab suggestions accepted |
+| Bug Work Percent | [Code Quality](/gk-insights/gk-insights-code-quality-metrics) | Bug fix work vs all other work |
+| Documentation and Test % | [Code Quality](/gk-insights/gk-insights-code-quality-metrics) | Work related to tests and documentation |
+| Code Change Rate | [Code Quality](/gk-insights/gk-insights-code-quality-metrics) | Age of code being changed |
+| Code Change by Operation | [Code Quality](/gk-insights/gk-insights-code-quality-metrics) | Changes by type (test, doc, FE, BE) |
+| Commit Count | [Velocity](/gk-insights/gk-insights-velocity-metrics) | Commits to connected repositories |
+| Estimated Coding Hours | [Velocity](/gk-insights/gk-insights-velocity-metrics) | Estimated time spent coding |
 
 ---
 
