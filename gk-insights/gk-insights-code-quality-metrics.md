@@ -14,7 +14,7 @@ taxonomy:
 GitKraken Insights tracks four Code Quality metrics that assess engineering health by examining bug fix ratios, test and documentation investment, code age, and effort distribution. Use these metrics to monitor technical debt, maintain development quality, and align team investments with maintainability goals.
 
 > **Plan:** GitKraken Insights
-> **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
+> **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
 > **Prerequisite:** Connected repositories
 

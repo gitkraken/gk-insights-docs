@@ -15,23 +15,20 @@ taxonomy:
 GitKraken Insights tracks eight AI Impact metrics that measure how AI coding tools affect code quality and developer efficiency. By tracking rework, duplication, and post-PR changes, teams can identify improvements in code and workflow and guide effective use of AI tools.
 
 > **Plan:** GitKraken Insights
-> **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
+> **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
 > **Prerequisite:** Connected AI provider (Cursor or GitHub Copilot). See [Getting Started](/gk-insights/gk-insights#ai-provider-connection-optional).
 
-| Metric | Definition |
-|---|---|
-| Copy/Paste vs Moved % | Duplicated vs refactored code over time |
-| Duplicated Code | Lines in duplicate blocks detected |
-| Percent of Code Rework | Recently written code modified again |
-| Post PR Work Occurring | Follow-up work and fixes after merge |
-| Active Users | Unique users active in connected AI providers |
-| Suggestions | AI-generated suggestions offered (by total lines) |
-| Prompt Acceptance Rate | % of prompt suggestions accepted |
-| Tab Acceptance Rate | % of tab suggestions accepted |
-
-> **Code quality impact** (Copy/Paste, Duplicated Code, Code Rework, Post PR Work): Use these to assess whether AI tools improve or degrade long-term code quality.  
-> **AI adoption** (Active Users, Suggestions, Prompt Acceptance, Tab Acceptance): Use these to measure AI tool uptake and developer trust in AI suggestions.
+| Metric | Group | Definition |
+|---|---|---|
+| Copy/Paste vs Moved % | Code quality impact | Duplicated vs refactored code over time |
+| Duplicated Code | Code quality impact | Lines in duplicate blocks detected |
+| Percent of Code Rework | Code quality impact | Recently written code modified again |
+| Post PR Work Occurring | Code quality impact | Follow-up work and fixes after merge |
+| Active Users | AI adoption | Unique users active in connected AI providers |
+| Suggestions | AI adoption | AI-generated suggestions offered (by total lines) |
+| Prompt Acceptance Rate | AI adoption | % of prompt suggestions accepted |
+| Tab Acceptance Rate | AI adoption | % of tab suggestions accepted |
 
 ---
 
@@ -39,7 +36,7 @@ GitKraken Insights tracks eight AI Impact metrics that measure how AI coding too
 
 **Definition:** _Copy/Paste vs Moved Percent compares how much code is duplicated versus refactored or relocated over time. Moved lines reflect healthy code reorganization, while copy/pasted lines often signal duplicated logic that can lead to technical debt._
 
-Tracking this metric helps teams distinguish between maintainable refactoring and potentially problematic duplication. This is especially important for teams using AI coding assistants, which tend to duplicate code rather than abstract or reuse it—leading to higher long-term maintenance costs if left unchecked.
+Tracking this metric helps teams distinguish between maintainable refactoring and potentially problematic duplication. This is especially important for teams using AI coding assistants, which tend to duplicate code rather than abstract or reuse it, leading to higher long-term maintenance costs if left unchecked.
 
 <figure>
   <img src="/wp-content/uploads/copy-paste-moved.png" srcset="/wp-content/uploads/copy-paste-moved@2x.png" class="help-center-img img-bordered" alt="Line chart comparing duplicated and moved code over time" />
@@ -103,7 +100,7 @@ Post PR Work Occurring quantifies rework and fixes needed after a pull request i
   <figcaption style="text-align: center; color: #888">Track how much post-merge work occurs over time to identify spikes in follow-up activity.</figcaption>
 </figure>
 
-The detailed view breaks this activity down by repository and time period, revealing patterns in post-merge changes and how they relate to broader development activity, such as commits and pull requests. Tracking this metric over time helps teams improve review quality and identify whether AI-assisted coding leads to more—or less—post-merge rework.
+The detailed view breaks this activity down by repository and time period, revealing patterns in post-merge changes and how they relate to broader development activity, such as commits and pull requests. Tracking this metric over time helps teams improve review quality and identify whether AI-assisted coding leads to more or less post-merge rework.
 
 <figure>
   <img src="/wp-content/uploads/post-pr-work-occuring-details.png" srcset="/wp-content/uploads/post-pr-work-occuring-details@2x.png" class="help-center-img img-bordered" alt="Detailed chart of post-merge work by repository where additional changes concentrate" />

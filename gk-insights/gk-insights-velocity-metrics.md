@@ -14,7 +14,7 @@ taxonomy:
 GitKraken Insights tracks two Velocity and Delivery Consistency metrics that reflect development rhythm. Tracking commit volume and coding hours helps teams assess delivery patterns and ensure developers have time for focused work. Use these alongside DORA and Pull Request metrics for a complete view of delivery health.
 
 > **Plan:** GitKraken Insights
-> **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
+> **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
 > **Prerequisite:** Connected repositories with commit history
 
@@ -23,7 +23,7 @@ GitKraken Insights tracks two Velocity and Delivery Consistency metrics that ref
 | Commit Count | Number of commits pushed to all connected repositories |
 | Estimated Coding Hours | Estimated time developers spend coding |
 
-> **Commit Count** measures activity volume. **Estimated Coding Hours** measures time investment. Neither is a standalone productivity metric — use them together with DORA and PR metrics to understand delivery patterns.
+> **Commit Count** measures activity volume. **Estimated Coding Hours** measures time investment. Neither is a standalone productivity metric. Use them together with DORA and PR metrics to understand delivery patterns.
 
 ---
 

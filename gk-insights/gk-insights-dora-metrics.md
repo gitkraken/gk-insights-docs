@@ -11,7 +11,7 @@ taxonomy:
 ---
 <kbd>Last updated: March 2026</kbd>
 
-GitKraken Insights tracks four DORA (DevOps Research and Assessment) metrics — standardized performance indicators developed by a Google Cloud research team to measure DevOps effectiveness. These metrics help organizations identify areas for improvement and deliver software more efficiently and reliably. Before DORA metrics populate, configure release tracking rules in [Metric Settings](/gk-insights/gk-insights-metric-settings).
+GitKraken Insights tracks four DORA (DevOps Research and Assessment) metrics, which are standardized performance indicators developed by a Google Cloud research team to measure DevOps effectiveness. These metrics help organizations identify areas for improvement and deliver software more efficiently and reliably. Before DORA metrics populate, configure release tracking rules in [Metric Settings](/gk-insights/gk-insights-metric-settings).
 
 > **Plan:** GitKraken Insights
 > **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)

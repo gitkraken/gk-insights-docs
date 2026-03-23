@@ -67,7 +67,7 @@ GitKraken Insights covers five metric categories:
 
 ## Does GitKraken Insights work with AI coding tools?
 
-Yes. GitKraken Insights connects to Cursor and GitHub Copilot to surface AI Impact metrics. These metrics help teams measure how AI tools affect code quality and developer efficiency — including how often suggestions are accepted, how much code is duplicated or reworked, and how many developers are actively using AI tools.
+Yes. GitKraken Insights connects to Cursor and GitHub Copilot to surface AI Impact metrics. These metrics help teams measure how AI tools affect code quality and developer efficiency, including how often suggestions are accepted, how much code is duplicated or reworked, and how many developers are actively using AI tools.
 
 ---
 
@@ -84,7 +84,7 @@ You can track import progress at any time from the **Dashboard** tab.
 
 ## Do developers need to change their workflow?
 
-No. GitKraken Insights reads from existing Git activity, pull requests, issues, and CI/CD data. Developers continue working in their normal tools — GitKraken Insights observes and measures without requiring any changes to how work gets done.
+No. GitKraken Insights reads from existing Git activity, pull requests, issues, and CI/CD data. Developers continue working in their normal tools. GitKraken Insights observes and measures without requiring any changes to how work gets done.
 
 ---
 

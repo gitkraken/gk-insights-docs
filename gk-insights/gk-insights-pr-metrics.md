@@ -25,12 +25,12 @@ GitKraken Insights tracks ten Pull Request metrics that measure how code changes
 | Cycle Time | First commit to PR merge | Days | 7-day avg |
 | Lead Time | First commit to deployed | Days | 7-day avg |
 | Number of Reviews | Review volume per period | Count | 7-day |
-| Open Time | PR opened to merged | Days | — |
-| PRs Abandoned | PRs closed without merge | Count | — |
-| PRs Merged Without Review | PRs merged with no review | Count | — |
-| PR Comments | Total comments on PRs | Count | — |
-| PR Size / Effort | Aggregate diff delta of merged PRs | Diff delta | — |
-| Code Review Hours | Avg review time per committer | Hours | — |
+| Open Time | PR opened to merged | Days | N/A |
+| PRs Abandoned | PRs closed without merge | Count | N/A |
+| PRs Merged Without Review | PRs merged with no review | Count | N/A |
+| PR Comments | Total comments on PRs | Count | N/A |
+| PR Size / Effort | Aggregate diff delta of merged PRs | Diff delta | N/A |
+| Code Review Hours | Avg review time per committer | Hours | N/A |
 
 > **Cycle Time vs Open Time vs Lead Time:** Cycle Time starts at the first commit; Open Time starts when the PR is opened; Lead Time extends through deployment. Use Cycle Time for overall delivery speed, Open Time for review bottlenecks, and Lead Time for the full development-to-production pipeline.  
 > **First Response Time** helps identify reviewer engagement gaps. **PRs Abandoned** and **PRs Merged Without Review** signal process health. **PR Size/Effort** and **Code Review Hours** help balance reviewer workload.

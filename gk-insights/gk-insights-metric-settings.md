@@ -48,11 +48,11 @@ The **Rules to detect releases** list shows all active release rules for your or
 
 The following rule types appear in your list:
 
-- **Contains Branch Prefix** — Matches commits pushed to a branch that starts with a specified string.
-- **Merged Pull Request To Branch Prefix** — Matches commits that merge a pull request to a branch with a specified prefix.
-- **Any Git Tag** — Matches commits with any git tag pushed.
-- **Matches Branch** — Matches commits made to a specific branch.
-- **Api Call** — Matches releases reported via API call.
+- **Contains Branch Prefix**: Matches commits pushed to a branch that starts with a specified string.
+- **Merged Pull Request To Branch Prefix**: Matches commits that merge a pull request to a branch with a specified prefix.
+- **Any Git Tag**: Matches commits with any git tag pushed.
+- **Matches Branch**: Matches commits made to a specific branch.
+- **Api Call**: Matches releases reported via API call.
 
 To remove a rule, click the **✕** icon on the right side of the rule.
 
@@ -143,10 +143,10 @@ If GitKraken Insights does not display a pattern you expect, click **Find new is
 
 The **Detect Issue References** page lists all active issue mappings for your organization. Each mapping displays:
 
-- **Available to** — the repositories the mapping applies to
-- **Issue Reference** — the string GitKraken Insights matches against commit messages, branch names, and PR titles
-- **Project Key** — the corresponding project key in your issue tracker
-- **Usage** — the number of repo issues and commits matched by this mapping
+- **Available to**: the repositories the mapping applies to
+- **Issue Reference**: the string GitKraken Insights matches against commit messages, branch names, and PR titles
+- **Project Key**: the corresponding project key in your issue tracker
+- **Usage**: the number of repo issues and commits matched by this mapping
 
 To delete a mapping, click **Delete issue mapping** within the mapping card.
 
@@ -159,10 +159,10 @@ To delete a mapping, click **Delete issue mapping** within the mapping card.
 
 When GitKraken Insights detects potential issue tracking patterns in your repositories, it displays suggested mappings at the top of the Detect Issue References page. Each suggestion includes a pre-filled **Create Issue Mapping** form showing:
 
-- **Available to** — the repository where the pattern was detected
-- **Issue Reference** — the detected reference string
-- **Project Key** — the corresponding project key (if detected)
-- **Advanced options** — additional configuration options
+- **Available to**: the repository where the pattern was detected
+- **Issue Reference**: the detected reference string
+- **Project Key**: the corresponding project key (if detected)
+- **Advanced options**: additional configuration options
 
 <!-- FLAG FOR HUMAN REVIEW: The contents of "Advanced options" are not visible in available screenshots. -->
 
@@ -190,11 +190,11 @@ The **Define issue tracker projects** page lists all issue tracker projects conn
 
 Each connected project appears as a card with the following fields:
 
-- **Project Key** — the unique key that identifies the project in your issue tracker
-- **Project Home** — a link to the project in your issue tracker
-- **Referenced by Repos** — the repositories that reference this project
-- **Story Point Field** — the field GitKraken Insights reads for story point values
-- **Critical Defect Field** — the field values that identify a critical defect. Click **Add another defect mapping** to add additional values, or **Copy existing defect mapping** to duplicate an existing one.
+- **Project Key**: the unique key that identifies the project in your issue tracker
+- **Project Home**: a link to the project in your issue tracker
+- **Referenced by Repos**: the repositories that reference this project
+- **Story Point Field**: the field GitKraken Insights reads for story point values
+- **Critical Defect Field**: the field values that identify a critical defect. Click **Add another defect mapping** to add additional values, or **Copy existing defect mapping** to duplicate an existing one.
 
 <figure>
   <img src="/wp-content/uploads/define-issue-tracker-projects-1.png" class="help-center-img img-bordered" alt="Define issue tracker projects page showing a project card with Project Key, Project Home, Referenced by Repos, Story Point Field, Critical Defect Field, and action buttons" />
@@ -203,8 +203,8 @@ Each connected project appears as a card with the following fields:
 
 Each project card includes two actions:
 
-- **Refresh list of fields** — manually fetches the latest fields from your issue tracker. Use this only when you have added a new field to your project and need it available immediately. GitKraken Insights automatically refreshes project fields every few days and when new projects are added.
-- **Hide project** — removes the project from this list.
+- **Refresh list of fields**: manually fetches the latest fields from your issue tracker. Use this only when you have added a new field to your project and need it available immediately. GitKraken Insights automatically refreshes project fields every few days and when new projects are added.
+- **Hide project**: removes the project from this list.
 
 <figure>
   <img src="/wp-content/uploads/define-issue-tracker-projects-2.png" class="help-center-img img-bordered" alt="Tooltip for the Refresh list of fields button explaining when to use the option" />
@@ -238,9 +238,9 @@ GitKraken Insights performs case-insensitive substring matching against:
 
 Active defect detection terms appear in a list with the following columns:
 
-- **Term** — the string GitKraken Insights matches against branches, issues, and pull requests
-- **Repos** — the repositories where the term is applied
-- **Actions** — click **Delete** to remove the term
+- **Term**: the string GitKraken Insights matches against branches, issues, and pull requests
+- **Repos**: the repositories where the term is applied
+- **Actions**: click **Delete** to remove the term
 
 ### Add a defect detection term
 
@@ -263,10 +263,10 @@ If you need help configuring Code Domains optimally for your organization, conta
 
 The **Existing Code Domains** list displays all configured domains for your organization. Each domain shows:
 
-- **Domain name** — the label for the domain, with an edit icon to modify it
-- **Regex pattern** — the regular expression GitKraken Insights uses to match files to this domain
-- **Diff Delta multiplier** — a scalar applied when calculating the Diff Delta of code written in files that match this domain
-- **File matches** — the number of files and repositories matched by the regex
+- **Domain name**: the label for the domain, with an edit icon to modify it
+- **Regex pattern**: the regular expression GitKraken Insights uses to match files to this domain
+- **Diff Delta multiplier**: a scalar applied when calculating the Diff Delta of code written in files that match this domain
+- **File matches**: the number of files and repositories matched by the regex
 
 <!-- FLAG FOR HUMAN REVIEW: The expand arrow behavior on each domain card is not confirmed. -->
 
@@ -281,8 +281,8 @@ The **Existing Code Domains** list displays all configured domains for your orga
 
 The **Add a Code Domain** form contains the following fields:
 
-- **Select or create a Code Domain** — choose a preset domain type from the dropdown, or type a new name to create a custom domain. Available preset options include: Autogenerated, C#, CSS, Compiled build files, Configuration, Controller, Data source, Database, Database migration, Dependency config, Perl, Python, React Component, SQL, SQL (View), Test, Test (JS), Test (Python), Test fixture, and Third-party.
-- **Define a regular expression** — enter a regex pattern describing the file paths to include in this domain (e.g., `models\/.*\.rb` matches every `.rb` file in a `models` directory)
+- **Select or create a Code Domain**: choose a preset domain type from the dropdown, or type a new name to create a custom domain. Available preset options include: Autogenerated, C#, CSS, Compiled build files, Configuration, Controller, Data source, Database, Database migration, Dependency config, Perl, Python, React Component, SQL, SQL (View), Test, Test (JS), Test (Python), Test fixture, and Third-party.
+- **Define a regular expression**: enter a regex pattern describing the file paths to include in this domain (e.g., `models\/.*\.rb` matches every `.rb` file in a `models` directory)
 
 As you type a regular expression, the **Files matching your regular expression** panel previews which files match the pattern in real time.
 

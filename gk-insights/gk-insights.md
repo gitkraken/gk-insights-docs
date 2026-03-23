@@ -17,7 +17,7 @@ GitKraken Insights turns raw Git data into clear, useful metrics for developers 
 Instead of surface-level stats, GitKraken Insights shows how work connects to team goals and points out ways to improve flow and productivity.
 
 > **Plan:** GitKraken Insights (available by request)
-> **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
+> **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner (for access). The **User** role does not grant access to GitKraken Insights but tells Insights to begin tracking that user for metrics.
 > **Integrations:** GitHub, GitLab, Bitbucket, Azure DevOps, Jira Cloud
 > **AI providers:** Claude Code, Cursor, GitHub Copilot (optional)
@@ -74,7 +74,7 @@ In addition, you can connect AI providers to enable AI Impact insights (like Dup
 
 #### Avoiding GitHub API rate limits
 
-If you're importing a large number of repositories—depending on size and commit history—you may encounter GitHub's hourly API rate limits. This can temporarily throttle other GitHub services used by your organization.
+If you're importing a large number of repositories, depending on size and commit history, you may encounter GitHub's hourly API rate limits. This can temporarily throttle other GitHub services used by your organization.
 
 To avoid this, additional members of your organization can connect to GitKraken Insights using a [Lead role](/gk-dev/gk-dev-organization/#roles). When multiple people are connected, the app distributes processing across their GitHub tokens to help avoid throttling.
 
