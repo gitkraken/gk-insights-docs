@@ -14,7 +14,7 @@ taxonomy:
 
 ## What GitKraken Insights dashboards display
 
-GitKraken Insights dashboards display Git activity, pull requests, issues, and CI/CD results in a single view. Each dashboard contains configurable metric widgets that can be filtered by workspace, repository, timeframe, and team. This page covers how to create dashboards, add metrics, customize layouts, apply trendlines, and filter data.
+GitKraken Insights dashboards display Git activity, pull requests, issues, and CI/CD results in a single view. Each dashboard contains configurable metric widgets that can be filtered by workspace, repository, timeframe, and team. This page covers how to create dashboards, duplicate dashboards, add metrics, customize layouts, apply trendlines, and filter data.
 
 > **Plan:** GitKraken Insights
 > **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)

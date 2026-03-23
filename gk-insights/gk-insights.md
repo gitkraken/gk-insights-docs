@@ -5,7 +5,7 @@ product: GitKraken Insights
 content_type: install
 audience: admin
 plan_required: GitKraken Insights
-integrations: [GitHub, GitLab, Bitbucket, Jira Cloud, Cursor, GitHub Copilot]
+integrations: [GitHub, GitLab, Bitbucket, Azure DevOps, Jira Cloud, Claude Code, Cursor, GitHub Copilot]
 status: GA
 taxonomy:
     category: gk-insights
@@ -19,9 +19,8 @@ Instead of surface-level stats, GitKraken Insights shows how work connects to te
 > **Plan:** GitKraken Insights (available by request)
 > **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner (for access). The **User** role does not grant access to GitKraken Insights but tells Insights to begin tracking that user for metrics.
-> **Integrations:** GitHub, GitLab, Bitbucket, Jira Cloud
-> **AI providers:** Cursor, GitHub Copilot (optional)
-> **Coming soon:** Azure DevOps
+> **Integrations:** GitHub, GitLab, Bitbucket, Azure DevOps, Jira Cloud
+> **AI providers:** Claude Code, Cursor, GitHub Copilot (optional)
 
 <figure>
   <img src="/wp-content/uploads/insights-dashboard-oct-2025.png" srcset="/wp-content/uploads/insights-dashboard-oct-2025@2x.png" class="help-center-img img-bordered" alt="Dashboard view of GitKraken Insights metrics and charts for development activity" />
@@ -44,7 +43,7 @@ GitKraken Insights is available by request only. To get started, [request a guid
 
 Once your access is approved, you can connect GitKraken Insights to your repositories and configure settings for your organization.  
 
-Currently, Insights supports connections with GitHub, GitLab, Bitbucket, Azure Devops and Jira Cloud.
+Currently, Insights supports connections with GitHub, GitLab, Bitbucket, Azure DevOps, and Jira Cloud.
 
 In addition, you can connect AI providers to enable AI Impact insights (like Duplicated Code, Prompt Acceptance Rate, and more).
 ---
@@ -52,7 +51,7 @@ In addition, you can connect AI providers to enable AI Impact insights (like Dup
 ### 1. Import your repositories
 
 1. In GitKraken.dev, go to **Insights > Data Connection**.  
-2. Click to connect with GitHub, GitLab, Azure Devops, Claude Code, Cursor, GitHub CoPilot, Bitbucket or Jira Cloud. 
+2. Click to connect with GitHub, GitLab, Azure DevOps, Claude Code, Cursor, GitHub Copilot, Bitbucket, or Jira Cloud. 
 3. Authorize GitKraken Insights to connect with GitHub.  
 4. Select which repositories to track. Use the filter option at the top of the page to quickly narrow down the list.  
 
