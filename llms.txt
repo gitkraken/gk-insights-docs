@@ -1,0 +1,11 @@
+# GitKraken Insights Documentation
+
+> GitKraken Insights documentation — analytics and reporting for your Git repositories and developer workflows.
+
+## Getting Started
+
+- [Getting Started with GitKraken Insights](https://help.gitkraken.com/gk-insights/gk-insights/): Learn how to request access, understand plan availability, and connect your data in GitKraken Insights.
+
+## Documentation Pages
+
+- [Dashboard Management in GitKraken Insights](https://help.gitkraken.com/gk-insights/gk-insights-dashboard-management/): Learn how to add and interpret key DORA and Pull Request metrics, arrange your layout, and use filters to analyze data on dashboards.
