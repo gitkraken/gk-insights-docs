@@ -18,7 +18,7 @@ Instead of surface-level stats, GitKraken Insights shows how work connects to te
 
 > **Plan:** GitKraken Insights (available by request)
 > **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
-> **Role:** Lead, Admin, or Owner (for access). The **User** role does not grant access to GitKraken Insights but tells Insights to begin tracking that user for metrics.
+> **Role:** Lead, Admin, or Owner
 > **Integrations:** GitHub, GitLab, Bitbucket, Azure DevOps, Jira Cloud
 > **AI providers:** Claude Code, Cursor, GitHub Copilot (optional)
 
