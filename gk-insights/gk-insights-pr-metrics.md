@@ -15,7 +15,7 @@ taxonomy:
 GitKraken Insights tracks ten Pull Request metrics that measure how code changes move through review and deployment. These metrics highlight slowdowns, surface patterns in reviews, and uncover blockers that may affect delivery. Pull Request data comes from connected GitHub, GitLab, or Bitbucket repositories.
 
 > **Plan:** GitKraken Insights
-> **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
+> **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
 > **Prerequisite:** Connected repositories with pull request data (GitHub, GitLab, or Bitbucket)
 

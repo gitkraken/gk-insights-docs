@@ -14,7 +14,7 @@ taxonomy:
 GitKraken Insights Metric Settings control how the platform detects releases, maps commits to issues, identifies critical defects, and categorizes code by domain. Access these settings from **Insights > Settings > Measurement Configuration** in [gitkraken.dev](https://gitkraken.dev). Changes to these settings affect metric calculations for all users in the organization.
 
 > **Plan:** GitKraken Insights
-> **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
+> **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
 > **Prerequisite:** Connected repositories and issue tracker (see [Getting Started](/gk-insights/gk-insights))
 

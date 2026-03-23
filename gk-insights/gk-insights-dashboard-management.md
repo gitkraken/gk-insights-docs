@@ -20,7 +20,7 @@ GitKraken Insights dashboards display Git activity, pull requests, issues, and C
 > **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
 > **Prerequisite:** Connected repositories (see [Getting Started](/gk-insights/gk-insights))
-> **Limitation:** Each user can currently create one dashboard per organization.
+
 
 ---
 

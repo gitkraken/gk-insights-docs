@@ -14,7 +14,7 @@ taxonomy:
 Answers to common questions about GitKraken Insights, an engineering metrics platform that turns Git activity, pull requests, issues, and CI/CD results into actionable metrics. GitKraken Insights is accessed via [gitkraken.dev](https://gitkraken.dev). For setup instructions, see [Getting Started with GitKraken Insights](/gk-insights/gk-insights).
 
 > **Plan:** GitKraken Insights (available by request)
-> **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
+> **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
 
 ---
