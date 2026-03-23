@@ -17,7 +17,7 @@ taxonomy:
 GitKraken Insights dashboards display Git activity, pull requests, issues, and CI/CD results in a single view. Each dashboard contains configurable metric widgets that can be filtered by workspace, repository, timeframe, and team. This page covers how to create dashboards, duplicate dashboards, add metrics, customize layouts, apply trendlines, and filter data.
 
 > **Plan:** GitKraken Insights
-> **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
+> **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
 > **Prerequisite:** Connected repositories (see [Getting Started](/gk-insights/gk-insights))
 > **Limitation:** Each user can currently create one dashboard per organization.
@@ -141,7 +141,7 @@ The duplicated dashboard will appear in your dashboard list with the same config
 
 Widgets on the dashboard can be customized to fit your needs.
 
-- **Resize widgets:** Each widget is available in two sizes—small or large. Drag and drop the lower-right corner of a widget to adjust its size.
+- **Resize widgets:** Each widget is available in two sizes: small or large. Drag and drop the lower-right corner of a widget to adjust its size.
 - **Rearrange widgets:** Drag and drop from the upper-left corner of a widget to move it into a new position on the dashboard.
 - **One per dashboard:** Only one copy of each metric can be placed on a dashboard.
 - **Widget menu:** From the menu in the upper-right of each widget, you can switch between **line** and **bar** graph types, resize the widget between large or small, export the graph data, or remove the widget from the dashboard.
@@ -158,7 +158,7 @@ Widgets on the dashboard can be customized to fit your needs.
 
 ## Add trendlines to charts
 
-You can add trendlines to any chart in GitKraken Insights to help visualize patterns over time. These overlays make it easier to understand whether your metrics are improving, declining, or fluctuating—and how consistently.
+You can add trendlines to any chart in GitKraken Insights to help visualize patterns over time. These overlays make it easier to understand whether your metrics are improving, declining, or fluctuating, and how consistently.
 
 ### How to add a trendline
 
