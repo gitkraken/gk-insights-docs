@@ -1,11 +1,15 @@
-# GitKraken Insights Documentation
+# GitKraken Insights
 
-> GitKraken Insights documentation — analytics and reporting for your Git repositories and developer workflows.
+> GitKraken Insights turns raw Git data into clear, actionable engineering metrics. It measures pull request activity, DORA performance, AI tool impact, code quality, and delivery velocity in a single configurable dashboard.
 
-## Getting Started
+## Documentation
 
 - [Getting Started with GitKraken Insights](https://help.gitkraken.com/gk-insights/gk-insights/): Learn how to request access, understand plan availability, and connect your data in GitKraken Insights.
-
-## Documentation Pages
-
-- [Dashboard Management in GitKraken Insights](https://help.gitkraken.com/gk-insights/gk-insights-dashboard-management/): Learn how to add and interpret key DORA and Pull Request metrics, arrange your layout, and use filters to analyze data on dashboards.
+- [Dashboard Configuration](https://help.gitkraken.com/gk-insights/gk-insights-dashboard-management/): Learn how to create dashboards, add metrics, arrange widget layouts, apply trendlines, and filter data in GitKraken Insights.
+- [DORA Metrics](https://help.gitkraken.com/gk-insights/gk-insights-dora-metrics/): Learn about DORA metrics in GitKraken Insights, including Deploy Frequency, Change Lead Time, Mean Time to Repair/Recover, and Defect Rate.
+- [Pull Request Metrics](https://help.gitkraken.com/gk-insights/gk-insights-pr-metrics/): Learn about Pull Request metrics in GitKraken Insights, including cycle time, lead time, review activity, and code review hours.
+- [AI Impact Metrics](https://help.gitkraken.com/gk-insights/gk-insights-ai-impact-metrics/): Learn about AI Impact metrics in GitKraken Insights, including code rework, duplication, suggestion acceptance rates, and active AI tool usage.
+- [Code Quality Metrics](https://help.gitkraken.com/gk-insights/gk-insights-code-quality-metrics/): Learn about Code Quality metrics in GitKraken Insights, including Bug Work Percent, Documentation and Test Percent, Code Change Rate, and Code Change by Operation.
+- [Velocity and Delivery Consistency Metrics](https://help.gitkraken.com/gk-insights/gk-insights-velocity-metrics/): Learn about Velocity and Delivery Consistency metrics in GitKraken Insights, including Commit Count and Estimated Coding Hours.
+- [Metric Settings](https://help.gitkraken.com/gk-insights/gk-insights-metric-settings/): Learn how to configure release tracking, issue detection, issue tracker projects, critical defect terms, and measurement settings in GitKraken Insights.
+- [FAQ](https://help.gitkraken.com/gk-insights/gk-insights-faq/): Answers to common questions about GitKraken Insights, including access, integrations, available metrics, and customization.
