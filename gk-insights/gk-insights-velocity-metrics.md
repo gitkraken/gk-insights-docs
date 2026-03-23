@@ -1,12 +1,25 @@
 ---
 title: Velocity and Delivery Consistency Metrics in GitKraken Insights
 description: Learn about Velocity and Delivery Consistency metrics in GitKraken Insights, including Commit Count and Estimated Coding Hours.
+product: GitKraken Insights
+content_type: reference
+audience: all
+plan_required: GitKraken Insights add-on
+status: GA
 taxonomy:
     category: gk-dev
 ---
 <kbd>Last updated: March 2026</kbd>
 
-This section highlights metrics that reflect development rhythm and consistency. Tracking commit volume and coding hours helps teams assess delivery patterns and ensure developers have time for focused work.
+GitKraken Insights tracks two Velocity and Delivery Consistency metrics that reflect development rhythm. Tracking commit volume and coding hours helps teams assess delivery patterns and ensure developers have time for focused work.
+
+> **Plan:** GitKraken Insights add-on  
+> **Prerequisite:** Connected repositories with commit history
+
+| Metric | Definition |
+|---|---|
+| Commit Count | Number of commits pushed to all connected repositories |
+| Estimated Coding Hours | Estimated time developers spend coding |
 
 ---
 

@@ -1,20 +1,29 @@
 ---
 title: GitKraken Insights FAQ
 description: Answers to common questions about GitKraken Insights for developer leaders, including access, integrations, available metrics, and customization.
+product: GitKraken Insights
+content_type: faq
+audience: all
+plan_required: GitKraken Insights add-on
+status: GA
 taxonomy:
     category: gk-dev
 ---
 <kbd>Last updated: March 2026</kbd>
 
+Answers to common questions about GitKraken Insights, an engineering metrics platform accessed via [gitkraken.dev](https://gitkraken.dev). For setup instructions, see [Getting Started with GitKraken Insights](/gk-dev/gk-dev-insights).
+
+> **Plan:** GitKraken Insights add-on (available by request)
+
 ---
 
-### What is GitKraken Insights?
+## What is GitKraken Insights?
 
 GitKraken Insights turns raw Git data into clear, actionable engineering metrics. It pulls code activity, pull requests, issues, and CI/CD results into a single dashboard, giving both developers and leaders a shared view of how work is progressing — without extra reporting overhead.
 
 ---
 
-### How do I get access?
+## How do I get access?
 
 GitKraken Insights is available by request only. To get started, [request a guided tour](https://www.gitkraken.com/insights#form) and a member of the GitKraken team will walk you through Insights and explain how to enable access for your organization.
 
@@ -22,7 +31,7 @@ Insights is available as an add-on to seats in your existing GitKraken subscript
 
 ---
 
-### What tools does GitKraken Insights connect to?
+## What tools does GitKraken Insights connect to?
 
 GitKraken Insights currently supports connections with **GitHub**, **GitLab**, **Bitbucket**, and **Jira Cloud**. Support for Azure DevOps is coming soon.
 
@@ -30,7 +39,7 @@ To enable AI Impact metrics, you can also connect **Cursor** or **GitHub Copilot
 
 ---
 
-### What metrics does GitKraken Insights track?
+## What metrics does GitKraken Insights track?
 
 GitKraken Insights covers five metric categories:
 
@@ -42,13 +51,13 @@ GitKraken Insights covers five metric categories:
 
 ---
 
-### Does GitKraken Insights work with AI coding tools?
+## Does GitKraken Insights work with AI coding tools?
 
 Yes. GitKraken Insights connects to Cursor and GitHub Copilot to surface AI Impact metrics. These metrics help teams measure how AI tools affect code quality and developer efficiency — including how often suggestions are accepted, how much code is duplicated or reworked, and how many developers are actively using AI tools.
 
 ---
 
-### How long does it take to see data after connecting?
+## How long does it take to see data after connecting?
 
 After setup is complete, GitKraken Insights begins importing your repository data automatically:
 
@@ -59,13 +68,13 @@ You can track import progress at any time from the **Dashboard** tab.
 
 ---
 
-### Do developers need to change their workflow?
+## Do developers need to change their workflow?
 
 No. GitKraken Insights reads from existing Git activity, pull requests, issues, and CI/CD data. Developers continue working in their normal tools — GitKraken Insights observes and measures without requiring any changes to how work gets done.
 
 ---
 
-### Can I customize dashboards and the metrics they display?
+## Can I customize dashboards and the metrics they display?
 
 Yes. You can create dashboards, add specific metrics as widgets, arrange the widget layout, and apply filters by Workspace, Repository, Timeframe, and Team. You can also add trendlines to individual metrics to visualize direction over time.
 
@@ -73,12 +82,12 @@ Note: each user can currently create one dashboard per organization. Support for
 
 ---
 
-### How does GitKraken Insights identify releases for DORA metrics?
+## How does GitKraken Insights identify releases for DORA metrics?
 
 You configure release detection rules in **Metric Settings > Release Tracking**. Rules can match on branch prefix, merged pull request target, git tags, commit messages, or API calls. GitKraken Insights attempts to apply each rule to all connected repositories automatically.
 
 ---
 
-### How does GitKraken Insights identify critical defects?
+## How does GitKraken Insights identify critical defects?
 
 Critical defects are identified two ways. In **Metric Settings > Critical Defect Terms**, you define strings that GitKraken Insights matches case-insensitively against branch names, linked issue titles, and pull request titles. In **Metric Settings > Define Issue Tracker Projects**, you configure the specific issue field values that mark a defect as critical within your issue tracker.

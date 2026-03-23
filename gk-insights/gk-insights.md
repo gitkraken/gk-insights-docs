@@ -1,14 +1,25 @@
 ---
 title: Getting Started with GitKraken Insights
-description: Learn how to request access, understand plan availability, and connect your data in GitKraken Insights.
+description: Learn how to request access, connect your repositories, and configure GitKraken Insights for your organization.
+product: GitKraken Insights
+content_type: install
+audience: admin
+plan_required: GitKraken Insights add-on
+integrations: [GitHub, GitLab, Bitbucket, Jira Cloud, Cursor, GitHub Copilot]
+status: GA
 taxonomy:
     category: gk-dev
 ---
 <kbd>Last updated: March 2026</kbd>
 
-GitKraken Insights turns raw Git data into clear, useful metrics for developers and leaders. It pulls code activity, pull requests, issues, and CI/CD results into a single view that fits directly into existing workflows.
+GitKraken Insights turns raw Git data into clear, useful metrics for developers and leaders. GitKraken Insights pulls code activity, pull requests, issues, and CI/CD results into a single view that fits directly into existing workflows.
 
-Instead of surface-level stats, Insights shows how work connects to team goals and points out ways to improve flow and productivity.
+Instead of surface-level stats, GitKraken Insights shows how work connects to team goals and points out ways to improve flow and productivity.
+
+> **Plan:** GitKraken Insights add-on (available by request)  
+> **Integrations:** GitHub, GitLab, Bitbucket, Jira Cloud  
+> **AI providers:** Cursor, GitHub Copilot (optional)  
+> **Coming soon:** Azure DevOps
 
 <figure>
   <img src="/wp-content/uploads/insights-dashboard-oct-2025.png" srcset="/wp-content/uploads/insights-dashboard-oct-2025@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />

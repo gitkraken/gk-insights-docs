@@ -1,12 +1,32 @@
 ---
 title: AI Impact Metrics in GitKraken Insights
 description: Learn about AI Impact metrics in GitKraken Insights, including code rework, duplication, suggestion acceptance rates, and active AI tool usage.
+product: GitKraken Insights
+content_type: reference
+audience: all
+plan_required: GitKraken Insights add-on
+integrations: [Cursor, GitHub Copilot]
+status: GA
 taxonomy:
     category: gk-dev
 ---
 <kbd>Last updated: March 2026</kbd>
 
-AI Impact metrics help teams understand how AI coding tools affect code quality and developer efficiency. By tracking rework, duplication, and post-PR changes, teams can see measurable improvements in code and workflow, proving ROI and guiding smarter use of AI tools.
+GitKraken Insights tracks eight AI Impact metrics that measure how AI coding tools affect code quality and developer efficiency. By tracking rework, duplication, and post-PR changes, teams can identify improvements in code and workflow and guide effective use of AI tools.
+
+> **Plan:** GitKraken Insights add-on  
+> **Prerequisite:** Connected AI provider (Cursor or GitHub Copilot). See [Getting Started](/gk-dev/gk-dev-insights#ai-provider-connection-optional).
+
+| Metric | Definition |
+|---|---|
+| Copy/Paste vs Moved % | Duplicated vs refactored code over time |
+| Duplicated Code | Lines in duplicate blocks detected |
+| Percent of Code Rework | Recently written code modified again |
+| Post PR Work Occurring | Follow-up work and fixes after merge |
+| Active Users | Unique users active in connected AI providers |
+| Suggestions | AI-generated suggestions offered (by total lines) |
+| Prompt Acceptance Rate | % of prompt suggestions accepted |
+| Tab Acceptance Rate | % of tab suggestions accepted |
 
 ---
 

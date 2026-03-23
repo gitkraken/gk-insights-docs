@@ -1,14 +1,34 @@
 ---
 title: Pull Request Metrics in GitKraken Insights
 description: Learn about Pull Request metrics in GitKraken Insights, including cycle time, lead time, review activity, and code review hours.
+product: GitKraken Insights
+content_type: reference
+audience: all
+plan_required: GitKraken Insights add-on
+integrations: [GitHub, GitLab, Bitbucket]
+status: GA
 taxonomy:
     category: gk-dev
 ---
 <kbd>Last updated: March 2026</kbd>
 
-Pull Request metrics help teams understand how quickly and smoothly code changes move through review and deployment.
+GitKraken Insights tracks ten Pull Request metrics that measure how code changes move through review and deployment. These metrics highlight slowdowns, surface patterns in reviews, and uncover blockers that may affect delivery.
 
-PR intelligence turns these insights into clear actions by highlighting slowdowns, spotting patterns in fast or delayed reviews, and uncovering blockers that may affect delivery.
+> **Plan:** GitKraken Insights add-on  
+> **Prerequisite:** Connected repositories with pull request data (GitHub, GitLab, or Bitbucket)
+
+| Metric | Measures | Unit | Rolling Window |
+|---|---|---|---|
+| First Response Time | PR opened to first review/comment | Hours | 7-day avg |
+| Cycle Time | First commit to PR merge | Days | 7-day avg |
+| Lead Time | First commit to deployed | Days | 7-day avg |
+| Number of Reviews | Review volume per period | Count | 7-day |
+| Open Time | PR opened to merged | Days | — |
+| PRs Abandoned | PRs closed without merge | Count | — |
+| PRs Merged Without Review | PRs merged with no review | Count | — |
+| PR Comments | Total comments on PRs | Count | — |
+| PR Size / Effort | Aggregate diff delta of merged PRs | Diff delta | — |
+| Code Review Hours | Avg review time per committer | Hours | — |
 
 ---
 

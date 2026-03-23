@@ -1,14 +1,27 @@
 ---
 title: DORA Metrics in GitKraken Insights
 description: Learn about DORA metrics in GitKraken Insights, including Deploy Frequency, Change Lead Time, Mean Time to Repair/Recover, and Defect Rate.
+product: GitKraken Insights
+content_type: reference
+audience: all
+plan_required: GitKraken Insights add-on
+status: GA
 taxonomy:
     category: gk-dev
 ---
 <kbd>Last updated: March 2026</kbd>
 
-DORA (DevOps Research and Assessment) metrics are a standardized set of four key performance indicators: deployment frequency, lead time for changes, change failure rate, and time to restore service.
+GitKraken Insights tracks four DORA (DevOps Research and Assessment) metrics — standardized performance indicators developed by a Google Cloud research team to measure DevOps effectiveness. These metrics help organizations identify areas for improvement and deliver software more efficiently and reliably.
 
-Developed by a Google Cloud research team, these metrics help organizations measure DevOps performance, identify areas for improvement, and deliver software more efficiently and reliably.
+> **Plan:** GitKraken Insights add-on  
+> **Prerequisite:** [Release tracking rules](/gk-dev/gk-dev-metric-settings#release-tracking) configured in Metric Settings
+
+| Metric | Measures | Unit | Rolling Window |
+|---|---|---|---|
+| Deploy Frequency | Total deployments per period | Count | Selected timeframe |
+| Change Lead Time | First commit to deployment | Days | 7-day |
+| Mean Time to Repair/Recover | Defect detected to fix deployed | Business hours | 7-day |
+| Defect Rate | % of deployments with critical defect | Percentage | 7-day |
 
 ---
 

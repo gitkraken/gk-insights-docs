@@ -1,14 +1,27 @@
 ---
 title: Code Quality Metrics in GitKraken Insights
 description: Learn about Code Quality metrics in GitKraken Insights, including Bug Work Percent, Documentation and Test Percent, Code Change Rate, and Code Change by Operation.
+product: GitKraken Insights
+content_type: reference
+audience: all
+plan_required: GitKraken Insights add-on
+status: GA
 taxonomy:
     category: gk-dev
 ---
 <kbd>Last updated: March 2026</kbd>
 
-This section presents metrics designed to assess and improve engineering quality. Together, they offer a balanced view of code health by examining how much work is spent on bugs, tests, and documentation, how frequently older code is modified, and how engineering effort is distributed across different parts of the system.
+GitKraken Insights tracks four Code Quality metrics that assess engineering health by examining bug fix ratios, test and documentation investment, code age, and effort distribution. Use these metrics to monitor technical debt, maintain development quality, and align team investments with maintainability goals.
 
-Use these metrics to monitor technical debt, maintain development quality, and align team investments with maintainability and product stability goals.
+> **Plan:** GitKraken Insights add-on  
+> **Prerequisite:** Connected repositories
+
+| Metric | Definition |
+|---|---|
+| Bug Work Percent | Ratio of work spent fixing bugs vs all other work |
+| Documentation and Test Percent | Percent of work related to tests and documentation |
+| Code Change Rate | Age of code being changed |
+| Code Change by Operation | Code changes organized by type (test, documentation, front-end, back-end) |
 
 ---
 

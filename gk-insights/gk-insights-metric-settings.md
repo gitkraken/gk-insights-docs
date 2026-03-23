@@ -1,10 +1,28 @@
 ---
 title: Metric Settings in GitKraken Insights
 description: Learn how to configure release tracking, issue detection, issue tracker projects, critical defect terms, and measurement settings in GitKraken Insights.
+product: GitKraken Insights
+content_type: admin
+audience: admin
+plan_required: GitKraken Insights add-on
+status: GA
 taxonomy:
     category: gk-dev
 ---
 <kbd>Last updated: March 2026</kbd>
+
+GitKraken Insights Metric Settings control how the platform detects releases, maps commits to issues, identifies critical defects, and categorizes code by domain. Access these settings from **Insights > Settings > Measurement Configuration** in [gitkraken.dev](https://gitkraken.dev). Changes to these settings affect metric calculations for all users in the organization.
+
+> **Plan:** GitKraken Insights add-on  
+> **Prerequisite:** Connected repositories and issue tracker (see [Getting Started](/gk-dev/gk-dev-insights))
+
+| Setting | Purpose | Affects |
+|---|---|---|
+| Release Tracking | Define rules to detect new releases | DORA metrics |
+| Detect Issues | Map commits to issues via patterns | All issue-linked metrics |
+| Issue Tracker Projects | Configure story points and defect fields | DORA, Code Quality metrics |
+| Critical Defect Terms | Flag branches/PRs/issues as critical defects | Defect Rate, MTTR |
+| Measurement Configuration | Define Code Domains with regex patterns | Code Change by Operation |
 
 ---
 

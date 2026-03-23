@@ -1,6 +1,11 @@
 ---
 title: Dashboard Configuration in GitKraken Insights
 description: Learn how to create dashboards, add metrics, arrange widget layouts, apply trendlines, and filter data in GitKraken Insights.
+product: GitKraken Insights
+content_type: how-to
+audience: all
+plan_required: GitKraken Insights add-on
+status: GA
 taxonomy:
     category: gk-dev
 ---
@@ -10,6 +15,10 @@ taxonomy:
 ## Overview
 
 GitKraken Insights brings your Git data, pull requests, issues, and CI/CD results into one place. Instead of juggling tools or exporting spreadsheets, you get dashboards that show how work is really moving across code, reviews, and releases. The goal is to give both devs and leads a clear view of progress and bottlenecks without extra reporting overhead.
+
+> **Plan:** GitKraken Insights add-on  
+> **Prerequisite:** Connected repositories (see [Getting Started](/gk-dev/gk-dev-insights))  
+> **Limitation:** Each user can currently create one dashboard per organization.
 
 ### Key benefits
 
