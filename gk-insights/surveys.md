@@ -79,10 +79,43 @@ In the **Send survey** modal:
 
 ## View survey results
 
-After GitKraken Insights sends a survey, responses appear in the **Survey Results** tab.
+After GitKraken Insights sends a survey, responses appear in the **Survey Results** tab. Use the tab to track response rates, review answers, and share survey links with recipients.
+
+### 1. Open the Survey Results tab
 
 1. In [GitKraken.dev](https://gitkraken.dev), go to **Insights > Surveys**.
-2. Click the **Survey Results** tab to view collected responses.
+2. Click the **Survey Results** tab.
+
+GitKraken Insights displays all sent surveys. Each survey card shows the survey title, category tag, question count, estimated completion time, number of responses, and number of recipients.
+
+<figure>
+  <img src="/wp-content/uploads/gk-insights-surveys-results.png" class="help-center-img img-bordered" alt="Survey Results tab showing sent surveys with response counts and available actions" />
+  <figcaption style="text-align: center; color: #888">Survey Results tab listing sent surveys and response data</figcaption>
+</figure>
+
+From each survey card, you can:
+
+- Click **View results** to open the detailed results for that survey.
+- Click **Copy link** to copy a direct link to the survey for manual distribution.
+- Click **Send reminder** to send a follow-up notification to recipients who have not yet responded.
+
+### 2. Review detailed results
+
+Click **View results** on a survey card. GitKraken Insights opens the results view for that survey, which displays:
+
+- **Overall score** — The average score across all responses.
+- **Response rate** — The percentage of recipients who completed the survey.
+- **Response rate trend** — The change in response rate over time.
+- **Average score** — The mean score per question.
+
+Each survey question appears as a bar chart showing the distribution of responses.
+
+<figure>
+  <img src="/wp-content/uploads/gk-insights-survey-results-view.png" class="help-center-img img-bordered" alt="Detailed survey results view showing overall score, response rate, and per-question bar charts" />
+  <figcaption style="text-align: center; color: #888">Detailed survey results with per-question response distribution</figcaption>
+</figure>
+
+Click **Export** in the top-right corner to download the survey results data.
 
 ---
 
