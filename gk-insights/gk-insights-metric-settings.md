@@ -4,7 +4,7 @@ description: Learn how to configure release tracking, issue detection, issue tra
 product: GitKraken Insights
 content_type: admin
 audience: admin
-plan_required: GitKraken Insights add-on
+plan_required: GitKraken Insights
 status: GA
 taxonomy:
     category: gk-dev
@@ -13,7 +13,9 @@ taxonomy:
 
 GitKraken Insights Metric Settings control how the platform detects releases, maps commits to issues, identifies critical defects, and categorizes code by domain. Access these settings from **Insights > Settings > Measurement Configuration** in [gitkraken.dev](https://gitkraken.dev). Changes to these settings affect metric calculations for all users in the organization.
 
-> **Plan:** GitKraken Insights add-on  
+> **Plan:** GitKraken Insights
+> **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
+> **Role:** Lead, Admin, or Owner
 > **Prerequisite:** Connected repositories and issue tracker (see [Getting Started](/gk-dev/gk-dev-insights))
 
 | Setting | Purpose | Affects |
@@ -31,11 +33,11 @@ GitKraken Insights Metric Settings control how the platform detects releases, ma
   <figcaption style="text-align: center; color: #888">Navigate to Measurement Configuration in Insights settings to access release tracking, issue detection, and other metric settings.</figcaption>
 </figure>
 
-## Release Tracking
+## Configure release tracking
 
 Configure how GitKraken Insights detects new releases for your repositories.
 
-### Rules to detect releases
+### View active release rules
 
 The **Rules to detect releases** list shows all active release rules for your organization. Each rule displays:
 
@@ -126,7 +128,7 @@ Identifies a release whenever any git tag is pushed, regardless of tag name or f
 
 ---
 
-## Detect Issues
+## Configure issue detection
 
 GitKraken Insights uses issue mappings to connect commits to issues in your issue tracking software (e.g., Jira, GitHub Issues). Each mapping defines a pattern that GitKraken Insights matches against commit messages, branch names, and pull request titles to identify the issues they address.
 
@@ -137,7 +139,7 @@ If GitKraken Insights does not display a pattern you expect, click **Find new is
   <figcaption style="text-align: center; color: #888">Click Find new issue tracker patterns at the top of the Detect Issue References page to search for additional patterns.</figcaption>
 </figure>
 
-### Issue mappings
+### View and manage issue mappings
 
 The **Detect Issue References** page lists all active issue mappings for your organization. Each mapping displays:
 
@@ -153,7 +155,7 @@ To delete a mapping, click **Delete issue mapping** within the mapping card.
   <figcaption style="text-align: center; color: #888">The Detect Issue References page lists all active issue mappings for your organization.</figcaption>
 </figure>
 
-### Suggested issue tracking patterns
+### Review suggested issue patterns
 
 When GitKraken Insights detects potential issue tracking patterns in your repositories, it displays suggested mappings at the top of the Detect Issue References page. Each suggestion includes a pre-filled **Create Issue Mapping** form showing:
 
@@ -180,11 +182,11 @@ To decline a suggestion, click **Dismiss suggestion**.
 
 ---
 
-## Define Issue Tracker Projects
+## Configure issue tracker projects
 
 The **Define issue tracker projects** page lists all issue tracker projects connected to your organization. GitKraken Insights uses the configuration on this page to read story point values and identify critical defects for DORA and code quality metric calculations.
 
-### Project configuration
+### View project settings
 
 Each connected project appears as a card with the following fields:
 
@@ -201,7 +203,7 @@ Each connected project appears as a card with the following fields:
 
 Each project card includes two actions:
 
-- **Refresh list of fields** — manually fetches the latest fields from your issue tracker. Use this only when you have added a new field to your project and need it available immediately. GitClear automatically refreshes project fields every few days and when new projects are added.
+- **Refresh list of fields** — manually fetches the latest fields from your issue tracker. Use this only when you have added a new field to your project and need it available immediately. GitKraken Insights automatically refreshes project fields every few days and when new projects are added.
 - **Hide project** — removes the project from this list.
 
 <figure>
@@ -209,7 +211,7 @@ Each project card includes two actions:
   <figcaption style="text-align: center; color: #888">The Refresh list of fields tooltip describes when a manual refresh is appropriate.</figcaption>
 </figure>
 
-### Rescan for Projects
+### Rescan for missing projects
 
 When you configure a new issue tracker connection, GitKraken Insights automatically scans for projects and populates the list above. If a newly added project does not appear, or if you are having problems seeing an expected project, click **Rescan projects** next to the relevant connection to manually fetch the latest project list.
 
@@ -222,7 +224,7 @@ To view all issue tracker connections, including those ineligible for project sc
 
 ---
 
-## Critical Defect Terms
+## Configure critical defect terms
 
 The **Critical defect terms** page lets you define terms that GitKraken Insights uses to automatically detect critical defect bugs. When a term matches, GitKraken Insights flags the associated work as a critical defect in DORA metric calculations.
 
@@ -232,7 +234,7 @@ GitKraken Insights performs case-insensitive substring matching against:
 - The title of the linked issue (e.g., `[BUG] Login page crashes on submit`)
 - The title of the pull request (e.g., `Fix critical auth bug in production`)
 
-### Existing terms
+### View existing defect terms
 
 Active defect detection terms appear in a list with the following columns:
 
@@ -251,13 +253,13 @@ To add a new term, enter a string in the **Add New Defect Detection Term** field
 
 ---
 
-## Measurement Configuration
+## Configure Code Domains
 
 The **Measurement configuration** page lets you define Code Domains for your organization. Code Domains use regular expressions to group files by area of the codebase, letting you identify where each engineer contributes.
 
 If you need help configuring Code Domains optimally for your organization, contact GitKraken support at [support@gitkraken.com](mailto:support@gitkraken.com).
 
-### Existing Code Domains
+### View existing Code Domains
 
 The **Existing Code Domains** list displays all configured domains for your organization. Each domain shows:
 

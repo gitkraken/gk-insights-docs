@@ -4,7 +4,7 @@ description: Learn how to create dashboards, add metrics, arrange widget layouts
 product: GitKraken Insights
 content_type: how-to
 audience: all
-plan_required: GitKraken Insights add-on
+plan_required: GitKraken Insights
 status: GA
 taxonomy:
     category: gk-dev
@@ -12,19 +12,15 @@ taxonomy:
 <kbd>Last updated: March 2026</kbd>
 
 
-## Overview
+## What GitKraken Insights dashboards display
 
-GitKraken Insights brings your Git data, pull requests, issues, and CI/CD results into one place. Instead of juggling tools or exporting spreadsheets, you get dashboards that show how work is really moving across code, reviews, and releases. The goal is to give both devs and leads a clear view of progress and bottlenecks without extra reporting overhead.
+GitKraken Insights dashboards display Git activity, pull requests, issues, and CI/CD results in a single view. Each dashboard contains configurable metric widgets that can be filtered by workspace, repository, timeframe, and team. This page covers how to create dashboards, add metrics, customize layouts, apply trendlines, and filter data.
 
-> **Plan:** GitKraken Insights add-on  
-> **Prerequisite:** Connected repositories (see [Getting Started](/gk-dev/gk-dev-insights))  
+> **Plan:** GitKraken Insights
+> **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
+> **Role:** Lead, Admin, or Owner
+> **Prerequisite:** Connected repositories (see [Getting Started](/gk-dev/gk-dev-insights))
 > **Limitation:** Each user can currently create one dashboard per organization.
-
-### Key benefits
-
-- **In your workflow:** Metrics come straight from the tools you already use: Git, PRs, CI/CD, issue trackers. No duplicate work, no disruption.
-- **Useful context:** See how code changes connect to tickets, review quality, and team goals. Less vanity stats, more signal.
-- **Clear next steps:** Spot inefficiencies and get practical ways to improve, whether it's review speed, investment in features vs. fixes, or build times.
 
 ---
 
@@ -38,8 +34,9 @@ Before you can add metrics, complete these setup steps:
 
 Once setup is complete, open the **Insights > Dashboard** tab from [gitkraken.dev](https://gitkraken.dev).
 
+<!-- FLAG FOR HUMAN REVIEW: Insights-Dashboard.png uses non-standard capitalization and may not exist. Likely should be insights-dashboard-oct-2025.png. -->
 <figure>
-  <img src="/wp-content/uploads/Insights-Dashboard.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/Insights-Dashboard.png" class="help-center-img img-bordered" alt="Screenshot of Insights Dashboard in gitkraken.dev for viewing metrics and widgets" />
   <figcaption style="text-align: center; color: #888">Access your Insights Dashboard from gitkraken.dev.</figcaption>
 </figure>
 
@@ -66,58 +63,46 @@ In the modal, enter a **Title** and optional **Description** to help distinguish
 3. Click **Add** next to the metric you want to display on your dashboard.
 
 <figure>
-  <img src="/wp-content/uploads/add-metric.png" srcset="/wp-content/uploads/add-metric@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/add-metric.png" srcset="/wp-content/uploads/add-metric@2x.png" class="help-center-img img-bordered" alt="Screenshot of Add Metric dialog listing DORA and Pull Request metrics to add" />
   <figcaption style="text-align: center; color: #888">Add DORA or PR metrics to your dashboard.</figcaption>
 </figure>
 
-### Available metrics
+### Browse available metrics
 
-**[DORA metrics](/gk-dev/gk-dev-dora-metrics)**
-
-- Deploy Frequency
-- Change lead time
-- Mean time to repair/recover
-- Defect rate (% of deploy with severe defect)
-
-**[Pull Request metrics](/gk-dev/gk-dev-pr-metrics)**
-
-- First response time ("Pickup time")
-- Cycle time ("first commit" to "merge")
-- Lead time ("first commit" to "deployed")
-- Number of reviews per day/week/month
-- Open Time ("opened" to "merged")
-- Number of PRs Abandoned
-- Number of PRs Merged Without Review
-- Number of PR Comments
-- PR Size/Effort
-- Code Review Hours
-
-**[AI Impact metrics](/gk-dev/gk-dev-ai-impact-metrics)**
-
-- Copy/paste vs moved percent
-- Duplicated code
-- Percent of code rework (churned lines)
-- Post PR work occurring
-- Active Users
-- Suggestions (by total lines)
-- Prompt Acceptance Rate
-- Tab Acceptance Rate
-
-**[Code Quality metrics](/gk-dev/gk-dev-code-quality-metrics)**
-
-- Bug Work Percent
-- Documentation and Test Percent
-- Code Change Rate
-- Code Change by Operation
-
-**[Velocity/Delivery Consistency](/gk-dev/gk-dev-velocity-metrics)**
-
-- Commit Count
-- Estimated Coding Hours
+| Metric | Category | Description |
+|---|---|---|
+| Deploy Frequency | [DORA](/gk-dev/gk-dev-dora-metrics) | Total deployments per period |
+| Change Lead Time | [DORA](/gk-dev/gk-dev-dora-metrics) | First commit to deployment |
+| Mean Time to Repair/Recover | [DORA](/gk-dev/gk-dev-dora-metrics) | Defect detected to fix deployed |
+| Defect Rate | [DORA](/gk-dev/gk-dev-dora-metrics) | % of deployments with critical defect |
+| First Response Time | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | PR opened to first review/comment |
+| Cycle Time | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | First commit to PR merge |
+| Lead Time | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | First commit to deployed |
+| Number of Reviews | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | Review volume per period |
+| Open Time | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | PR opened to merged |
+| PRs Abandoned | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | PRs closed without merge |
+| PRs Merged Without Review | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | PRs merged with no review |
+| PR Comments | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | Total comments on PRs |
+| PR Size/Effort | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | Aggregate diff delta of merged PRs |
+| Code Review Hours | [Pull Requests](/gk-dev/gk-dev-pr-metrics) | Avg review time per committer |
+| Copy/Paste vs Moved % | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | Duplicated vs refactored code |
+| Duplicated Code | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | Lines in duplicate blocks |
+| Percent of Code Rework | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | Recently written code modified again |
+| Post PR Work Occurring | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | Follow-up work after merge |
+| Active Users | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | Unique users in AI providers |
+| Suggestions | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | AI-generated suggestions (by total lines) |
+| Prompt Acceptance Rate | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | % of prompt suggestions accepted |
+| Tab Acceptance Rate | [AI Impact](/gk-dev/gk-dev-ai-impact-metrics) | % of tab suggestions accepted |
+| Bug Work Percent | [Code Quality](/gk-dev/gk-dev-code-quality-metrics) | Bug fix work vs all other work |
+| Documentation and Test % | [Code Quality](/gk-dev/gk-dev-code-quality-metrics) | Work related to tests and documentation |
+| Code Change Rate | [Code Quality](/gk-dev/gk-dev-code-quality-metrics) | Age of code being changed |
+| Code Change by Operation | [Code Quality](/gk-dev/gk-dev-code-quality-metrics) | Changes by type (test, doc, FE, BE) |
+| Commit Count | [Velocity](/gk-dev/gk-dev-velocity-metrics) | Commits to connected repositories |
+| Estimated Coding Hours | [Velocity](/gk-dev/gk-dev-velocity-metrics) | Estimated time spent coding |
 
 ---
 
-## Layout
+## Customize widget layout
 
 Widgets on the dashboard can be customized to fit your needs.
 
@@ -128,7 +113,7 @@ Widgets on the dashboard can be customized to fit your needs.
 - **Switch graph type** Switch between line graphs, area graphs, or bar graphs.
 
 <figure>
-  <img src="/wp-content/uploads/layout-options.png" srcset="/wp-content/uploads/layout-options@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/layout-options.png" srcset="/wp-content/uploads/layout-options@2x.png" class="help-center-img img-bordered" alt="Screenshot of widget menu to switch chart types, resize, export data, or remove widgets" />
   <figcaption style="text-align: center; color: #888">Switch between bar, area or line graphs, resize, export graph data, or remove widget from the menu in the upper right.</figcaption>
 </figure>
 
@@ -136,7 +121,7 @@ Widgets on the dashboard can be customized to fit your needs.
 
 ---
 
-## Trendlines
+## Add trendlines to charts
 
 You can add trendlines to any chart in GitKraken Insights to help visualize patterns over time. These overlays make it easier to understand whether your metrics are improving, declining, or fluctuating—and how consistently.
 
@@ -151,6 +136,8 @@ You can add trendlines to any chart in GitKraken Insights to help visualize patt
 - **Polynomial:** Adds a curved line that reveals acceleration, deceleration, or changing directions in the data.
 - **Moving Average:** Smooths out short-term fluctuations to highlight the overall pattern, especially useful for noisy or jumpy data.
 
+> **Use Linear** to see if a metric is steadily improving or declining over a long period. **Use Polynomial** when you suspect acceleration, deceleration, or directional changes. **Use Moving Average** when data is noisy and you need to smooth out short-term fluctuations.
+
 <figure>
   <img src="/wp-content/uploads/trendline-menu.png" srcset="/wp-content/uploads/trendline-menu@2x.png" class="help-center-img img-bordered" alt="Chart with trendline settings menu showing Linear and Moving Average options" />
   <figcaption style="text-align: center; color: #888">From the widget menu, select a trendline type to better understand long-term changes in your metrics.</figcaption>
@@ -160,7 +147,7 @@ You can add trendlines to any chart in GitKraken Insights to help visualize patt
 
 ---
 
-## Filters
+## Filter dashboard data
 
 The dashboard may be filtered by **Workspace**, **Repositories**, **Timeframe**, and **Team**.
 
@@ -174,6 +161,6 @@ The dashboard may be filtered by **Workspace**, **Repositories**, **Timeframe**,
 
 
 <figure>
-  <img src="/wp-content/uploads/timeframe-filter.png" srcset="/wp-content/uploads/timeframe-filter@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/timeframe-filter.png" srcset="/wp-content/uploads/timeframe-filter@2x.png" class="help-center-img img-bordered" alt="Dashboard view of filters for workspace, repository, timeframe, and team" />
   <figcaption style="text-align: center; color: #888">Filter your dashboard by Workspace, Repo, Timeframe, or Team.</figcaption>
 </figure>

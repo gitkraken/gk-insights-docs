@@ -4,30 +4,42 @@ description: Answers to common questions about GitKraken Insights for developer 
 product: GitKraken Insights
 content_type: faq
 audience: all
-plan_required: GitKraken Insights add-on
+plan_required: GitKraken Insights
 status: GA
 taxonomy:
     category: gk-dev
 ---
 <kbd>Last updated: March 2026</kbd>
 
-Answers to common questions about GitKraken Insights, an engineering metrics platform accessed via [gitkraken.dev](https://gitkraken.dev). For setup instructions, see [Getting Started with GitKraken Insights](/gk-dev/gk-dev-insights).
+Answers to common questions about GitKraken Insights, an engineering metrics platform that turns Git activity, pull requests, issues, and CI/CD results into actionable metrics. GitKraken Insights is accessed via [gitkraken.dev](https://gitkraken.dev). For setup instructions, see [Getting Started with GitKraken Insights](/gk-dev/gk-dev-insights).
 
-> **Plan:** GitKraken Insights add-on (available by request)
+> **Plan:** GitKraken Insights (available by request)
+> **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
+> **Role:** Lead, Admin, or Owner
 
 ---
 
 ## What is GitKraken Insights?
 
-GitKraken Insights turns raw Git data into clear, actionable engineering metrics. It pulls code activity, pull requests, issues, and CI/CD results into a single dashboard, giving both developers and leaders a shared view of how work is progressing — without extra reporting overhead.
+GitKraken Insights turns raw Git data into clear, actionable engineering metrics. It pulls code activity, pull requests, issues, and CI/CD results into a single dashboard, giving both developers and leaders a shared view of how work is progressing.
+
+---
+
+## Who can access GitKraken Insights?
+
+GitKraken Insights is accessible to members with the **Lead**, **Admin**, or **Owner** role. Members assigned the **User** role do not have access to the GitKraken Insights UI, but GitKraken Insights begins tracking them for metrics as soon as the User role is assigned. Assign the User role to team members you want to measure without granting them direct access.
+
+---
+
+## What plan is required for GitKraken Insights?
+
+GitKraken Insights is a standalone product, purchased separately from other GitKraken plans. [Contact GitKraken](https://www.gitkraken.com/insights#form) to get pricing for your organization.
 
 ---
 
 ## How do I get access?
 
 GitKraken Insights is available by request only. To get started, [request a guided tour](https://www.gitkraken.com/insights#form) and a member of the GitKraken team will walk you through Insights and explain how to enable access for your organization.
-
-Insights is available as an add-on to seats in your existing GitKraken subscription, or as a discounted standalone solution for developers on your team who don't use GitKraken.
 
 ---
 
@@ -43,11 +55,13 @@ To enable AI Impact metrics, you can also connect **Cursor** or **GitHub Copilot
 
 GitKraken Insights covers five metric categories:
 
-- **DORA Metrics** — Deploy Frequency, Change Lead Time, Mean Time to Repair/Recover, and Defect Rate
-- **Pull Request Metrics** — Cycle Time, Lead Time, First Response Time, Open Time, Number of Reviews, PR Size, Code Review Hours, and more
-- **AI Impact Metrics** — Prompt Acceptance Rate, Tab Acceptance Rate, Duplicated Code, Code Rework, and Active AI Users
-- **Code Quality Metrics** — Bug Work Percent, Documentation and Test Percent, Code Change Rate, and Code Change by Operation
-- **Velocity and Delivery Consistency Metrics** — Commit Count and Estimated Coding Hours
+| Category | Metrics | Page |
+|---|---|---|
+| DORA | Deploy Frequency, Change Lead Time, Mean Time to Repair/Recover, Defect Rate | [DORA Metrics](/gk-dev/gk-dev-dora-metrics) |
+| Pull Requests | First Response Time, Cycle Time, Lead Time, Number of Reviews, Open Time, PRs Abandoned, PRs Merged Without Review, PR Comments, PR Size/Effort, Code Review Hours | [PR Metrics](/gk-dev/gk-dev-pr-metrics) |
+| AI Impact | Copy/Paste vs Moved %, Duplicated Code, Percent of Code Rework, Post PR Work Occurring, Active Users, Suggestions, Prompt Acceptance Rate, Tab Acceptance Rate | [AI Impact Metrics](/gk-dev/gk-dev-ai-impact-metrics) |
+| Code Quality | Bug Work Percent, Documentation and Test Percent, Code Change Rate, Code Change by Operation | [Code Quality Metrics](/gk-dev/gk-dev-code-quality-metrics) |
+| Velocity | Commit Count, Estimated Coding Hours | [Velocity Metrics](/gk-dev/gk-dev-velocity-metrics) |
 
 ---
 

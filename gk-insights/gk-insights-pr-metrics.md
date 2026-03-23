@@ -4,7 +4,7 @@ description: Learn about Pull Request metrics in GitKraken Insights, including c
 product: GitKraken Insights
 content_type: reference
 audience: all
-plan_required: GitKraken Insights add-on
+plan_required: GitKraken Insights
 integrations: [GitHub, GitLab, Bitbucket]
 status: GA
 taxonomy:
@@ -12,9 +12,11 @@ taxonomy:
 ---
 <kbd>Last updated: March 2026</kbd>
 
-GitKraken Insights tracks ten Pull Request metrics that measure how code changes move through review and deployment. These metrics highlight slowdowns, surface patterns in reviews, and uncover blockers that may affect delivery.
+GitKraken Insights tracks ten Pull Request metrics that measure how code changes move through review and deployment. These metrics highlight slowdowns, surface patterns in reviews, and uncover blockers that may affect delivery. Pull Request data comes from connected GitHub, GitLab, or Bitbucket repositories.
 
-> **Plan:** GitKraken Insights add-on  
+> **Plan:** GitKraken Insights
+> **Platform:** Browser only — [gitkraken.dev](https://gitkraken.dev)
+> **Role:** Lead, Admin, or Owner
 > **Prerequisite:** Connected repositories with pull request data (GitHub, GitLab, or Bitbucket)
 
 | Metric | Measures | Unit | Rolling Window |
@@ -30,16 +32,19 @@ GitKraken Insights tracks ten Pull Request metrics that measure how code changes
 | PR Size / Effort | Aggregate diff delta of merged PRs | Diff delta | — |
 | Code Review Hours | Avg review time per committer | Hours | — |
 
+> **Cycle Time vs Open Time vs Lead Time:** Cycle Time starts at the first commit; Open Time starts when the PR is opened; Lead Time extends through deployment. Use Cycle Time for overall delivery speed, Open Time for review bottlenecks, and Lead Time for the full development-to-production pipeline.  
+> **First Response Time** helps identify reviewer engagement gaps. **PRs Abandoned** and **PRs Merged Without Review** signal process health. **PR Size/Effort** and **Code Review Hours** help balance reviewer workload.
+
 ---
 
 ## First Response Time ("Pickup Time")
 
 **Definition:** _The time measured from when a PR is opened to when the 1st review or comment is left on a PR._
 
-This metric shows how long each pull request within a selected timeframe took to have a first response (comment or review). Values are expressed in **hours** and averaged over a **7-day period**. Shorter pickup times indicate faster reviewer engagement and healthier collaboration.
+First Response Time shows how long each pull request within a selected timeframe took to have a first response (comment or review). Values are expressed in **hours** and averaged over a **7-day period**. Shorter pickup times indicate faster reviewer engagement and healthier collaboration.
 
 <figure>
-  <img src="/wp-content/uploads/first-response-time.png" srcset="/wp-content/uploads/first-response-time@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/first-response-time.png" srcset="/wp-content/uploads/first-response-time@2x.png" class="help-center-img img-bordered" alt="Chart showing average time for a pull request to receive its first comment or review" />
   <figcaption style="text-align: center; color: #888">Average time it took for PR to receive comment or review.</figcaption>
 </figure>
 
@@ -49,17 +54,17 @@ This metric shows how long each pull request within a selected timeframe took to
 
 **Definition:** _The time measured between the 1st commit of a PR to when the PR is merged._
 
-This metric shows how long each pull request within a selected timeframe took to merge from the time the first commit was made. Values are expressed in **days** and averaged over a **7-day period**. Cycle time provides insight into overall delivery speed, highlighting how quickly work moves from coding to production.
+Cycle Time shows how long each pull request within a selected timeframe took to merge from the time the first commit was made. Values are expressed in **days** and averaged over a **7-day period**. Cycle time provides insight into overall delivery speed, highlighting how quickly work moves from coding to production.
 
 <figure>
-  <img src="/wp-content/uploads/cycle-time-line.png" srcset="/wp-content/uploads/cycle-time-line@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
-  <figcaption style="text-align: center; color: #888">Average time it took for PR to receive comment or review.</figcaption>
+  <img src="/wp-content/uploads/cycle-time-line.png" srcset="/wp-content/uploads/cycle-time-line@2x.png" class="help-center-img img-bordered" alt="Chart showing average time from first commit to pull request merge" />
+  <figcaption style="text-align: center; color: #888">Average time from first commit to PR merge.</figcaption>
 </figure>
 
 The **Details** view offers deeper analysis.
 
 <figure>
-  <img src="/wp-content/uploads/pr-cycle-time-details.png" srcset="/wp-content/uploads/pr-cycle-time-details@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/pr-cycle-time-details.png" srcset="/wp-content/uploads/pr-cycle-time-details@2x.png" class="help-center-img img-bordered" alt="Detailed breakdown chart of pull request cycle time with scatter plot and categories" />
   <figcaption style="text-align: center; color: #888">Get a detailed breakdown of PR cycle time.</figcaption>
 </figure>
 
@@ -77,10 +82,10 @@ The **Details** view offers deeper analysis.
 
 **Definition:** _The time from the first commit in a pull request to when that code is deployed to production. This bridges development and deployment activities._
 
-This metric shows how long each pull request within a selected timeframe remained open, measured from when the PR was created until it was merged. Values are expressed in **days** and averaged over a **7-day period**.
+Lead Time shows how long each pull request within a selected timeframe remained open, measured from when the PR was created until it was merged. Values are expressed in **days** and averaged over a **7-day period**.
 
 <figure>
-  <img src="/wp-content/uploads/lead-time.png" srcset="/wp-content/uploads/lead-time@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/lead-time.png" srcset="/wp-content/uploads/lead-time@2x.png" class="help-center-img img-bordered" alt="Chart showing how long pull requests remained open until they were merged" />
   <figcaption style="text-align: center; color: #888">See how long PRs remained open until it was merged.</figcaption>
 </figure>
 
@@ -90,10 +95,10 @@ This metric shows how long each pull request within a selected timeframe remaine
 
 **Definition:** _The volume of code reviews being conducted, indicating team review capacity and activity._
 
-This metric shows the total number of reviews (all types) completed over a given period of time. Values are expressed in **reviews** and averaged over a **7-day window**. Tracking review activity helps teams understand collaboration patterns and reviewer workload across different timeframes (daily, weekly, or monthly).
+Number of Reviews shows the total number of reviews (all types) completed over a given period of time. Values are expressed in **reviews** and averaged over a **7-day window**. Tracking review activity helps teams understand collaboration patterns and reviewer workload across different timeframes (daily, weekly, or monthly).
 
 <figure>
-  <img src="/wp-content/uploads/number-of-reviews.png" srcset="/wp-content/uploads/number-of-reviews@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/number-of-reviews.png" srcset="/wp-content/uploads/number-of-reviews@2x.png" class="help-center-img img-bordered" alt="Chart showing number of reviews completed over daily, weekly, or monthly periods" />
   <figcaption style="text-align: center; color: #888">See how many reviews have been given over a time period.</figcaption>
 </figure>
 
@@ -103,17 +108,17 @@ This metric shows the total number of reviews (all types) completed over a given
 
 **Definition:** _The time between when a pull request is opened and when it is merged._
 
-This metric captures the duration from pull request creation to merge. It differs from PR Cycle Time, which starts from the first commit. Open Time isolates the review and approval phase, helping teams identify delays specifically related to code review and collaboration workflows.
+Open Time captures the duration from pull request creation to merge. It differs from PR Cycle Time, which starts from the first commit. Open Time isolates the review and approval phase, helping teams identify delays specifically related to code review and collaboration workflows.
 
 <figure>
-  <img src="/wp-content/uploads/open-time.png" srcset="/wp-content/uploads/open-time@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/open-time.png" srcset="/wp-content/uploads/open-time@2x.png" class="help-center-img img-bordered" alt="Chart showing how long each pull request remained open before being merged" />
   <figcaption style="text-align: center; color: #888">Shows the time each pull request remained open before being merged.</figcaption>
 </figure>
 
 The **Open Time details view** provides a stacked bar chart that visualizes average PR open durations per repository across time intervals. Each bar segment represents a specific repository, allowing teams to compare performance across services.
 
 <figure>
-  <img src="/wp-content/uploads/open-time-details.png" srcset="/wp-content/uploads/open-time-details@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/open-time-details.png" srcset="/wp-content/uploads/open-time-details@2x.png" class="help-center-img img-bordered" alt="Stacked bar chart of average open durations per repository across time intervals" />
   <figcaption style="text-align: center; color: #888">Detailed breakdown of PR open durations across repositories and time intervals.</figcaption>
 </figure>
 
@@ -135,10 +140,10 @@ These metrics help teams identify trends, uncover review bottlenecks, and monito
 
 **Definition:** _Number of pull requests closed without being merged._
 
-This metric can reveal wasted engineering effort, scope management issues, or breakdowns in work planning and prioritization. A high abandonment rate may indicate unclear requirements, excessive rework, or bottlenecks earlier in the development process.
+PRs Abandoned can reveal wasted engineering effort, scope management issues, or breakdowns in work planning and prioritization. A high abandonment rate may indicate unclear requirements, excessive rework, or bottlenecks earlier in the development process.
 
 <figure>
-  <img src="/wp-content/uploads/prs-abandoned.png" srcset="/wp-content/uploads/prs-abandoned@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/prs-abandoned.png" srcset="/wp-content/uploads/prs-abandoned@2x.png" class="help-center-img img-bordered" alt="Chart of pull requests closed without merge, segmented by repository and time" />
   <figcaption style="text-align: center; color: #888">Visualizes how many PRs were closed without merging, segmented by repository and time.</figcaption>
 </figure>
 
@@ -148,10 +153,10 @@ This metric can reveal wasted engineering effort, scope management issues, or br
 
 **Definition:** _The number of pull requests that have been merged without any (bot or human) review._
 
-This metric can indicate potential process gaps in peer review enforcement. It identifies PRs integrated without peer review, exposing quality risks and gaps in your code review governance that could lead to production defects.
+PRs Merged Without Review can indicate potential process gaps in peer review enforcement. It identifies PRs integrated without peer review, exposing quality risks and gaps in your code review governance that could lead to production defects.
 
 <figure>
-  <img src="/wp-content/uploads/prs-merged-without-review.png" srcset="/wp-content/uploads/prs-merged-without-review@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/prs-merged-without-review.png" srcset="/wp-content/uploads/prs-merged-without-review@2x.png" class="help-center-img img-bordered" alt="Chart tracking pull requests merged without peer or bot review over time" />
   <figcaption style="text-align: center; color: #888">Tracks PRs merged without review, highlighting enforcement issues in your review process.</figcaption>
 </figure>
 
@@ -161,10 +166,10 @@ This metric can indicate potential process gaps in peer review enforcement. It i
 
 **Definition:** _The total number of comments left on your pull requests._
 
-This metric measures the level of engagement during code reviews, revealing how thoroughly code is being evaluated. A high number of comments can indicate active feedback, knowledge sharing, and mentorship opportunities across the team.
+Number of PR Comments measures the level of engagement during code reviews, revealing how thoroughly code is being evaluated. A high number of comments can indicate active feedback, knowledge sharing, and mentorship opportunities across the team.
 
 <figure>
-  <img src="/wp-content/uploads/pr-comments.png" srcset="/wp-content/uploads/pr-comments@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/pr-comments.png" srcset="/wp-content/uploads/pr-comments@2x.png" class="help-center-img img-bordered" alt="Chart showing total pull request comments reflecting review depth and collaboration intensity" />
   <figcaption style="text-align: center; color: #888">Shows total PR comments, which can reflect review depth and collaboration intensity.</figcaption>
 </figure>
 
@@ -174,14 +179,14 @@ This metric measures the level of engagement during code reviews, revealing how 
 
 **Definition:** The aggregate amount of change (diff delta) across all pull requests that were merged during a given time period.
 
-This metric reflects the total effort involved in the review process. It is calculated by summing the "Before PR submitted" and "While under review" diff delta values, representing the total size of the pull request and the energy required for its review.
+PR Size / Effort reflects the total effort involved in the review process. It is calculated by summing the "Before PR submitted" and "While under review" diff delta values, representing the total size of the pull request and the energy required for its review.
 
 <figure>
-  <img src="/wp-content/uploads/pr-size.png" srcset="/wp-content/uploads/pr-size@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/pr-size.png" srcset="/wp-content/uploads/pr-size@2x.png" class="help-center-img img-bordered" alt="Chart displaying total pull request diff delta size and review workload trends" />
   <figcaption style="text-align: center; color: #888">Displays total PR size (diff delta), helping evaluate review load and PR size trends.</figcaption>
 </figure>
 
-By aggregatating the total change volume across merged PRs, this helps teams balance workload distribution and recognize when PRs may be too large for effective review.
+By aggregating the total change volume across merged PRs, this helps teams balance workload distribution and recognize when PRs may be too large for effective review.
 
 ---
 
@@ -191,9 +196,9 @@ By aggregatating the total change volume across merged PRs, this helps teams bal
 
 **How it's calculated:** Total review hours / number of committers.
 
-This metric quantifies the average time investment in reviewing code. It helps leaders evaluate whether code review capacity aligns with delivery goals and whether review processes need optimization to support team velocity and quality.
+Code Review Hours quantifies the average time investment in reviewing code. It helps leaders evaluate whether code review capacity aligns with delivery goals and whether review processes need optimization to support team velocity and quality.
 
 <figure>
-  <img src="/wp-content/uploads/code-review-hours.png" srcset="/wp-content/uploads/code-review-hours@2x.png" class="help-center-img img-bordered" alt="Overview of GitKraken Insights" />
+  <img src="/wp-content/uploads/code-review-hours.png" srcset="/wp-content/uploads/code-review-hours@2x.png" class="help-center-img img-bordered" alt="Chart showing average code review hours per developer and team review investment trends" />
   <figcaption style="text-align: center; color: #888">Average code review time per developer, highlighting team review investment trends.</figcaption>
 </figure>
