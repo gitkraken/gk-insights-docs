@@ -132,13 +132,6 @@ GitKraken Insights includes pre-built surveys for the following topics:
 - Technical debt
 - Tooling satisfaction
 
----
-
-## Troubleshooting
-
-**The Surveys option is not visible in Insights**
-
-GitKraken Insights requires an active connection to display the Surveys feature. See [Getting Started with GitKraken Insights](/gk-insights/getting-started) to enable Insights for your organization.
 
 ---
 
