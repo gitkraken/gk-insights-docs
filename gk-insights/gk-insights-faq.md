@@ -47,7 +47,7 @@ GitKraken Insights is available by request only. To get started, [request a guid
 
 GitKraken Insights currently supports connections with **GitHub**, **GitLab**, **Bitbucket**, and **Jira Cloud**. Support for Azure DevOps is coming soon.
 
-To enable AI Impact metrics, you can also connect **Cursor** or **GitHub Copilot** as an AI provider.
+To enable AI Impact metrics, you can also connect **Claude Code**, **Cursor**, or **GitHub Copilot** as an AI provider.
 
 ---
 
@@ -67,7 +67,7 @@ GitKraken Insights covers five metric categories:
 
 ## Does GitKraken Insights work with AI coding tools?
 
-Yes. GitKraken Insights connects to Cursor and GitHub Copilot to surface AI Impact metrics. These metrics help teams measure how AI tools affect code quality and developer efficiency, including how often suggestions are accepted, how much code is duplicated or reworked, and how many developers are actively using AI tools.
+Yes. GitKraken Insights connects to Claude Code, Cursor, and GitHub Copilot to surface AI Impact metrics. These metrics help teams measure how AI tools affect code quality and developer efficiency, including how often suggestions are accepted, how much code is duplicated or reworked, and how many developers are actively using AI tools.
 
 ---
 

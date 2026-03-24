@@ -5,7 +5,7 @@ product: GitKraken Insights
 content_type: reference
 audience: all
 plan_required: GitKraken Insights
-integrations: [Cursor, GitHub Copilot]
+integrations: [Claude Code, Cursor, GitHub Copilot]
 status: GA
 taxonomy:
     category: gk-insights
@@ -17,7 +17,7 @@ GitKraken Insights tracks eight AI Impact metrics that measure how AI coding too
 > **Plan:** GitKraken Insights
 > **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
-> **Prerequisite:** Connected AI provider (Cursor or GitHub Copilot). See [Getting Started](/gk-insights/gk-insights#ai-provider-connection-optional).
+> **Prerequisite:** Connected AI provider (Claude Code, Cursor, or GitHub Copilot). See [Getting Started](/gk-insights/gk-insights#ai-provider-connection-optional).
 
 | Metric | Group | Definition |
 |---|---|---|
