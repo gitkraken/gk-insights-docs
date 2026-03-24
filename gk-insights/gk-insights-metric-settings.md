@@ -29,7 +29,7 @@ GitKraken Insights Metric Settings control how the platform detects releases, ma
 ---
 
 <figure>
-  <img src="/wp-content/uploads/measurement-config.png" srcset="/wp-content/uploads/measurement-config@2x.png" class="help-center-img img-bordered" alt="Insights settings page showing the Measurement Configuration section with Release setup highlighted" />
+  <img src="/wp-content/uploads/measurement-config.png" class="help-center-img img-bordered" alt="Insights settings page showing the Measurement Configuration section with Release setup highlighted" />
   <figcaption style="text-align: center; color: #888">Navigate to Measurement Configuration in Insights settings to access release tracking, issue detection, and other metric settings.</figcaption>
 </figure>
 
@@ -57,7 +57,7 @@ The following rule types appear in your list:
 To remove a rule, click the **✕** icon on the right side of the rule.
 
 <figure>
-  <img src="/wp-content/uploads/release-tracking-rules.png" srcset="/wp-content/uploads/release-tracking-rules@2x.png" class="help-center-img img-bordered" alt="Release tracking settings page showing a list of active release rules" />
+  <img src="/wp-content/uploads/release-tracking-rules.png" class="help-center-img img-bordered" alt="Release tracking settings page showing a list of active release rules" />
   <figcaption style="text-align: center; color: #888">The Rules to detect releases list shows all active release rules for your organization.</figcaption>
 </figure>
 
@@ -68,12 +68,12 @@ To add a new rule, click **Create a new release rule**. GitKraken Insights attem
 In the rule creation form, select how GitKraken Insights should identify releases. As you configure each option, the **Matching commits** panel on the right previews commits that match your current input.
 
 <figure>
-  <img src="/wp-content/uploads/release-tracking-new-rule.png" srcset="/wp-content/uploads/release-tracking-new-rule@2x.png" class="help-center-img img-bordered" alt="Release tracking rules list with the Create a new release rule button highlighted" />
+  <img src="/wp-content/uploads/release-tracking-new-rule.png" class="help-center-img img-bordered" alt="Release tracking rules list with the Create a new release rule button highlighted" />
   <figcaption style="text-align: center; color: #888">Click Create a new release rule at the bottom of the rules list to add a new rule.</figcaption>
 </figure>
 
 <figure>
-  <img src="/wp-content/uploads/release-tracking-new-rule-options.png" srcset="/wp-content/uploads/release-tracking-new-rule-options@2x.png" class="help-center-img img-bordered" alt="Create release rule modal showing all available rule type options and a Matching commits preview panel" />
+  <img src="/wp-content/uploads/release-tracking-new-rule-options.png" class="help-center-img img-bordered" alt="Create release rule modal showing all available rule type options and a Matching commits preview panel" />
   <figcaption style="text-align: center; color: #888">Select a rule type to define how GitKraken Insights identifies releases. The Matching commits panel previews commits that match your configured rule in real time.</figcaption>
 </figure>
 
@@ -151,7 +151,7 @@ The **Detect Issue References** page lists all active issue mappings for your or
 To delete a mapping, click **Delete issue mapping** within the mapping card.
 
 <figure>
-  <img src="/wp-content/uploads/detect-issues-config-1.png" srcset="/wp-content/uploads/detect-issues-config-1@2x.png" class="help-center-img img-bordered" alt="Detect Issue References page showing three active issue mappings, each displaying Available to, Issue Reference, Project Key, Usage, and a Delete issue mapping link" />
+  <img src="/wp-content/uploads/detect-issues-config-1.png" class="help-center-img img-bordered" alt="Detect Issue References page showing three active issue mappings, each displaying Available to, Issue Reference, Project Key, Usage, and a Delete issue mapping link" />
   <figcaption style="text-align: center; color: #888">The Detect Issue References page lists all active issue mappings for your organization.</figcaption>
 </figure>
 
@@ -176,7 +176,7 @@ To accept a suggestion:
 To decline a suggestion, click **Dismiss suggestion**.
 
 <figure>
-  <img src="/wp-content/uploads/detect-issues-config-2.png" srcset="/wp-content/uploads/detect-issues-config-2@2x.png" class="help-center-img img-bordered" alt="Detect Issue References page showing suggested issue tracking patterns with pre-filled Create Issue Mapping forms and a Matching Commits preview panel" />
+  <img src="/wp-content/uploads/detect-issues-config-2.png" class="help-center-img img-bordered" alt="Detect Issue References page showing suggested issue tracking patterns with pre-filled Create Issue Mapping forms and a Matching Commits preview panel" />
   <figcaption style="text-align: center; color: #888">GitKraken Insights displays suggested issue tracking patterns when it detects matching commits in your repositories. The Matching Commits panel previews commits that match the Issue Reference input in real time.</figcaption>
 </figure>
 
