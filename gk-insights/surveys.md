@@ -14,7 +14,7 @@ GitKraken Insights Surveys lets you send pre-built questionnaires to developers 
 
 ## Prerequisites
 
-- An active GitKraken Insights connection. See [Getting Started with GitKraken Insights](/gk-insights/getting-started) to enable Insights for your organization.
+- An active GitKraken Insights connection. See [Request access to GitKraken Insights](https://help.gitkraken.com/gk-insights/gk-insights/#request-access) to enable Insights for your organization.
 - Access to [GitKraken.dev](https://gitkraken.dev) with Insights enabled.
 
 ---
@@ -144,5 +144,5 @@ GitKraken Insights requires an active connection to display the Surveys feature.
 
 ## Related articles
 
-- [Getting Started with GitKraken Insights](/gk-insights/getting-started)
-- [GitKraken Insights Dashboard Management](/gk-insights/gk-insights-dashboard-management)
+- [Getting Started with GitKraken Insights](https://help.gitkraken.com/gk-insights/gk-insights)
+- [GitKraken Insights Dashboard Management](https://help.gitkraken.com/gk-insights/gk-insights-dashboard-management/)
