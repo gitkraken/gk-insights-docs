@@ -208,32 +208,27 @@ Alerts notify you when a metric crosses a defined threshold. GitKraken Insights 
 
 ### Create an alert
 
-1. On any dashboard widget, click the **⋯ (three dots)** menu in the upper-right corner.
-2. Select **Create alert**.
-
 <figure>
   <img src="/wp-content/uploads/gk-insights-create-alert-menu.png" class="help-center-img img-bordered" alt="Widget menu showing Create alert option alongside other options such as Set trendline and Metric configuration" />
   <figcaption style="text-align: center; color: #888">Select Create alert from the widget menu to configure a new alert for that metric.</figcaption>
 </figure>
 
-3. In the **Create alert** dialog, complete the following fields:
+1. On any dashboard widget, click the **⋯ (three dots)** menu in the upper-right corner.
+2. Click **Create alert**:
+3. Complete the following fields:
 
-   - **Title:** Enter a name for the alert.
-   - **Description:** (Optional) Add context to help identify the alert's purpose.
-   - **Threshold:** Select a comparison operator (**Equal**, **Greater than**, **Greater than or equal to**, **Less than**, or **Less than or equal to**) and enter a numeric threshold value. The unit displayed matches the metric's unit (for example, developers, hours, or percent).
-   - **Repositories:** Select the repositories this alert applies to.
-   - **Team:** (Optional) Filter alert data to a specific team.
-   - **Delivery method:** Choose **Email** or **Slack**.
-   - **Recipients:** Select the users (or teams) who receive the notification.
+- **Title:** Enter a name for the alert.
+- **Description:** (Optional) Add context to help identify the alert's purpose.
+- **Threshold:** Select a comparison operator (**Equal**, **Greater than**, **Greater than or equal to**, **Less than**, or **Less than or equal to**) and enter a numeric threshold value. The unit displayed matches the metric's unit (for example, developers, hours, or percent).
+- **Repositories:** Select the repositories this alert applyes to.
+- **Team:** (Optional) Filter alert data to a specific team.
+- **Delivery method:** Choose **Email** or **Slack**.
+- **Recipients:** Select the users (or teams) who receive the notification.
 
 <figure>
   <img src="/wp-content/uploads/gk-insights-create-alert-dialog.png" class="help-center-img img-bordered" alt="Create alert dialog showing fields for title, description, threshold operator and value, repositories, delivery method, and recipients" />
   <figcaption style="text-align: center; color: #888">Configure the alert threshold, scope, delivery method, and recipients.</figcaption>
 </figure>
-
-
-
-4. Click **Create alert**.
 
 > **Note:** GitKraken Insights checks alert thresholds hourly. Notifications are sent as a daily digest, not in real time.
 
@@ -251,7 +246,7 @@ To hide alert threshold lines from a metric chart without deleting them:
 
 ### View alerts on a chart
 
-When an alert is active and visible, GitKraken Insights displays a dashed threshold line on the metric chart. Hovering over the line shows a tooltip with the alert name, the trigger condition, and a link to **Alerts settings**.
+When an alert is active and visible, GitKraken Insights displays a dashed threshold line on the metric chart. Clicking on Alert label shows a tooltip with the alert name, the trigger condition, and a link to **Alerts settings**.
 
 <figure>
   <img src="/wp-content/uploads/gk-insights-alert-threshold-tooltip.png" class="help-center-img img-bordered" alt="Metric chart showing a dashed alert threshold line with a tooltip displaying the alert name, trigger condition, and a link to Alerts settings" />
