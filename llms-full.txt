@@ -337,6 +337,81 @@ The dashboard may be filtered by **Workspace**, **Repositories**, **Timeframe**,
 
 ---
 
+## Alerts
+
+Alerts notify you when a metric crosses a defined threshold. GitKraken Insights checks thresholds hourly and delivers notifications as a daily digest. You can configure alerts per metric widget, scoped to specific repositories and teams.
+
+### Create an alert
+
+<figure>
+  <img src="/wp-content/uploads/gk-insights-create-alert-menu.png" class="help-center-img img-bordered" alt="Widget menu showing Create alert option alongside other options such as Set trendline and Metric configuration" />
+  <figcaption style="text-align: center; color: #888">Select Create alert from the widget menu to configure a new alert for that metric.</figcaption>
+</figure>
+
+1. On any dashboard widget, click the **⋯ (three dots)** menu in the upper-right corner.
+2. Click **Create alert**:
+3. Complete the following fields:
+
+- **Title:** Enter a name for the alert.
+- **Description:** (Optional) Add context to help identify the alert's purpose.
+- **Threshold:** Select a comparison operator (**Equal**, **Greater than**, **Greater than or equal to**, **Less than**, or **Less than or equal to**) and enter a numeric threshold value. The unit displayed matches the metric's unit (for example, developers, hours, or percent).
+- **Repositories:** Select the repositories this alert applyes to.
+- **Team:** (Optional) Filter alert data to a specific team.
+- **Delivery method:** Choose **Email** or **Slack**.
+- **Recipients:** Select the users (or teams) who receive the notification.
+
+<figure>
+  <img src="/wp-content/uploads/gk-insights-create-alert-dialog.png" class="help-center-img img-bordered" alt="Create alert dialog showing fields for title, description, threshold operator and value, repositories, delivery method, and recipients" />
+  <figcaption style="text-align: center; color: #888">Configure the alert threshold, scope, delivery method, and recipients.</figcaption>
+</figure>
+
+> **Note:** GitKraken Insights checks alert thresholds hourly. Notifications are sent as a daily digest, not in real time.
+
+### Hide alerts
+
+To hide alert threshold lines from a metric chart without deleting them:
+
+1. Click the **⋯ (three dots)** menu on the widget.
+2. Select **Hide alerts**.
+
+<figure>
+  <img src="/wp-content/uploads/gk-insights-hide-alerts-menu.png" class="help-center-img img-bordered" alt="Widget menu with Hide alerts option highlighted" />
+  <figcaption style="text-align: center; color: #888">Select Hide alerts to remove alert lines from the chart view without deleting the alert.</figcaption>
+</figure>
+
+### View alerts on a chart
+
+When an alert is active and visible, GitKraken Insights displays a dashed threshold line on the metric chart. Clicking on Alert label shows a tooltip with the alert name, the trigger condition, and a link to **Alerts settings**.
+
+<figure>
+  <img src="/wp-content/uploads/gk-insights-alert-threshold-tooltip.png" class="help-center-img img-bordered" alt="Metric chart showing a dashed alert threshold line with a tooltip displaying the alert name, trigger condition, and a link to Alerts settings" />
+  <figcaption style="text-align: center; color: #888">Hover over the threshold line to see the alert trigger and access Alerts settings.</figcaption>
+</figure>
+
+### Manage alerts
+
+The **Insights alerts** page lists all alerts you have created. To access it, click **Alerts settings** from any alert tooltip on a chart.
+
+Each row in the table displays the metric name, alert title, description, threshold, the user who created the alert, and an enabled toggle. From the actions menu on the right side of each row, you can **Edit** or **Delete** the alert.
+
+<figure>
+  <img src="/wp-content/uploads/gk-insights-insights-alerts-settings.png" class="help-center-img img-bordered" alt="Insights alerts settings page showing a table of alerts with columns for metric, title, description, threshold, created by, and enabled toggle, with an actions menu showing Edit and Delete options" />
+  <figcaption style="text-align: center; color: #888">Manage all alerts from the Insights alerts page. Use the toggle to enable or disable an alert, or select Edit or Delete from the actions menu.</figcaption>
+</figure>
+
+> **Note:** The Insights alerts page is currently in **Preview**.
+
+### Alert notifications
+
+When an alert threshold is exceeded, GitKraken Insights sends a daily digest email to all configured recipients. The email includes a summary of each triggered alert showing the current metric value, the configured threshold, and a **View in GitKraken Insights** button that opens the relevant dashboard. A **Manage Alert settings** link is also included to access the Insights alerts page directly.
+
+<figure>
+  <img src="/wp-content/uploads/gk-insights-alert-email-notification.png" class="help-center-img img-bordered" alt="Alert email notification from GitKraken Insights showing the alert name, current value, threshold value, and a View in GitKraken Insights button" />
+  <figcaption style="text-align: center; color: #888">Alert digest emails include the current value, threshold, and a link to view the metric in GitKraken Insights.</figcaption>
+</figure>
+
+---
+
 ---
 title: DORA Metrics in GitKraken Insights
 description: Learn about DORA metrics in GitKraken Insights, including Deploy Frequency, Change Lead Time, Mean Time to Repair/Recover, and Defect Rate.
