@@ -5,7 +5,7 @@
 ## Documentation
 
 - [Getting Started with GitKraken Insights](https://help.gitkraken.com/gk-insights/gk-insights/): Learn how to request access, understand plan availability, and connect your data in GitKraken Insights.
-- [Dashboard Configuration](https://help.gitkraken.com/gk-insights/gk-insights-dashboard-management/): Learn how to create dashboards, add metrics, arrange widget layouts, apply trendlines, and filter data in GitKraken Insights.
+- [Dashboard Configuration](https://help.gitkraken.com/gk-insights/gk-insights-dashboard-management/): Learn how to create dashboards, add metrics, arrange widget layouts, apply trendlines, filter data, and configure alerts in GitKraken Insights.
 - [DORA Metrics](https://help.gitkraken.com/gk-insights/gk-insights-dora-metrics/): Learn about DORA metrics in GitKraken Insights, including Deploy Frequency, Change Lead Time, Mean Time to Repair/Recover, and Defect Rate.
 - [Pull Request Metrics](https://help.gitkraken.com/gk-insights/gk-insights-pr-metrics/): Learn about Pull Request metrics in GitKraken Insights, including cycle time, lead time, review activity, and code review hours.
 - [AI Impact Metrics](https://help.gitkraken.com/gk-insights/gk-insights-ai-impact-metrics/): Learn about AI Impact metrics in GitKraken Insights, including code rework, duplication, suggestion acceptance rates, and active AI tool usage.
