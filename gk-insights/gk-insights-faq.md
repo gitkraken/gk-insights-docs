@@ -45,9 +45,15 @@ GitKraken Insights is available by request only. To get started, [request a guid
 
 ## What tools does GitKraken Insights connect to?
 
-GitKraken Insights currently supports connections with **GitHub**, **GitLab**, **Bitbucket**, and **Jira Cloud**. Support for Azure DevOps is coming soon.
+GitKraken Insights currently supports connections with **GitHub**, **GitLab** (cloud and self-hosted), **Bitbucket**, and **Jira Cloud**. Support for Azure DevOps is coming soon.
 
 To enable AI Impact metrics, you can also connect **Claude Code**, **Cursor**, or **GitHub Copilot** as an AI provider.
+
+---
+
+## How does GitKraken Insights connect to a self-hosted GitLab instance?
+
+Your self-hosted GitLab instance must be reachable from [gitkraken.dev](https://gitkraken.dev) over the public internet. GitKraken Insights authenticates with a **personal access token (PAT)** that you generate in GitLab and provide during setup.
 
 ---
 
