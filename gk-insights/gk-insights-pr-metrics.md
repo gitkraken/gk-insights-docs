@@ -5,19 +5,19 @@ product: GitKraken Insights
 content_type: reference
 audience: all
 plan_required: GitKraken Insights
-integrations: [GitHub, GitLab, Bitbucket]
+integrations: [GitHub, GitLab, GitLab Self-Hosted, Bitbucket]
 status: GA
 taxonomy:
     category: gk-insights
 ---
 <kbd>Last updated: March 2026</kbd>
 
-GitKraken Insights tracks ten Pull Request metrics that measure how code changes move through review and deployment. These metrics highlight slowdowns, surface patterns in reviews, and uncover blockers that may affect delivery. Pull Request data comes from connected GitHub, GitLab, or Bitbucket repositories.
+GitKraken Insights tracks ten Pull Request metrics that measure how code changes move through review and deployment. These metrics highlight slowdowns, surface patterns in reviews, and uncover blockers that may affect delivery. Pull Request data comes from connected GitHub, GitLab (cloud or self-hosted), or Bitbucket repositories.
 
 > **Plan:** GitKraken Insights
 > **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
-> **Prerequisite:** Connected repositories with pull request data (GitHub, GitLab, or Bitbucket)
+> **Prerequisite:** Connected repositories with pull request data (GitHub, GitLab cloud or self-hosted, or Bitbucket)
 
 | Metric | Measures | Unit | Rolling Window |
 |---|---|---|---|

@@ -5,7 +5,7 @@ product: GitKraken Insights
 content_type: install
 audience: admin
 plan_required: GitKraken Insights
-integrations: [GitHub, GitLab, Bitbucket, Azure DevOps, Jira Cloud, Claude Code, Cursor, GitHub Copilot]
+integrations: [GitHub, GitLab, GitLab Self-Hosted, Bitbucket, Azure DevOps, Jira Cloud, Claude Code, Cursor, GitHub Copilot]
 status: GA
 taxonomy:
     category: gk-insights
@@ -19,7 +19,7 @@ Instead of surface-level stats, GitKraken Insights shows how work connects to te
 > **Plan:** GitKraken Insights (available by request)
 > **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
-> **Integrations:** GitHub, GitLab, Bitbucket, Azure DevOps, Jira Cloud
+> **Integrations:** GitHub, GitLab (cloud and self-hosted), Bitbucket, Azure DevOps, Jira Cloud
 > **AI providers:** Claude Code, Cursor, GitHub Copilot (optional)
 
 <figure>
@@ -43,7 +43,7 @@ GitKraken Insights is available by request only. To get started, [request a guid
 
 Once your access is approved, you can connect GitKraken Insights to your repositories and configure settings for your organization.  
 
-Currently, Insights supports connections with GitHub, GitLab, Bitbucket, Azure DevOps, and Jira Cloud.
+Currently, Insights supports connections with GitHub, GitLab (cloud and self-hosted), Bitbucket, Azure DevOps, and Jira Cloud.
 
 In addition, you can connect AI providers to enable AI Impact insights (like Duplicated Code, Prompt Acceptance Rate, and more).
 ---
@@ -51,7 +51,7 @@ In addition, you can connect AI providers to enable AI Impact insights (like Dup
 ### 1. Import your repositories
 
 1. In GitKraken.dev, go to **Insights > Data Connection**.  
-2. Click to connect with GitHub, GitLab, Azure DevOps, Claude Code, Cursor, GitHub Copilot, Bitbucket, or Jira Cloud. 
+2. Click to connect with GitHub, GitLab, GitLab Self-Hosted, Azure DevOps, Claude Code, Cursor, GitHub Copilot, Bitbucket, or Jira Cloud. 
 3. Authorize GitKraken Insights to connect with GitHub.  
 4. Select which repositories to track. Use the filter option at the top of the page to quickly narrow down the list.  
 
