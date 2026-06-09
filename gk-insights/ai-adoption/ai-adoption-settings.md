@@ -13,7 +13,7 @@ taxonomy:
 <kbd>Last updated: June 2026</kbd>
 
 <!-- FLAG FOR HUMAN REVIEW: The source Confluence "Settings & Admin" page also documents Developers (Roster), Teams, Jira (CFR), Time Off (BambooHR), and Demo Mode sections. Those were not migrated here because they cover product-wide administration rather than AI Adoption. Decide whether they belong on a separate admin page. -->
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence page links to "Output Score" and the Glossary, which have no pages in this repo yet. Those links were converted to plain text. -->
+<!-- FLAG FOR HUMAN REVIEW: Source Confluence page links to the Glossary, which has no page in this repo yet. That link was converted to plain text. -->
 
 Every admin-configurable setting that affects AI Adoption scores in GitKraken Insights, organized by where it lives in the product, plus a one-line "what it changes."
 
@@ -43,7 +43,7 @@ Also labeled **"Company AI Readiness %"** in the General tab. _In Settings UI: y
 
 **Why you'd raise or lower it.** - **Lower (0.50 – 0.70):** Early in your AI rollout. You want every developer to feel like there's runway. Few or no Power Users yet. - **Default (0.75):** Most orgs in active rollout. The tier ceiling pushes the top 10% to keep stretching. - **Higher (0.85 – 1.00):** Mature orgs with widespread, deep adoption where you want the scoring to reflect that maturity in absolute terms.
 
-**Affects:** [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score), [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score), Output Norm, [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+**Affects:** [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score), [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score), [Output Norm](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
 
 → Full section: [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
 
@@ -83,7 +83,7 @@ _In Settings UI: not yet — change via support._ App-settings key: `direct_comm
 | **Range** | 0.0 – 1.0 |
 | **Type** | Float |
 
-**What it does.** Scales direct commits (pushes straight to a default branch with no PR) relative to merged PRs in the Output Score formula:
+**What it does.** Scales direct commits (pushes straight to a default branch with no PR) relative to merged PRs in the [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) formula:
 
 ```
 Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort)
@@ -95,7 +95,7 @@ Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort)
 
 **When to change it.** - Lower toward 0 if your team uses direct commits primarily for trivial maintenance and you don't want them inflating Output Score. - Raise toward 1 if your team uses direct commits for substantive work (e.g. a Trunk-Based Development workflow).
 
-**Affects:** Output Score, Output Norm, [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+**Affects:** [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), [Output Norm](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
 
 ---
 
@@ -114,7 +114,7 @@ _In Settings UI: not yet — change via support._ App-settings key: `output_scor
 
 **When to turn off.** Rarely. The default reflects most orgs' definition of "real output". Turn off if you've explicitly decided chores are part of how you measure delivery — e.g. for an SRE team where dependency upgrades _are_ the job.
 
-**Affects:** Output Score, and downstream [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+**Affects:** [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), and downstream [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
 
 ---
 

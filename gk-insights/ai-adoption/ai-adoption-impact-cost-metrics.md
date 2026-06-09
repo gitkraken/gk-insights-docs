@@ -12,7 +12,7 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "Output Score", "Effort Score", and "Cycle Time" (Flow & Cycle Time family), which have no pages in this repo yet. Those links were converted to plain text. Note: this page documents the new AI Impact & Cost family and is distinct from the existing AI Impact Metrics page (gk-insights-ai-impact-metrics.md), which covers code quality and acceptance-rate metrics. -->
+<!-- NOTE: This page documents the new AI Impact & Cost family and is distinct from the existing AI Impact Metrics page (gk-insights-ai-impact-metrics.md), which covers code quality and acceptance-rate metrics. -->
 
 This family answers: **is AI actually paying off?**
 
@@ -137,18 +137,18 @@ Don't quote the dollar value to two decimal places. "About $50K per week in annu
 
 | Metric | Relationship |
 | --- | --- |
-| Output Score | The shipping-rate signal that underpins changes-per-dev-per-week. |
+| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | The shipping-rate signal that underpins changes-per-dev-per-week. |
 | [AI-Assisted Percentage](#ai-assisted-percentage) | Confirms that the output gain came from AI-touched work. |
-| Cycle Time | Lower Cycle Time generally accompanies the speedup story. |
+| [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) | Lower Cycle Time generally accompanies the speedup story. |
 | [Spend by Tier](#spend-by-tier) | Pairs with uplift for ROI math. |
 
 ### How to improve it
 
 The honest answer: improve the inputs.
 
-* **Raise changes per dev per week** by following the Output Score improvement guidance.
+* **Raise changes per dev per week** by following the [Output Score improvement guidance](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score).
 * **Raise AI-Assisted %** by deepening adoption in the cohort that is already using AI lightly — see the [Agent Adoption Score playbook](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score).
-* **Lower Cycle Time** via review process and PR-size discipline.
+* **Lower Cycle Time** via review process and PR-size discipline ([Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time)).
 * **Don't try to improve uplift directly.** It is a derived metric. Optimizing the inputs is the only way to move it honestly.
 
 ### Limitations and gotchas
@@ -248,7 +248,7 @@ The right target for your team depends on what you ship. Heavy infrastructure an
 | --- | --- |
 | [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score) | The user-level adoption measure. AI-Assisted % is the work-level counterpart. |
 | [Productivity Uplift](#productivity-uplift) | AI-Assisted % is a confirming signal — higher AI-Assisted → stronger uplift narrative. |
-| Output Score | Independent — Output Score doesn't filter by AI-assisted status. |
+| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Independent — Output Score doesn't filter by AI-assisted status. |
 
 ### How to improve it
 
@@ -360,8 +360,8 @@ The ratio shifts predictably with team type. SRE teams are mostly OpEx by design
 
 | Metric | Relationship |
 | --- | --- |
-| Effort Score | Effort feeds into the hours estimate. |
-| Output Score | Same shipped work, different aggregation. |
+| [Effort Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#effort-score-complexity) | Effort feeds into the hours estimate. |
+| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Same shipped work, different aggregation. |
 
 ### How to use it
 

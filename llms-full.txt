@@ -1448,7 +1448,10 @@ GitKraken Insights gives engineering leaders a single view of how AI tools, code
 
 | Page | What it covers |
 | --- | --- |
+| [Getting Started with AI Adoption](/gk-insights/ai-adoption/ai-adoption-getting-started) | A short tour organized by what you do, with quickstarts for executives, engineering leaders, team leads, and admins. |
 | [Adoption & Agentic Metrics](/gk-insights/ai-adoption/ai-adoption-agentic-metrics) | How much your team is actually using AI, and how autonomously: Agent Adoption Score, Agent Autonomy Score, AI Tier, Maturity Factor, and Cursor Boost. |
+| [Output & Throughput Metrics](/gk-insights/ai-adoption/ai-adoption-output-metrics) | What your team ships: Output Score, Throughput, Direct Commits, and Effort Score (Complexity). |
+| [Flow & Cycle Time Metrics](/gk-insights/ai-adoption/ai-adoption-flow-metrics) | How fast work moves through your system: Cycle Time, Review Cycles, First-Pass Rate, and WIP. |
 | [AI Impact & Cost Metrics](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics) | What AI is actually delivering, in time and dollars: Productivity Uplift, AI-Assisted Percentage, CapEx / OpEx Split, and Spend by Tier. |
 | [AI Adoption Playbooks](/gk-insights/ai-adoption/ai-adoption-playbooks) | Action-first guides: set tier weights for your org's maturity, and roll out AI tooling with the Adoption Score. |
 | [AI Adoption Settings](/gk-insights/ai-adoption/ai-adoption-settings) | Configuration reference — what each setting changes, and which metrics depend on it. |
@@ -1475,6 +1478,527 @@ GitKraken Insights gives engineering leaders a single view of how AI tools, code
 ---
 
 ---
+title: Getting Started with AI Adoption in GitKraken Insights
+description: Get oriented in the AI Adoption dashboard in GitKraken Insights, with quickstarts for executives, engineering leaders, team leads, and admins, plus a guided walkthrough of your first dashboard.
+product: GitKraken Insights
+content_type: how-to
+audience: all
+plan_required: GitKraken Insights
+integrations: [Claude Code, Codex, Cursor, Jira Cloud]
+status: GA
+taxonomy:
+    category: gk-insights
+---
+<kbd>Last updated: June 2026</kbd>
+
+<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to the Glossary and to the playbooks "Investigate a slow cycle time" and "Interpret a high CFR week", which have no pages in this repo yet. Those links were converted to plain text. -->
+<!-- FLAG FOR HUMAN REVIEW: The "Reading your first dashboard", "For executives", and "For team leads" sections include screenshots in the source Confluence pages. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
+
+GitKraken Insights is the dashboard your engineering organization uses to see — in one place — how AI tools, code delivery, and team capacity actually interact. This section gets you oriented in about ten minutes.
+
+---
+
+## What this product does, in one sentence
+
+It connects your GitHub, your AI coding tool telemetry (Claude Code, Codex, Cursor), your Jira customer bugs, and your BambooHR PTO calendar, and produces a small set of trustworthy numbers for engineering leadership.
+
+## What this product does _not_ do
+
+* It does not rank or compare individual developers against each other for performance reviews. The scoring framework is designed for _trend reading_ and _cohort comparison_, not for slotting people on a curve.
+* It does not replace your standup, your retro, or your one-on-ones. It surfaces patterns that should become conversations.
+* It does not produce real-time alerts. The numbers refresh on a window (default 14 days) and are designed for weekly / monthly / quarterly review.
+
+---
+
+## Three pages that matter most
+
+If you take only one thing from this guide, take this: there are three pages that will answer 80% of the questions you'll have on a given day.
+
+| Page | When to use it |
+| --- | --- |
+| **/teams** _(the default landing)_ | Weekly leadership review. Team-by-team adoption and delivery, side by side. |
+| **/developers** | When you want to drill into individuals: who's a Power User, who's struggling to adopt, who needs onboarding. |
+| **/executive** | Monthly or quarterly reports up the chain. Pre-shaped for execs with hero KPIs and trend lines. |
+
+The other pages (/impact, /ai-impact, /comparison, /flow-delivery, /capex, /data, /board-metrics, /settings) are deep-dive surfaces for specific questions. Once you have the three above in your reading habit, the others slot in naturally.
+
+---
+
+## Pick your starting point
+
+Quickstarts for the four roles we built this for. Each takes 5–10 minutes.
+
+* [**For executives**](#for-executives) — the four numbers that tell the story; how to read a monthly summary in 60 seconds.
+* [**For engineering leaders**](#for-engineering-leaders) — running a quarterly review using AI Tier, Output Score, and Cycle Time together.
+* [**For team leads**](#for-team-leads) — your weekly pulse using the Flow + Team + Review tabs on /flow-delivery.
+* [**For admins**](#for-admins) — settings, roster, integrations, and how to keep the data clean.
+
+Or jump straight into product:
+
+* [**Reading your first dashboard**](#reading-your-first-dashboard) — a guided walkthrough of /teams.
+
+---
+
+## How to think about developer scores
+
+A short philosophy note, because scores invite misuse.
+
+Every developer in GitKraken Insights gets sorted into one of five tiers:
+
+| Tier | Composite score | What it means |
+| --- | --- | --- |
+| **Power User** | ≥ 80 | Using AI consistently and shipping at the org's top rate |
+| **Regular** | 55–79 | Healthy adoption and steady output |
+| **Explorer** | 25–54 | Trying AI but not yet routine |
+| **Emerging** | < 25 | Minimal AI engagement |
+| **On PTO** | (override) | Was on PTO for every weekday in the window — excluded from averages |
+
+The tiers describe **patterns of engagement and delivery**, not "who's a good engineer." A senior developer working on a hard, isolated infrastructure project for a quarter may show as Emerging _because the work doesn't suit AI tooling_. A junior developer pairing constantly with Cursor on UI changes may show as a Power User. Neither tells you who deserves a promotion.
+
+What the tiers _do_ tell you:
+
+* **Adoption trajectory.** How many developers crossed from Emerging → Explorer last quarter?
+* **Cohort gaps.** Are your Power Users concentrated on one team while another team is stuck at Explorer?
+* **Onboarding signal.** New hires landing in Emerging after 6 weeks is a process flag, not a person flag.
+* **Org-level maturity.** What % of your team is at Regular or above? That's your AI rollout report card.
+
+When in doubt: **don't read a single developer's score in isolation. Read the cohort.**
+
+---
+
+## A note on benchmarks
+
+You'll see ranges throughout the help center labeled "Strong / Fair / Needs attention." These reflect our defaults and what we see across the orgs running Insights. They are not industry benchmarks. Engineering productivity has no good universal benchmarks — every team's context matters too much — so treat the ranges as a starting frame, not a verdict.
+
+---
+
+## Reading your first dashboard
+
+A guided 10-minute walkthrough of `/teams`, the page you land on when you log in. By the end you'll know what every column means and where to click next.
+
+<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Flow & Delivery — hero KPI strip with team-pulse cards, plus the Flow tab's cycle-time-by-phase and changes-by-type charts." Export to _images/ and add the figure here. -->
+
+### Set the scope first
+
+Before you read anything, set two filters at the top of the page:
+
+1. **Date range.** Default is the last 14 days. For weekly reviews keep it at 14 days. For a quarter-end review, switch to 90 days. Sub-7-day windows force some rates to zero, so don't pick "yesterday" expecting full data.
+2. **Department or team.** Pick the slice of the org you care about. If you have a `Default Department` set in Settings, this comes pre-filled.
+
+Everything below this point will reflect those two filters.
+
+### The team table — column by column
+
+The main view is one row per team. Here's what each column tells you:
+
+#### Readiness
+
+A composite "is this team set up to succeed with AI?" rating. Combines repository readiness (do they have AI tools wired in?), behavior (are developers actively using AI?), and outcomes (cycle time, output). Read as: green = no help needed, yellow = friction worth investigating, red = blocked.
+
+#### Avg Adoption
+
+The mean Agent Adoption Score across the team's active developers. A team average of 50 means a healthy mix; 80+ means a high-adoption team.
+
+→ [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score)
+
+#### Tier mix
+
+Bars showing the team's distribution across Power User / Regular / Explorer / Emerging. A team can have a great average and still be lopsided — e.g. half Power Users, half Emerging. The tier mix surfaces that.
+
+#### Cycle Time
+
+Average hours from a PR's first commit to merge. Lower is generally better, but not always — see the [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) section for nuance.
+
+#### Output Score (per active dev)
+
+Effort-weighted shipping rate, divided by the number of active developers on the team. A team that ships fewer but bigger PRs can have the same Output Score as a team that ships many small ones. Read this alongside the PR/DC count breakdown to know which pattern you're seeing.
+
+→ [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score)
+
+#### Power User %
+
+Percentage of the team's active developers in the Power User tier. Useful for tracking "where is AI adoption already mature" at a glance.
+
+### Expand a row to drill in
+
+Click any team row to expand it. You'll see three tabs:
+
+#### Repos
+
+Per-repo readiness. Helpful when a team's Readiness score is dragged down by one specific repo that needs a config update.
+
+#### Developers
+
+The full developer roster for that team with individual Adoption Scores, Output Scores, AI Tier, and a Direct Commits column. Click any developer to drill further into their profile (this navigates to `/developers`).
+
+#### System Metrics
+
+Cycle Time + PR Volume trends for the team. Use the dimension dropdown to break either chart down by author, AI tier, or PR category.
+
+### What to look at first
+
+In order, every time:
+
+1. **Tier mix bars.** Are any teams disproportionately Emerging? That's the leading edge of an adoption problem.
+2. **Avg Adoption vs Output Score.** A team with high adoption and low output (or vice versa) deserves a conversation.
+3. **Cycle Time outliers.** Anyone over 4 days? That's almost always a review-bottleneck or WIP problem, not a coding problem.
+4. **Readiness reds.** A red Readiness usually means a missing integration or a stale roster — quick to fix.
+
+### Where to go next
+
+Now that you've read /teams, here are the obvious follow-up pages depending on what you saw:
+
+| If you saw … | Go to … |
+| --- | --- |
+| A team with low adoption | /developers, filtered to that team — find the Emerging cohort |
+| A team with slow cycle time | /flow-delivery → Flow tab → switch dimension to "phase" |
+| A team with high output but low AI | /comparison → compare that team to a high-AI peer |
+| A team you don't recognize | /settings → Teams — check the roster |
+| An exec asking "what's the ROI?" | /ai-impact and /executive |
+
+### What the dashboard won't show you (and why)
+
+* **Code quality at the line level.** We don't run static analysis or measure code health beyond cycle metrics. Use your existing tools (SonarQube, Code Climate, etc.) for that.
+* **Sentiment.** A team can have great numbers and miserable morale. The dashboard is one input — your one-on-ones are another.
+* **Pre-2026-03-05 AI usage.** Claude Code OTEL instrumentation started March 5, 2026. Anything earlier is undercounted.
+
+### Glossary refresher
+
+* **Active developer:** is_active = true _and_ shipped at least one PR or direct commit in the window _and_ wasn't fully on PTO.
+* **Window:** the date range you selected at the top.
+* **P90:** 90th-percentile cap computed across your whole active org. Sets the ceiling for normalized scores.
+* **Maturity Factor:** an org-wide scaling knob (default 0.75). At 0.75, a P90 developer scores 75. Adjusts everyone's tier ceiling.
+
+---
+
+## For executives
+
+You don't have time to learn the product. You have time for four numbers and a story. This page is exactly that.
+
+<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Executive view — hero KPI strip with cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage." Export to _images/ and add the figure here. -->
+
+### The four numbers
+
+Open `/ai-adoption/executive`. Five hero cards stretch across the top. The four that matter most:
+
+#### 1. AI Adoption %
+
+Percent of your active developers at Explorer tier or above (score ≥ 25). This is your "how broadly is AI used here?" answer.
+
+**Read it as:** a leading indicator. Adoption usually moves before output does.
+
+**Healthy trajectory:** up and to the right, with the curve flattening as it approaches 100%. A flat or declining number deserves an investigation — usually it is onboarding, tooling friction, or a vocal skeptic on a team.
+
+#### 2. AI-Assisted %
+
+Percent of _changes_ (PRs + direct commits, weighted by lines changed) where the developer used AI in or around the change. Different from Adoption %: a developer can have AI installed (counts toward Adoption) without using it on a given change (doesn't count toward AI-Assisted).
+
+**Read it as:** a behavioral indicator. The closer this gets to AI Adoption %, the more thoroughly AI is integrated into actual work.
+
+#### 3. Cycle Time
+
+Average hours from a PR's first commit to merge. The single best operational health metric in the dashboard.
+
+**Read it as:** a trailing indicator of flow. If cycle time creeps up, look at WIP and review-cycle counts.
+
+#### 4. Throughput
+
+Number of merged PRs per week, normalized per active developer.
+
+**Read it as:** volume of shipped work. Read alongside Output Score (effort-weighted) — Throughput is "how many things"; Output Score is "how much stuff."
+
+The fifth card, **Power User Growth**, is your quarter-over-quarter trend on how many developers moved into the top tier.
+
+### How to read the trend lines
+
+The executive view has six trend lines below the hero cards: Cycle Time, Throughput, Deployment Frequency, CFR, AI Adoption, and (when configured) Customer Bugs.
+
+The single most useful reading pattern: **look at adoption trend and cycle time trend together.**
+
+* Adoption ↑ and Cycle Time ↓ → AI is delivering. This is the story you want to tell.
+* Adoption ↑ and Cycle Time flat → AI use is increasing but flow hasn't caught up. Usually a review-bottleneck issue.
+* Adoption flat and Cycle Time ↑ → Operational drag. Investigate WIP, headcount, scope.
+* Adoption ↓ and Cycle Time ↑ → Compound problem. Likely a morale or attrition signal — talk to your engineering leaders.
+
+### What to put in your monthly report
+
+Three lines, in this order:
+
+1. **The headline.** "AI adoption climbed from 62% to 71% this month, while cycle time dropped from 4.1 to 3.4 days."
+2. **The story.** Why it moved. Did you ship a training? Did a new team onboard? Did you launch Codex alongside Claude?
+3. **The next bet.** What you are going to push on next month. "Next month we are focused on the Platform team — currently 40% Emerging, target 70% Explorer+."
+
+The dashboard's job is to give you the first two. The third one is your call.
+
+### What _not_ to do with the dashboard
+
+* **Don't show individual developer scores in your monthly report.** It will get someone fired by a different chain of command than the dashboard was designed for. Aggregate by team or by tier mix instead.
+* **Don't read a single week.** Engineering work has 2–4 week natural cycles. Read trends, not weeks.
+* **Don't quote ROI to the dollar.** The [Productivity Uplift](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#productivity-uplift) number is a directional estimate. Use it for order-of-magnitude statements ("low single-digit millions in annualized productivity gain"), not for finance.
+
+### Where to drill further
+
+If you want one more level of detail:
+
+* **For "is AI actually paying off?"** → [Productivity Uplift](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#productivity-uplift)
+* **For "where are we slow?"** → `/ai-adoption/ai-impact` (Cycle Time phase breakdown)
+* **For "which team needs attention?"** → `/ai-adoption/teams`
+
+---
+
+## For engineering leaders
+
+You run multiple teams. You have a board meeting next week and a 1:1 with your VP the week after. This guide is how to extract the right answers in 30 minutes flat.
+
+### Your weekly 10-minute scan
+
+Every Monday morning, open `/teams` with the date range set to the last 14 days. Look at three things:
+
+1. **Tier mix bars.** Are any teams disproportionately Emerging or Explorer? That's a leading indicator of an adoption problem you can intervene on this week.
+2. **Cycle Time outliers.** Any team over 4 days? Click in — almost always it's a review bottleneck (high review cycles) or a WIP problem (too many open PRs), not coding speed.
+3. **Output Score swings.** A team's Output Score down 30% week-over-week deserves a check-in. Usually it's a quarter-end shift in priorities, but sometimes it's a process breakage.
+
+If nothing flagged, you're done. If something flagged, drill into the team's expanded row → System Metrics tab.
+
+### Your quarterly review
+
+A 45-minute structured review using four pages. Do this once per quarter with your engineering leadership group.
+
+#### Step 1 — Org-level AI rollout health (5 min)
+
+Open `/executive`. Note: AI Adoption % current vs. last quarter, Power User % current vs. last quarter, AI-Assisted % current vs. last quarter.
+
+**Question to answer:** Did we move the rollout forward this quarter? If yes, by how much and on which teams? If no, what's blocking us?
+
+#### Step 2 — Delivery health (10 min)
+
+Stay on `/executive`. Look at Cycle Time, Throughput, Deploy Frequency, and CFR trends.
+
+**Question to answer:** Did delivery health improve, hold, or regress alongside AI adoption? You're testing the thesis "AI use should compound into better flow."
+
+If Cycle Time worsened despite adoption climbing — flag for investigation. It usually means the team has _adopted_ AI without the flow practices (small PRs, tight reviews) to take advantage of it.
+
+#### Step 3 — Team-by-team review (20 min)
+
+Open `/teams`. Walk through each team's expanded row.
+
+For each team, write down: their adoption trajectory (improving / steady / declining), their delivery trajectory (improving / steady / declining), one specific question they should answer at their next team retro.
+
+The dashboard's job is to surface the questions. The answers come from the team.
+
+#### Step 4 — Investment review (10 min)
+
+Open `/ai-impact`. Look at: Productivity Uplift % vs. baseline, estimated $ saved per week, AI-Assisted % of lines changed.
+
+**Question to answer:** Is the AI tooling spend still returning more value than it costs? For most orgs running Claude Code + Cursor, breakeven happens in single-digit weeks. If yours hasn't, look at adoption depth — the math fails when adoption is shallow even if it's broad.
+
+### How to read scores fairly
+
+The most common mistake leaders make with this dashboard is reading individual developer scores as a performance review proxy. Read [How to think about developer scores](#how-to-think-about-developer-scores) before you go anywhere near a 1:1 talking about a score.
+
+What scores _are_ good for: **Cohort comparison** ("Our backend team has 80% Power Users, our mobile team has 20%. Why?"), **Onboarding signal** ("New hires are landing in Emerging after 8 weeks instead of Explorer. Something's wrong with our onboarding."), **Tooling signal** ("Three teams using Cursor + Claude Code together hit Power User faster than teams on Claude Code alone.").
+
+What scores are _not_ good for: "Why is Alex at Explorer when Sam is at Power User?" Without context (project, role, week), that question is unanswerable from the dashboard.
+
+### Settings to verify quarterly
+
+These three settings drift over time and need a quarterly check:
+
+| Setting | What to check |
+| --- | --- |
+| **Maturity Factor** | Still 0.75? If your org has matured, raise it. If your adoption % has plateaued for 2+ quarters, consider whether the ceiling is the constraint. |
+| **Tier Weights** | Default 0.5 / 0.2 / 0.3. If your org has moved from "rolling out" to "extracting value", consider shifting weight toward Output. _(Currently a backend ops change — file a request with support.)_ |
+| **Baseline Period** | Default Nov 1 last year. If you launched a new AI tool mid-year, anchor the baseline to a month _before_ that launch so uplift math is meaningful. |
+
+→ [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
+
+### Where to drill further
+
+* **Investigating a slow team** → Playbook — Investigate a slow cycle time <!-- FLAG FOR HUMAN REVIEW: playbook not yet migrated -->
+* **Planning a new tool rollout** → [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score)
+* **Quality regression** → Playbook — Interpret a high CFR week <!-- FLAG FOR HUMAN REVIEW: playbook not yet migrated -->
+
+---
+
+## For team leads
+
+You run one team day-to-day. You want a pulse on flow, blockers, and review health. This page is your weekly toolkit.
+
+<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Team-pulse view — cycle-time-by-phase, changes-by-type, and adoption trend together." Export to _images/ and add the figure here. -->
+
+### Your weekly home: `/ai-adoption/teams`
+
+Open `/ai-adoption/teams` with the date range set to the last 14 days. The team table is your dashboard. Expand your team's row and you get a per-team detail view with the three things you care about:
+
+1. **Per-developer roster** — Adoption Score, Output Score, AI Tier, and direct commits for every developer on the team. A clickable Tier badge surfaces the live tier composite for each person.
+2. **System Metrics** — Cycle Time and PR Volume trends with a dimension dropdown (Phase, Author, AI Tier, PR Category). The Cycle Time phase breakdown is where you spend most of your time.
+3. **Repos** — per-repo readiness scores. Useful when one specific repo is dragging your team's Readiness down.
+
+Drill into deeper analyses on `/ai-adoption/ai-impact`:
+
+* Cycle Time breakdown with Totals / Trends toggle and a phase-by-phase trend.
+* PR Volume by Effort, Category, Author, or AI Tier.
+* Review Cycles bucketed (0 / 1 / 2 / 3+).
+* WIP trend.
+* CFR card and trend (if Jira is wired up).
+
+### What to look at when
+
+The metrics that matter most for a team lead, in priority order:
+
+| Metric | Where | Why you care |
+| --- | --- | --- |
+| **Cycle Time phase breakdown** | /ai-adoption/teams (expanded) or /ai-adoption/ai-impact | Tells you _which_ phase is your bottleneck. Almost always more useful than the total. |
+| **Review Cycles** | /ai-adoption/ai-impact (PR Volume → dimension) | A creeping bucket distribution (more 2s and 3+s) means PRs are getting too big or specs are too thin. |
+| **First-Pass Rate** | /ai-adoption/ai-impact | The clean-merge percentage. A rising number is a strong code-quality signal. |
+| **WIP** | /ai-adoption/ai-impact | If WIP is rising while Throughput stays flat, your review queue is the constraint. |
+| **AI Adoption** | /ai-adoption/teams (per-team) and /ai-adoption/developers (per-person) | Compare to peer teams of similar size and maturity, not to an absolute number. |
+| **CFR** | /ai-adoption/ai-impact | If your team is shipping fast, watch CFR alongside to make sure quality isn't slipping. |
+
+### A useful weekly ritual
+
+A 15-minute Monday review:
+
+1. **Open** `/ai-adoption/teams` and expand your team. Note anything visibly off — a Readiness gone red, an Output Score down 30% week-over-week, an unfamiliar developer in the roster.
+2. **Open the Cycle Time phase breakdown.** Which phase is biggest? If Pickup dominates, your review queue is the problem and you need a clearing ritual. If Review dominates, your PRs are too big. If Coding dominates, look at WIP and developer-level activity for stalled work.
+3. **Walk your team's open PR queue** in your repo's native PR list. Look at the oldest 5. For each, decide: ship, deadline, or close.
+4. **Spot the outlier.** Did anyone have a noticeably high or low Output Score this week? Five-second mention to yourself, not a public callout. Worth a check-in if it persists into next week.
+
+That is it. Closing five stale PRs per week is the single highest-leverage flow improvement most teams can make.
+
+### How to interpret the numbers fairly
+
+A few rules of thumb:
+
+| Metric | Rule of thumb |
+| --- | --- |
+| **Cycle Time** | Under 24h is excellent for small teams. 1–3 days is fine. 4+ days deserves investigation. |
+| **First-Pass Rate** | 60–80% is healthy. Higher than 85% can mean reviewers are rubber-stamping. Lower than 50% means PRs are too big or specs are too thin. |
+| **Review Cycles** | Average 0–1 is healthy. 2+ usually means PRs are too big. |
+| **WIP** | Rule of thumb: 1.5–2× the number of active developers. If your team of six has 25 open PRs, you have a WIP problem. |
+| **AI Adoption** | Compare to other teams of similar size and maturity, not to an absolute number. |
+
+These are starting points, not laws. Your team's context can move the bar.
+
+### What the dashboard won't tell you
+
+* **Whether a specific PR is good or bad.** Look at the PR.
+* **Whether a developer is happy.** Talk to them.
+* **Whether your team is overloaded.** WIP gives a hint, but the truth lives in your standup and retro.
+
+### Where to drill further
+
+* **A specific cycle time problem** → Playbook — Investigate a slow cycle time <!-- FLAG FOR HUMAN REVIEW: playbook not yet migrated -->
+* **A spike in customer bugs** → Playbook — Interpret a high CFR week <!-- FLAG FOR HUMAN REVIEW: playbook not yet migrated -->
+* **A developer struggling with adoption** → `/ai-adoption/developers`, filter to that person, expand the heatmap.
+
+---
+
+## For admins
+
+Setup, integrations, and the small list of things that keep the data clean. If you are the person who installed Insights or who is the org's go-to for "why does this number look weird?", this is for you.
+
+### First-week setup checklist
+
+In order:
+
+- [ ] **Roster is loaded.** Settings → Developers shows every active developer with a display name, GitHub login, and email. Inactive developers from your HRIS are marked `is_active = false`.
+- [ ] **Teams are defined.** Settings → Teams has at least one team per organizational unit. Departments are populated for grouping.
+- [ ] **Default Department is set.** Settings → General → "Default Department". This pre-selects the right view for first-time visitors.
+- [ ] **PTO sync is on.** `WHOS_OUT_ICAL_URL` is set to your BambooHR iCal feed. The sync runs every 6 hours.
+- [ ] **CFR sync is on (optional).** `JIRA_CUSTOMER_BUG_FIELD_ID` is set if you want to track customer bugs on /ai-adoption/ai-impact.
+- [ ] **AI provider data is flowing.** Open `/ai-adoption/data-explorer`, filter to `event_name = user_prompt`, confirm rows for the last 24 hours.
+- [ ] **Maturity Factor is sized for your org.** Default 0.75 works for most. If you are early in rollout, consider 0.6. If you are mature, 0.85.
+
+### The data freshness chain
+
+Every metric on the dashboard is downstream of one of these syncs. If a number looks wrong, the first thing to check is which sync is stale.
+
+| Sync | Source | Interval | Owns |
+| --- | --- | --- | --- |
+| **GitHub sync** | GitHub PAT | Every few minutes | PRs, direct commits, reviews |
+| **AI events sync** | Snowflake OTEL export (Claude / Codex) | Every 5 min, with 12 h safety lag | Adoption, agentic, AI-assisted detection |
+| **Cursor sync** | Cursor API | Every 5 min, with 12 h safety lag | Cursor adoption |
+| **CFR sync** | Jira | Every hour | Customer bugs, CFR %, MTTR |
+| **Release sync** | GitHub Releases / configured release event | Every few minutes | Deployment Frequency, Lead Time |
+| **PTO sync** | BambooHR iCal | Every 6 hours | On-PTO tier, effective weekdays |
+| **PR classifier** | Internal LLM | Continuous worker | Category, auto-category, CapEx / OpEx, Effort Score |
+| **AI-assisted classifier** | Internal worker | Continuous, with 24 h refresh sweep | `is_ai_assisted` materialization |
+
+The 12-hour **safety lag** on AI events sync exists because the upstream OTEL export sometimes backfills events into already-synced time ranges. The lag absorbs that overlap so data is not missed. Don't be alarmed if you see counts shift slightly within a 24-hour-old window.
+
+### The unmatched lists
+
+Two places in Settings → Developers surface "we couldn't auto-match this":
+
+#### Unmatched PTO names
+
+When the BambooHR feed has a name like "Jeffrey Schinella" but your roster has "Jeff Schinella," the sync drops the name into the unmatched list. Use the combobox to map it. Once mapped, the alias persists.
+
+#### Unmatched Jira assignees
+
+Same pattern: Jira `accountId`s that don't tie to a known developer email. Map them once and future bugs from that assignee will auto-route.
+
+**Treat both lists like an inbox.** Empty them weekly. An unmatched PTO name means you are miscounting effective weekdays for that developer; an unmatched Jira assignee means CFR attribution is incomplete.
+
+### Roster hygiene
+
+The single biggest cause of "this number looks weird" tickets is roster drift. Check these monthly:
+
+* `is_active = true` **should be a current employee.** Offboarded developers should be flipped to `false`, not deleted. Deletion loses historical attribution.
+* **GitHub login is set and matches their actual handle.** This is the authoritative join key for PR and commit data.
+* **Team membership is current.** Reorgs happen quietly; your developer table will reflect the old structure until you update it.
+* **Email aliases are mapped.** If a developer has multiple work emails (e.g. from an acquisition), add aliases in their profile so P90 cohorts don't double-count.
+
+### Settings worth a quarterly check
+
+| Setting | Default | Where | When to revisit |
+| --- | --- | --- | --- |
+| **Maturity Factor** | 0.75 | Settings → General (slider) | When AI Adoption % plateaus or when your org's actual maturity has clearly outgrown 0.75 |
+| **Developer Hourly Rate** | $75 | Settings → General (input) | Annually, when your finance team updates the loaded rate |
+| **Baseline Period** | Nov 1 last year | Settings → General (month picker) | When you launch a new AI tool and want uplift relative to a specific pre-launch month |
+| **Default Department** | None | Settings → General (dropdown) | When your org structure shifts |
+| **Tier Weights** | 0.5 / 0.2 / 0.3 | _Not yet in the Settings UI — change via support_ | When you move from "rolling out" to "extracting value" — see the [Set tier weights playbook](/gk-insights/ai-adoption/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity) |
+| **Direct Commit Weight** | 0.5 | _Not yet in the Settings UI — change via support_ | When your team's direct-commit workflow changes (e.g. moving to TBD) |
+| **Review Weight** | 0.5 | _Not yet in the Settings UI — change via support_ | When you want to emphasize or de-emphasize review work in Output Score |
+| **Exclude Chore from Output Score** | On | _Not yet in the Settings UI — change via support_ | Rarely. Default reflects most orgs' definition of "real output" |
+
+### What to do when a number looks wrong
+
+A short triage flow:
+
+1. **Is the date range right?** Most "this is missing" tickets are sub-7-day windows where rate-normalized metrics widen the benchmark scope or fall back to defaults.
+2. **Is the user being filtered?** Inactive developers, alias-only developers, and on-PTO developers don't show in all views.
+3. **Is the sync stale?** Open /ai-adoption/data-explorer, filter by event type, check the most recent timestamp.
+4. **Is the developer mapped?** Settings → Developers → check `is_active` and GitHub login.
+5. **Are aliases set?** A developer with multiple emails will appear split across rows in P90 cohorts until aliases are mapped.
+
+If none of those resolve it, file a support ticket with: the page URL, the date range, the team filter, and a screenshot.
+
+### Demo mode
+
+Use Settings → Demo Mode to switch the dashboard into a fake-data profile (Stellar / Launchpad / Atlas) for prospect demos or internal walkthroughs. Demo mode is per-session and respects browser storage — your real data is still there when you toggle off.
+
+For self-contained marketing builds (where there is no real backend at all), set `DEMO_MODE=stellar|launchpad|atlas` as an environment variable. That short-circuits all API calls and forces a credentials-only login. Talk to your account team for the marketing-build recipe.
+
+### Security and access
+
+* **Authentication:** users sign in through GitKraken's identity, restricted to your configured organization.
+* **Role-based access.** Org Settings writes are gated by the `org_settings:write` permission. Users without that permission see a banner explaining read-only access and a prompt to ask an org admin or owner. Permissions follow the standard GitKraken role model (Owner, Admin, Member).
+* **Row-level filtering for sensitive views is not yet implemented.** All users with read access to the dashboard see all teams and developers. If you need row-level access controls, ask your account manager — it is on the roadmap.
+* **Secrets.** The deployment loads credentials from your secret store of choice (typically AWS SSM Parameter Store or equivalent). Never commit `.env.local` or any file containing tokens.
+
+---
+
+## Next
+
+* New here? → [Reading your first dashboard](#reading-your-first-dashboard)
+* Have a specific question already? → [AI Adoption metric pages](/gk-insights/ai-adoption/ai-adoption)
+* Need to set things up? → [For admins](#for-admins) and the [Settings reference](/gk-insights/ai-adoption/ai-adoption-settings)
+
+---
+
+---
 title: Adoption & Agentic Metrics in GitKraken Insights
 description: Learn about Adoption & Agentic metrics in GitKraken Insights, including Agent Adoption Score, Agent Autonomy Score, AI Tier, Maturity Factor, and Cursor Boost.
 product: GitKraken Insights
@@ -1488,7 +2012,7 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "Output Score", "How to think about developer scores", and the Glossary, which have no pages in this repo yet. Those links were converted to plain text. -->
+<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to the Glossary, which has no page in this repo yet. That link was converted to plain text. -->
 <!-- FLAG FOR HUMAN REVIEW: Each metric section below includes a screenshot in the source Confluence page. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
 
 This family answers a single question: **how much is your team actually using AI, and how deeply?**
@@ -1549,7 +2073,7 @@ Three things to remember:
 2. **Org P90 is the ceiling, not 100.** Because we normalize against the org's 90th percentile, a single developer can't game the system by spamming prompts. The ceiling moves with the org.
 3. **Maturity Factor sets the headroom.** At 0.75, even a perfect (P90) developer scores 75. That's intentional — it leaves room for the _org_ to grow into higher numbers without retiering everyone overnight.
 
-See How to think about developer scores before drawing individual conclusions. <!-- FLAG FOR HUMAN REVIEW: "How to think about developer scores" links to the Confluence Getting Started page, which has no repo equivalent yet. -->
+See [How to think about developer scores](/gk-insights/ai-adoption/ai-adoption-getting-started#how-to-think-about-developer-scores) before drawing individual conclusions.
 
 ---
 
@@ -1656,7 +2180,7 @@ The four-factor weighting per provider is not currently exposed in the Settings 
 | [AI Tier](#ai-tier) | Adoption is one of three inputs into the composite Tier. |
 | [Maturity Factor](#maturity-factor) | The scalar that ceilings every Adoption Score in your org. |
 | [Cursor Boost](#cursor-boost) | Defines how Cursor adoption contributes to the headline Adoption Score. |
-| Output Score | The shipping-side metric. High Adoption with flat Output is a common pattern in early rollouts. |
+| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | The shipping-side metric. High Adoption with flat Output is a common pattern in early rollouts. |
 
 ### How to improve it
 
@@ -1889,7 +2413,7 @@ If **On PTO % is unusually high** (>15%), check whether your PTO sync is working
 | --- | --- |
 | [Agent Adoption Score](#agent-adoption-score) | Input #1. Default weight 0.5. |
 | [Agent Autonomy Score](#agent-autonomy-score) | Input #2. Default weight 0.2. |
-| Output Score | Input #3 (via Output Norm). Default weight 0.3. |
+| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Input #3 (via Output Norm). Default weight 0.3. |
 | [Maturity Factor](#maturity-factor) | Scales all three inputs uniformly. |
 
 ### How to improve it
@@ -1986,7 +2510,7 @@ The default (0.75) is calibrated for "active rollout" — the most common state 
 | --- | --- |
 | [Agent Adoption Score](#agent-adoption-score) | Multiplied by Maturity Factor as the final step. |
 | [Agent Autonomy Score](#agent-autonomy-score) | Multiplied by Maturity Factor as the final step. |
-| Output Score → Output Norm | Output Norm is multiplied by Maturity Factor. Raw Output Score itself is not. |
+| [Output Score → Output Norm](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Output Norm is multiplied by Maturity Factor. Raw Output Score itself is not. |
 | [AI Tier](#ai-tier) | Indirectly — the tier thresholds (25 / 55 / 80) stay fixed, but the inputs scale. |
 
 ### How to use it
@@ -2121,6 +2645,1004 @@ A: Empirically, the data we get from Cursor today is roughly a quarter as rich a
 ---
 
 ---
+title: Output & Throughput Metrics in GitKraken Insights
+description: Learn about Output & Throughput metrics in GitKraken Insights, including Output Score, Throughput, Direct Commits, and Effort Score (Complexity).
+product: GitKraken Insights
+content_type: reference
+audience: all
+plan_required: GitKraken Insights
+integrations: [GitHub, GitLab, GitLab Self-Hosted, Bitbucket, Azure DevOps]
+status: GA
+taxonomy:
+    category: gk-insights
+---
+<kbd>Last updated: June 2026</kbd>
+
+<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "Deployment Frequency" and "Lead Time for Changes" (DORA & Quality family), which have no pages in this new section yet. Those links were converted to plain text. -->
+<!-- FLAG FOR HUMAN REVIEW: The Output Score section includes a screenshot in the source Confluence page. The image is a Confluence attachment without an exportable filename. Export it to _images/ and add the figure reference where flagged. -->
+
+This family answers: **what is your team shipping, and how much of it is substantive work?**
+
+It is the dashboard's "delivered output" lens — distinct from Flow (how fast?) and DORA (how reliably?). Output asks: of all the work that came out of this team this window, how does it stack up against itself over time and against the org?
+
+---
+
+## The metrics
+
+| Metric | What it captures |
+| --- | --- |
+| [**Output Score**](#output-score) | The headline. Effort-weighted shipping rate per developer or per team. Replaces the older raw "Velocity" count. |
+| [**Throughput**](#throughput) | Raw PR count — merged PRs per week, per developer or per team. |
+| [**Direct Commits**](#direct-commits) | Commits pushed straight to a default branch without a PR. Counted as output with a configurable weight. |
+| [**Effort Score (Complexity)**](#effort-score-complexity) | The 0.1–0.9 per-PR / per-commit complexity estimate that powers Output Score. |
+
+---
+
+## Why "Output Score" replaced raw "Velocity"
+
+The traditional metric on the developer table used to be "Velocity" — a count of merged PRs per week. It treated a one-line documentation fix the same as a 2,000-line refactor.
+
+That worked when teams were small and the work was uniform. It broke down as soon as:
+
+* A senior IC was working on a quarter-long feature (one giant PR = velocity of 0).
+* A junior was iterating on lots of small UI changes (lots of PRs = high velocity, low impact).
+* AI tools started enabling developers to ship dramatically larger changes in dramatically less time.
+
+Output Score fixes this by **weighting every PR, every direct commit, and every formal review by its estimated complexity** (Effort Score, 0.1 to 0.9). A 0.9-effort PR contributes 9× the score of a 0.1-effort PR. The result is a metric that scales with the _work_, not the _count_.
+
+---
+
+## How effort gets assigned
+
+Every merged PR and every direct commit gets an Effort Score. There are two ways it can land:
+
+1. `auto_effort_score` — an LLM-generated estimate based on the diff, title, and apparent intent. Computed by a background classifier worker. Locked to the discrete tier values {0.1, 0.3, 0.5, 0.7, 0.9}.
+2. `effort_score` — an optional manual override by an admin, using the same five tier values.
+
+The displayed effort is `COALESCE(effort_score, auto_effort_score, 0)` — manual override wins, then LLM, then zero.
+
+The LLM rubric is intentionally LOC-blind. Two PRs of the same line count can have very different Effort Scores if one is a copy-paste config update and the other is a careful algorithmic change.
+
+---
+
+## How GitKraken Insights computes Output Score
+
+```
+Output Score (per developer)
+  = SUM(PR effort)
+  + DCWeight     × SUM(DC effort)
+  + ReviewWeight × SUM(reviewed-PR effort)
+
+Output Score (per team)
+  = team total / active team developers
+```
+
+The three terms are:
+
+* **PR effort** — the developer's own merged PRs in the window. Each PR's effort is `COALESCE(effort_score, auto_effort_score, 0)`.
+* **DC effort** — the developer's direct commits in the window, weighted by `DCWeight` (default 0.5). Settable per-org as `direct_commit_weight`.
+* **Reviewed-PR effort** — the effort of PRs the developer formally reviewed (approved or requested changes), weighted by `ReviewWeight` (default 0.5). Settable per-org as `review_weight`. Set to 0 to disable the review-credit term entirely.
+
+When "Exclude Chore from Output Score" is on (the default), Chore-category items are subtracted from the effort sums — but **PR and commit counts shown in the cell stay raw**, always reflecting true shipping volume.
+
+When the score is rate-normalized for AI Tier (Output Norm), the per-dev sum is divided by working weeks in the window and compared to the org P90 rate. The cohort and benchmark scope widen automatically for sub-week windows so the rate still has meaningful resolution.
+
+---
+
+## Read this family
+
+Three habits:
+
+1. **Read Output Score alongside Adoption Score.** High Output + low Adoption = the team ships well without AI (a baseline). High Output + high Adoption = AI is paying off. Low Output + high Adoption = adoption is happening but value isn't.
+2. **Read team Output Score per active developer, not in absolute totals.** A team of 12 will always out-ship a team of 4. The per-dev rate is the apples-to-apples comparison.
+3. **Don't read raw PR count when effort varies.** Use Output Score when comparing developers or teams; use Throughput when comparing _the same team over time_ (where effort distribution is roughly constant).
+
+---
+
+## Where this family shows up
+
+* **/ai-adoption/developers** — Output Score column, with a clickable opened/merged/direct breakdown that drills into the PR panel.
+* **/ai-adoption/teams** — Output Score per active developer column.
+* **/ai-adoption/ai-tools-comparison** — cohort comparisons use Output Score as a key metric.
+* **/ai-adoption/capex** — Output Score with CapEx / OpEx categorization for the capitalization split.
+* **/ai-adoption/data-explorer** — per-PR and per-commit Effort Score visible in the underlying data.
+
+---
+
+## Output Score
+
+> _Effort-weighted shipping rate per developer or per team. Sums the complexity of every merged PR, direct commit, and formally reviewed PR in the window, weighting commits and reviews at half the rate of authored PRs by default._
+
+**Family:** Output & Throughput · **Cadence:** Window-based · **Where it appears:** /ai-adoption/developers, /ai-adoption/teams, /ai-adoption/ai-tools-comparison, /ai-adoption/capex
+
+### At a glance
+
+Output Score replaces the older "Velocity" count on the developer table with a metric that scales with the _work_, not the _count_. Every merged PR and every direct commit carries an Effort Score (0.1 to 0.9, five discrete tiers). Output Score sums the effort across the window and credits reviewers for the PRs they formally reviewed — so a developer shipping one big architectural PR can match a developer shipping ten small fixes, and a senior who spent the window unblocking reviews still appears as a contributor.
+
+### Formula
+
+```
+Output Score (per developer)
+  = SUM(PR effort)
+  + DCWeight     × SUM(DC effort)
+  + ReviewWeight × SUM(reviewed-PR effort)
+
+Output Score (per team)
+  = team total / active team developers
+```
+
+Where:
+
+* **PR effort** = `COALESCE(effort_score, auto_effort_score, 0)` summed over PRs the developer authored and merged in the window.
+* **DC effort** = same COALESCE, summed over direct commits the developer authored in the window.
+* **Reviewed-PR effort** = same COALESCE, summed over PRs where the developer left a formal review (state `APPROVED` or `CHANGES_REQUESTED`). Each PR counts once per reviewer.
+* **DCWeight** = Direct Commit Weight setting (`direct_commit_weight`; default 0.5; range 0–1).
+* **ReviewWeight** = Review Weight setting (`review_weight`; default 0.5; range 0–1). Set to 0 to disable the review-credit term entirely.
+* **Chore filtering** — when "Exclude Chore from Output Score" is on (default), Chore-category items drop out of the effort sums (but not the displayed counts).
+
+### How GitKraken Insights calculates it
+
+**Effort scores.** Every merged PR and every direct commit gets an Effort Score between 0.1 and 0.9 in five discrete tiers:
+
+| Score | Tier | Roughly |
+| --- | --- | --- |
+| 0.1 | Trivial | Typo, formatting, dependency bump |
+| 0.3 | Light | Small bug fix, simple test addition |
+| 0.5 | Moderate | Standard feature work, focused refactor |
+| 0.7 | Substantial | Multi-component feature, non-trivial design |
+| 0.9 | Deep | Architectural change, major migration |
+
+Effort comes from an LLM classifier (`auto_effort_score`) and can be manually overridden (`effort_score`). The displayed value is the COALESCE of both.
+
+**Per-developer sum.** For each developer in the window:
+
+1. Sum effort across their authored merged PRs (drafts and bots excluded; optionally Chore-excluded).
+2. Sum effort across their authored direct commits (bots and empty commits excluded; optionally Chore-excluded).
+3. Sum effort across PRs they formally reviewed (state `APPROVED` or `CHANGES_REQUESTED`; the same PR can credit multiple reviewers).
+4. Multiply DC sum by `DCWeight` and review sum by `ReviewWeight`.
+5. Add the three terms.
+
+**Team aggregate.** For team rows on /ai-adoption/teams, the score is the team total divided by the count of active developers on the team. This per-active-dev rate is what makes team scores comparable across team sizes.
+
+**The Chore asymmetry.** When the "Exclude Chore" toggle is on (default), Chore-category items are excluded from the **effort sums** — but the **counts shown in the cell stay raw**. So a developer who shipped 5 PRs and 12 direct commits will always show "5 PRs · 12 direct" in the breakdown, even if half were chores. This asymmetry exists so developers whose window happened to be mostly chores don't disappear from the developer table.
+
+**Sub-week windows.** For windows shorter than 7 days, the per-dev divisor uses per-row working weeks floored at a minimum, and the org P90 benchmark widens to a trailing 7-day cohort so the rate keeps meaningful resolution. Output Score itself is a raw sum and is unaffected by window length; the per-week rate-normalized variant (**Output Norm**, used by AI Tier) is what handles this widening.
+
+**NaN guard.** If any input to the formula is NaN, Output Score returns 0.
+
+### Why it matters
+
+Output Score is the dashboard's answer to the chronic problem that raw PR counts mislead. A team that shipped one 0.9-effort architectural PR and a team that shipped nine 0.1-effort lint fixes should not score the same on shipping. Output Score puts them on a like-for-like footing.
+
+The review-credit term matters for the same reason. A senior engineer who spent the window doing high-quality reviews on substantive PRs has produced real value; the older Velocity metric ignored that work entirely.
+
+Output Score also threads cleanly into the [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) composite. Normalized to org P90 and scaled by Maturity Factor (we call that derived value **Output Norm**), it becomes the "shipping" leg of the composite alongside Adoption and Agentic.
+
+For leaders, the most useful reading is **Output Score over time alongside Adoption Score over time**. AI rollouts almost always show Adoption rising first, then Output rising 4–12 weeks later.
+
+### How to read it
+
+Output Score is a sum, not a rate, so absolute values depend on window length and team size. Some rough reads at the per-developer level for a 14-day window:
+
+| Value | Read it as |
+| --- | --- |
+| **≥ 10** | High — multiple substantial-or-deeper PRs/commits/reviews |
+| **4 – 9** | Solid — typical shipping pattern for an engaged developer |
+| **1 – 3** | Light — small contributions, possibly maintenance work |
+| **< 1** | Minimal — investigation worthwhile (PTO? big WIP PR not yet merged? infrastructure work?) |
+
+For teams, the per-active-dev rate is what to compare. A team averaging Output Score 7 per dev across a 14-day window is in good shape.
+
+### Where it appears
+
+* **/ai-adoption/developers** — main Output Score column. The cell breakdown reads "X opened · Y merged · Z direct" and is clickable.
+* **/ai-adoption/teams** — Output Score per active developer column, sortable, with team aggregates.
+* **/ai-adoption/ai-tools-comparison** — cohort comparison uses Output Score as a key metric.
+* **/ai-adoption/capex** — Output Score with CapEx vs OpEx classification for the capitalization grid.
+
+<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns." Export to _images/ and add the figure here. -->
+
+### Settings that affect it
+
+* [**Direct Commit Weight**](/gk-insights/ai-adoption/ai-adoption-settings#direct-commit-weight) — scales DC contribution (default 0.5).
+* [**Review Weight**](/gk-insights/ai-adoption/ai-adoption-settings) — scales review-credit contribution (default 0.5). Set to 0 to disable the review-credit term.
+* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption/ai-adoption-settings#exclude-chore-from-output-score) — strips Chore effort from the sums (default on).
+* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — does _not_ affect raw Output Score, but does affect **Output Norm** (the variant that feeds into AI Tier).
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Effort Score](#effort-score-complexity) | The per-PR / per-commit weights that Output Score sums over. |
+| [Throughput](#throughput) | Raw merged PR count. Use for same-team trend reading. Output Score is for cross-team comparison. |
+| [Direct Commits](#direct-commits) | The DC term of the formula. |
+| [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) | Output Norm is the Output leg of the composite. |
+| [CapEx / OpEx Split](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#capex--opex-split) | Categorizes the same effort sums for capitalization accounting. |
+
+### How to improve it
+
+* **Right-size PRs.** A team consistently shipping 0.1–0.3 effort PRs is over-fragmenting.
+* **Calibrate effort scores.** If the LLM-assigned `auto_effort_score` is consistently wrong for your team's domain, have a senior engineer override the most miscategorized PRs.
+* **Audit Chore exclusion behavior.** On most teams the default reflects the right definition of "real output." For an SRE team where dependency upgrades _are_ the job, turn it off.
+* **Track Output trajectory, not the absolute number.** Output Score that climbed from 4 → 8 per dev over a quarter is a stronger signal than a static 9 from a team that has been at 9 for a year.
+* **Pair Output review with WIP review.** A team with low Output may have a lot of work _in progress_ that hasn't merged.
+
+### Limitations and gotchas
+
+* **Effort is an LLM estimate, not a measurement.** Manual overrides exist for the most miscategorized cases.
+* **The score is a sum, so window length matters.** A 14-day Output Score and a 90-day Output Score are not directly comparable.
+* **Chore filtering changes the score, not the counts.** This is intentional but trips people up.
+* **Direct Commit Weight or Review Weight at 0 hides that term entirely from the score.**
+* **Bots and drafts are excluded.**
+
+### FAQ
+
+**Q: Why was Velocity replaced with Output Score?**
+A: Velocity treated all PRs as equal-weight and ignored review work. That worked when PRs were uniform in size and scope. It stopped working as AI tooling enabled developers to ship dramatically larger changes. Output Score scales with effort, not count, and credits reviewers for substantive review work.
+
+**Q: How is Effort Score assigned?**
+A: An LLM classifier worker reads each PR or commit diff and assigns one of five effort tiers. The rubric ignores LOC and focuses on the change's apparent scope, intent, and complexity. See [Effort Score](#effort-score-complexity).
+
+**Q: Why is my Output Score 0 even though I shipped a big PR?**
+A: Three common causes: (1) the PR's `auto_effort_score` hasn't been computed yet, (2) the PR's category is Chore and the "Exclude Chore" toggle is on, or (3) the PR merged outside the window you selected.
+
+**Q: Why are direct commits and reviews weighted lower than authored PRs?**
+A: Empirically, direct commits trend toward smaller, less-reviewed work, and a single review takes less effort than authoring the same PR. The 0.5 defaults reflect those averages. Tune via [Direct Commit Weight](/gk-insights/ai-adoption/ai-adoption-settings#direct-commit-weight) and [Review Weight](/gk-insights/ai-adoption/ai-adoption-settings).
+
+**Q: Can I see what effort score a specific PR got?**
+A: Yes. /ai-adoption/data-explorer → PRs tab shows the Effort column for every PR, sortable.
+
+---
+
+## Throughput
+
+> _Number of merged PRs in the window, expressed per week per developer for cross-team comparison._
+
+**Family:** Output & Throughput · **Cadence:** Window-based · **Where it appears:** /ai-adoption/executive, /ai-adoption/ai-tools-comparison, /ai-adoption/ai-impact
+
+### At a glance
+
+Throughput is the raw count metric — how many PRs your team merged. It is the simpler, older sibling of [Output Score](#output-score). Output Score is generally a better metric for cross-team or cross-window comparison because it weights for effort. Throughput is better when you want a clean count over time _for the same team_ (where effort distribution is roughly constant) or when you need a quick gut check.
+
+### Formula
+
+```
+Throughput (per active dev per week) = merged PRs / active developers / weeks in window
+Throughput (team total)              = SUM(merged PRs in window)
+```
+
+Drafts and bot-authored PRs are excluded.
+
+### How GitKraken Insights calculates it
+
+**Step 1.** Count merged PRs in the window. A PR is "in the window" if its `merged_at` timestamp falls within `[from, to)`. Drafts are excluded. PRs whose author GitHub login matches a bot pattern (e.g. `*[bot]`) are excluded.
+
+**Step 2.** For team-level views, divide by the count of active developers and by the number of weeks in the window. The result is PRs per active dev per week — the comparison-ready rate.
+
+**Step 3.** Per-developer Throughput is the raw count of that developer's merged PRs in the window. The /ai-adoption/developers cell shows it as a clickable breakdown (X opened · Y merged · Z direct); clicking opens the drill-down sheet.
+
+**Who counts as "active."** An active developer for the window has `is_active = true`, was not fully on PTO across the window, and contributed at least one merged PR, direct commit, or formal review.
+
+### Why it matters
+
+Two things Throughput tells you that Output Score doesn't:
+
+1. **How many distinct things shipped.** If your team's count drops while Output Score stays steady, you are shipping fewer-but-bigger PRs. That can be a good thing (right-sizing) or a bad thing (PRs growing because review queues are slow). Throughput is the signal.
+2. **A quick gut check.** Output Score requires Effort Score to be assigned, which requires the LLM classifier to have run. Throughput is computable instantly from any window of PR data.
+
+### How to read it
+
+| Per active dev per week | Read it as |
+| --- | --- |
+| **≥ 4** | High — typical for teams shipping many small focused PRs |
+| **2 – 3.9** | Solid — typical mainstream pattern |
+| **1 – 1.9** | Low — investigation worthwhile (big PRs in flight? review bottleneck? infra work?) |
+| **< 1** | Minimal — probably either a stalled team or a deep-work team that is mid-feature |
+
+The "right" number depends on PR size discipline. A team shipping 0.5-effort PRs comfortably runs at 4 per dev per week. A team shipping 0.9-effort PRs may live at 1 per dev per week and be just as effective.
+
+### Where it appears
+
+* **/ai-adoption/executive** — Throughput as one of the headline trend lines.
+* **/ai-adoption/ai-tools-comparison** — cohort comparisons display Throughput alongside Output Score.
+* **/ai-adoption/ai-impact** — PR Volume trends in the System Metrics view.
+
+### Settings that affect it
+
+None. Throughput is a raw count — no admin knobs change it. If you want effort-weighted shipping with knobs, see [Output Score](#output-score).
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Output Score](#output-score) | The effort-weighted version of the same shipping activity. |
+| [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) | The "how fast" pair to Throughput's "how many." Read them together. |
+| [WIP](/gk-insights/ai-adoption/ai-adoption-flow-metrics#work-in-progress-wip) | Number of currently-open PRs. Throughput is the _outflow_; WIP is the _backlog_. |
+| Deployment Frequency | DORA's release-based sibling — same concept, counted from release events instead of merges. |
+
+### How to improve it
+
+* **Right-size PRs.** Teams shipping fewer-but-huge PRs often have low Throughput. The fix is usually upstream: smaller, more frequent merges. Track via Cycle Time alongside Throughput.
+* **Clear stale open PRs.** A high WIP with low Throughput is the classic review-bottleneck pattern. Walk the oldest open PRs each week.
+* **Reduce review cycles.** If every PR averages 2+ "changes requested" rounds, Throughput stalls. See [Review Cycles](/gk-insights/ai-adoption/ai-adoption-flow-metrics#review-cycles).
+
+### Limitations and gotchas
+
+* **Raw counts are misleading for cross-team comparison.** A team merging 20 0.1-effort docs PRs per week looks more productive than a team merging 3 0.9-effort migration PRs per week. Use Output Score instead when comparing.
+* **Throughput drops during long features.** Teams working on multi-week initiatives may legitimately show low Throughput. Pair with WIP to distinguish "stuck" from "deep-work."
+* **Bots are excluded.** Dependabot, security bots, and similar tools don't inflate Throughput.
+
+### FAQ
+
+**Q: Why two metrics for shipping (Throughput + Output Score)?**
+A: They answer different questions. Throughput is "how many?" Output Score is "how much real work?" Both are useful; neither alone is sufficient.
+
+**Q: A team has high Throughput but low Output Score. What does that mean?**
+A: They are shipping many small things. That is fine for some work (UI iteration, bug fixes) and a warning sign for others (a backend team should usually have substantial PRs in the mix).
+
+**Q: Does the count include PRs that were merged but reverted?**
+A: Yes. Reverts are tracked as a separate signal but don't subtract from Throughput in the standard view.
+
+---
+
+## Direct Commits
+
+> _Commits pushed straight to a default branch without a PR. Counted alongside merged PRs as shipped work, with a configurable weight._
+
+**Family:** Output & Throughput · **Cadence:** Window-based · **Where it appears:** /ai-adoption/developers, /ai-adoption/teams, /ai-adoption/capex, /ai-adoption/data-explorer
+
+### At a glance
+
+Not all shipped work goes through a pull request. Some teams (especially those running Trunk-Based Development) push directly to `main` or `master` for hotfixes, dependency upgrades, or any change small enough to bypass review. The Direct Commits column captures that activity so developers who do real work this way still appear in the dashboard's output metrics.
+
+Each direct commit carries an Effort Score (0.1 to 0.9) just like a PR. It is added to Output Score, scaled down by the **Direct Commit Weight** setting (default 0.5).
+
+### Formula
+
+```
+Direct Commit contribution to Output Score = DCWeight × SUM(DC effort)
+
+  DC effort = COALESCE(effort_score, auto_effort_score, 0) per commit
+  DCWeight  = Direct Commit Weight setting (default 0.5)
+```
+
+### How GitKraken Insights calculates it
+
+**What counts as a direct commit.** A commit pushed to a default branch (`main`, `master`, or the repo's configured default) whose **author** is one of your roster developers and whose author is not a bot (login matching `*[bot]`). Empty commits are excluded.
+
+**Effort Score.** Every direct commit gets an Effort Score from the LLM classifier (`auto_effort_score`) using the same five-tier rubric as PRs. Manual overrides are supported (`effort_score`). The displayed value is `COALESCE(effort_score, auto_effort_score, 0)`.
+
+**Aggregation.** Per-developer direct-commit effort sums separately from PR effort. The two sums are then combined in the Output Score formula with DCWeight applied to the DC sum.
+
+**Chore handling.** If the "Exclude Chore from Output Score" toggle is on (default), Chore-category direct commits are removed from the effort sum but their count is preserved in the displayed breakdown.
+
+### Why it matters
+
+Direct commits used to disappear from productivity dashboards entirely because the dashboards assumed every shipped change went through a PR. That made developers running TBD workflows look low-output even when they were shipping meaningfully. By counting direct commits — weighted appropriately — we close that gap.
+
+The 0.5 default reflects empirical reality: direct commits skew smaller and less-reviewed than PRs. Treating them at 1:1 with PRs would over-credit pure direct-commit workflows; treating them at 0 would erase a legitimate work pattern.
+
+### How to read it
+
+Don't read direct commits in isolation — read them as part of the Output Score breakdown. The /ai-adoption/developers cell shows the count as part of "X opened · Y merged · Z direct."
+
+| Pattern | What it suggests |
+| --- | --- |
+| **Most output is PRs** | Standard PR-based workflow |
+| **Roughly equal PR and direct work** | Mixed workflow, often platform or SRE teams |
+| **Mostly direct commits** | Trunk-Based Development, or a hotfix-heavy week |
+| **Direct commits rising sharply** | Investigate — could be legit TBD adoption or could be PRs being bypassed |
+
+### Where it appears
+
+* **/ai-adoption/developers** — Direct Commits count in the Output Score breakdown cell.
+* **/ai-adoption/teams** — per-team direct-commit counts inside the developer sub-table.
+* **/ai-adoption/capex** — direct commits carry CapEx vs OpEx categorization the same as PRs.
+* **/ai-adoption/data-explorer** — Direct Commits tab shows every commit with full metadata.
+
+### Settings that affect it
+
+* [**Direct Commit Weight**](/gk-insights/ai-adoption/ai-adoption-settings#direct-commit-weight) — the multiplier. 0 = ignore direct commits in Output. 1 = treat equally to PRs.
+* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption/ai-adoption-settings#exclude-chore-from-output-score) — affects whether Chore-category direct commits contribute to the effort sum.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Output Score](#output-score) | Direct commits are the DC term of the formula. |
+| [Effort Score](#effort-score-complexity) | Each direct commit gets one. |
+| [Throughput](#throughput) | Throughput counts PRs only; direct commits live in this metric. |
+
+### How to use the weight
+
+* **Lower it (toward 0)** if your team uses direct commits primarily for trivial maintenance and you don't want them inflating Output Score.
+* **Raise it (toward 1)** if your team runs TBD and most substantive work goes via direct commit.
+* **Leave at 0.5** if you have a mixed workflow — this is the empirically-tuned default.
+
+### Limitations and gotchas
+
+* **Bot commits are excluded.** Dependabot's auto-merged dependency commits, security-bot patches, and similar don't contribute.
+* **Force-pushed history is whatever GitHub reports last.** If a developer rewrites direct-commit history via force-push, the displayed count reflects post-rewrite history.
+* **Co-authored commits attribute to the primary author.** GitHub's Co-authored-by trailer doesn't fan out into multiple developer scores.
+* **The classifier may lag.** A direct commit pushed in the last hour may not have an Effort Score yet, so its contribution to Output Score is temporarily 0.
+
+### FAQ
+
+**Q: Why are direct commits weighted lower than PRs?**
+A: Most direct commits are smaller and less-reviewed than typical PRs. The 0.5 default reflects that. If your team's direct-commit work is substantive, raise the weight.
+
+**Q: A developer's commits aren't showing up. Why?**
+A: Most likely their `is_active` is false, or their GitHub login on the roster doesn't match the actual commit author. Check Settings → Developers.
+
+**Q: Do reverts count as direct commits?**
+A: Yes — they are commits pushed to the default branch, so they appear in the count. The Effort Score classifier usually labels them low-effort.
+
+---
+
+## Effort Score (Complexity)
+
+> _A 0.1–0.9 estimate of how complex each PR and direct commit is. Five tiers, LLM-generated, manually overrideable. Powers Output Score._
+
+**Family:** Output & Throughput · **Cadence:** Per PR / per commit, continuously classified · **Where it appears:** /ai-adoption/data-explorer, drill-down tables, /ai-adoption/developers (via Output Score)
+
+### At a glance
+
+Every merged PR and every direct commit in GitKraken Insights carries an Effort Score — a number between 0.1 and 0.9 representing the change's apparent complexity. There are five discrete tiers (Trivial / Light / Moderate / Substantial / Deep). The score is assigned by an LLM classifier that reads the diff, the title, and the PR description; it ignores raw line count.
+
+Effort Scores are the per-item weights that feed [Output Score](#output-score). They are also exposed directly in tables and drill-downs as a sortable "Complexity" pill.
+
+### The rubric
+
+| Score | Tier | Examples |
+| --- | --- | --- |
+| **0.1** | Trivial | Typo fix, formatting-only changes, dependency version bump, lint config tweak |
+| **0.3** | Light | Small bug fix, simple test addition, copy update with no logic, isolated config change |
+| **0.5** | Moderate | Standard feature work, contained refactor, new endpoint, focused integration |
+| **0.7** | Substantial | Multi-component feature, non-trivial design decision, cross-module refactor, schema migration |
+| **0.9** | Deep | Architectural change, major migration, deep algorithmic work, new system bootstrap |
+
+The rubric is intentionally **LOC-blind**. Two PRs of identical line count can have very different Effort Scores if one is a copy-paste config update and the other is a careful algorithmic change. A 50-line PR can be 0.9 (deep algorithmic) while a 2,000-line PR can be 0.1 (auto-generated dep bump).
+
+### How GitKraken Insights calculates it
+
+**Step 1 — auto_effort_score (LLM).** A background worker reads each PR or commit through the classifier. The classifier looks at the diff (what files, what changed), the PR or commit title, the PR description (if any), and the branch name (signals like `feat/`, `fix/`, `chore/`).
+
+It outputs one of the five tier values. The classifier is rubric-versioned (`EffortScoreRubricVersion`), so when the rubric is updated, the system knows to reclassify.
+
+**Step 2 — effort_score (manual override).** Admins can override `auto_effort_score` with their own assessment from /ai-adoption/data-explorer. Manual overrides win the COALESCE.
+
+**Step 3 — the displayed value.** Every read uses `COALESCE(effort_score, auto_effort_score, 0)`. So manual > LLM > zero.
+
+**The effort pass is independent of categorization.** Effort runs on its own state gate, decoupled from `classification_status`. Category overrides (e.g. marking a PR as Chore) don't blank out effort, and rubric bumps don't blank out the category.
+
+**Retry behavior.** The effort classifier retries up to three times per PR on transient failures. If all three fail, the PR is left without an effort score until the next refresh sweep.
+
+### Why it matters
+
+Effort Score is the single mechanic that lets Output Score work. Without it, the dashboard would be back to raw PR counts and the well-known "Velocity is misleading" problem. With it: a senior IC shipping one 0.9-effort PR matches a junior shipping nine 0.1-effort PRs in Output Score; cross-team comparison stops penalizing teams whose work is structurally larger-grained; AI-enabled "one developer shipping 3× more substantive work" patterns show up in Output Score where they wouldn't in raw counts.
+
+Effort Score is also a useful standalone metric. Look at the distribution across a team's PRs — a team that ships only 0.1–0.3 effort is probably over-fragmenting. A team that ships only 0.7–0.9 effort is probably not breaking work down enough for clean review.
+
+### Where it appears
+
+* **/ai-adoption/data-explorer** — PRs tab and Direct Commits tab. Sortable "Effort" column with a five-tier pill (Trivial → Deep).
+* **PR drill-down tables** — when you click into a cycle-time or PR-volume chart point, the resulting table has an Effort column.
+* **/ai-adoption/developers** — feeds into Output Score; not displayed per-PR in the developer table.
+* **/ai-adoption/teams** — feeds into Output Score; not displayed per-PR in the team table.
+
+### Settings that affect it
+
+There are no admin-configurable settings for Effort Score directly. The rubric is versioned in code; rubric changes are rolled out via a coordinated reclassification pass. Manual override exists per item from /ai-adoption/data-explorer — that is effectively the per-PR setting.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Output Score](#output-score) | Sums Effort Score over a developer's merged PRs, direct commits, and formal reviews. |
+| [Direct Commits](#direct-commits) | Each direct commit gets an Effort Score. |
+| [Throughput](#throughput) | The count-only sibling. Throughput doesn't use Effort. |
+
+### How to use Effort Scores
+
+* **Audit miscategorized PRs.** Once a quarter, open /ai-adoption/data-explorer sorted by Effort descending. Skim the 0.9s. Are they actually deep work, or is the LLM over-scoring something? Same in reverse with 0.1s — anything that looks substantive at 0.1 deserves an override.
+* **Watch the team distribution.** /ai-adoption/data-explorer filtered to a team shows the Effort histogram. Heavy left-skew (everything 0.1–0.3) suggests over-fragmentation. Heavy right-skew (everything 0.7+) suggests undersized review batches.
+* **Don't game it.** Tempting as it is to manually mark every PR as 0.9 to inflate Output Score, this defeats the cross-team comparison. The defaults are calibrated; if your team's actual work is mostly 0.5, the score will reflect that, and that is fine.
+
+### Limitations and gotchas
+
+* **It is an LLM estimate, not a measurement.** Expect 70–80% directional accuracy; the rest is rubric-edge cases.
+* **The classifier doesn't see review feedback.** A PR that _looked_ like 0.3 work but actually exposed an architectural issue during review still scores 0.3. The effort is the work as merged, not the discussion that produced it.
+* **Bot PRs aren't classified.** They are excluded from Output Score anyway.
+* **Rubric versioning means old PRs may rescore.** When the rubric is bumped (rare), a refresh sweep reclassifies recent PRs.
+
+### FAQ
+
+**Q: How do I override a wrong score?**
+A: /ai-adoption/data-explorer → PRs tab → click the row → edit the Effort field. Saves immediately; takes effect on the next Output Score recomputation.
+
+**Q: Why discrete tiers instead of a continuous 0–1 score?**
+A: Discrete tiers reduce noise (the LLM can pick between 5 buckets more consistently than along a continuous slider) and they make manual overrides intuitive.
+
+**Q: Is 0.9 the maximum? Can a really gnarly PR be 1.0?**
+A: 0.9 is the maximum tier. We cap there because the linear sum (Output Score) becomes too sensitive to individual high-effort outliers above that.
+
+**Q: Why ignore LOC?**
+A: Lines changed correlates poorly with effort. A 5,000-line PR can be a near-trivial mechanical refactor; a 30-line PR can be a deep algorithmic change. Including LOC in the rubric made the score worse, not better, in our calibration.
+
+---
+
+---
+title: Flow & Cycle Time Metrics in GitKraken Insights
+description: Learn about Flow & Cycle Time metrics in GitKraken Insights, including Cycle Time, Review Cycles, First-Pass Rate, and Work In Progress (WIP).
+product: GitKraken Insights
+content_type: reference
+audience: all
+plan_required: GitKraken Insights
+integrations: [GitHub, GitLab, GitLab Self-Hosted, Bitbucket, Azure DevOps, Jira Cloud]
+status: GA
+taxonomy:
+    category: gk-insights
+---
+<kbd>Last updated: June 2026</kbd>
+
+<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "Change Failure Rate (CFR)" and "Lead Time for Changes" (DORA & Quality family), which have no pages in this new section yet. Those links were converted to plain text. -->
+<!-- FLAG FOR HUMAN REVIEW: The Cycle Time and WIP sections include screenshots in the source Confluence pages. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
+
+This family answers: **how fast does work move through your system, and where does it get stuck?**
+
+Where the Output family asks "how much shipped?", Flow asks "how smooth was the journey from idea to merge?" These are the operational metrics — the ones team leads watch weekly and engineering leaders read for systemic patterns.
+
+---
+
+## The metrics
+
+| Metric | What it captures |
+| --- | --- |
+| [**Cycle Time**](#cycle-time) | Total hours from first commit to merge (or deploy). The headline flow metric. Broken into four phases: Coding, Pickup, Review, Deploy. |
+| [**Review Cycles**](#review-cycles) | Average rounds of "changes requested" per PR before merge. A signal of PR size and review fit. |
+| [**First-Pass Rate**](#first-pass-rate) | Percent of PRs merged with zero "changes requested" reviews. The clean-merge rate. |
+| [**WIP**](#work-in-progress-wip) | Number of currently open PRs. The work-in-progress backlog. |
+
+---
+
+## The four cycle phases
+
+When you see Cycle Time broken down, these are the phases:
+
+| Phase | What it measures |
+| --- | --- |
+| **Coding** | First commit to PR open. The "writing the code" time. |
+| **Pickup** | PR open to first review activity. The "PR sitting unattended" time. |
+| **Review** | First review to last review-related event. The "back and forth" time. |
+| **Deploy** | Merge to production deploy (only populated when release detection is configured for the repo). |
+
+Reading Cycle Time _by phase_ is almost always more useful than reading the total. A 5-day Cycle Time that is 80% Pickup tells you something very different than a 5-day Cycle Time that is 80% Coding.
+
+---
+
+## Read this family
+
+Three common patterns:
+
+1. **Long Pickup phase** → review queue is over-committed. Symptoms: WIP rising, fewer reviewers active. Fix: review-clearing ritual, reviewer rotation.
+2. **Long Review phase** → PRs too big, or reviewers asking for too many changes. Symptoms: high Review Cycles, low First-Pass Rate. Fix: split PRs, write better PR descriptions.
+3. **Long Coding phase** → could be deep work (fine) or stalled work (not fine). Cross-check with WIP and developer-level activity to tell which.
+
+---
+
+## Where this family shows up
+
+* **/ai-adoption/ai-impact** — Cycle Time chart with phase breakdown, Totals/Trends toggle, and the Cycle-Time-by-AI-Tier view.
+* **/ai-adoption/teams** — Cycle Time column on the team table; expanded rows show the trend and phase breakdown.
+* **/ai-adoption/executive** — Cycle Time as a hero KPI and trend line.
+* **/ai-adoption/developers** — per-developer cycle time in the expanded developer detail.
+* **PR drill-down tables** — clicking into a Cycle Time or PR Volume chart point opens a table with per-PR Cycle Time, Review Cycles, and Effort columns.
+
+---
+
+## A note on the "Include JIRA start time" toggle
+
+When the "Include JIRA start time in Coding phase" toggle is on, the Coding phase extends backward to include the time between the JIRA issue's in-progress transition and the first commit. This gives a more complete picture of "time from commitment to ship" — but it requires JIRA integration and a consistent in-progress workflow.
+
+The toggle is on by default in the app. If your team doesn't use JIRA, or your in-progress workflow is inconsistent, turn it off so Cycle Time starts at first commit instead.
+
+---
+
+## Cycle Time
+
+> _Total hours from a PR's first commit to its merge (and optionally to deploy). The headline operational health metric — how fast work flows from idea to shipped._
+
+**Family:** Flow & Cycle Time · **Cadence:** Per PR, aggregated for views · **Where it appears:** /ai-adoption/ai-impact, /ai-adoption/teams, /ai-adoption/executive, /ai-adoption/developers
+
+### At a glance
+
+Cycle Time is the single most informative operational metric in the dashboard. It answers "how long does it take a piece of work to go from first keystroke to merged?" Lower is generally better — but the _composition_ of the time (which phase dominates) matters more than the total. A 5-day Cycle Time made of 1 day Coding + 4 days Pickup tells a very different story than one made of 4 days Coding + 1 day Pickup. The phase breakdown is the part to read first.
+
+### Formula
+
+```
+Cycle Time = Coding + Pickup + Review + Deploy
+
+  Coding  = first commit → PR open
+  Pickup  = PR open → first review activity
+  Review  = first review → last review event
+  Deploy  = merge → production deploy (if release detection is configured)
+```
+
+For a team or org view, Cycle Time is shown as an average (mean) across PRs in the window, with phase contributions visualized as a stacked bar or area.
+
+### How GitKraken Insights calculates it
+
+**The four phases.** Cycle Time is decomposed into four phases. Each PR's timestamps are computed and the phase durations are summed:
+
+1. **Coding** — from the PR's first commit (`first_commit_at`) to when the PR was opened (`opened_at`). Captures "writing the code before showing anyone."
+2. **Pickup** — from PR open to the first review-related event (first review comment, first approval, first changes-requested). Captures "PR is waiting for someone to look at it."
+3. **Review** — from the first review event to the last review event. Captures the back-and-forth time.
+4. **Deploy** — from `merged_at` to the production deploy timestamp. Only populated when release detection is configured for the repo. When release detection is not set up, the Deploy phase is omitted from the total rather than substituted with anything else.
+
+**The "Include JIRA start time" toggle.** When this toggle is on (the default in the app), the Coding phase extends backward to include the time between when a JIRA issue moved to In Progress and the first commit. This converts Cycle Time into "time from team-committed to shipped," which is the more meaningful business metric — but it requires consistent JIRA workflow discipline. Turn the toggle off if your team doesn't use JIRA or your in-progress workflow is inconsistent.
+
+**Aggregation.** For a team or org row, we average the phase durations across all PRs merged in the window. Drafts are excluded. Bot-authored PRs are excluded.
+
+**Outlier handling.** The metric does not trim outliers automatically. A PR that sat open for 90 days will heavily skew a 30-day average. The phase-breakdown views visualize the distribution so you can spot the long tail, and the median is shown on hover as a check against outlier-skewed means.
+
+### Why it matters
+
+Cycle Time is the dashboard's most reliable operational health signal because it integrates many smaller signals into one number:
+
+* Slow Cycle Time usually means slow review (Pickup phase) — your highest-leverage fix.
+* Sometimes it means PRs are too big (Review phase) — fix with size discipline.
+* Occasionally it means stalled work (Coding phase) — fix with WIP discipline.
+
+Cycle Time also correlates strongly with team morale. Developers who watch their PR sit open for three days disengage from the work and from the review process. Tight Cycle Time correlates with higher engagement, less work in flight, and more shipped iterations.
+
+For AI adoption analysis, Cycle Time is the metric most likely to show **adoption paying off in delivery**. AI tools reduce Coding phase first; they then enable smaller PRs which reduces Review phase. Watching Cycle Time trend down alongside Adoption Score trending up is the canonical "AI is delivering value" story.
+
+### How to read it
+
+Median industry numbers for typical web and services engineering teams:
+
+| Total Cycle Time | Read it as |
+| --- | --- |
+| **< 24 hours** | Elite — fast, lean teams with strong review discipline |
+| **1 – 2 days** | Strong — typical for high-performing engineering orgs |
+| **2 – 4 days** | Fair — common in larger orgs; usually has Pickup or Review opportunity |
+| **4 – 7 days** | Needs attention — investigate phase breakdown |
+| **> 7 days** | Stuck — review process broken, or PRs structurally too big |
+
+**Always read the phase breakdown** before drawing conclusions. The most common pattern in teams over three days is **Pickup dominates** — PRs sit waiting for review. The fix is almost always tighter review queue discipline, not faster coding.
+
+### Where it appears
+
+* **/ai-adoption/ai-impact** — two side-by-side Cycle Time cards: left = trend only, right = breakdown with dimension dropdown and Totals/Trends toggle. The Cycle-Time-by-AI-Tier view also lives here.
+* **/ai-adoption/teams** — Cycle Time column on the team table; expanded rows show the trend with phase breakdown.
+* **/ai-adoption/executive** — Cycle Time as one of the headline trend lines and a hero KPI.
+* **/ai-adoption/developers** — per-developer cycle time in the expanded developer detail.
+
+<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Cycle Time and PR Volume trends with phase breakdown." Export to _images/ and add the figure here. -->
+
+### Settings that affect it
+
+* **"Include JIRA start time" toggle** (on Cycle Time charts). Requires JIRA integration. Default: on.
+* **JIRA integration** (instance-level config) — without it, the JIRA-extended Coding phase is unavailable.
+* **Release detection** — without configured releases, the Deploy phase is omitted.
+
+No other admin settings affect Cycle Time. It is a measurement.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Review Cycles](#review-cycles) | The cause of long Review phase. Read together. |
+| [First-Pass Rate](#first-pass-rate) | Inversely correlated with Review phase length. |
+| [WIP](#work-in-progress-wip) | High WIP often causes high Pickup (reviewers overloaded). |
+| [Throughput](/gk-insights/ai-adoption/ai-adoption-output-metrics#throughput) | Outflow rate vs. how-long-each-takes. |
+| Lead Time for Changes | DORA's first-commit-to-deploy version. Similar but production-scoped. |
+
+### How to improve it
+
+Listed by leverage — start at the top:
+
+* **Establish a weekly review-clearing ritual.** Fifteen minutes per week to walk through the oldest open PRs. Decide: ship, give a deadline, or close. This single habit fixes the Pickup phase on most teams within 2–4 weeks.
+* **Right-size PRs.** Teams with high Cycle Time and high Review Cycles are over-batching. Aim for PRs that can be reviewed in 15 minutes.
+* **Reduce reviewer load.** A team with 6 developers and 25 open PRs has a reviewer problem, not a coder problem.
+* **Use AI to clean up small PRs.** Routine small PRs (formatting fixes, tests, docs) lend themselves to AI-assisted shipping. Moving the long tail of small work to AI-assisted flow can free reviewer time for substantive PRs.
+* **Set a Cycle Time target as a team.** A target like "median Cycle Time under 36 hours" gives the team a shared goal and makes the metric actionable rather than diagnostic.
+
+### Limitations and gotchas
+
+* **One outlier skews the mean badly.** A PR that sat open for 60 days will dominate a monthly Cycle Time average. Always cross-check with the median.
+* **Cycle Time can't see commits before the PR is opened that aren't on a tracked branch.** If a developer codes for three days on a local branch with no pushes, their Coding phase reads as \~0.
+* **JIRA-extended Coding requires discipline.** If your team marks issues "In Progress" inconsistently, the JIRA-extended Coding phase becomes noisy.
+* **Deploy phase is binary — present or absent.** Without release detection configured, the Deploy phase is just omitted.
+* **Bot PRs and drafts are excluded.** Dependabot's auto-merged dependency upgrades aren't pulling down the average.
+
+### FAQ
+
+**Q: Should I optimize toward "shortest possible Cycle Time"?**
+A: No. Push toward "predictable, low-variance Cycle Time." A team with a tight 36–48 hour distribution is healthier than a team with a wild range from 4 hours to 4 days, even if the second team's average is lower.
+
+**Q: Why does our team's Cycle Time look terrible the week before a release?**
+A: Pre-release weeks accumulate PRs that were held back for the release. They merge in a burst, but their Coding and Pickup phases stretched across the embargo. Normal artifact.
+
+**Q: My team's median is 18 hours but the mean is 72 hours. Which should I use?**
+A: Median tells you "what is typical." Mean tells you "what is the headline number including outliers." For leadership reports, lead with median; mention mean as a tail signal.
+
+**Q: How is Cycle Time different from Lead Time?**
+A: Cycle Time is first commit → merge. Lead Time (DORA) is first commit → production deploy.
+
+---
+
+## Review Cycles
+
+> _The average number of "changes requested" reviews a PR receives before it gets merged. Bucketed as 0 / 1 / 2 / 3+._
+
+**Family:** Flow & Cycle Time · **Cadence:** Per PR, aggregated · **Where it appears:** /ai-adoption/ai-impact, PR drill-down tables
+
+### At a glance
+
+Review Cycles counts how many rounds of "changes requested" each PR went through. A PR merged with zero changes-requested reviews has 0 cycles (a clean first-pass). One round of "please fix X" before approval is 1 cycle. Two rounds is 2. Three or more is 3+.
+
+It is one of the dashboard's better diagnostic metrics — a high cycle count is almost always either too-big PRs, unclear specs, or mismatched author and reviewer expectations. Each of those has a different fix.
+
+### Formula
+
+```
+Review Cycles per PR = number of CHANGES_REQUESTED reviews before merge
+
+Bucketed as 0 / 1 / 2 / 3+ for aggregate views
+```
+
+The PR record stores `approved_at` (the first APPROVED-review timestamp) and `review_cycles` (the count of CHANGES_REQUESTED reviews).
+
+### How GitKraken Insights calculates it
+
+For each merged PR, the backend counts reviews with state `CHANGES_REQUESTED` that occurred before the PR was merged. That count is stored on the PR record as `review_cycles`.
+
+For aggregate views (team-level, org-level), the metric is shown either as the mean number of cycles, or as the distribution across the four buckets (0 / 1 / 2 / 3+) as stacked bars or breakdown lines.
+
+The buckets are the more useful presentation — they show the _shape_ of the problem rather than just the average. A team averaging 1.0 cycles could be evenly distributed across the buckets or could be "everyone gets exactly 1 cycle." Those need different fixes.
+
+### Why it matters
+
+Review Cycles tells you about a few different problems at once:
+
+* **PR size.** Big PRs accumulate more reviewable surface area, more review feedback, more cycles. High cycles usually correlate with high effort scores.
+* **Spec clarity.** When developers don't have a clear spec, the review _becomes_ the spec. Cycles spike.
+* **Reviewer-author calibration.** A reviewer who reflexively requests changes on every PR will inflate cycles regardless of PR quality.
+* **Style guide drift.** PRs failing for inconsistent style or lint should not show up here — but if your team's automation isn't catching those, they will.
+
+Compared to Cycle Time, Review Cycles is more _causal_. Cycle Time tells you it took 5 days; Review Cycles tells you it took 5 days _because_ of three rounds of back-and-forth.
+
+### How to read it
+
+| Team average | Read it as |
+| --- | --- |
+| **< 0.5** | Strong — most PRs go through clean. Code quality at submission is high. |
+| **0.5 – 1.0** | Healthy — typical for orgs with good but not great PR discipline. |
+| **1.0 – 2.0** | Fair — every PR averages a round of revisions. Look at PR size and spec clarity. |
+| **> 2.0** | Needs attention — chronic back-and-forth. PRs are likely too big, or specs are too thin. |
+
+The distribution matters as much as the mean. A team with 60% at 0 cycles, 30% at 1, and 10% at 3+ has a small problem cohort. A team with 50% at 0, 30% at 1, 15% at 2, 5% at 3+ has the same mean but a worse tail.
+
+### Where it appears
+
+* **/ai-adoption/ai-impact** — Review Cycles bucketed breakdown is available as a dimension on Cycle Time and PR Volume charts.
+* **PR drill-down tables** — every PR drill-down has a Cycles column.
+
+### Settings that affect it
+
+None. Review Cycles is a measurement.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [First-Pass Rate](#first-pass-rate) | The "0 cycles" percentage, expressed as a positive metric. |
+| [Cycle Time](#cycle-time) | Long Review phase is usually high Review Cycles. |
+| [Effort Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#effort-score-complexity) | High-effort PRs tend to have more review cycles. Track together. |
+
+### How to improve it
+
+* **Split big PRs.** The single most effective intervention. PRs that take 15 minutes to review get 0 cycles. PRs that take 90 minutes to review get 3.
+* **Write better PR descriptions.** A PR with a clear "what / why / how to test" description gets approved faster than one with title only. AI-assisted PR descriptions are a low-effort win here.
+* **Tighten the spec before coding.** PRs that change scope during review are PRs that get cycles. Get spec alignment in the design stage, not the review stage.
+* **Calibrate reviewers.** If one reviewer's PRs always get more cycles than peers, have a quick conversation. Reviewer perfectionism is a fixable habit.
+* **Automate style enforcement.** Lint failures, formatting nits, and type errors should never be in a human review. If they are, your CI isn't catching them.
+
+### Limitations and gotchas
+
+* **Doesn't measure the _quality_ of feedback.** A PR with three cycles that resulted in genuinely better code is a healthy outcome; a PR with 0 cycles that shipped a bug is not. Use Review Cycles alongside CFR.
+* **Doesn't count dismissed reviews.** A "changes requested" that gets dismissed without action still counts as a cycle.
+* **A PR that bypasses formal review** (e.g. small fix from a senior IC, merged after a comment) shows as 0 cycles.
+
+### FAQ
+
+**Q: A team has high Review Cycles but low CFR. Are we just being too picky?**
+A: Possibly, but probably not. Thorough review catches real problems before they ship — high cycles + low CFR is the trade. The interesting question is whether the _time cost_ of those cycles outweighs the bug-prevention value.
+
+**Q: One developer's PRs have 4× the cycles of the team average. Is that a performance issue?**
+A: Maybe, but check the work first. PRs in unfamiliar domains, big refactors, or risky changes naturally accumulate review feedback.
+
+**Q: Does this count "approving but with suggestions" reviews?**
+A: No. Only formal CHANGES_REQUESTED reviews count.
+
+---
+
+## First-Pass Rate
+
+> _Percent of PRs merged with zero "changes requested" reviews. The clean-merge rate._
+
+**Family:** Flow & Cycle Time · **Cadence:** Per window, percent across all merged PRs · **Where it appears:** /ai-adoption/ai-impact
+
+### At a glance
+
+First-Pass Rate is the inverse of [Review Cycles](#review-cycles), expressed as the percentage of PRs that get merged without a single round of "please fix X." It is the cleanest signal in the dashboard for "is our code quality at submission high?" A high rate means developers are submitting work that is ready to ship. A low rate means either submissions are sloppy or reviews are nitpicky — the next step is to drill into Review Cycles to find out which.
+
+### Formula
+
+```
+First-Pass Rate = count(merged PRs with 0 review cycles) / count(merged PRs in window) × 100%
+```
+
+### How GitKraken Insights calculates it
+
+The backend counts merged PRs in the window. For each, it checks whether `review_cycles = 0` (no CHANGES_REQUESTED reviews before merge). The count of zero-cycle PRs is divided by the total and expressed as a percentage.
+
+Drafts and bot-authored PRs are excluded. Direct commits are excluded because they don't go through formal review.
+
+### Why it matters
+
+First-Pass Rate is one of the few metrics where the _direction_ is interpretable on its own without context. A higher rate is almost always better, with one exception (see "Limitations" below).
+
+It is especially valuable as a leading indicator for AI adoption ROI. When teams successfully integrate AI into their workflow, First-Pass Rate climbs — AI helps catch the small issues that would have triggered a review cycle (missing tests, naming inconsistencies, edge cases). Watching First-Pass Rate trend up alongside Adoption Score is one of the cleanest "AI is paying off" stories you can tell.
+
+### How to read it
+
+| Rate | Read it as |
+| --- | --- |
+| **75 – 100%** | Strong — most PRs ship clean. Code quality and review fit are aligned. |
+| **55 – 74%** | Healthy — typical for high-functioning engineering teams. |
+| **35 – 54%** | Fair — every other PR needs a revision round. Investigate PR size and spec clarity. |
+| **< 35%** | Needs attention — review is doing the heavy lifting of design or spec work. |
+
+**One nuance:** rates above \~85% can also signal _rubber-stamping_. If a team's First-Pass Rate is 95% _and_ CFR is rising, your reviewers may not be looking hard enough. Read First-Pass Rate alongside CFR.
+
+### Where it appears
+
+* **/ai-adoption/ai-impact** — available as a breakdown dimension on PR Volume charts.
+
+### Settings that affect it
+
+None. First-Pass Rate is a measurement.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Review Cycles](#review-cycles) | First-Pass Rate is "the % at 0 cycles" — same data, different framing. |
+| [Cycle Time](#cycle-time) | High First-Pass Rate tightens the Review phase. |
+| CFR | Always read together. High First-Pass + high CFR = rubber-stamping. |
+
+### How to improve it
+
+* **Shrink PR scope.** Smaller PRs ship clean more often. This is the same root-cause fix as for Review Cycles.
+* **Strengthen the pre-review checklist.** A simple PR template with "tests added? docs updated? changelog?" catches the trivial revisions before they reach a reviewer.
+* **Adopt AI-assisted self-review.** Have AI review your own PR before requesting human review. It catches the small stuff (typos, naming, missing tests) reliably.
+* **Calibrate reviewers as a team.** If half your team has 80% First-Pass Rate and half has 40%, the variance is the reviewer, not the code.
+
+### Limitations and gotchas
+
+* **High rates can mean rubber-stamping.** Always cross-check with CFR. If both are healthy, you have a great team. If First-Pass is high but CFR is rising, your reviewers are letting things through.
+* **Single-reviewer dynamics.** Teams where one or two developers do all the reviewing will have rates dominated by those reviewers' personalities, not by the broader team's quality.
+* **Trivial PRs inflate the rate.** A team that ships lots of formatting or dep-bump PRs will have high First-Pass Rate that doesn't reflect substantive work. Filter to Effort Score 0.3+ for a more meaningful read.
+
+### FAQ
+
+**Q: Is 100% First-Pass Rate a good thing?**
+A: Only if your CFR is also low. A team that _never_ requests changes is a team that is either preternaturally good or not reviewing. Probably the latter, statistically.
+
+**Q: A developer has 30% First-Pass Rate. Is that a performance issue?**
+A: Not on its own. They may be working on harder problems, more contested code areas, or under tighter spec ambiguity. Use it as a conversation starter, not a verdict.
+
+**Q: Does this include PRs where someone leaves a comment but doesn't formally request changes?**
+A: No. Comments without a CHANGES_REQUESTED state don't reduce First-Pass Rate. Only formal change requests count.
+
+---
+
+## Work In Progress (WIP)
+
+> _Number of pull requests currently open. The backlog of unmerged work._
+
+**Family:** Flow & Cycle Time · **Cadence:** Point-in-time snapshot, trended over the window · **Where it appears:** /ai-adoption/ai-impact
+
+### At a glance
+
+WIP is the simplest metric in the dashboard. It is the count of open PRs — a snapshot of how much work is in flight at any moment. Despite being simple, it is one of the most operationally useful: a rising WIP almost always means a problem (reviewers overloaded, PRs stalled, big-bang releases incoming), and a flat low WIP almost always means a healthy flow.
+
+It is the metric every team lead should glance at every Monday morning.
+
+### Formula
+
+```
+WIP = count(open PRs at snapshot time)
+```
+
+For trend lines, the count is sampled at fixed intervals across the window and plotted.
+
+### How GitKraken Insights calculates it
+
+A PR is in WIP if its `state = 'open'` and it is not a draft. Bot-authored PRs are excluded.
+
+For the trend view, the backend samples the count at a daily cadence (or whatever the chart granularity is set to) and plots it.
+
+### Why it matters
+
+WIP is the metric that links your team's review process to your team's flow:
+
+* **High WIP relative to team size = review bottleneck.** Rule of thumb: WIP should be 1.5–2× the number of active developers. A team of six with 25 open PRs has too much in flight.
+* **Rising WIP over time = problem brewing.** Even if absolute WIP is moderate, a trend up is a leading indicator that something is broken.
+* **WIP suddenly dropping is suspicious.** Usually it is a release week clearing the queue, but occasionally it is "we gave up on a chunk of work" — worth investigating either way.
+
+### How to read it
+
+For per-team WIP, rule-of-thumb thresholds:
+
+| WIP per active developer | Read it as |
+| --- | --- |
+| **< 1.5×** | Lean — likely shipping fast |
+| **1.5× – 2.5×** | Healthy — typical for engaged teams |
+| **2.5× – 4×** | High — review queue likely backed up |
+| **> 4×** | Stuck — major flow problem, action needed |
+
+For org-level WIP, watch the _trend_. Sudden spikes always tell a story. Slow drifts upward over weeks usually indicate review process drift.
+
+### Where it appears
+
+* **/ai-adoption/ai-impact** — WIP trend chart available as a breakdown view.
+
+<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "WIP trend alongside other PR flow charts." Export to _images/ and add the figure here. -->
+
+### Settings that affect it
+
+None. WIP is a raw count.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Cycle Time](#cycle-time) | High WIP often causes a long Pickup phase (reviewers overloaded). |
+| [Throughput](/gk-insights/ai-adoption/ai-adoption-output-metrics#throughput) | Outflow rate. WIP / Throughput ≈ average days a PR sits open. |
+| [Review Cycles](#review-cycles) | Indirectly — PRs with many cycles contribute to higher WIP. |
+
+### How to improve it
+
+* **Run a weekly review-clearing ritual.** 15 minutes on Monday. Walk through the oldest open PRs in your repo. Ship, deadline, or close each one.
+* **Set a team WIP limit.** "No more than 12 open PRs at once." When you hit the limit, no one opens a new PR until one merges. Forces the team to clear the queue.
+* **Reviewer rotation.** A team with one designated reviewer accumulates WIP fast. Rotate or spread the review load.
+* **Close abandoned PRs.** Some PRs in WIP are dead — the author moved on, the work was descoped, the approach changed. Closing them clarifies the actual backlog.
+
+### Limitations and gotchas
+
+* **A snapshot, not an average.** WIP varies through the week (highest Thursday afternoon, lowest after weekend merges). One snapshot can mislead; trend tells the story.
+* **Drafts are excluded.** A team that uses drafts heavily has WIP that under-counts the actual work in flight.
+* **Bots are excluded.**
+* **No size weighting.** WIP doesn't care if those 25 open PRs are all 0.1-effort dep bumps or all 0.9-effort migrations.
+
+### FAQ
+
+**Q: We use stacked PRs (PR2 depends on PR1). Does that inflate WIP?**
+A: Yes — every open PR counts. If your team uses stacking heavily, your WIP rule-of-thumb threshold should be higher (closer to 3× active devs).
+
+**Q: A specific old PR has been open for six months. Should I close it?**
+A: Almost certainly yes. PRs older than \~30 days are vanishingly likely to merge. They distort WIP and waste reviewer mental bandwidth.
+
+**Q: How do I see _which_ PRs are in WIP?**
+A: Open PRs are visible in your repo's PR list and in the underlying data on /ai-adoption/data-explorer. The dashboard surfaces WIP as a count and trend.
+
+---
+
+---
 title: AI Impact & Cost Metrics in GitKraken Insights
 description: Learn about AI Impact & Cost metrics in GitKraken Insights, including Productivity Uplift, AI-Assisted Percentage, CapEx/OpEx Split, and Spend by Tier.
 product: GitKraken Insights
@@ -2134,7 +3656,7 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "Output Score", "Effort Score", and "Cycle Time" (Flow & Cycle Time family), which have no pages in this repo yet. Those links were converted to plain text. Note: this page documents the new AI Impact & Cost family and is distinct from the existing AI Impact Metrics page (gk-insights-ai-impact-metrics.md), which covers code quality and acceptance-rate metrics. -->
+<!-- NOTE: This page documents the new AI Impact & Cost family and is distinct from the existing AI Impact Metrics page (gk-insights-ai-impact-metrics.md), which covers code quality and acceptance-rate metrics. -->
 
 This family answers: **is AI actually paying off?**
 
@@ -2259,18 +3781,18 @@ Don't quote the dollar value to two decimal places. "About $50K per week in annu
 
 | Metric | Relationship |
 | --- | --- |
-| Output Score | The shipping-rate signal that underpins changes-per-dev-per-week. |
+| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | The shipping-rate signal that underpins changes-per-dev-per-week. |
 | [AI-Assisted Percentage](#ai-assisted-percentage) | Confirms that the output gain came from AI-touched work. |
-| Cycle Time | Lower Cycle Time generally accompanies the speedup story. |
+| [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) | Lower Cycle Time generally accompanies the speedup story. |
 | [Spend by Tier](#spend-by-tier) | Pairs with uplift for ROI math. |
 
 ### How to improve it
 
 The honest answer: improve the inputs.
 
-* **Raise changes per dev per week** by following the Output Score improvement guidance.
+* **Raise changes per dev per week** by following the [Output Score improvement guidance](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score).
 * **Raise AI-Assisted %** by deepening adoption in the cohort that is already using AI lightly — see the [Agent Adoption Score playbook](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score).
-* **Lower Cycle Time** via review process and PR-size discipline.
+* **Lower Cycle Time** via review process and PR-size discipline ([Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time)).
 * **Don't try to improve uplift directly.** It is a derived metric. Optimizing the inputs is the only way to move it honestly.
 
 ### Limitations and gotchas
@@ -2370,7 +3892,7 @@ The right target for your team depends on what you ship. Heavy infrastructure an
 | --- | --- |
 | [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score) | The user-level adoption measure. AI-Assisted % is the work-level counterpart. |
 | [Productivity Uplift](#productivity-uplift) | AI-Assisted % is a confirming signal — higher AI-Assisted → stronger uplift narrative. |
-| Output Score | Independent — Output Score doesn't filter by AI-assisted status. |
+| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Independent — Output Score doesn't filter by AI-assisted status. |
 
 ### How to improve it
 
@@ -2482,8 +4004,8 @@ The ratio shifts predictably with team type. SRE teams are mostly OpEx by design
 
 | Metric | Relationship |
 | --- | --- |
-| Effort Score | Effort feeds into the hours estimate. |
-| Output Score | Same shipped work, different aggregation. |
+| [Effort Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#effort-score-complexity) | Effort feeds into the hours estimate. |
+| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Same shipped work, different aggregation. |
 
 ### How to use it
 
@@ -2624,8 +4146,6 @@ taxonomy:
     category: gk-insights
 ---
 <kbd>Last updated: June 2026</kbd>
-
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "How to think about developer scores" and "For engineering leaders" (Getting Started pages), which have no pages in this repo yet. Those links were converted to plain text. -->
 
 Action-first guides. Use these when you have a question like "how do I roll out AI tooling?" or "are the default tier weights right for us?"
 
@@ -2841,7 +4361,7 @@ If your trajectory has _Adoption climbing but Uplift flat at month 4+_, your rol
 
 * **Org-wide on day 1.** Spreads adoption too thin to track. Pilot, prove, then expand.
 * **Ignoring the trajectory in favor of the snapshot.** Adoption % at 30% is a great number if it was 5% three months ago. It's a bad number if it's been 30% for six months.
-* **Treating tier as a performance metric.** Read How to think about developer scores before any 1:1 about a developer's tier. <!-- FLAG FOR HUMAN REVIEW: "How to think about developer scores" links to the Confluence Getting Started page, which has no repo equivalent yet. -->
+* **Treating tier as a performance metric.** Read [How to think about developer scores](/gk-insights/ai-adoption/ai-adoption-getting-started#how-to-think-about-developer-scores) before any 1:1 about a developer's tier.
 * **Not adjusting Maturity Factor with the rollout.** Default 0.75 is calibrated for active rollout. In month 1, lower it. In month 12, raise it. It's a knob for a reason.
 * **Picking AI adoption as the only metric to watch.** Pair it with Cycle Time and CFR. If you ship faster but break more things, you haven't won.
 
@@ -2851,6 +4371,7 @@ If your trajectory has _Adoption climbing but Uplift flat at month 4+_, your rol
 * [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score)
 * [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
 * [Playbook — Set tier weights for your org's maturity](#set-tier-weights-for-your-orgs-maturity)
+* [For engineering leaders](/gk-insights/ai-adoption/ai-adoption-getting-started#for-engineering-leaders)
 
 ---
 
@@ -2869,7 +4390,7 @@ taxonomy:
 <kbd>Last updated: June 2026</kbd>
 
 <!-- FLAG FOR HUMAN REVIEW: The source Confluence "Settings & Admin" page also documents Developers (Roster), Teams, Jira (CFR), Time Off (BambooHR), and Demo Mode sections. Those were not migrated here because they cover product-wide administration rather than AI Adoption. Decide whether they belong on a separate admin page. -->
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence page links to "Output Score" and the Glossary, which have no pages in this repo yet. Those links were converted to plain text. -->
+<!-- FLAG FOR HUMAN REVIEW: Source Confluence page links to the Glossary, which has no page in this repo yet. That link was converted to plain text. -->
 
 Every admin-configurable setting that affects AI Adoption scores in GitKraken Insights, organized by where it lives in the product, plus a one-line "what it changes."
 
@@ -2899,7 +4420,7 @@ Also labeled **"Company AI Readiness %"** in the General tab. _In Settings UI: y
 
 **Why you'd raise or lower it.** - **Lower (0.50 – 0.70):** Early in your AI rollout. You want every developer to feel like there's runway. Few or no Power Users yet. - **Default (0.75):** Most orgs in active rollout. The tier ceiling pushes the top 10% to keep stretching. - **Higher (0.85 – 1.00):** Mature orgs with widespread, deep adoption where you want the scoring to reflect that maturity in absolute terms.
 
-**Affects:** [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score), [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score), Output Norm, [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+**Affects:** [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score), [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score), [Output Norm](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
 
 → Full section: [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
 
@@ -2939,7 +4460,7 @@ _In Settings UI: not yet — change via support._ App-settings key: `direct_comm
 | **Range** | 0.0 – 1.0 |
 | **Type** | Float |
 
-**What it does.** Scales direct commits (pushes straight to a default branch with no PR) relative to merged PRs in the Output Score formula:
+**What it does.** Scales direct commits (pushes straight to a default branch with no PR) relative to merged PRs in the [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) formula:
 
 ```
 Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort)
@@ -2951,7 +4472,7 @@ Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort)
 
 **When to change it.** - Lower toward 0 if your team uses direct commits primarily for trivial maintenance and you don't want them inflating Output Score. - Raise toward 1 if your team uses direct commits for substantive work (e.g. a Trunk-Based Development workflow).
 
-**Affects:** Output Score, Output Norm, [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+**Affects:** [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), [Output Norm](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
 
 ---
 
@@ -2970,7 +4491,7 @@ _In Settings UI: not yet — change via support._ App-settings key: `output_scor
 
 **When to turn off.** Rarely. The default reflects most orgs' definition of "real output". Turn off if you've explicitly decided chores are part of how you measure delivery — e.g. for an SRE team where dependency upgrades _are_ the job.
 
-**Affects:** Output Score, and downstream [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+**Affects:** [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), and downstream [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
 
 ---
 

@@ -12,8 +12,6 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "How to think about developer scores" and "For engineering leaders" (Getting Started pages), which have no pages in this repo yet. Those links were converted to plain text. -->
-
 Action-first guides. Use these when you have a question like "how do I roll out AI tooling?" or "are the default tier weights right for us?"
 
 | Playbook | Use it when |
@@ -228,7 +226,7 @@ If your trajectory has _Adoption climbing but Uplift flat at month 4+_, your rol
 
 * **Org-wide on day 1.** Spreads adoption too thin to track. Pilot, prove, then expand.
 * **Ignoring the trajectory in favor of the snapshot.** Adoption % at 30% is a great number if it was 5% three months ago. It's a bad number if it's been 30% for six months.
-* **Treating tier as a performance metric.** Read How to think about developer scores before any 1:1 about a developer's tier. <!-- FLAG FOR HUMAN REVIEW: "How to think about developer scores" links to the Confluence Getting Started page, which has no repo equivalent yet. -->
+* **Treating tier as a performance metric.** Read [How to think about developer scores](/gk-insights/ai-adoption/ai-adoption-getting-started#how-to-think-about-developer-scores) before any 1:1 about a developer's tier.
 * **Not adjusting Maturity Factor with the rollout.** Default 0.75 is calibrated for active rollout. In month 1, lower it. In month 12, raise it. It's a knob for a reason.
 * **Picking AI adoption as the only metric to watch.** Pair it with Cycle Time and CFR. If you ship faster but break more things, you haven't won.
 
@@ -238,3 +236,4 @@ If your trajectory has _Adoption climbing but Uplift flat at month 4+_, your rol
 * [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score)
 * [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
 * [Playbook — Set tier weights for your org's maturity](#set-tier-weights-for-your-orgs-maturity)
+* [For engineering leaders](/gk-insights/ai-adoption/ai-adoption-getting-started#for-engineering-leaders)

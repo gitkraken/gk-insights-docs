@@ -12,7 +12,7 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "Output Score", "How to think about developer scores", and the Glossary, which have no pages in this repo yet. Those links were converted to plain text. -->
+<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to the Glossary, which has no page in this repo yet. That link was converted to plain text. -->
 <!-- FLAG FOR HUMAN REVIEW: Each metric section below includes a screenshot in the source Confluence page. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
 
 This family answers a single question: **how much is your team actually using AI, and how deeply?**
@@ -73,7 +73,7 @@ Three things to remember:
 2. **Org P90 is the ceiling, not 100.** Because we normalize against the org's 90th percentile, a single developer can't game the system by spamming prompts. The ceiling moves with the org.
 3. **Maturity Factor sets the headroom.** At 0.75, even a perfect (P90) developer scores 75. That's intentional — it leaves room for the _org_ to grow into higher numbers without retiering everyone overnight.
 
-See How to think about developer scores before drawing individual conclusions. <!-- FLAG FOR HUMAN REVIEW: "How to think about developer scores" links to the Confluence Getting Started page, which has no repo equivalent yet. -->
+See [How to think about developer scores](/gk-insights/ai-adoption/ai-adoption-getting-started#how-to-think-about-developer-scores) before drawing individual conclusions.
 
 ---
 
@@ -180,7 +180,7 @@ The four-factor weighting per provider is not currently exposed in the Settings 
 | [AI Tier](#ai-tier) | Adoption is one of three inputs into the composite Tier. |
 | [Maturity Factor](#maturity-factor) | The scalar that ceilings every Adoption Score in your org. |
 | [Cursor Boost](#cursor-boost) | Defines how Cursor adoption contributes to the headline Adoption Score. |
-| Output Score | The shipping-side metric. High Adoption with flat Output is a common pattern in early rollouts. |
+| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | The shipping-side metric. High Adoption with flat Output is a common pattern in early rollouts. |
 
 ### How to improve it
 
@@ -413,7 +413,7 @@ If **On PTO % is unusually high** (>15%), check whether your PTO sync is working
 | --- | --- |
 | [Agent Adoption Score](#agent-adoption-score) | Input #1. Default weight 0.5. |
 | [Agent Autonomy Score](#agent-autonomy-score) | Input #2. Default weight 0.2. |
-| Output Score | Input #3 (via Output Norm). Default weight 0.3. |
+| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Input #3 (via Output Norm). Default weight 0.3. |
 | [Maturity Factor](#maturity-factor) | Scales all three inputs uniformly. |
 
 ### How to improve it
@@ -510,7 +510,7 @@ The default (0.75) is calibrated for "active rollout" — the most common state 
 | --- | --- |
 | [Agent Adoption Score](#agent-adoption-score) | Multiplied by Maturity Factor as the final step. |
 | [Agent Autonomy Score](#agent-autonomy-score) | Multiplied by Maturity Factor as the final step. |
-| Output Score → Output Norm | Output Norm is multiplied by Maturity Factor. Raw Output Score itself is not. |
+| [Output Score → Output Norm](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Output Norm is multiplied by Maturity Factor. Raw Output Score itself is not. |
 | [AI Tier](#ai-tier) | Indirectly — the tier thresholds (25 / 55 / 80) stay fixed, but the inputs scale. |
 
 ### How to use it

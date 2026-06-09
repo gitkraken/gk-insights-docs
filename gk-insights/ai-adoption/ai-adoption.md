@@ -25,7 +25,10 @@ GitKraken Insights gives engineering leaders a single view of how AI tools, code
 
 | Page | What it covers |
 | --- | --- |
+| [Getting Started with AI Adoption](/gk-insights/ai-adoption/ai-adoption-getting-started) | A short tour organized by what you do, with quickstarts for executives, engineering leaders, team leads, and admins. |
 | [Adoption & Agentic Metrics](/gk-insights/ai-adoption/ai-adoption-agentic-metrics) | How much your team is actually using AI, and how autonomously: Agent Adoption Score, Agent Autonomy Score, AI Tier, Maturity Factor, and Cursor Boost. |
+| [Output & Throughput Metrics](/gk-insights/ai-adoption/ai-adoption-output-metrics) | What your team ships: Output Score, Throughput, Direct Commits, and Effort Score (Complexity). |
+| [Flow & Cycle Time Metrics](/gk-insights/ai-adoption/ai-adoption-flow-metrics) | How fast work moves through your system: Cycle Time, Review Cycles, First-Pass Rate, and WIP. |
 | [AI Impact & Cost Metrics](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics) | What AI is actually delivering, in time and dollars: Productivity Uplift, AI-Assisted Percentage, CapEx / OpEx Split, and Spend by Tier. |
 | [AI Adoption Playbooks](/gk-insights/ai-adoption/ai-adoption-playbooks) | Action-first guides: set tier weights for your org's maturity, and roll out AI tooling with the Adoption Score. |
 | [AI Adoption Settings](/gk-insights/ai-adoption/ai-adoption-settings) | Configuration reference — what each setting changes, and which metrics depend on it. |
