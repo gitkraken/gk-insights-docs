@@ -51,7 +51,7 @@ Once your access is approved, you can connect GitKraken Insights to your reposit
 
 Currently, Insights supports connections with GitHub, GitLab (cloud and self-hosted), Bitbucket, Azure DevOps, and Jira Cloud.
 
-In addition, you can connect AI providers to enable AI Impact insights (like Duplicated Code, Prompt Acceptance Rate, and more).
+In addition, you can connect AI providers to enable AI Impact insights (like Duplicated Code, Prompt Acceptance Rate, and more). To learn how GitKraken Insights measures AI adoption across your organization, see [AI Adoption](/gk-insights/ai-adoption/ai-adoption).
 ---
 
 ### 1. Import your repositories
@@ -1418,6 +1418,1633 @@ You configure release detection rules in **Metric Settings > Release Tracking**.
 ## How does GitKraken Insights identify critical defects?
 
 Critical defects are identified two ways. In **Metric Settings > Critical Defect Terms**, you define strings that GitKraken Insights matches case-insensitively against branch names, linked issue titles, and pull request titles. In **Metric Settings > Define Issue Tracker Projects**, you configure the specific issue field values that mark a defect as critical within your issue tracker.
+
+---
+
+---
+title: AI Adoption in GitKraken Insights
+description: Learn how GitKraken Insights measures AI adoption across your organization, including Adoption & Agentic metrics, AI Impact & Cost metrics, playbooks, and settings.
+product: GitKraken Insights
+content_type: reference
+audience: all
+plan_required: GitKraken Insights
+integrations: [Claude Code, Codex, Cursor]
+status: GA
+taxonomy:
+    category: gk-insights
+---
+<kbd>Last updated: June 2026</kbd>
+
+GitKraken Insights gives engineering leaders a single view of how AI tools, code delivery, and team capacity work together. The AI Adoption section measures how much your team is actually using AI, how autonomously, and what AI is actually delivering — in time and dollars.
+
+> **Plan:** GitKraken Insights
+> **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
+> **Role:** Lead, Admin, or Owner
+> **Prerequisite:** Connected AI provider (Claude Code, Codex, or Cursor). See [Getting Started](/gk-insights/gk-insights#connect-an-ai-provider-optional).
+
+---
+
+## AI Adoption pages in this section
+
+| Page | What it covers |
+| --- | --- |
+| [Adoption & Agentic Metrics](/gk-insights/ai-adoption/ai-adoption-agentic-metrics) | How much your team is actually using AI, and how autonomously: Agent Adoption Score, Agent Autonomy Score, AI Tier, Maturity Factor, and Cursor Boost. |
+| [AI Impact & Cost Metrics](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics) | What AI is actually delivering, in time and dollars: Productivity Uplift, AI-Assisted Percentage, CapEx / OpEx Split, and Spend by Tier. |
+| [AI Adoption Playbooks](/gk-insights/ai-adoption/ai-adoption-playbooks) | Action-first guides: set tier weights for your org's maturity, and roll out AI tooling with the Adoption Score. |
+| [AI Adoption Settings](/gk-insights/ai-adoption/ai-adoption-settings) | Configuration reference — what each setting changes, and which metrics depend on it. |
+
+---
+
+## Where AI Adoption shows up in the product
+
+* **/ai-adoption/developers** — primary surface. Each row has Adoption, Agentic, Tier, and a heatmap.
+* **/ai-adoption/teams** — team averages and tier mix bars.
+* **/ai-adoption/ai-tools-comparison** — cohort comparisons (e.g. team A vs. team B, or Claude vs. Codex users).
+* **/ai-adoption/executive** — hero KPI ("AI Adoption %") and trend lines.
+* **/ai-adoption/ai-impact** — autonomy deep dive and Business Impact / ROI.
+* **/ai-adoption/capex** — CapEx / OpEx split as the primary surface.
+* Adjacent surfaces in the same nav family: **/ai-adoption/board-metrics**, **/ai-adoption/data-connections**, **/ai-adoption/data-explorer**, **/ai-adoption/settings/\***.
+
+---
+
+## Related pages
+
+* [Getting Started with GitKraken Insights](/gk-insights/gk-insights) — request access, connect repositories, and connect an AI provider.
+* [AI Impact Metrics](/gk-insights/gk-insights-ai-impact-metrics) — code quality and acceptance-rate metrics from connected AI providers (Duplicated Code, Prompt Acceptance Rate, and more).
+
+---
+
+---
+title: Adoption & Agentic Metrics in GitKraken Insights
+description: Learn about Adoption & Agentic metrics in GitKraken Insights, including Agent Adoption Score, Agent Autonomy Score, AI Tier, Maturity Factor, and Cursor Boost.
+product: GitKraken Insights
+content_type: reference
+audience: all
+plan_required: GitKraken Insights
+integrations: [Claude Code, Codex, Cursor]
+status: GA
+taxonomy:
+    category: gk-insights
+---
+<kbd>Last updated: June 2026</kbd>
+
+<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "Output Score", "How to think about developer scores", and the Glossary, which have no pages in this repo yet. Those links were converted to plain text. -->
+<!-- FLAG FOR HUMAN REVIEW: Each metric section below includes a screenshot in the source Confluence page. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
+
+This family answers a single question: **how much is your team actually using AI, and how deeply?**
+
+It's the most-read group of metrics in the dashboard because it surfaces the rollout story — are people picking up the tools, are they integrating them, and where are the gaps?
+
+---
+
+## The metrics
+
+| Metric | What it captures |
+| --- | --- |
+| [**Agent Adoption Score**](#agent-adoption-score) | 0–100 per developer. Combines daily consistency, hourly spread, prompt volume, and token output across Claude Code and Codex, with optional Cursor boost. The headline number on /ai-adoption/developers. |
+| [**Agent Autonomy Score**](#agent-autonomy-score) | 0–100 per developer. Measures depth of _autonomous_ AI use — sessions with 10+ tool calls across Claude Code and Codex (Cursor not included). Separates "asking AI a question" from "letting AI do real work." |
+| [**AI Tier**](#ai-tier) | Power User / Regular / Explorer / Emerging / On PTO. The composite category. Computed by weighting Adoption, Agentic, and Output Norm together (defaults 0.5 / 0.2 / 0.3). |
+| [**Maturity Factor**](#maturity-factor) | 0.01–1.00 org-wide ceiling knob (default 0.75). Adjusts all P90 scores so the tier ceiling fits your org's actual maturity. |
+| [**Cursor Boost**](#cursor-boost) | 25% by default. How much Cursor adoption layers on top of Claude / Codex in the headline Adoption Score. |
+
+---
+
+## How the metrics fit together
+
+Adoption Score is built from per-provider scoring (Claude, Codex, Cursor) using a four-factor blend:
+
+1. **Daily Use** — consistency across the window
+2. **Hourly Spread** — diversity within days
+3. **Prompts** — volume of interactions
+4. **Output** — token production depth
+
+Claude Code and Codex events are _unioned_ at the factor level (days, hours, prompts, tokens merged together — not averaged) and scored as one **primary** score. Cursor is scored independently and added as a **secondary boost** (default 25% of the Cursor score).
+
+Then everything scales by **Maturity Factor**, which is your org-wide ceiling knob.
+
+```
+Primary score   = blend(Claude ∪ Codex)
+Final headline  = min(Primary + 0.25 × Cursor, 100) × Maturity Factor
+```
+
+Agentic is a separate, parallel measurement that runs against **Claude Code and Codex sessions only** — Cursor doesn't currently feed Autonomy because Cursor's event stream doesn't expose per-session tool calls in a way we can score. Agentic does not roll into Adoption. Both feed into the **AI Tier** composite alongside Output Norm.
+
+### Tier composite (default; org-configurable)
+
+```
+tierScore = (0.5 × Agent Adoption) + (0.2 × Agent Autonomy) + (0.3 × Output Norm)
+```
+
+Each weight is read from `analytics.app_settings` per organization (keys: `tier_weight_adoption`, `tier_weight_agentic`, `tier_weight_output`) and renormalized to sum to 1.0. The tier-badge tooltip in the app renders the live values for every developer so the breakdown is always transparent.
+
+**What admins can change in Settings → General today:** Maturity Factor, Developer Hourly Rate, Baseline Period, and Default Department. The tier composite weights (`tier_weight_*`) and the Output Score sub-weights (`direct_commit_weight`, `review_weight`, `output_score_exclude_chore`) are per-org settings stored in `app_settings`, but the user-facing settings form does not yet expose them — changes require a backend request through support.
+
+---
+
+## Read this family responsibly
+
+Three things to remember:
+
+1. **The Adoption Score is about behavior, not skill.** A developer can be brilliant and Emerging (their work this quarter doesn't suit AI). The score is descriptive, not evaluative.
+2. **Org P90 is the ceiling, not 100.** Because we normalize against the org's 90th percentile, a single developer can't game the system by spamming prompts. The ceiling moves with the org.
+3. **Maturity Factor sets the headroom.** At 0.75, even a perfect (P90) developer scores 75. That's intentional — it leaves room for the _org_ to grow into higher numbers without retiering everyone overnight.
+
+See How to think about developer scores before drawing individual conclusions. <!-- FLAG FOR HUMAN REVIEW: "How to think about developer scores" links to the Confluence Getting Started page, which has no repo equivalent yet. -->
+
+---
+
+## Where this family shows up
+
+* **/ai-adoption/developers** — primary surface. Each row has Adoption, Agentic, Tier, and a heatmap.
+* **/ai-adoption/teams** — team averages and tier mix bars.
+* **/ai-adoption/ai-tools-comparison** — cohort comparisons (e.g. team A vs. team B, or Claude vs. Codex users).
+* **/ai-adoption/executive** — hero KPI ("AI Adoption %") and trend lines.
+* **/ai-adoption/ai-impact** — autonomy deep dive and Business Impact / ROI.
+* Adjacent surfaces in the same nav family: **/ai-adoption/board-metrics**, **/ai-adoption/capex**, **/ai-adoption/data-connections**, **/ai-adoption/data-explorer**, **/ai-adoption/settings/\***.
+
+---
+
+## Agent Adoption Score
+
+> _A 0–100 measure of how consistently and how deeply a developer is using AI coding tools (Claude Code, Codex, Cursor) over the selected window._
+
+**Family:** Adoption & Agentic · **Cadence:** Window-based (refreshes with date range) · **Where it appears:** /developers, /teams, /comparison, /executive, /ai-impact
+
+### At a glance
+
+The Agent Adoption Score is the dashboard's headline answer to "is this developer using AI?" It's a single number from 0 to 100 that combines four dimensions of usage — daily consistency, time-of-day spread, prompt volume, and output tokens — across all the AI tools the developer has access to. Higher means more consistent, deeper use; lower means sporadic or shallow use. It's normalized against your organization's own 90th-percentile usage, so the bar is your team, not some industry average.
+
+### Formula
+
+```
+Adoption Score = min(Primary + 0.25 × Cursor, 100) × Maturity Factor
+
+  where Primary = four-factor blend of Claude ∪ Codex
+        Cursor  = four-factor blend of Cursor (added if non-null)
+```
+
+The four factors per provider, each capped at the org's P90 and weighted into the 100-point scale, are:
+
+* **Daily Use** — weekdays with ≥1 event / effective weekdays
+* **Hourly Spread** — avg distinct hours per day with ≥2 prompts / org P90 spread
+* **Prompts** — prompts per weekday / org P90 prompts
+* **Output Tokens** — output tokens per weekday / org P90 tokens
+
+### How GitKraken Insights calculates it
+
+**Step 1 — Per-provider scoring.** For each provider (Claude Code, Codex, Cursor), we compute four normalized factors:
+
+* **Daily Use:** the fraction of effective weekdays in the window where the developer had at least one AI event. Effective weekdays subtracts weekdays before the provider was instrumented (Claude Code data starts March 5, 2026) and subtracts PTO weekdays.
+* **Hourly Spread:** the average number of distinct hours per active weekday where the developer ran ≥2 prompts. Captures "AI is integrated into their workday" vs. "AI is one batch at the end of the day."
+* **Prompts:** total prompts divided by active weekdays.
+* **Output Tokens:** total output tokens divided by active weekdays. A proxy for the _depth_ of each AI interaction.
+
+Each factor is divided by the corresponding **org P90 cap** (the 90th-percentile value across all active developers in the window) and capped at 1.0. So a developer at the org's 90th percentile or above on a factor scores the max contribution for that factor.
+
+The four normalized factors are then weighted (DailyUse, HourlySpread, Prompts, Output) and summed to a 0–100 provider score.
+
+**Step 2 — Union Claude + Codex into the Primary score.** We don't average the two providers — we _union_ their events at the factor level. A developer using Claude in the morning and Codex in the afternoon gets credit for the combined daily spread, not two separate fractional scores. This avoids penalizing devs who use multiple tools.
+
+**Step 3 — Add the Cursor boost.** If the developer has Cursor data, we compute their Cursor score independently and add it to the Primary at a 25% rate (configurable via the `SCORE_SECONDARY_BOOST` env var). The total is capped at 100 before maturity scaling.
+
+**Step 4 — Scale by Maturity Factor.** The final value is multiplied by the org's Maturity Factor (default 0.75). At the default setting, a developer at the org's P90 on every factor scores 75 — leaving headroom to grow into the Power User band (≥80).
+
+**Window scope.** Everything is scoped to the date range selected at the top of the page. The org P90 caps are recomputed _for the same window_, so the ceiling moves with the cohort.
+
+### Why it matters
+
+Adoption is the leading indicator of an AI rollout. Output follows adoption with a 4–12 week lag — first developers have to integrate the tool, then they have to get good at it, _then_ they ship faster. Reading the Adoption Score in isolation tells you whether your rollout is moving. Reading it alongside Output Score over time tells you whether the rollout is _paying off_.
+
+The score is **descriptive, not evaluative**. A senior developer working on a quarter-long migration may show as Emerging because the work doesn't suit AI tooling. A junior on UI changes may be a Power User. Neither is a judgment of skill. The aggregated score across a team or a cohort is the more useful read.
+
+### How to read it
+
+| Range | Read it as |
+| --- | --- |
+| **80–100** | Power User — AI is integrated into daily work, used across multiple sessions per day |
+| **55–79** | Regular — solid, consistent adoption; AI is a routine part of their workflow |
+| **25–54** | Explorer — using AI but not yet daily, or shallow integration |
+| **0–24** | Emerging — minimal or no AI usage in the window |
+
+These ranges assume the default 0.75 Maturity Factor. If you've adjusted it, the bands shift proportionally — at 1.0 Maturity, the same percentile distribution lands \~25% higher on the absolute scale.
+
+A team average of 50–65 means a healthy mix with most developers in Explorer/Regular. A team average above 75 means broad Power User adoption. A team average below 30 is your "rollout has stalled" signal.
+
+### Where it appears
+
+* **/developers** — primary surface. Headline column on the developer table, plus an expanded panel showing the four-factor breakdown and the per-provider contribution (Claude vs. Codex vs. Cursor).
+* **/teams** — team average column on the main table; expandable rows show per-developer scores.
+* **/comparison** — distribution by cohort (e.g. by team, by AI tool, by primary model).
+* **/executive** — hero KPI card "AI Adoption %" (percentage of devs at score ≥ 25) and a trend line.
+* **/ai-impact** — used as the cohort dimension for the productivity uplift analysis.
+
+<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns." Export to _images/ and add the figure here. -->
+
+### Settings that affect it
+
+* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — multiplies the final score. Lowering it lowers the tier ceiling for everyone.
+* **Cursor secondary boost** (env var `SCORE_SECONDARY_BOOST`, default 0.25) — how heavily Cursor contributes alongside Claude / Codex.
+* **Provider weights** (env vars `SCORE_WEIGHT_*`) — how much DailyUse / HourlySpread / Prompts / Output each contribute within a provider's score.
+
+The four-factor weighting per provider is not currently exposed in the Settings UI. Ask your account manager if you need it tunable.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Agent Autonomy Score](#agent-autonomy-score) | Parallel metric. Adoption captures _consistency_; Autonomy captures _depth of autonomous use_. |
+| [AI Tier](#ai-tier) | Adoption is one of three inputs into the composite Tier. |
+| [Maturity Factor](#maturity-factor) | The scalar that ceilings every Adoption Score in your org. |
+| [Cursor Boost](#cursor-boost) | Defines how Cursor adoption contributes to the headline Adoption Score. |
+| Output Score | The shipping-side metric. High Adoption with flat Output is a common pattern in early rollouts. |
+
+### How to improve it
+
+* **Run scheduled "AI office hours."** Pair a Power User with an Emerging developer for an hour. Watch the Emerging developer's Adoption climb in the next two-week window.
+* **Set provider defaults.** Make sure new developers have Claude Code installed and configured on day one. Emerging numbers among recent hires often trace to "no one told me to install it."
+* **Audit the Emerging cohort.** Open /developers, sort by Adoption ascending. Walk the list. Many "Emerging" devs are actually working on infrastructure or platform work where AI isn't helpful — those are not a problem. Some are stuck on tooling friction. Those are the wins.
+* **Track adoption _trajectory_, not snapshot.** A developer who moved from Emerging → Explorer in 6 weeks is a win even if they're still below 50.
+* **Lower the Maturity Factor while rolling out.** At 0.6, more developers feel like they're making progress as Explorer / Regular. Once you're 6+ months in, raise it back to 0.75 or higher.
+
+### Limitations and gotchas
+
+* **The score lags reality by hours, not days.** Events sync every few minutes but with a 12-hour safety lag to absorb late-arriving OTEL backfill.
+* **Pre-2026-03-05 Claude Code data doesn't exist.** Effective Weekdays adjusts for this automatically.
+* **Cursor data depends on the Cursor API being reachable.** If your Cursor sync is broken, devs who only use Cursor will show as Emerging.
+* **The org P90 ceiling moves with the cohort.** Hire a wave of Power Users and the bar rises for everyone. This is intentional but counter-intuitive.
+* **Direct provider events only.** We don't infer AI usage from PR co-author tags or other heuristics for the Adoption Score (that's [AI-Assisted Percentage](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#ai-assisted-percentage)).
+
+### FAQ
+
+**Q: Why don't Claude and Codex scores get averaged together?**
+A: Because averaging penalizes developers who use multiple tools. A dev who uses Claude in the morning and Codex in the afternoon should get full daily-use credit. Unioning the events at the factor level achieves that cleanly.
+
+**Q: A developer shows score 0 but I know they're using Claude. What happened?**
+A: Check (1) the developer's `is_active` flag, (2) whether their email aliases are mapped if they have multiple work emails, and (3) whether the date range pre-dates the provider's data start (March 5, 2026 for Claude). One of those almost always explains it.
+
+**Q: Why does Cursor count for less than Claude Code or Codex?**
+A: Cursor's event stream is more sparse and less structured than the OTEL exports from Claude / Codex. We use it as confirmatory signal rather than primary evidence — hence the 25% boost rate. Adjustable via env var.
+
+**Q: Can I see the four-factor breakdown for a single developer?**
+A: Yes. Click any developer on /developers to expand them. The agentic panel shows DailyUse, HourlySpread, Prompts, and Output as bars with the developer's value and the org P90 cap.
+
+---
+
+## Agent Autonomy Score
+
+> _A 0–100 measure of how often a developer runs AI through multi-step, tool-using sessions — sessions with 10+ tool calls._
+
+**Family:** Adoption & Agentic · **Cadence:** Window-based · **Where it appears:** /ai-adoption/developers, /ai-adoption/ai-impact, /ai-adoption/executive
+
+### At a glance
+
+Where the [Agent Adoption Score](#agent-adoption-score) measures _how consistently_ a developer uses AI, the Autonomy Score measures _how autonomously_. High autonomy means the developer is running AI in agentic mode — multi-step sessions where AI is calling tools, reading files, editing code, running commands. Low autonomy means AI is being used as a Q&A interface ("how do I X?"). Both are valid uses; tracking them separately surfaces a different kind of adoption depth.
+
+### Formula
+
+```
+Agentic Score = min(intensity / OrgP90Intensity, 1.0) × 100 × Maturity Factor
+```
+
+Where `intensity` is a developer-level aggregate of `tool_result` events from Claude Code and Codex sessions with at least 10 tools used. Returns 0 when the org has no P90 intensity (no data).
+
+### How GitKraken Insights calculates it
+
+**What counts as an "agentic session."** We define an agentic session as one where the developer used at least 10 distinct tools (e.g. file_read, file_edit, bash_run, web_search, etc.) within a single session. The 10-tool threshold is the heuristic that separates "I asked Claude a question and it called a tool to answer" from "Claude is doing real multi-step work."
+
+**Providers included.** Only Claude Code and Codex sessions contribute to Agentic intensity (the backend filters on `provider IN ('claude_code', 'codex')`). Cursor activity is excluded because Cursor's event stream doesn't expose per-session tool calls in a way we can score; Cursor still contributes to the [Agent Adoption Score](#agent-adoption-score) via the Cursor Boost.
+
+**Intensity.** For each developer, we aggregate `tool_result` events from their agentic sessions over the window. The result is a single intensity number — higher means more agentic activity.
+
+**Normalization.** We compute the **org-wide P90 intensity** across all active developers in the window. The developer's intensity is divided by the org P90 and capped at 1.0. This is the same normalization pattern as Adoption — the bar is your team, not an industry average.
+
+**Critical:** the org P90 is **always org-wide**, never team-filtered. A developer's Autonomy Score does not change when an admin toggles team filters.
+
+**Maturity scaling.** The capped ratio × 100 × Maturity Factor produces the final 0–100 score. At the default 0.75 Maturity Factor, a developer at the org's P90 on agentic intensity scores 75.
+
+### Why it matters
+
+Agentic adoption is the deeper rollout signal. A team can have high Adoption (everyone using Claude as a Q&A interface) but low Autonomy (no one letting it run multi-step). Or the reverse — a small group running highly agentic sessions while the broader team hasn't started.
+
+The most valuable AI productivity gains come from autonomous sessions. A developer asking Claude one question saves 5 minutes; a developer running Claude through a 30-minute agentic refactor saves 2 hours. Tracking autonomy separately lets you see whether your team is moving from the first pattern to the second — which is usually where ROI inflects.
+
+### How to read it
+
+| Range | Read it as |
+| --- | --- |
+| **60–100** | Strong — developer regularly runs AI through multi-step autonomous work |
+| **25–59** | Fair — occasional agentic use; AI is partly an autonomous collaborator |
+| **0–24** | Low — AI is being used mostly for Q&A, not autonomous tasks |
+
+A team average above 40 is a strong signal that agentic workflows have taken root. Below 20 is "your team is using AI mostly to ask questions" — which is still useful but a leading indicator that you can extract more value.
+
+### Where it appears
+
+* **/ai-adoption/developers** — separate column or panel next to Adoption. The expanded developer detail breaks down agentic activity by session count and tool diversity.
+* **/ai-adoption/ai-impact** — deep-dive autonomy analysis: tools-per-session distribution, top tools by usage, ranking of high-autonomy developers.
+* **/ai-adoption/executive** — trend line showing org agentic adoption over time.
+
+<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns." Export to _images/ and add the figure here. -->
+
+### Settings that affect it
+
+* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — multiplies the final score (default 0.75).
+* The **agentic threshold** (10 tools per session) is not currently configurable. Ask your account manager if you need it tunable.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Agent Adoption Score](#agent-adoption-score) | Parallel adoption measure. Adoption = consistency. Agentic = depth of autonomous use. |
+| [AI Tier](#ai-tier) | Agentic is one of three inputs into the composite Tier (default weight 0.2). See [How the metrics fit together](#how-the-metrics-fit-together) for the canonical composite formula and per-org configuration story. |
+| [Productivity Uplift](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#productivity-uplift) | Most productivity gains correlate with rising Autonomy, not Adoption. |
+
+### How to improve it
+
+* **Train the team on agentic prompts.** A 30-minute internal session on "give Claude a goal, let it run" can lift Autonomy faster than any other intervention.
+* **Establish patterns for safe autonomous work.** "When can I let Claude refactor unattended?" If your team doesn't have an answer, Autonomy will stay low. Publishing a one-page playbook usually unblocks it.
+* **Audit the Emerging Autonomy cohort.** Some developers are happy using AI as a search engine forever. That's fine — but flag the gap. If 70% of your team has Autonomy < 20, you're not extracting deep value from the tooling spend.
+* **Pair an Autonomy Power User with a low-Autonomy developer.** Same intervention as for Adoption, but specifically targeting agentic workflows.
+
+### Limitations and gotchas
+
+* **The 10-tool threshold is heuristic.** A developer running 9-tool sessions all day will score lower than one running occasional 10-tool sessions.
+* **Tool count ≠ value.** A 50-tool session that achieved nothing scores higher than a 10-tool session that shipped a feature. Use Autonomy alongside Output Score for the full picture.
+* **Cursor does not contribute to Autonomy.** Cursor's API doesn't expose per-session tool-call events in a way we can score, so the agentic intensity sum filters to `provider = 'claude_code'` and `provider = 'codex'` only. Cursor still feeds Agent Adoption via the Cursor Boost.
+* **Org P90 moves with the cohort.** As your team matures, the bar rises.
+
+### FAQ
+
+**Q: Why 10 tools as the agentic threshold? Why not 5 or 20?**
+A: 10 is the empirical knee in the distribution — at 10+ tools, sessions are reliably "AI doing real multi-step work" rather than "AI calling one tool to answer a question."
+
+**Q: A developer has high Adoption but low Autonomy. Is that a problem?**
+A: Not necessarily. They're using AI consistently but mostly as a Q&A tool. Whether that's a problem depends on the work.
+
+**Q: Why isn't this counted toward Adoption?**
+A: We want to separate "is the developer using AI?" (Adoption) from "is the developer using AI as an autonomous collaborator?" (Agentic). Conflating them loses information.
+
+---
+
+## AI Tier
+
+> _The composite category — Power User, Regular, Explorer, Emerging, or On PTO — that every developer is sorted into. Blends adoption consistency, autonomous use, and effort-weighted shipping into a single tier._
+
+**Family:** Adoption & Agentic · **Cadence:** Window-based · **Where it appears:** /ai-adoption/developers, /ai-adoption/teams, /ai-adoption/executive, /ai-adoption/ai-impact, /ai-adoption/ai-tools-comparison
+
+### At a glance
+
+The AI Tier is the dashboard's headline classification — every active developer lands in one of five tiers each window. It's a deliberate composite of three signals: how _consistently_ the developer is using AI (Adoption), how _autonomously_ (Agentic), and how _productively_ (Output Norm). The weights are configurable per-org (defaults 0.5 / 0.2 / 0.3); changing them today requires a backend ops request through support — see "The weighted blend" below.
+
+The tier is what drives the Top 10 widget, the executive ranking, the breakdown charts that bucket by AI Tier, and the team-level tier mix bars on /ai-adoption/teams. If you only learn one composite metric in the dashboard, learn this one.
+
+### Formula
+
+```
+composite = wAdoption × Adoption + wAgentic × Agentic + wOutput × OutputNorm
+
+where weights are renormalized to sum to 1.0
+defaults: 0.5 / 0.2 / 0.3
+
+Tier:
+  ≥ 80     →  Power User
+  55 – 79  →  Regular
+  25 – 54  →  Explorer
+  < 25     →  Emerging
+  PTO      →  On PTO (override)
+```
+
+### How GitKraken Insights calculates it
+
+**The three inputs.**
+
+1. **Adoption** — the developer's [Agent Adoption Score](#agent-adoption-score), 0–100.
+2. **Agentic** — the developer's [Agent Autonomy Score](#agent-autonomy-score), 0–100 (Claude Code + Codex sessions only; Cursor excluded).
+3. **Output Norm** — a normalized version of the developer's Output Score. Computed as `min(devRate / OrgP90Rate, 1.0) × 100 × MaturityFactor`, where `devRate = OutputScore / weeks`. Capped at 1.0 before scaling so outlier shippers don't blow past 100.
+
+All three are already on the same 0–100 scale, and all three are already scaled by the Maturity Factor. They're directly comparable.
+
+**The weighted blend.** The three weights — Adoption / Agentic / Output — are stored per-organization in `analytics.app_settings` under the keys `tier_weight_adoption`, `tier_weight_agentic`, and `tier_weight_output`. Defaults are 0.5 / 0.2 / 0.3. They're stored **raw**, then renormalized to sum to 1.0 on every read. So 0.5 / 0.2 / 0.3 renormalizes to 0.5 / 0.2 / 0.3 (already sums to 1); 1.0 / 0.5 / 0.5 renormalizes to 0.5 / 0.25 / 0.25.
+
+**Where to change them today.** The user-facing Settings UI (Settings → General) does not yet expose tier weights — the only keys the form writes are `maturity_factor`, `developer_hourly_rate`, `baseline_period_start`, and `default_department`. To change tier weights for an org, file a request with support and we'll set the `tier_weight_*` values directly. A self-serve form is planned but not in scope yet.
+
+If you set all three weights to zero (or negative), we fall back to defaults rather than producing a NaN. There's never a "100% output, 0% everything else" boost run.
+
+**Classification.** Once the composite score is computed, it's mapped to a tier: 80+ = **Power User**, 55–79 = **Regular**, 25–54 = **Explorer**, <25 = **Emerging**. The Emerging label is used consistently across the backend enum, the UI badge, the onboarding tour, and the Top-10 widget.
+
+**The PTO override.** If a developer was on PTO for _every_ weekday in the selected window, they're forced to the **On PTO** tier regardless of underlying scores. PTO override is checked first — if `ptoFlag` is true, we return `(0, OnPTO)` immediately and skip the composite math.
+
+**Window length matters.** If the selected window is less than 7 days, the Output Norm is forced to zero (rates can't be computed over sub-week windows). Tier still works in that case, but it's effectively a 2-input composite for short windows.
+
+**Org P90 is always org-wide.** Just like Adoption and Agentic, the Output Norm benchmark is computed across the whole active org, not the team you're filtering to. A developer's tier doesn't change when an admin toggles team filters.
+
+### Why it matters
+
+The Tier is the dashboard's most-used metric for cohort comparison and trend reading. It's the answer to questions like:
+
+* _"What percent of our org is at Regular or above?"_ — your AI rollout maturity score
+* _"How does our backend team's tier mix compare to the mobile team?"_ — find adoption gaps
+* _"How many developers crossed from Explorer → Regular last quarter?"_ — measure rollout velocity
+
+A single developer's tier is **not** a performance evaluation. The cohort is the unit of analysis.
+
+### How to read it
+
+The tier _mix_ — what percent of your population is in each tier — is more informative than any single tier label. A healthy org in the middle of an active rollout looks like:
+
+| Tier | Healthy range |
+| --- | --- |
+| **Power User** | 10–25% |
+| **Regular** | 30–50% |
+| **Explorer** | 20–35% |
+| **Emerging** | 10–20% |
+| **On PTO** | <5% typical, up to 15% in heavy-vacation months |
+
+If your **Power User % is below 5%**, your rollout has stalled or your org is genuinely early — check whether Maturity Factor is appropriate.
+
+If your **Emerging % is above 25%**, you have an onboarding or tooling-friction problem.
+
+If **On PTO % is unusually high** (>15%), check whether your PTO sync is working.
+
+### Where it appears
+
+* **/ai-adoption/developers** — primary surface. Tier badge on every row, sortable column.
+* **/ai-adoption/teams** — tier mix bars on every team row.
+* **/ai-adoption/executive** — adoption tier bar (clickable tier labels deep-link into /ai-adoption/developers filtered to that tier).
+* **/ai-adoption/ai-tools-comparison** — cohort comparisons use tier as a key segmentation.
+* **/ai-adoption/ai-impact** — productivity analysis uses tier as the primary cohort dimension.
+
+<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Executive view — hero KPI strip with cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage." Export to _images/ and add the figure here. -->
+
+### Settings that affect it
+
+* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — scales all three inputs, so it shifts the entire population up or down the tier ladder. _Configurable in Settings → General._
+* [**Tier Weights**](/gk-insights/ai-adoption/ai-adoption-settings#tier-weights) — controls how much Adoption / Agentic / Output each contribute. Defaults 0.5 / 0.2 / 0.3. _Per-org in_ `app_settings`_; not yet in the Settings UI — change via support._
+* [**Direct Commit Weight**](/gk-insights/ai-adoption/ai-adoption-settings#direct-commit-weight) — affects Output Score, which feeds into Output Norm. _Per-org in_ `app_settings`_; not yet in the Settings UI._
+* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption/ai-adoption-settings#exclude-chore-from-output-score) — same path through Output. _Per-org in_ `app_settings`_; not yet in the Settings UI._
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Agent Adoption Score](#agent-adoption-score) | Input #1. Default weight 0.5. |
+| [Agent Autonomy Score](#agent-autonomy-score) | Input #2. Default weight 0.2. |
+| Output Score | Input #3 (via Output Norm). Default weight 0.3. |
+| [Maturity Factor](#maturity-factor) | Scales all three inputs uniformly. |
+
+### How to improve it
+
+* **To move developers from Emerging → Explorer**, focus on Adoption. See [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score).
+* **To move developers from Regular → Power User**, focus on Agentic _and_ Output together. The top tier requires both depth of AI use and shipping at the org's top rate.
+* **To shift the org-level tier mix without retraining anyone**, tune the Tier Weights. Moving the weights toward Output emphasizes shippers; moving them toward Adoption emphasizes consistent users. (Currently a backend ops change — not yet self-serve.)
+* **To grade fairly across teams of different sizes**, look at _tier mix percentage_ rather than absolute counts.
+
+### Limitations and gotchas
+
+* **Org P90 moves.** A developer with steady absolute numbers can drop a tier when the rest of the org catches up.
+* **Sub-7-day windows.** Output Norm forces to zero, so Tier in a 5-day window is effectively Adoption + Agentic only.
+* **Composite hides imbalance.** A developer at Adoption=90 / Agentic=30 / OutputNorm=30 has the same composite (\~60, Regular) as one at 50/50/50. Always look at the expanded breakdown.
+* **PTO override is binary.** Partial-PTO developers (e.g. 2 weeks of a 4-week window) get _no_ override.
+* **Tier thresholds are fixed.** The 25/55/80 cutoffs don't move when you change Maturity Factor — only the inputs do.
+
+### FAQ
+
+**Q: Why a weighted composite instead of just averaging Adoption + Agentic + Output?**
+A: Different orgs value different signals. An early-stage rollout cares mostly about Adoption. A mature org cares mostly about Output. The weighted composite lets you tune which signal drives the Tier.
+
+**Q: What does "On PTO" do to team averages?**
+A: On-PTO developers are excluded from average score, Power User %, active-adoption %, and the Top 10. They're still in the roster, just not in those aggregates.
+
+**Q: Can a single developer's tier change just because the org changed?**
+A: Yes. Tier is normalized to the org P90 for Output, and the P90 caps for Adoption / Agentic are also org-wide.
+
+**Q: I set Tier Weights to 0.7 / 0.0 / 0.3 — what happens to Agentic?**
+A: Agentic is silently weighted at 0 in the composite. Renormalization still works. Agentic Score still displays separately on the developer detail panel.
+
+---
+
+## Maturity Factor
+
+> _An org-wide scaling knob (default 0.75) that adjusts the ceiling on every P90-based score so the tier distribution fits your organization's actual AI maturity._
+
+**Family:** Adoption & Agentic (org-level setting) · **Where it appears:** Settings → General; affects every score on /ai-adoption/developers, /ai-adoption/teams, /ai-adoption/executive
+
+### At a glance
+
+The Maturity Factor is a single number from 0.01 to 1.00 that scales every P90-normalized score in the dashboard. At its default of 0.75, a developer at the org's 90th percentile scores 75 — leaving headroom to grow into the Power User band (≥80). At 1.00, the same developer would score 100, and a much larger chunk of your team would land in Power User. The setting exists so you can match the tier ceiling to where your org actually is in its AI rollout.
+
+It is the single most consequential admin setting in the product. Changing it shifts the entire tier distribution for everyone in your org overnight, so it should be discussed before you change it.
+
+### Formula
+
+```
+ScoreAfterMaturity = ScoreBeforeMaturity × MaturityFactor
+
+Applied to:
+  Adoption    = min(Primary + 0.25 × Cursor, 100) × MaturityFactor
+  Agentic     = min(intensity / OrgP90, 1.0) × 100 × MaturityFactor
+  OutputNorm  = min(devRate / OrgP90Rate, 1.0) × 100 × MaturityFactor
+```
+
+### How GitKraken Insights applies it
+
+It is not calculated — it is set. Admins choose a value in Settings → General under the label **"Company AI Readiness %"**.
+
+The setting is stored in the `app_settings` table as `maturity_factor`. The backend reads it dynamically and threads it through every score computation. If the setting is absent or invalid (outside \[0.01, 1.0\]), the default 0.75 is used.
+
+There is no per-team, per-developer, or per-page override. It is one value, applied uniformly.
+
+### Why it matters
+
+P90-based scoring has a built-in problem: if you anchor the top of the scale to the org's 90th percentile, then the top 10% of developers always score 100, regardless of actual maturity. That is fine if your org is mature and your top 10% genuinely _are_ world-class AI users. It is misleading if you are 6 months into a rollout and your top 10% are just slightly less Emerging than everyone else.
+
+The Maturity Factor solves this by saying: "at our current org maturity, even a P90 developer only deserves a 75 — we are not at the ceiling yet." As the org matures, raise the factor toward 1.0 to reflect that the bar has genuinely been reached.
+
+It is the dial that prevents premature "everyone is a Power User!" inflation in early rollouts, and the dial that lets you eventually retire the artificial ceiling once your org has earned the top tier.
+
+### How to read it
+
+| Value | What you are saying about your org |
+| --- | --- |
+| **0.50 – 0.65** | "We are early. Most of our team is still adopting. The Power User band should be hard to reach." |
+| **0.70 – 0.80** | "We are in active rollout. The top tier is achievable but should require real effort." |
+| **0.80 – 0.90** | "We are mature. Our top 10% genuinely are world-class AI users." |
+| **0.95 – 1.00** | "We have fully internalized AI. The Power User band is the working baseline." |
+
+The default (0.75) is calibrated for "active rollout" — the most common state we see.
+
+### Where it appears
+
+* **Settings → General → "Company AI Readiness (%)"** — the input that controls it. Shows a live preview ("At this maturity, a perfect score is X points").
+* **Affects every page that displays Adoption, Agentic, or Output Norm scores.** Including /ai-adoption/developers, /ai-adoption/teams, /ai-adoption/executive, /ai-adoption/ai-tools-comparison, /ai-adoption/ai-impact.
+
+<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Settings → General — Maturity Factor, Developer Hourly Rate, Baseline Period, and Default Department. (Tier Weights, Direct Commit Weight, and Exclude Chore are stored in app_settings but not yet exposed in the form.)" Export to _images/ and add the figure here. -->
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Agent Adoption Score](#agent-adoption-score) | Multiplied by Maturity Factor as the final step. |
+| [Agent Autonomy Score](#agent-autonomy-score) | Multiplied by Maturity Factor as the final step. |
+| Output Score → Output Norm | Output Norm is multiplied by Maturity Factor. Raw Output Score itself is not. |
+| [AI Tier](#ai-tier) | Indirectly — the tier thresholds (25 / 55 / 80) stay fixed, but the inputs scale. |
+
+### How to use it
+
+* **Announce before you change.** Lowering Maturity Factor from 0.85 → 0.75 will move a chunk of Regulars down to Explorer overnight. Tell people _before_ the next /ai-adoption/teams snapshot is taken.
+* **Pair changes with milestones.** "We have hit 70% Regular+. We are raising the Maturity Factor to 0.85 to reflect that the bar has been reached. Some of you will drop a tier; that is by design — we are raising the ceiling because you have earned it."
+* **Don't change it more than twice a year.** It is a strategic setting, not a tactical knob.
+* **Use it intentionally during demos.** Demo profiles ship with Maturity Factor 0.75 so the headline tier distribution looks like a real org. Don't reset it for show-and-tell.
+
+### Limitations and gotchas
+
+* **It scales scores, not tier thresholds.** Lowering Maturity Factor lowers everyone's scores; it does _not_ shift the tier cutoffs (25 / 55 / 80). So a 10-point Maturity Factor change will move some developers between tiers.
+* **Power User % drops linearly with Maturity Factor changes.** Roughly, lowering from 1.0 → 0.75 cuts your Power User % by \~25–35% as developers near the 80 threshold drop below it.
+* **The setting is org-wide.** You can't have one Maturity Factor for the Backend team and a different one for Mobile.
+* **No retroactive recalculation.** Changing Maturity Factor immediately affects current-window scores, but does not rewrite historical snapshots. Trend lines will show the discontinuity.
+* **Cohort comparisons stay valid across changes.** Tier mix ratios within a single window are unaffected by Maturity Factor changes — the _gap_ between teams is what matters; the absolute number shifts.
+
+### FAQ
+
+**Q: Why default to 0.75 instead of 1.00?**
+A: Most orgs running Insights are in active rollout, not at full maturity. 0.75 is calibrated for that state. If we defaulted to 1.0, every early-stage customer would see "100% Power User" within weeks and the tier signal would become useless.
+
+**Q: When should I raise it to 1.0?**
+A: When your team's working baseline genuinely is high-autonomy, daily-use AI integration. A useful threshold: if you can credibly tell your CTO "we have reached the point where AI is the default mode of working, not the exception," it is time to raise Maturity Factor.
+
+**Q: Will lowering it make my team feel demoralized?**
+A: Possibly, if you don't announce it. Always frame the change as "we are raising the bar because you have earned it" rather than "you have all dropped a tier."
+
+**Q: Is there a per-team Maturity Factor?**
+A: No. It is intentionally one global value. Per-team Maturity Factor would defeat the point of comparing teams against a common bar.
+
+---
+
+## Cursor Boost
+
+> _The 25% (default) multiplier applied to a developer's Cursor adoption score before it layers into the headline Agent Adoption Score._
+
+**Family:** Adoption & Agentic · **Where it appears:** Behind the scenes in the Adoption Score on /developers, /teams, /executive
+
+### At a glance
+
+GitKraken Insights treats Claude Code and Codex as "primary" AI tools and Cursor as a "secondary" one. Primary tools have their events unioned at the factor level into one combined score. Cursor is scored independently and _added_ to that primary score at a discount — the Cursor Boost rate — before the final score is capped at 100. The default discount is 25%, configurable via an environment variable.
+
+This page exists so admins understand why a developer's Cursor activity contributes meaningfully to their Adoption Score but doesn't dominate it.
+
+### Formula
+
+```
+Final Adoption (pre-maturity) = min(Primary + secondaryBoost × Cursor, 100)
+  Primary = blend(Claude ∪ Codex)
+  Cursor  = blend(Cursor events alone)
+  secondaryBoost = 0.25 (default)
+```
+
+If Cursor data is absent (`nil`), the boost term is dropped entirely — no Cursor activity, no boost.
+
+### How GitKraken Insights calculates it
+
+**Step 1.** Per-provider scoring for Cursor runs the same four-factor blend (Daily Use, Hourly Spread, Prompts, Output) used for Claude and Codex — see [Agent Adoption Score](#agent-adoption-score) for the mechanics.
+
+**Step 2.** The resulting Cursor score (0–100) is multiplied by the `secondaryBoost` rate (default 0.25 = 25%). So a developer at Cursor=80 contributes 80 × 0.25 = 20 points of additional adoption.
+
+**Step 3.** The boosted value is added to the Primary score (Claude ∪ Codex) and the sum is capped at 100 before Maturity Factor scaling.
+
+**Edge case: primary is zero.** If a developer has _no_ Claude/Codex activity but has Cursor activity, they still get the Cursor boost as their entire pre-maturity score. So a dev with Primary=0, Cursor=80 gets 0 + 20 = 20 pre-maturity, which becomes 15 at the default Maturity Factor of 0.75. They land in Emerging but at the high end — visible as "trying Cursor only."
+
+### Why the asymmetric treatment
+
+Claude Code and Codex export OpenTelemetry traces with detailed prompt/response/token/tool data. Cursor's API exports a less complete event stream — fewer fields, sparser timing, no token counts in some cases. We use Cursor data as **confirmatory signal** rather than primary evidence:
+
+* If a developer is using Cursor consistently, we want their Adoption Score to reflect that.
+* But we don't trust Cursor data enough to make it a 1:1 substitute for Claude / Codex.
+
+The 25% boost rate is the empirical middle ground — high enough that Cursor power-users score meaningfully, low enough that incomplete data doesn't mask gaps in primary-tool adoption.
+
+### How to read it
+
+You don't typically read the Cursor Boost in isolation. What you read is the breakdown on a developer's expanded detail panel:
+
+* A developer with Claude=70, Cursor=80 has Primary=70 + boost=20 → pre-maturity 90 (capped at 100), final 67.5 at MF=0.75.
+* A developer with Claude=70, no Cursor data has Primary=70, no boost → pre-maturity 70, final 52.5.
+
+The difference (15 points) is what Cursor adoption is contributing in that developer's case.
+
+### Where it appears
+
+* **/developers** — expanded panel breaks down "Claude contribution" / "Codex contribution" / "Cursor contribution" so you can see what each tool is doing for a developer's score.
+* **Behind the scenes** in every Adoption Score on the dashboard.
+
+<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns." Export to _images/ and add the figure here. -->
+
+### Settings that affect it
+
+* `SCORE_SECONDARY_BOOST` environment variable. Default 0.25. Range 0.0 to 1.0+. Changing it requires a backend restart.
+
+The Cursor Boost rate is not currently exposed in the Settings UI. Ask your account manager if you need it tunable.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Agent Adoption Score](#agent-adoption-score) | Cursor Boost is one of two terms in the Adoption Score formula. |
+| [AI Tier](#ai-tier) | Indirectly — Cursor adoption shows up here via Adoption Score. |
+
+### How to use it
+
+Cases where you might want to change the boost rate:
+
+* **You've standardized on Cursor as a primary tool.** If your org has gone "Cursor-first" rather than "Claude-first," consider raising the boost to 0.5 or higher so Cursor adoption contributes proportionally.
+* **You want Cursor to count equally with Claude / Codex.** Set the boost to 1.0. Now a Cursor-only developer can score the same as a Claude-only developer.
+* **You want to phase Cursor out.** Set the boost to 0. Cursor data is ignored in adoption math (it still appears in /data and other detail views).
+
+In most orgs, the default 0.25 is the right answer. Touch it only when your provider mix has genuinely shifted.
+
+### Limitations and gotchas
+
+* **No agentic score from Cursor.** Cursor's events don't expose tool-call data in a way we can score for the [Agent Autonomy Score](#agent-autonomy-score). So a developer doing all their autonomous AI work in Cursor will look low-Autonomy in the dashboard regardless of their actual practice.
+* **Boost is additive, not blended.** We don't union Cursor events with Claude/Codex at the factor level (the way we do for Claude+Codex). Cursor is scored separately and then layered on.
+* **Pre-cap addition.** Because we cap at 100 _after_ the boost is added, a developer at Primary=95 + Cursor=80 caps at 100 — the last 15 points of potential Cursor contribution are wasted.
+
+### FAQ
+
+**Q: Why isn't Cursor unioned with Claude / Codex?**
+A: Their event streams aren't comparable enough at the field level. We'd need consistent prompt counts, token counts, and tool counts across all three providers to union them; Cursor doesn't currently export that consistently. As Cursor's API matures, this could change.
+
+**Q: A developer uses Cursor exclusively and shows score 15. Is that right?**
+A: At default settings, yes. Cursor=80 × 0.25 boost × 0.75 Maturity Factor = 15. If your org is Cursor-first, raise `SCORE_SECONDARY_BOOST` to 0.75 or 1.0 to give Cursor users a fair share of the score.
+
+**Q: Why default 25% and not 50%?**
+A: Empirically, the data we get from Cursor today is roughly a quarter as rich as what we get from Claude / Codex OTEL traces. 25% reflects "Cursor counts about as much as the data we have on it." If Cursor's event coverage improves, we'd raise the default.
+
+---
+
+---
+title: AI Impact & Cost Metrics in GitKraken Insights
+description: Learn about AI Impact & Cost metrics in GitKraken Insights, including Productivity Uplift, AI-Assisted Percentage, CapEx/OpEx Split, and Spend by Tier.
+product: GitKraken Insights
+content_type: reference
+audience: all
+plan_required: GitKraken Insights
+integrations: [Claude Code, Codex, Cursor]
+status: GA
+taxonomy:
+    category: gk-insights
+---
+<kbd>Last updated: June 2026</kbd>
+
+<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "Output Score", "Effort Score", and "Cycle Time" (Flow & Cycle Time family), which have no pages in this repo yet. Those links were converted to plain text. Note: this page documents the new AI Impact & Cost family and is distinct from the existing AI Impact Metrics page (gk-insights-ai-impact-metrics.md), which covers code quality and acceptance-rate metrics. -->
+
+This family answers: **is AI actually paying off?**
+
+Other families measure adoption (are people using it?) and output (is work shipping?). This family connects those signals to dollars and hours — the language executives and finance teams need.
+
+These numbers are _estimates_, not measurements. The dashboard is honest about that throughout, but it is worth saying up front: when we publish "$1.2M in annualized productivity gain," we mean "directionally, this is the order of magnitude." Use these numbers for storytelling and order-of-magnitude framing, not for finance reconciliation.
+
+---
+
+## The metrics
+
+| Metric | What it captures |
+| --- | --- |
+| [**Productivity Uplift**](#productivity-uplift) | The headline ROI numbers. Volume speedup vs. baseline period, plus per-dev and Power-User comparisons within the current window. |
+| [**AI-Assisted Percentage**](#ai-assisted-percentage) | What % of shipped _changes_ (PRs + commits) had AI assistance. Weighted by lines changed. |
+| [**CapEx / OpEx Split**](#capex--opex-split) | Software capitalization breakdown. Which work counts as capitalizable engineering investment? |
+| [**Spend by Tier**](#spend-by-tier) | AI tooling cost allocated across AI Tiers. Where is the money going, and is it landing on Power Users? |
+
+---
+
+## How the metrics connect
+
+Adoption Score → AI-Assisted % → Productivity Uplift → $ saved / week → CapEx / OpEx split → ROI math (Spend by Tier)
+
+The chain is: adoption drives AI-assisted work, AI-assisted work drives productivity uplift, productivity uplift translates to dollar savings, and dollar savings vs. AI spend gives you ROI.
+
+Each step adds assumption uncertainty. The Adoption Score is a clean measurement. The Productivity Uplift estimate carries the most assumption load — see its section for the honest accounting.
+
+---
+
+## Read this family responsibly
+
+Three rules:
+
+1. **Don't cite Productivity Uplift to the dollar.** It is an estimate. Round generously when reporting.
+2. **Use these numbers for trend storytelling.** "Productivity uplift up 2× since rollout began" is a defensible story. "Productivity uplift is $1,234,567/year" is not.
+3. **The CapEx/OpEx split is more solid than the productivity numbers.** It is based on category classification of actual shipped work, not on uplift inference. Use it for capitalization accounting with reasonable confidence.
+
+---
+
+## Where this family shows up
+
+* **/ai-adoption/ai-impact** — the dedicated home for this family. Productivity hero cards, AI Insight banner, Cycle Time and PR Volume by AI Tier, Spend by Tier, CFR by AI Tier.
+* **/ai-adoption/executive** — Productivity Uplift in the hero KPI strip and the executive insight banner.
+* **/ai-adoption/capex** — CapEx / OpEx split as the primary surface.
+* **/ai-adoption/teams**, **/ai-adoption/developers** — AI-Assisted % appears in trend lines and breakdowns.
+
+---
+
+## Productivity Uplift
+
+> _Estimated productivity gain attributable to AI adoption. Computed three ways: volume speedup vs. a baseline period, per-developer uplift comparing active to other developers, and Power-User uplift comparing top-tier developers to the rest._
+
+**Family:** AI Impact & Cost · **Cadence:** Window vs. baseline comparison · **Where it appears:** /ai-adoption/ai-impact, /ai-adoption/executive
+
+### At a glance
+
+Productivity Uplift is the dashboard's attempt to answer the question every CFO asks: "what is AI actually doing for us?" The dashboard computes three related comparisons and surfaces them on the Productivity hero cards:
+
+1. **Volume speedup** — current changes-per-dev-per-week vs. baseline period.
+2. **Per-developer uplift** — active developers vs. other developers, within the current window.
+3. **Power-User uplift** — top-tier developers vs. the rest, within the current window.
+
+All three are **estimates**, built from rate comparisons that each carry uncertainty. Use these numbers for storytelling and order-of-magnitude framing — not for finance reconciliation.
+
+### Formulas
+
+```
+VolumeSpeedupFactor          = TreatmentChangesPerDevPerWeek / ControlChangesPerDevPerWeek
+EstimatedHoursSavedPerDevWeek = (VolumeSpeedupFactor − 1) × 40-hour work week
+EstimatedValueSaved          = EstimatedHoursSavedPerDevWeek × Developer Hourly Rate × dev count
+
+PerDevUpliftPct        = (ActiveAvgChangesPerDev − OtherAvgChangesPerDev) / OtherAvgChangesPerDev × 100
+PowerUserPerDevUpliftPct = (PowerUserAvgChangesPerDev − BelowPowerAvgChangesPerDev) / BelowPowerAvgChangesPerDev × 100
+PotentialUpliftPct     = additional org-wide changes if all developers moved to Active tier, as % of current total
+```
+
+### How GitKraken Insights calculates it
+
+**Step 1 — Establish the baseline.** The baseline period is set in Settings → General (default November 1 of the previous year through the start of the current month). The current window is compared against a same-length window from the baseline period.
+
+**Step 2 — Compute the volume speedup.** We measure changes-per-developer-per-week in both windows. If the baseline rate is at least 1 change per dev per week (a guard against divide-by-near-zero — see NG-152 below), the ratio gives the volume speedup factor. A factor of 1.5 means the team is shipping 50% more changes per dev per week than baseline.
+
+**Step 3 — Estimate hours and dollars saved.** Multiply `(VolumeSpeedupFactor − 1)` by a 40-hour standard work week to get hours saved per dev per week. Multiply that by Developer Hourly Rate and developer count to get the dollar figure.
+
+**Step 4 — Compute the within-window comparisons.** Independently of the baseline comparison, we compute uplift percentages within the current window: active developers vs. other developers, and Power Users vs. the rest. These don't require baseline data and answer slightly different questions.
+
+**The NG-152 guard.** When the baseline rate is below 1 change per dev per week, the dashboard refuses to compute a speedup factor. This guard exists because tiny baseline denominators (sparse teams, new connections, or many seeded developers with few historical changes) used to produce nonsense headline numbers like "+12,665% productivity, $5.3M/week saved." Below the floor, we leave the volume-speedup and hours-saved fields at zero, and the AI Impact view shows an empty state instead of an inflated number.
+
+### Why it matters
+
+Productivity Uplift is the metric you use when an executive asks "should we keep paying for Claude?" The dashboard can't give you a definitive answer, but it can give you a defensible directional one.
+
+It is also useful for tracking rollout maturity. A team where uplift is climbing alongside AI Adoption Score is a team where the rollout is genuinely working. A team where Adoption climbs but uplift stays flat is a team where adoption is shallow — they have the tools but aren't extracting value.
+
+### How to read it
+
+For the volume-speedup percentage:
+
+| Speedup | Read it as |
+| --- | --- |
+| **30%+** | Strong return — AI is clearly delivering. Sustainable if it stays roughly here. |
+| **15–29%** | Solid — typical for orgs 6–12 months into active rollout. |
+| **5–14%** | Early — adoption exists but value is still ramping. Expect this to grow. |
+| **< 5%** | Limited — either rollout is shallow or measurement is masking real gains. |
+| **Empty state** | Baseline rate is below the NG-152 floor (1 change per dev per week). Pick a different baseline period or wait for more data. |
+
+Don't quote the dollar value to two decimal places. "About $50K per week in annualized productivity gain" is defensible. "$2.43M per year" is not — the math doesn't support that precision.
+
+### Where it appears
+
+* **/ai-adoption/ai-impact** — the Productivity hero (4 cards: Increase in Productivity %, Additional Hours/Dev/Week, Additional $/Week, AI-Assisted Changes %), plus the AI Insight banner narrating the org-level uplift.
+* **/ai-adoption/executive** — Productivity Uplift is one of the executive view's headline indicators and shows up in the LLM-generated executive insight banner.
+
+### Settings that affect it
+
+* [**Baseline Period**](/gk-insights/ai-adoption/ai-adoption-settings#baseline-period) — sets the historical comparison window. Move it when you have launched a new tool and want to anchor uplift to a specific pre-launch month.
+* [**Developer Hourly Rate**](/gk-insights/ai-adoption/ai-adoption-settings#developer-hourly-rate) — translates additional hours into additional dollars.
+* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — indirectly, by shifting the underlying Adoption / Output baselines that feed the active vs. other comparison.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| Output Score | The shipping-rate signal that underpins changes-per-dev-per-week. |
+| [AI-Assisted Percentage](#ai-assisted-percentage) | Confirms that the output gain came from AI-touched work. |
+| Cycle Time | Lower Cycle Time generally accompanies the speedup story. |
+| [Spend by Tier](#spend-by-tier) | Pairs with uplift for ROI math. |
+
+### How to improve it
+
+The honest answer: improve the inputs.
+
+* **Raise changes per dev per week** by following the Output Score improvement guidance.
+* **Raise AI-Assisted %** by deepening adoption in the cohort that is already using AI lightly — see the [Agent Adoption Score playbook](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score).
+* **Lower Cycle Time** via review process and PR-size discipline.
+* **Don't try to improve uplift directly.** It is a derived metric. Optimizing the inputs is the only way to move it honestly.
+
+### Limitations and gotchas
+
+* **Estimate, not measurement.** Built from rate comparisons each with uncertainty. Round generously.
+* **Baseline period choice matters a lot.** Comparing against a baseline that itself had unusual circumstances can produce misleading uplift numbers in either direction.
+* **Doesn't isolate AI from other process changes.** If you adopted AI _and_ started doing weekly retros _and_ hired three senior ICs, all of those contribute to your speedup. The number doesn't surgically attribute.
+* **Dollar figure depends on hourly rate.** A team with $50/hour rate sees half the dollar figure of a team with $100/hour rate, same productivity gain. The percentage is the more invariant number.
+* **Below-floor baselines produce an empty state, not a number.** See the NG-152 guard above.
+
+### FAQ
+
+**Q: How precise is the dollar figure?**
+A: Order-of-magnitude. The percentage speedup is more trustworthy than the absolute dollars — dollars depend on Developer Hourly Rate × the 40-hour work-week assumption. Cite the percentage and let the audience do the rough math if they want a dollar feel.
+
+**Q: A team has 5% volume speedup but high AI adoption. Is something wrong?**
+A: Possibly. Common causes: (1) adoption is broad but shallow, (2) the baseline period was anomalously productive, (3) the team works in a domain where AI helps less. Investigate before drawing conclusions.
+
+**Q: Can I see uplift by team?**
+A: Yes — filter the /ai-adoption/ai-impact page by team, and the Productivity hero cards recompute for that scope.
+
+**Q: Will these metrics work if my org just installed Insights?**
+A: Only weakly. The baseline period defaults to November 1 last year, so you need at least a few months of historical data to compute meaningful deltas. If the baseline rate is below the NG-152 floor, the dashboard shows an empty state rather than an inflated number.
+
+**Q: How do I explain this to my CFO?**
+A: "This is our directional estimate of productivity gain attributable to AI adoption. The percentage is reliable for trend reading. The dollar figure is order-of-magnitude — don't book it as financial guidance, but it is defensible for narrative."
+
+---
+
+## AI-Assisted Percentage
+
+> _What share of your team's shipped changes had AI assistance — measured as a percentage of lines changed in AI-assisted PRs and commits._
+
+**Family:** AI Impact & Cost · **Cadence:** Per window · **Where it appears:** /ai-adoption/ai-impact, /ai-adoption/executive, drill-downs
+
+### At a glance
+
+AI-Assisted % is the behavioral counterpart to [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score). Where Adoption asks "is this developer using AI?", AI-Assisted % asks "did this developer use AI _on this specific change_?" The two diverge surprisingly often. A developer can be a heavy daily Claude user (high Adoption) and ship most of this week's PRs without touching it (low AI-Assisted on those changes).
+
+The metric is line-weighted, so a 2,000-line AI-assisted refactor counts more than a 30-line AI-assisted typo fix.
+
+### Formula
+
+```
+AI-Assisted % = (lines changed in AI-assisted PRs + commits) / (total lines changed) × 100%
+
+  where AI-assisted = has AI co-author trailer OR
+                      developer had AI events within ±1h of the change's lifecycle
+```
+
+### How GitKraken Insights calculates it
+
+**Per-item detection.** For each merged PR and direct commit, the backend computes `is_ai_assisted = true` if either:
+
+1. **The commit has an AI co-author trailer** (reason: `co_author`), or
+2. **The developer had AI events within ±1 hour of the change's lifecycle window** (reason: `ai_events`). For PRs, the window is `(first_commit_at, merged_at OR closed_at OR now)`. For direct commits, ±1 hour around the commit. AI events include `user_prompt`, `tool_result`, and `api_request` from any connected provider (Claude Code, Codex, Cursor).
+
+The materialized flag (`pull_requests.is_ai_assisted` / `direct_commits.is_ai_assisted`) is computed by a continuous classifier worker. A live `EXISTS` fallback fires when the materialized flag is still NULL (typically for very recent items).
+
+**Aggregation.** AI-Assisted % is computed as lines-changed-weighted, not as a simple count. So a team that ships 100 small AI-assisted PRs and one big non-AI-assisted PR can show 50% AI-Assisted (by lines) even though 99% of count is AI-assisted.
+
+This weighting reflects "how much of the shipped _work_ had AI help" rather than "how many of the shipped _items_."
+
+### Why it matters
+
+AI-Assisted % is the closest thing the dashboard has to an _attribution_ metric. Adoption Score says "developers are using AI"; AI-Assisted % says "AI is touching the shipped work."
+
+It is also a sanity check on the Adoption Score. A team with 90% Adoption Score and 10% AI-Assisted % has a problem — devs are using AI but not on their actual work. A team with 60% Adoption and 60% AI-Assisted has clean alignment.
+
+For executives, AI-Assisted % is the metric to cite when answering "how integrated is AI into the actual code we ship?" The answer is more concrete than Adoption (which can include "I asked Claude a question once").
+
+### How to read it
+
+| AI-Assisted % | Read it as |
+| --- | --- |
+| **70%+** | Deep integration — AI is on most of the team's substantive work |
+| **40–69%** | Solid — AI is integrated into about half of substantive shipping |
+| **15–39%** | Emerging — AI is used on a subset of work, often the easier subset |
+| **< 15%** | Limited — AI is being used adjacent to work but not on the work itself |
+
+The right target for your team depends on what you ship. Heavy infrastructure and migration work resists AI assistance — even at 100% adoption, AI-Assisted % may cap at 50%. Greenfield product work can reach 80%+.
+
+### Where it appears
+
+* **/ai-adoption/ai-impact** — AI-Assisted Changes % card in the Productivity hero. Also shows up in the AI Insight banner narrative.
+* **/ai-adoption/executive** — AI-Assisted % is one of the headline KPIs.
+* **PR drill-down tables** — each PR shows its AI-Assisted status with the reason (`co_author` or `ai_events`).
+
+### Settings that affect it
+
+* The ±1 hour temporal window is fixed in code and not currently configurable.
+* The AI co-author trailer detection is fixed.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score) | The user-level adoption measure. AI-Assisted % is the work-level counterpart. |
+| [Productivity Uplift](#productivity-uplift) | AI-Assisted % is a confirming signal — higher AI-Assisted → stronger uplift narrative. |
+| Output Score | Independent — Output Score doesn't filter by AI-assisted status. |
+
+### How to improve it
+
+* **Run a brown-bag on "show me how you actually use AI."** Many teams have devs using AI for _adjacent_ work (research, learning) but not for the work they ship. Demos help.
+* **Pair Power Users with low-AI-Assisted devs.** Same intervention as for Adoption, but specifically targeting work-level integration.
+* **Audit the gap.** Identify devs with high Adoption but low AI-Assisted %. Those are the ones to coach — they have the habit but aren't translating it.
+* **Don't conflate AI-Assisted with "using AI co-author tags."** Many devs use AI without tagging. The ±1 hour temporal heuristic catches them; teams that primarily rely on tagging may show low AI-Assisted artificially.
+
+### Limitations and gotchas
+
+* **The ±1 hour temporal heuristic produces false positives and false negatives.** A dev who left Claude open in another window while writing non-AI-assisted code still gets the AI-assisted flag. Conversely, a dev who used AI 2 hours before committing doesn't. The heuristic is the best practical balance, not a measurement.
+* **Materialized flag lags by minutes to hours.** The classifier worker catches up continuously.
+* **Co-author trailer detection requires the trailer.** Devs using AI without the `Co-authored-by` trailer rely entirely on the temporal heuristic.
+* **Line-weighted means one big PR can dominate the metric.** A team's 50% AI-Assisted week might be one 3,000-line non-AI-assisted migration plus many smaller AI-assisted PRs. Look at distribution, not just the headline.
+
+### FAQ
+
+**Q: How is "AI-assisted" detected if the dev doesn't tag the commit?**
+A: The backend looks for AI events (Claude / Codex / Cursor prompts, tool results, API requests) by that developer within ±1 hour of the change's lifecycle. If they prompted Claude an hour before committing, the commit is marked AI-assisted with reason `ai_events`.
+
+**Q: A PR shows AI-Assisted = false but I know the dev used Claude. Why?**
+A: Three usual causes: (1) the AI events happened more than 1 hour outside the PR's lifecycle window, (2) the developer's email or login doesn't match between the AI events and the PR, (3) the materialized flag hasn't been computed yet.
+
+**Q: Why line-weighted rather than count-weighted?**
+A: Line weighting tracks "how much of the work shipped with AI help." Count weighting can be skewed by a flood of trivial PRs. Line weighting is the more honest "share of substantive output" answer.
+
+**Q: Will lines from the AI's auto-generated comments count?**
+A: Yes — all lines changed in the PR count, including ones the AI wrote that the human accepted. That is by design: the work was AI-assisted regardless of which lines came from whom.
+
+---
+
+## CapEx / OpEx Split
+
+> _Software capitalization breakdown — which engineering work counts as a capitalizable asset (CapEx) and which is operating expense (OpEx)._
+
+**Family:** AI Impact & Cost · **Cadence:** Monthly grid · **Where it appears:** /ai-adoption/capex
+
+### At a glance
+
+In many jurisdictions, engineering work on new features and substantial enhancements can be **capitalized** — booked as an investment asset that depreciates over time, rather than expensed in the period. Maintenance, bug fixes, and operational work cannot. The CapEx / OpEx Split classifies every PR and commit into one of those two buckets so finance can produce defensible capitalization numbers without manually re-coding the engineering team's work.
+
+It is one of the dashboard's most accountant-friendly outputs — and one of the harder pages to look at unless you are the one filing the schedule.
+
+### Formula
+
+```
+For each PR or commit:
+  effective_capex = COALESCE(capex_opex, capex_opex_auto, 'Uncategorized')
+
+  capex_opex      — manual override stored on the PR / commit record
+  capex_opex_auto — automatic classification from the PR / commit category
+  'Uncategorized' — fallback when neither is set; aggregates as OpEx for reporting
+
+Aggregated as effort-weighted hours per developer per month, split CapEx / OpEx.
+```
+
+### How GitKraken Insights calculates it
+
+**Per-item classification.** Every PR and direct commit gets a `capex_opex_auto` value based on its category:
+
+| Category | CapEx or OpEx |
+| --- | --- |
+| **Feature** | CapEx |
+| **Enhancement** | CapEx |
+| **Refactor** | CapEx |
+| **Bug Fix** | OpEx |
+| **Chore** | OpEx |
+| **Docs** | OpEx (typically) |
+| **Test** | Mixed (test for new feature = CapEx; test for bug fix = OpEx) |
+| **Uncategorized** | Falls through the COALESCE; aggregates as OpEx in reporting. |
+
+This is a deterministic mapping from the PR or commit category, _not_ an LLM inference at the CapEx step itself. (The category that drives it is LLM-classified.) Manual overrides (`capex_opex`) win the COALESCE.
+
+**Aggregation.** For each developer × month, the backend sums the effort-weighted hours of CapEx work and OpEx work separately. The result is a monthly grid: each cell shows hours-of-CapEx and hours-of-OpEx for that developer in that month.
+
+**Hours estimate.** Effort hours come from Effort Score × an internal conversion factor (calibrated empirically). It is an estimate, not a measurement.
+
+### Why it matters
+
+The CapEx side of engineering spend is depreciated over multiple years rather than expensed in the period. For most product engineering orgs, this materially reduces the period operating expense and changes how the business looks to finance.
+
+Doing this classification by hand is painful — most companies don't do it well, or default to crude bucketing ("70% of engineering is capitalizable"). The dashboard's automatic per-PR classification gives you a defensible audit trail: every hour of capitalized engineering ties to a specific PR with a specific category.
+
+For most teams using Insights, the CapEx / OpEx page is the highest-ROI single feature for finance and accounting stakeholders.
+
+### How to read it
+
+The grid view shows monthly columns × developer rows. Per cell, you see hours split CapEx vs. OpEx. The ratio is the interesting number:
+
+| Engineering CapEx ratio | Read it as |
+| --- | --- |
+| **70%+** | Heavy product-build orgs typically land here. Strong defensibility. |
+| **50–69%** | Mixed orgs — substantial product work plus meaningful maintenance. |
+| **30–49%** | Maintenance-heavy or platform-heavy orgs. Defensible but lower capitalization. |
+| **< 30%** | Mostly OpEx — likely SRE, support, or legacy maintenance team. |
+
+The ratio shifts predictably with team type. SRE teams are mostly OpEx by design. New-product teams are mostly CapEx. Mature product teams sit in the middle.
+
+### Where it appears
+
+* **/ai-adoption/capex** — primary surface. Grid view with monthly columns and developer rows. Expandable rows show per-PR detail and a per-month trend chart. A velocity column shows the PR + commit breakdown. CSV export is available.
+
+### Settings that affect it
+
+* [**Developer Hourly Rate**](/gk-insights/ai-adoption/ai-adoption-settings#developer-hourly-rate) — translates hours into capitalized and expensed dollars in the cost rollup.
+* Manual `capex_opex` override per PR or commit — settable from /ai-adoption/data-explorer when the auto-classification produces the wrong answer.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| Effort Score | Effort feeds into the hours estimate. |
+| Output Score | Same shipped work, different aggregation. |
+
+### How to use it
+
+* **Reconcile monthly with finance.** Export the CSV at the end of each month. Hand it to your accounting team. They can audit-trail back to individual PRs.
+* **Adjust the category mapping if your accounting requires it.** The defaults reflect US GAAP-style "new functionality is capitalizable, maintenance is not." If your jurisdiction or accounting standard is different, talk to your account manager.
+* **Use manual overrides for edge cases.** A "refactor" that is really maintenance-flavored work should be `capex_opex = OpEx`. A "bug fix" that is actually a new feature flag launch can be the reverse.
+* **Don't treat the auto-classification as final without review.** For high-dollar-value capitalization decisions, sample a few PRs per month and verify the auto-category is right.
+
+### Limitations and gotchas
+
+* **Category accuracy depends on the LLM classifier and on PR title and description quality.** A PR titled "fix" that is actually a feature gets miscategorized. Manual overrides exist for this case.
+* **Hours estimate is empirical, not timesheet-based.** Developers aren't asked to log time. The effort-to-hours conversion is a tuned constant.
+* **Doesn't account for non-shipping work.** Time spent in meetings, planning, design review, or on-call doesn't land in PRs or commits.
+* **Jurisdiction matters.** US GAAP, IFRS, and country-specific standards have different rules for what is capitalizable.
+* **Test category is fuzzy.** Tests for new features should be CapEx with the feature; tests for bug fixes should be OpEx with the fix. The auto-classifier makes its best guess from PR scope but isn't always right.
+
+### FAQ
+
+**Q: Can finance trust these numbers for our audit?**
+A: As a starting point, yes — the per-PR audit trail is the strongest feature. The auto-categorization should be sampled and reviewed by your accounting team before booking, especially the first time. Most teams find \~85% accuracy out of the box; manual overrides on the remaining 15% take an hour or two per month.
+
+**Q: How does the hours estimate work?**
+A: Effort Score (0.1 to 0.9) maps to an internal hours-per-effort-point constant calibrated against teams that have tracked time. It is an estimate. Order-of-magnitude reliable, not down-to-the-hour.
+
+**Q: We want to track CapEx by project, not by developer. Is that possible?**
+A: Currently the grid is per-developer per-month. Project-level rollup isn't directly supported — filter by team (if your projects map to teams) or use the CSV export and re-pivot.
+
+**Q: My PR is misclassified as CapEx but it's really maintenance. How do I fix it?**
+A: /ai-adoption/data-explorer → PRs tab → click the row → set `capex_opex` to OpEx. Saves immediately. Future aggregations will reflect the override.
+
+---
+
+## Spend by Tier
+
+> _AI tooling cost allocated across AI Tiers. Where is the money going, and is it landing on the developers who are actually using it?_
+
+**Family:** AI Impact & Cost · **Cadence:** Per window · **Where it appears:** /ai-impact
+
+### At a glance
+
+Spend by Tier answers the awkward question: "are we paying for AI tools on behalf of developers who aren't using them?" It splits your AI tooling spend across the five AI Tiers (Power User / Regular / Explorer / Emerging / On PTO) and shows where the money is concentrated.
+
+The healthiest pattern: spend concentrated on Power Users and Regulars. The unhealthy pattern: a meaningful chunk of spend allocated to Emerging seats — wasted licensing budget that should be reallocated or wound down.
+
+### Formula
+
+```
+Spend per Tier = (license cost per developer) × (developers in that tier)
+
+For per-developer usage-based spend (e.g. API costs):
+Spend per Tier = SUM(api_cost) over developers in that tier
+```
+
+### How GitKraken Insights calculates it
+
+**Two modes.**
+
+1. **License-based.** Each developer with an active AI tool license contributes the license cost (say $20/seat/month for Claude Code Pro). Sum across developers, grouped by tier.
+2. **Usage-based.** For tools billed on consumption (API tokens, e.g.), we sum the actual `cost_usd` from `api_request` events grouped by developer, then group by tier.
+
+In practice, most orgs see both. Claude / Codex / Cursor licenses are seat-based; some API usage charges are consumption-based. The dashboard rolls them up together.
+
+**Grouping by tier.** Once spend-per-developer is computed, we group by the developer's AI Tier for the window. The result is total $ allocated to each tier.
+
+### Why it matters
+
+For most orgs, AI tooling spend lands around $20–$50 per developer per month — meaningful at scale (an org of 500 developers is spending $10–25K per month). The natural question is "is that money going to developers who would feel pain if we took it away, or is half of it on Emerging seats?"
+
+Spend by Tier surfaces this directly. It's the single most useful view for the conversation with finance about whether to renew, expand, or rightsize the AI tooling budget.
+
+### How to read it
+
+The healthy distribution:
+
+| Tier | Share of spend |
+| --- | --- |
+| **Power User** | 25–40% (proportional to share of devs) |
+| **Regular** | 35–50% |
+| **Explorer** | 15–25% |
+| **Emerging** | <15% — and shrinking |
+| **On PTO** | minimal — usually a noise floor |
+
+If your Emerging share is above 20%, you have either an onboarding problem or a license-allocation problem. Investigate.
+
+The total dollar number is also informative: divide by total developers and you have your average AI spend per developer. Most orgs land in the $20–$50/dev/month range.
+
+### Where it appears
+
+* **/ai-impact** — Spend by Tier panel alongside the cycle time and CFR by-tier charts.
+
+### Settings that affect it
+
+* AI license cost configuration is not currently exposed in the Settings UI. License costs are configured at deploy time. Ask your account manager if you need to adjust them.
+* API usage cost comes from the `cost_usd` field on `api_request` events — sourced directly from the provider.
+
+### Related metrics
+
+| Metric | Relationship |
+| --- | --- |
+| [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) | The grouping dimension. |
+| [Productivity Uplift](#productivity-uplift) | Spend / Uplift = ROI. Most healthy rollouts have uplift >> spend by an order of magnitude. |
+
+### How to use it
+
+* **Annual or quarterly license review.** Pull this chart before your AI tooling renewal conversation. Identify the Emerging cohort. Decide: re-engage them or remove their seats.
+* **Re-allocate seats from Emerging to Explorer.** If you're capacity-constrained on licenses, the highest-leverage move is shifting them from devs who aren't using them to devs who are starting to.
+* **ROI framing for the CFO.** "We spend $X on AI tooling and our estimated productivity uplift is $Y, with Z% of spend on developers in Regular+ tiers." The framing alone makes most renewal conversations easy.
+
+### Limitations and gotchas
+
+* **License cost is whatever's configured.** We don't know your actual contract terms. If you're paying a different rate, the absolute dollar values will be off — but the _distribution across tiers_ is still accurate.
+* **Usage-based costs depend on event coverage.** API costs from Claude / Codex come through OTEL events. Cursor's API doesn't expose costs at the same granularity, so Cursor spend is license-based only.
+* **Emerging doesn't mean "didn't use AI ever."** A developer can be Emerging in this window but a Regular last quarter. License seats are usually paid annually — even if their utilization is bad this window, they have the seat. The decision is about future renewal, not retroactive credit.
+
+### FAQ
+
+**Q: A team has high Emerging % and high spend on Emerging. Should I cut their licenses?**
+A: Probably not as a first move. Most Emerging cohorts respond to re-engagement (training, pairing, office hours) faster and cheaper than license churn. Cut only after re-engagement has been tried.
+
+**Q: How do I see actual API costs vs. license costs separately?**
+A: /data → AI Events tab → filter by event type. `api_request` events carry `cost_usd`; license costs are computed from seat counts.
+
+**Q: We don't pay per-developer for Claude — we pay enterprise. Does this work?**
+A: Yes, but you'll need to manually allocate the enterprise cost back to developers (e.g. divide by headcount). Talk to your account manager about the configuration option.
+
+---
+
+---
+title: AI Adoption Playbooks for GitKraken Insights
+description: Action-first guides for AI Adoption in GitKraken Insights, including setting tier weights for your org's maturity and rolling out AI tooling with the Adoption Score.
+product: GitKraken Insights
+content_type: how-to
+audience: admin
+plan_required: GitKraken Insights
+integrations: [Claude Code, Codex, Cursor]
+status: GA
+taxonomy:
+    category: gk-insights
+---
+<kbd>Last updated: June 2026</kbd>
+
+<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "How to think about developer scores" and "For engineering leaders" (Getting Started pages), which have no pages in this repo yet. Those links were converted to plain text. -->
+
+Action-first guides. Use these when you have a question like "how do I roll out AI tooling?" or "are the default tier weights right for us?"
+
+| Playbook | Use it when |
+| --- | --- |
+| [Set tier weights for your org's maturity](#set-tier-weights-for-your-orgs-maturity) | You are setting up Insights or reviewing your config and wondering whether the default Tier Weights are right for your org. |
+| [Roll out AI tooling with the Adoption Score](#roll-out-ai-tooling-with-the-adoption-score) | You're launching (or accelerating) Claude Code, Codex, or Cursor across your org. |
+
+---
+
+## Set tier weights for your org's maturity
+
+> _The default Tier Weights (0.5 Adoption / 0.2 Agentic / 0.3 Output) are tuned for orgs in active AI rollout. This playbook helps you decide whether to keep them or change them._
+
+**How to change Tier Weights today.** Tier Weights are stored per-org in `analytics.app_settings` as the keys `tier_weight_adoption`, `tier_weight_agentic`, and `tier_weight_output`. The Settings → General form does not yet expose them as user-editable sliders. To change weights today, file a request with support describing the new values you want; the change takes effect immediately for the current window. A self-serve form is on the roadmap.
+
+### The problem
+
+You are setting up Insights (or you are six months in and reviewing your config) and you are wondering whether the default Tier Weights are right for your org. The defaults assume "we are rolling out AI and we care that everyone is trying it." That is right for most orgs in the first year. It is wrong for orgs further along.
+
+This playbook helps you pick a weighting that reflects where your org actually is in its AI journey.
+
+### Where to look
+
+#### Step 1 — Diagnose your current state (10 min)
+
+Open `/ai-adoption/executive`. Look at three numbers:
+
+| Number | What it tells you |
+| --- | --- |
+| **AI Adoption %** (devs at Explorer+) | How broad your rollout is |
+| **Power User %** | How deep your rollout is |
+| **Productivity Uplift %** | Whether breadth and depth are converting to value |
+
+Also open `/ai-adoption/ai-impact` and look at **AI-Assisted % of changes**.
+
+The four numbers together place your org in one of four states:
+
+| Adoption % | Power User % | AI-Assisted % | Uplift % | State |
+| --- | --- | --- | --- | --- |
+| Low (< 40%) | Very low (< 10%) | Low | Low | **Early rollout** |
+| Medium (40–70%) | Low (10–20%) | Medium | Low–medium | **Active rollout** |
+| High (70–90%) | Medium (20–35%) | Medium–high | Medium | **Maturing** |
+| Very high (90%+) | High (35%+) | High | High | **Mature** |
+
+Don't agonize over the state. Most orgs are clearly in one. The interesting question is which way to _tune_ from there.
+
+### What to do
+
+#### If you are in Early or Active rollout
+
+**Keep the defaults: 0.5 / 0.2 / 0.3.**
+
+The defaults emphasize Adoption (50%), which is right for early rollouts. The signal you want from the dashboard is "are people picking up the tools?" — and Adoption is what answers that. Output matters but follows adoption with a 4–12 week lag, so weighting it heavily early biases the tier composite against the right early signal.
+
+If anything, consider lowering the **Maturity Factor** to 0.6 or 0.65 (this _is_ settable in Settings → General) to leave more headroom for developers to feel like they are progressing. Don't request a tier-weight change yet.
+
+#### If you are Maturing
+
+**Consider requesting 0.4 / 0.2 / 0.4.**
+
+You have established broad adoption. The next question is whether adoption is converting to output. Balancing Adoption and Output equally surfaces the developers who are doing both. The 0.2 Agentic stays unchanged — agentic depth is still emerging.
+
+Also consider raising the **Maturity Factor** to 0.85 (settable in Settings → General) to reflect that your org's P90 should now mean something close to "Power User territory."
+
+#### If you are Mature
+
+**Consider requesting 0.3 / 0.2 / 0.5.**
+
+In a mature org, adoption is the baseline assumption. The differentiator between developers is output and depth. Weighting Output most heavily emphasizes "who is actually delivering with this." The 0.2 Agentic stays unchanged — agentic adoption is harder to push deep and most orgs cap out around 0.3 agentic mean.
+
+Maturity Factor at 0.95–1.00 reflects that you have earned the top of the scale.
+
+#### If you have a specific goal
+
+| Goal | Suggested weights |
+| --- | --- |
+| "Drive AI adoption — this is a strategic priority" | 0.7 / 0.2 / 0.1 |
+| "Encourage autonomous AI workflows specifically" | 0.3 / 0.5 / 0.2 |
+| "Reward shippers" | 0.3 / 0.1 / 0.6 |
+| "Balanced" | 0.4 / 0.3 / 0.3 |
+
+Don't optimize for one of these unless you have actually decided that is the org's strategic focus this quarter. Most orgs benefit from the defaults plus minor tweaks.
+
+### Things to know before you request weights
+
+1. **Weights are renormalized to sum to 1.0 on every read.** So requesting 1.0 / 0.5 / 0.5 yields effective 0.5 / 0.25 / 0.25. Most people find it clearer to request values that already sum to 1.
+2. **All three weights must be strictly positive.** Zero or negative values are rejected; the default for that key is used instead. There is never a "100% output, 0% everything else" state.
+3. **Changes affect every developer immediately.** No retroactive recomputation of historical snapshots, but the _current_ window updates as soon as the keys are set. Plan an announcement.
+4. **The tier thresholds (25 / 55 / 80) don't move.** Changing weights _will_ re-tier some developers. Some will move up, some down.
+
+### How to roll out a weight change
+
+A practical sequence:
+
+1. **Note the current weights.** Hover any tier badge on /ai-adoption/developers — the tier-score tooltip shows the live weights for that developer's composite. Write the values down.
+2. **File a support request** with the three new values. Include a one-line reason ("we are Maturing and want to balance Adoption and Output equally").
+3. **Sanity check the new distribution.** Once support confirms the change, open /ai-adoption/developers and verify the tier distribution looks roughly as expected. If half your Regulars dropped to Explorer, the change was bigger than intended.
+4. **Announce the change** to your team via the channel you would use for any process change. Frame it as "we are shifting emphasis toward \[X\] to reflect \[Y\]." Reassure people that tier movement is by design, not a personal regression.
+5. **Don't request another change for at least a quarter.** Tier weights are strategic settings, not tactical knobs. Frequent changes erode trust in the dashboard.
+
+### What to expect
+
+After a weight change:
+
+* **Day 1:** The change is live. /ai-adoption/developers and /ai-adoption/teams reflect the new tier distribution immediately. The tier-badge tooltips render the new weights.
+* **Week 1–2:** Some confusion. People notice their tier moved. Be prepared with a one-line explanation: "We rebalanced toward \[X\] this quarter to reflect \[Y\]."
+* **Week 4+:** The tier distribution stabilizes as people's underlying behavior catches up to the new emphasis. If you weighted Output more heavily, developers will (consciously or not) emphasize shipping more.
+
+### Common mistakes
+
+* **Changing weights to make a specific number look better.** Tier weights aren't there to inflate Power User %. They are there to express what your org cares about. Tuning for a number erodes the metric's value.
+* **Setting Adoption near zero in a mature org.** Even mature orgs care that everyone is still using AI consistently. Don't drop Adoption below 0.2.
+* **Changing both weights _and_ Maturity Factor at the same time.** Hard to attribute what moved the distribution. Change one at a time, observe for a quarter, then the other if needed.
+
+### Related
+
+* [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier)
+* [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
+* [Settings reference](/gk-insights/ai-adoption/ai-adoption-settings)
+
+---
+
+## Roll out AI tooling with the Adoption Score
+
+> _You're launching (or accelerating) Claude Code, Codex, or Cursor across your org. This playbook is how to use the dashboard as the operational backbone of that rollout._
+
+### The problem
+
+Most AI tooling rollouts fail not at the install step but at the adoption-depth step. Developers get licenses, install the tool once, use it for a week, and drift away. The dashboard's job is to surface that drift early and give you a structured way to intervene.
+
+This is the playbook for the first 6 months of an active rollout.
+
+### Where to look
+
+Three operational views — each has a different cadence:
+
+| Cadence | View | What you're checking |
+| --- | --- | --- |
+| **Weekly** | /developers, sorted by Adoption Score ascending | The Emerging cohort. Who's stuck? Who's ramping? |
+| **Bi-weekly** | /teams tier mix bars | Team-level momentum. Which teams are pulling ahead, which are stalled? |
+| **Monthly** | /executive trend lines | The headline rollout health story. What goes in the leadership update? |
+
+### What to do — the 6-month rollout playbook
+
+#### Month 1 — Set the baseline
+
+**Goal:** Establish where you are _before_ the rollout intervention starts.
+
+1. **Set Maturity Factor to 0.65 in Settings → General.** Lower than the 0.75 default. In the first 3 months, you want the tier ladder to feel achievable. A dev who picks up Claude this month and uses it consistently for 4 weeks should land in Regular, not get stuck in Explorer because the org P90 hasn't shifted yet. Raise back to 0.75 in month 4.
+2. **Keep Tier Weights at defaults** (0.5 / 0.2 / 0.3). Adoption-heavy is right for early rollouts.
+3. **Take a baseline snapshot.** Note the org's Adoption %, Power User %, AI Adoption %. Write them in your rollout doc. You'll cite these in month 3 and month 6.
+4. **Roll out licenses to your launch cohort.** A pilot team or two is usually the right scope. Don't try org-wide on day one.
+
+#### Month 2 — Activate the pilot
+
+**Goal:** Get the pilot cohort from Emerging to Explorer+.
+
+1. **Set up the weekly Emerging review.** Every Friday, open /developers filtered to the pilot teams, sorted by Adoption ascending. Walk the bottom 10. For each: do they need a tooling fix, a pairing session, or a usage-pattern intro?
+2. **Run an AI office hour.** 30 minutes weekly. Open invitation. Show patterns. The single highest-leverage intervention in week 2–4.
+3. **Pair a Power User with an Emerging developer.** One hour of paired work. Watch the Emerging developer's score climb in the next 2-week window.
+
+#### Month 3 — Pilot review, expand the cohort
+
+**Goal:** Pilot retro + expand to next cohort.
+
+1. **Pull the month 1 baseline.** Compare to today's numbers. Honest read: did the pilot work? Pilot team's Adoption % (target: 60%+ at Explorer+), pilot team's tier mix (target: ≥20% in Regular), pilot team's Output Score trend (target: flat or up — Output usually lags Adoption by 1-2 months).
+2. **Document what worked.** Office hours, pairing, internal Slack channel — whatever the pilot proved. Codify it as the rollout SOP.
+3. **Expand to the next cohort.** Apply the same playbook to 2–3 more teams.
+
+#### Month 4 — Watch the Power User cohort
+
+**Goal:** Make sure the pilot cohort doesn't regress.
+
+1. **Raise Maturity Factor to 0.75** (the default). The pilot cohort has earned the standard ceiling.
+2. **Watch the pilot cohort weekly.** Some developers will regress (the tool stops being novel; they fall back to old habits). Catch the regression in /developers — the trend sparkline shows it before the score does.
+3. **Re-engage regressors.** Same playbook: pairing, office hours, audit their toolchain.
+
+#### Month 5 — Org-wide expansion
+
+**Goal:** Make AI tools the default, not the opt-in.
+
+1. **All new developers get licenses on day 1.** Built into onboarding. New hires landing in Emerging after 8 weeks is a process flag.
+2. **Watch the Maturing-team cohort.** Some teams will plateau at "everyone's an Explorer, no one's a Power User." That's the "broad but shallow" pattern — start working on the [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score) by running agentic-pattern workshops.
+
+#### Month 6 — Strategic review
+
+**Goal:** Decide what's next.
+
+1. **Pull the 6-month report.** Org Adoption %, Power User %, Productivity Uplift, AI-Assisted %. Compare to month 1 baseline.
+2. **If the rollout worked:** Consider shifting Tier Weights toward Output (e.g. 0.4 / 0.2 / 0.4). You're now in the Maturing phase. (Tier Weights are configured in `app_settings` per-org — not yet in the Settings UI; file a request with support.)
+3. **If parts didn't work:** Identify the laggard teams. They usually share a root cause (one team lead who's skeptical, one repo with bad CI, one process gap). Address structurally rather than per-developer.
+4. **Plan the next quarter:** Is the focus broadening adoption (still teams to onboard), deepening adoption (Power User % to grow), or extracting value (Output Score / Productivity Uplift to push)?
+
+### What to expect
+
+A typical "successful" rollout trajectory across 6 months:
+
+| Month | Adoption % | Power User % | Productivity Uplift |
+| --- | --- | --- | --- |
+| 1 (baseline) | 5–15% | 0–2% | 0% |
+| 2 | 15–30% | 1–5% | 0–5% |
+| 3 | 30–50% | 5–10% | 5–10% |
+| 4 | 45–65% | 10–18% | 10–15% |
+| 5 | 60–80% | 15–25% | 15–25% |
+| 6 | 70–90% | 20–35% | 20–35% |
+
+These are typical ranges, not guarantees. Some orgs move faster (greenfield product teams), some slower (enterprise with platform gating). The shape is what matters: Adoption rises first, Power User % follows with a 1–2 month lag, Uplift follows Power User by another 1–2 months.
+
+If your trajectory has _Adoption climbing but Uplift flat at month 4+_, your rollout is broad but shallow. Pivot to agentic workshops and pairing.
+
+### Common mistakes
+
+* **Org-wide on day 1.** Spreads adoption too thin to track. Pilot, prove, then expand.
+* **Ignoring the trajectory in favor of the snapshot.** Adoption % at 30% is a great number if it was 5% three months ago. It's a bad number if it's been 30% for six months.
+* **Treating tier as a performance metric.** Read How to think about developer scores before any 1:1 about a developer's tier. <!-- FLAG FOR HUMAN REVIEW: "How to think about developer scores" links to the Confluence Getting Started page, which has no repo equivalent yet. -->
+* **Not adjusting Maturity Factor with the rollout.** Default 0.75 is calibrated for active rollout. In month 1, lower it. In month 12, raise it. It's a knob for a reason.
+* **Picking AI adoption as the only metric to watch.** Pair it with Cycle Time and CFR. If you ship faster but break more things, you haven't won.
+
+### Related
+
+* [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score)
+* [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score)
+* [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
+* [Playbook — Set tier weights for your org's maturity](#set-tier-weights-for-your-orgs-maturity)
+
+---
+
+---
+title: AI Adoption Settings in GitKraken Insights
+description: Reference for the admin settings that affect AI Adoption scores in GitKraken Insights, including Maturity Factor, Tier Weights, Developer Hourly Rate, and Baseline Period.
+product: GitKraken Insights
+content_type: reference
+audience: admin
+plan_required: GitKraken Insights
+integrations: [Claude Code, Codex, Cursor]
+status: GA
+taxonomy:
+    category: gk-insights
+---
+<kbd>Last updated: June 2026</kbd>
+
+<!-- FLAG FOR HUMAN REVIEW: The source Confluence "Settings & Admin" page also documents Developers (Roster), Teams, Jira (CFR), Time Off (BambooHR), and Demo Mode sections. Those were not migrated here because they cover product-wide administration rather than AI Adoption. Decide whether they belong on a separate admin page. -->
+<!-- FLAG FOR HUMAN REVIEW: Source Confluence page links to "Output Score" and the Glossary, which have no pages in this repo yet. Those links were converted to plain text. -->
+
+Every admin-configurable setting that affects AI Adoption scores in GitKraken Insights, organized by where it lives in the product, plus a one-line "what it changes."
+
+If you came from a metric page to look up a specific setting, jump to the anchor of the same name.
+
+**What's in the Settings UI today vs. backend-only.** As of 2026-05-28, the Settings → General form writes these four keys: `maturity_factor`, `developer_hourly_rate`, `baseline_period_start`, `default_department`. The other per-org settings on this page — **Tier Weights**, **Direct Commit Weight**, **Exclude Chore from Output Score** — are stored in the same `app_settings` table but are not yet exposed in the UI form. To change those today, file a request with support and we'll set them directly. A self-serve form is on the roadmap.
+
+---
+
+<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Settings → General — Maturity Factor, Developer Hourly Rate, Baseline Period, and Default Department. (Tier Weights, Direct Commit Weight, and Exclude Chore are stored in app_settings but not yet exposed in the form.)" Export to _images/ and add the figure here. -->
+
+## General settings
+
+The single most impactful set of knobs. These shift how scores are calculated for every developer in your org.
+
+### Maturity Factor
+
+Also labeled **"Company AI Readiness %"** in the General tab. _In Settings UI: yes._
+
+|  |  |
+| --- | --- |
+| **Default** | 0.75 (75%) |
+| **Range** | 0.01 – 1.00 |
+| **Type** | Float |
+
+**What it does.** Scales every P90-based score (Adoption, Agentic, Output Norm) downward. At 1.00, a developer at the org's 90th percentile scores 100. At 0.75, the same developer scores 75 — leaving headroom for the org to grow into the Power User band.
+
+**Why you'd raise or lower it.** - **Lower (0.50 – 0.70):** Early in your AI rollout. You want every developer to feel like there's runway. Few or no Power Users yet. - **Default (0.75):** Most orgs in active rollout. The tier ceiling pushes the top 10% to keep stretching. - **Higher (0.85 – 1.00):** Mature orgs with widespread, deep adoption where you want the scoring to reflect that maturity in absolute terms.
+
+**Affects:** [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score), [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score), Output Norm, [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+
+→ Full section: [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
+
+---
+
+### Tier Weights
+
+Three positive numbers that say how much Adoption, Agentic, and Output each count toward the [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) composite. _In Settings UI: not yet — change via support (see panel above)._
+
+| Weight | Default | App-settings key | What it emphasizes |
+| --- | --- | --- | --- |
+| **Adoption** | 0.5 | `tier_weight_adoption` | Daily, consistent AI use |
+| **Agentic** | 0.2 | `tier_weight_agentic` | Autonomous multi-step AI work |
+| **Output** | 0.3 | `tier_weight_output` | Effort-weighted shipping rate |
+
+**Range:** Each weight is any positive number (we store raw values, then renormalize to sum to 1.0 on read).
+
+**What it does.** The three weights compete for the 100% budget. The tier-badge tooltip in the app shows the live percentages for every developer.
+
+**How to think about tuning.** - Adoption-heavy (e.g. 0.7 / 0.1 / 0.2): "We care that everyone is _trying_ AI. Output will follow." - Output-heavy (e.g. 0.3 / 0.1 / 0.6): "We've moved past the rollout phase — now we care about delivery." - Balanced (the default): A signal that AI use without output is incomplete, and output without AI is the old way.
+
+**Guardrails.** If you set all three to zero we fall back to the defaults (0.5 / 0.2 / 0.3) — never a "100% output, 0% everything else" boost. Negative or NaN values are rejected and the default for that key is used.
+
+**Affects:** [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) — and through it, the developer table sorting, the Top 10 widget, the executive ranking, and every breakdown chart that buckets by AI Tier.
+
+→ See also: [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
+
+---
+
+### Direct Commit Weight
+
+_In Settings UI: not yet — change via support._ App-settings key: `direct_commit_weight`.
+
+|  |  |
+| --- | --- |
+| **Default** | 0.5 |
+| **Range** | 0.0 – 1.0 |
+| **Type** | Float |
+
+**What it does.** Scales direct commits (pushes straight to a default branch with no PR) relative to merged PRs in the Output Score formula:
+
+```
+Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort)
+```
+
+* **0.0** — direct commits are ignored entirely
+* **0.5** (default) — a direct commit counts half as much as a PR of equivalent effort
+* **1.0** — direct commits count as much as PRs
+
+**When to change it.** - Lower toward 0 if your team uses direct commits primarily for trivial maintenance and you don't want them inflating Output Score. - Raise toward 1 if your team uses direct commits for substantive work (e.g. a Trunk-Based Development workflow).
+
+**Affects:** Output Score, Output Norm, [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+
+---
+
+### Exclude Chore from Output Score
+
+_In Settings UI: not yet — change via support._ App-settings key: `output_score_exclude_chore`.
+
+|  |  |
+| --- | --- |
+| **Default** | On (chores excluded) |
+| **Type** | Boolean toggle |
+
+**What it does.** When **on**, Chore-category PRs and commits are subtracted from the _effort_ side of the Output Score. The displayed PR / DC _counts_ still include chores — only the effort sums change.
+
+**Why the asymmetric treatment.** If a developer's window happens to be all chores (e.g. they spent a sprint on dependency bumps), we don't want them to disappear from the developer table. The Output Score will dip, but the count cell still says "5 PRs, 12 direct commits" so they remain visible. The Output Score tooltip shows you the chore subset that was subtracted.
+
+**When to turn off.** Rarely. The default reflects most orgs' definition of "real output". Turn off if you've explicitly decided chores are part of how you measure delivery — e.g. for an SRE team where dependency upgrades _are_ the job.
+
+**Affects:** Output Score, and downstream [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+
+---
+
+### Developer Hourly Rate
+
+_In Settings UI: yes._
+
+|  |  |
+| --- | --- |
+| **Default** | $75 / hour |
+| **Range** | $1 – unbounded |
+| **Type** | Currency |
+
+**What it does.** Multiplies into productivity-value calculations on the AI Impact and CapEx pages. We use this to translate "additional hours per developer per week" into a dollar figure.
+
+**How to set it.** Use your fully-loaded internal developer cost rate (salary × benefits × overhead, divided by working hours). Most orgs land between $50 and $200/hour. If you don't have a precise number, the default $75 is a reasonable industry midpoint for a senior IC.
+
+**Affects:** [Productivity Uplift](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#productivity-uplift), [CapEx / OpEx Split](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#capex--opex-split), the AI Impact ROI cards.
+
+---
+
+### Baseline Period
+
+_In Settings UI: yes._
+
+|  |  |
+| --- | --- |
+| **Default** | November 1 of previous year through the first day of the current month |
+| **Type** | Date |
+
+**What it does.** Sets the historical reference window for trend comparisons. AI Impact uplift math, productivity delta, and the "vs. baseline" cards on the executive view all compare your current window to this baseline.
+
+**Why November 1?** Calendar-year reset point. By default the baseline window runs roughly the previous calendar year, which is a stable comparison most leaders understand instinctively.
+
+**When to change it.** Pick a different anchor if: - Your AI rollout started mid-year and you want to compare against pre-rollout months. - Your fiscal year doesn't start in January. - You want a fixed snapshot (e.g. "Q1 2026") to compare every subsequent quarter against.
+
+**Affects:** AI Impact uplift cards, ROI calculations, baseline-comparison trend overlays.
+
+---
+
+### Default Department
+
+_In Settings UI: yes._
+
+|  |  |
+| --- | --- |
+| **Default** | None (admin picks) |
+| **Type** | Dropdown |
+
+**What it does.** Pre-selects which teams are visible to a user the first time they hit the dashboard. Once a user has saved a different selection it sticks per-user in browser storage.
+
+**When to set it.** Use this to anchor the dashboard to the largest, most-watched department in your org. Engineering leadership usually picks "Engineering" or the equivalent rolled-up group.
+
+**Affects:** Initial view on /teams, /developers, /executive, and every page with a team filter.
+
+---
+
+## What's not configurable (yet)
+
+These behaviors are deliberately fixed in code. If you need them tunable, ask your account manager — they're candidates for a future setting.
+
+* **Tier thresholds** (Emerging < 25, Explorer 25–54, Regular 55–79, Power User ≥ 80). The Maturity Factor is the intended knob for shifting tier population, not the thresholds themselves.
+* **Small-cohort fallback** (5 developers; synthetic P90 of 5.0 effort/week).
+* **Agentic threshold** (10 tools in a session to count as "agentic").
+* **Cursor secondary boost** (25% — set via `SCORE_SECONDARY_BOOST` env var if needed).
+* **Provider weight structures** (the four-factor blend per provider). Tunable via `SCORE_WEIGHT_*` env vars.
+* **Sync safety lag** (12h default per provider; `SNOWFLAKE_SYNC_SAFETY_LAG_HOURS`, `CODEX_SYNC_SAFETY_LAG_HOURS`, `CURSOR_SYNC_SAFETY_LAG_HOURS`).
+
+---
+
+## Related reading
+
+* [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
+* [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score)
 
 ---
 

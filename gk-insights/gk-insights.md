@@ -45,7 +45,7 @@ Once your access is approved, you can connect GitKraken Insights to your reposit
 
 Currently, Insights supports connections with GitHub, GitLab (cloud and self-hosted), Bitbucket, Azure DevOps, and Jira Cloud.
 
-In addition, you can connect AI providers to enable AI Impact insights (like Duplicated Code, Prompt Acceptance Rate, and more).
+In addition, you can connect AI providers to enable AI Impact insights (like Duplicated Code, Prompt Acceptance Rate, and more). To learn how GitKraken Insights measures AI adoption across your organization, see [AI Adoption](/gk-insights/ai-adoption/ai-adoption).
 ---
 
 ### 1. Import your repositories
