@@ -12,7 +12,6 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "Change Failure Rate (CFR)" and "Lead Time for Changes" (DORA & Quality family), which have no pages in this new section yet. Those links were converted to plain text. -->
 <!-- FLAG FOR HUMAN REVIEW: The Cycle Time and WIP sections include screenshots in the source Confluence pages. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
 
 This family answers: **how fast does work move through your system, and where does it get stuck?**
@@ -164,7 +163,7 @@ No other admin settings affect Cycle Time. It is a measurement.
 | [First-Pass Rate](#first-pass-rate) | Inversely correlated with Review phase length. |
 | [WIP](#work-in-progress-wip) | High WIP often causes high Pickup (reviewers overloaded). |
 | [Throughput](/gk-insights/ai-adoption/ai-adoption-output-metrics#throughput) | Outflow rate vs. how-long-each-takes. |
-| Lead Time for Changes | DORA's first-commit-to-deploy version. Similar but production-scoped. |
+| [Lead Time for Changes](/gk-insights/ai-adoption/ai-adoption-dora-metrics#lead-time-for-changes) | DORA's first-commit-to-deploy version. Similar but production-scoped. |
 
 ### How to improve it
 
@@ -196,7 +195,7 @@ A: Pre-release weeks accumulate PRs that were held back for the release. They me
 A: Median tells you "what is typical." Mean tells you "what is the headline number including outliers." For leadership reports, lead with median; mention mean as a tail signal.
 
 **Q: How is Cycle Time different from Lead Time?**
-A: Cycle Time is first commit → merge. Lead Time (DORA) is first commit → production deploy.
+A: Cycle Time is first commit → merge. [Lead Time](/gk-insights/ai-adoption/ai-adoption-dora-metrics#lead-time-for-changes) (DORA) is first commit → production deploy.
 
 ---
 
@@ -333,7 +332,7 @@ It is especially valuable as a leading indicator for AI adoption ROI. When teams
 | **35 – 54%** | Fair — every other PR needs a revision round. Investigate PR size and spec clarity. |
 | **< 35%** | Needs attention — review is doing the heavy lifting of design or spec work. |
 
-**One nuance:** rates above \~85% can also signal _rubber-stamping_. If a team's First-Pass Rate is 95% _and_ CFR is rising, your reviewers may not be looking hard enough. Read First-Pass Rate alongside CFR.
+**One nuance:** rates above \~85% can also signal _rubber-stamping_. If a team's First-Pass Rate is 95% _and_ CFR is rising, your reviewers may not be looking hard enough. Read First-Pass Rate alongside [CFR](/gk-insights/ai-adoption/ai-adoption-dora-metrics#change-failure-rate-cfr).
 
 ### Where it appears
 
@@ -349,7 +348,7 @@ None. First-Pass Rate is a measurement.
 | --- | --- |
 | [Review Cycles](#review-cycles) | First-Pass Rate is "the % at 0 cycles" — same data, different framing. |
 | [Cycle Time](#cycle-time) | High First-Pass Rate tightens the Review phase. |
-| CFR | Always read together. High First-Pass + high CFR = rubber-stamping. |
+| [CFR](/gk-insights/ai-adoption/ai-adoption-dora-metrics#change-failure-rate-cfr) | Always read together. High First-Pass + high CFR = rubber-stamping. |
 
 ### How to improve it
 

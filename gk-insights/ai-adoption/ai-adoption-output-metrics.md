@@ -12,7 +12,6 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to "Deployment Frequency" and "Lead Time for Changes" (DORA & Quality family), which have no pages in this new section yet. Those links were converted to plain text. -->
 <!-- FLAG FOR HUMAN REVIEW: The Output Score section includes a screenshot in the source Confluence page. The image is a Confluence attachment without an exportable filename. Export it to _images/ and add the figure reference where flagged. -->
 
 This family answers: **what is your team shipping, and how much of it is substantive work?**
@@ -312,7 +311,7 @@ None. Throughput is a raw count — no admin knobs change it. If you want effort
 | [Output Score](#output-score) | The effort-weighted version of the same shipping activity. |
 | [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) | The "how fast" pair to Throughput's "how many." Read them together. |
 | [WIP](/gk-insights/ai-adoption/ai-adoption-flow-metrics#work-in-progress-wip) | Number of currently-open PRs. Throughput is the _outflow_; WIP is the _backlog_. |
-| Deployment Frequency | DORA's release-based sibling — same concept, counted from release events instead of merges. |
+| [Deployment Frequency](/gk-insights/ai-adoption/ai-adoption-dora-metrics#deployment-frequency) | DORA's release-based sibling — same concept, counted from release events instead of merges. |
 
 ### How to improve it
 
