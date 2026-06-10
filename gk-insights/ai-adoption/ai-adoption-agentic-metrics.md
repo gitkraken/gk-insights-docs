@@ -12,7 +12,6 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to the Glossary, which has no page in this repo yet. That link was converted to plain text. -->
 <!-- FLAG FOR HUMAN REVIEW: Each metric section below includes a screenshot in the source Confluence page. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
 
 This family answers a single question: **how much is your team actually using AI, and how deeply?**

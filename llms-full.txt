@@ -1492,7 +1492,7 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to the Glossary, which has no page in this repo yet. That link was converted to plain text. -->
+<!-- NOTE: The Confluence Glossary page was intentionally not migrated. All terms it defines are documented in their dedicated metric pages; the cross-cutting terms (active developer, window, P90, Maturity Factor) are summarized in the "Glossary refresher" section below. -->
 <!-- FLAG FOR HUMAN REVIEW: The "Reading your first dashboard", "For executives", and "For team leads" sections include screenshots in the source Confluence pages. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
 
 GitKraken Insights is the dashboard your engineering organization uses to see — in one place — how AI tools, code delivery, and team capacity actually interact. This section gets you oriented in about ten minutes.
@@ -2013,7 +2013,6 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to the Glossary, which has no page in this repo yet. That link was converted to plain text. -->
 <!-- FLAG FOR HUMAN REVIEW: Each metric section below includes a screenshot in the source Confluence page. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
 
 This family answers a single question: **how much is your team actually using AI, and how deeply?**
@@ -5057,7 +5056,6 @@ taxonomy:
 <kbd>Last updated: June 2026</kbd>
 
 <!-- FLAG FOR HUMAN REVIEW: The source Confluence "Settings & Admin" page also documents Developers (Roster), Teams, Jira (CFR), Time Off (BambooHR), and Demo Mode sections. Those were not migrated here because they cover product-wide administration rather than AI Adoption. Decide whether they belong on a separate admin page. -->
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence page links to the Glossary, which has no page in this repo yet. That link was converted to plain text. -->
 
 Every admin-configurable setting that affects AI Adoption scores in GitKraken Insights, organized by where it lives in the product, plus a one-line "what it changes."
 

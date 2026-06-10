@@ -13,7 +13,6 @@ taxonomy:
 <kbd>Last updated: June 2026</kbd>
 
 <!-- FLAG FOR HUMAN REVIEW: The source Confluence "Settings & Admin" page also documents Developers (Roster), Teams, Jira (CFR), Time Off (BambooHR), and Demo Mode sections. Those were not migrated here because they cover product-wide administration rather than AI Adoption. Decide whether they belong on a separate admin page. -->
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence page links to the Glossary, which has no page in this repo yet. That link was converted to plain text. -->
 
 Every admin-configurable setting that affects AI Adoption scores in GitKraken Insights, organized by where it lives in the product, plus a one-line "what it changes."
 
