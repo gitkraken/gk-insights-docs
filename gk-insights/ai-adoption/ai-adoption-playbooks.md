@@ -1,6 +1,6 @@
 ---
 title: AI Adoption Playbooks for GitKraken Insights
-description: Action-first guides for AI Adoption in GitKraken Insights, including setting tier weights for your org's maturity and rolling out AI tooling with the Adoption Score.
+description: Action-first guides for AI Adoption in GitKraken Insights, including setting tier weights, rolling out AI tooling, investigating a slow cycle time, and interpreting a high CFR week.
 product: GitKraken Insights
 content_type: how-to
 audience: admin
@@ -12,12 +12,14 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-Action-first guides. Use these when you have a question like "how do I roll out AI tooling?" or "are the default tier weights right for us?"
+Action-first guides. Use these when you have a question like "how do I roll out AI tooling?" or "my cycle time is high — what now?"
 
 | Playbook | Use it when |
 | --- | --- |
 | [Set tier weights for your org's maturity](#set-tier-weights-for-your-orgs-maturity) | You are setting up Insights or reviewing your config and wondering whether the default Tier Weights are right for your org. |
 | [Roll out AI tooling with the Adoption Score](#roll-out-ai-tooling-with-the-adoption-score) | You're launching (or accelerating) Claude Code, Codex, or Cursor across your org. |
+| [Investigate a slow cycle time](#investigate-a-slow-cycle-time) | Your team's Cycle Time just crept past your tolerance. |
+| [Interpret a high CFR week](#interpret-a-high-cfr-week) | Your Change Failure Rate spiked and you need to know if it's real. |
 
 ---
 
@@ -237,3 +239,211 @@ If your trajectory has _Adoption climbing but Uplift flat at month 4+_, your rol
 * [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
 * [Playbook — Set tier weights for your org's maturity](#set-tier-weights-for-your-orgs-maturity)
 * [For engineering leaders](/gk-insights/ai-adoption/ai-adoption-getting-started#for-engineering-leaders)
+
+---
+
+## Investigate a slow cycle time
+
+> _Your team's [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) just crept past your tolerance. This playbook walks you from "something's wrong" to "I know which lever to pull" in about 30 minutes._
+
+### The problem
+
+You opened /ai-adoption/teams or /ai-adoption/ai-impact, saw Cycle Time at 5+ days, and felt the familiar sinking feeling. The number is the symptom — the cause is something specific you can intervene on. This playbook is how to find it.
+
+### Where to look
+
+Three views, in order:
+
+#### Step 1 — Phase breakdown (5 min)
+
+Open `/ai-adoption/ai-impact`. Set the date range to the period that triggered the concern (typically the last 14 days).
+
+The Cycle Time card has a dimension dropdown. Set it to **Phase** (the default). You will see Cycle Time decomposed into Coding, Pickup, Review, and Deploy (if release detection is configured for your repos).
+
+**Find the dominant phase.** Whichever phase is the biggest chunk of the stack is your starting point.
+
+| Dominant phase | What it usually means |
+| --- | --- |
+| **Coding** | Either deep work (legit) or stalled work (problem). Cross-check with WIP and the developer-level System Metrics tab. |
+| **Pickup** | Review queue is backed up. Reviewers overloaded or absent. Almost always the cause for teams over 3 days. |
+| **Review** | PRs too big, or specs too thin. Check Review Cycles. |
+| **Deploy** | Manual deploy gate or release embargo. Talk to ops. |
+
+If two phases are roughly tied, both need attention — but tackle the biggest one first.
+
+#### Step 2 — Trend (3 min)
+
+Switch the same chart to **Trends** mode. Pick **By Phase** as the trend type. Each phase now shows as a separate line over time.
+
+**The question is: when did this start?**
+
+* If one phase has been climbing for 4+ weeks, you have a slow-drift problem (process drift, attrition, gradual scope creep). Address it as a process issue.
+* If one phase spiked in the last 1–2 weeks, you have an acute problem (someone on PTO, a release embargo, a specific stalled PR). Address it tactically.
+
+#### Step 3 — Drill into the PRs (15 min)
+
+Click a high point on the trend chart. The drill-down table opens below with every PR in that time bucket. Sort by **Cycle Time descending**.
+
+**Look at the top 5–10 PRs.** Patterns to spot:
+
+* **Same author repeatedly?** That developer either has a quality problem causing many cycles, or they are working on hard problems that take longer. Talk to them.
+* **Same repo repeatedly?** That repo has a process problem — maybe a slow reviewer, maybe brittle CI, maybe an over-zealous required-reviewer policy.
+* **High Review Cycles on the slow PRs?** The PRs are too big or the spec was unclear. Look at PR descriptions and effort scores.
+* **All slow PRs opened around the same time?** A reviewer was out or a release embargo hit. Often resolves itself.
+* **One huge outlier PR that has been open for weeks?** That PR is the metric. Decide: merge it, split it, or close it.
+
+### What to do
+
+Pick **one** intervention from the most likely cause. Don't try to fix everything at once — you can't tell what worked.
+
+#### If Pickup dominates
+
+* **Establish a weekly review-clearing ritual.** 15 minutes on Monday morning. Walk through the oldest open PRs in your repo or PR queue. Decide: ship, give a deadline, or close each one. This single habit fixes Pickup on most teams within 2–4 weeks.
+* **Add a reviewer rotation.** If one developer is doing most of the reviewing, distribute it.
+* **Set a Pickup SLO.** "PRs get first review within four business hours." Make it visible.
+
+#### If Review dominates
+
+* **Right-size PRs.** Aim for PRs reviewable in 15 minutes. Check the Effort Score distribution on /ai-adoption/data-explorer: a team consistently at 0.7+ effort medians is over-batching.
+* **Improve PR descriptions.** A clear "what / why / how to test" cuts review cycles. AI-assisted PR descriptions are a low-effort win.
+* **Calibrate reviewers.** If one reviewer's PRs consistently get 2+ cycles, have the conversation — it is usually a habit, not a quality issue.
+
+#### If Coding dominates
+
+* **Check WIP.** A team with a high Coding phase and high WIP is stalled, not deep-working. Help unstick or descope.
+* **Cross-check with developer activity.** /ai-adoption/developers expanded detail shows recent activity. A developer with the high-Coding PR who hasn't committed in 4 days is stuck. Talk to them.
+* **Consider AI-assisted scaffolding.** If devs are taking days on the boilerplate-heavy part of new work, AI can compress it.
+
+#### If Deploy dominates
+
+* **Talk to ops or release engineering.** Insights surfaces the symptom; the fix is process-side.
+* **Consider continuous delivery.** If your team batches deploys, moving to merge-deploys can cut the Deploy phase to near zero.
+
+### What to expect
+
+A reasonable expectation, having intervened on the dominant phase:
+
+* **Week 1:** Numbers may still be noisy. Don't read week 1 as a verdict.
+* **Week 2–3:** The intervention either took or it didn't. Pickup interventions show up fastest — usually 2 weeks before the average comes down. Review interventions take 4–6 weeks because they require behavior change.
+* **Week 4:** If you don't see improvement, your hypothesis was wrong. Go back to Step 1 — what does the breakdown look like _now_? Sometimes the underlying problem has shifted.
+
+### Common mistakes
+
+* **Trying to fix all four phases at once.** You won't know what worked. One lever at a time.
+* **Reading a single week.** Cycle Time has 2–3 week natural cycles. A bad week could be Christmas-week noise; a bad month is a signal.
+* **Blaming individual developers.** The cycle time of a team is mostly the team's process, not its individuals. Process interventions work; finger-pointing doesn't.
+* **Focusing on Total Cycle Time when one phase tells the story.** Always look at the breakdown.
+
+### Related metric pages
+
+* [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time)
+* [Review Cycles](/gk-insights/ai-adoption/ai-adoption-flow-metrics#review-cycles)
+* [WIP](/gk-insights/ai-adoption/ai-adoption-flow-metrics#work-in-progress-wip)
+* [First-Pass Rate](/gk-insights/ai-adoption/ai-adoption-flow-metrics#first-pass-rate)
+
+---
+
+## Interpret a high CFR week
+
+> _Your Change Failure Rate spiked. Before you sound the alarm, walk this playbook to figure out whether it's a real quality problem or an artifact._
+
+### The problem
+
+CFR spikes are alarming and often misleading. A high CFR week can mean any of: an actual quality regression, a backlog of customer bugs got triaged this week, one bad release dominates the average, your sync caught up after a stale period, a reporting threshold change in Jira.
+
+The dashboard's CFR is honest about what it's measuring (customer-reported bugs as a percentage of releases), but the surrounding context matters a lot. This playbook is the 20-minute triage.
+
+### Where to look
+
+#### Step 1 — Look at the trend, not the snapshot (3 min)
+
+Open `/impact`. Look at the **CFR trend chart** (left side, severity-stacked).
+
+* **If the spike is one week and CFR is back to baseline before and after**, you have a localized incident, not a trend.
+* **If CFR has been climbing for 3+ weeks**, you have a real quality drift.
+* **If CFR has been flat then suddenly stepped up**, you have a regression at a specific point.
+
+Note which pattern you're seeing.
+
+#### Step 2 — Check the severity breakdown (3 min)
+
+Same chart, look at the severity stack. The headline CFR % includes all severities, but **High and Critical bugs are what actually hurt**.
+
+* If the spike is in Low / Medium severity, you may have a triage influx (someone categorized old bugs this week). Less concerning.
+* If the spike is in High / Critical, treat it as urgent.
+
+The **CFR KPI card** (left of the trend) shows High & Critical specifically — that's the number that matters.
+
+#### Step 3 — Pull the customer bugs themselves (10 min)
+
+Scroll down to the drill-down table below the CFR charts. Sort by **Created date descending**. Look at the bugs that drove the spike.
+
+Patterns to spot:
+
+* **Same repo repeatedly?** That repo had a bad release. Investigate the release, not the org.
+* **Same root cause repeatedly?** A specific bug class (e.g. "null pointer in date parser") shipped multiple times. Process / test coverage issue.
+* **All bugs filed by one customer?** May be one customer's escalated reports rather than a real quality spike. Look at the cluster.
+* **Bugs created this week but referencing changes from weeks ago?** Reporting lag. Your quality wasn't suddenly worse — customers just noticed something old.
+* **A backlog of bugs that got categorized this week?** Look at the create-dates carefully. If many bugs were filed weeks ago but only categorized as "Customer Bug = Yes" today, the spike is bookkeeping, not quality.
+
+#### Step 4 — Look at AI Tier breakdown (5 min)
+
+This is where the dashboard does something unique. Click into `/ai-impact` and look at **CFR by AI Tier**.
+
+The question: **does CFR scale with AI tier?**
+
+* If Power Users have _lower_ CFR than Emerging devs, AI adoption is a quality boost. Good news.
+* If Power Users have _higher_ CFR, AI is enabling faster shipping at a quality cost. Investigate AI-assisted work specifically.
+* If CFR is uncorrelated with tier, the spike isn't an AI issue — it's a general quality issue.
+
+### What to do
+
+Pick the intervention that fits the pattern you found.
+
+#### Pattern: One localized incident
+
+A single spike that's already resolved. Often a bad release that's been hot-patched.
+
+**Action:** Run the team's standard post-mortem on the responsible release. CFR will return to baseline naturally. No structural change needed unless the post-mortem reveals a class of issue worth fixing.
+
+#### Pattern: 3+ week climb
+
+Genuine quality drift.
+
+**Action:** Pause non-critical feature work for the affected team for one sprint. Sample the recent bug reports — look for a common root cause. Strengthen pre-merge review on the affected repo(s). Consider mandatory reviewers if you've been relaxed about review. Look at [First-Pass Rate](/gk-insights/ai-adoption/ai-adoption-flow-metrics#first-pass-rate) over the same window. A First-Pass climbing alongside CFR is the rubber-stamping pattern — your reviewers aren't catching things.
+
+#### Pattern: Suddenly stepped up
+
+Something specific changed. Possibilities: new release process introduced a gap, a senior developer left and quality oversight dropped, a new team or repo joined the dataset, a Jira workflow change started catching previously-uncategorized bugs.
+
+**Action:** Find the discontinuity. Cross-reference with your team's known events (releases, hires, departures, process changes). The step is almost always a specific event.
+
+#### Pattern: AI Tier scaling problem
+
+Power Users have higher CFR than Emerging.
+
+**Action:** This is the most interesting and rarest case. AI is helping with speed but at a quality cost. Look at: Are Power Users shipping bigger PRs because AI made it easy? Check Effort Score distribution. Is the review process catching AI-generated bugs? Check First-Pass Rate among Power Users. Is there a specific class of bug that's AI-correlated? (E.g. wrong API usage, hallucinated function calls.) Drill into the bug list.
+
+**Don't conclude "AI is bad" yet** — investigate. The fix is usually "review AI-assisted code more carefully," not "stop using AI."
+
+### What to expect
+
+A reasonable expectation after intervening on a real CFR climb:
+
+* **Week 1 after intervention:** Numbers still noisy. The bugs reported this week are from changes that shipped weeks ago. Don't read week 1.
+* **Week 2–4:** CFR should start trending down. If you intervened on review process, expect 3–4 weeks before the data reflects it.
+* **Week 6–8:** Verdict. If CFR is back to baseline or below, the intervention worked. If not, your hypothesis was wrong — revisit step 3.
+
+### Common mistakes
+
+* **Reading one week as a trend.** CFR has natural variance week to week. A single spike doesn't constitute drift.
+* **Slowing the team without diagnosing.** "Pause everything" is sometimes the right call, but usually the right call is "fix the specific thing." Diagnose first.
+* **Blaming AI without checking the tier breakdown.** If CFR is high but uncorrelated with AI tier, it's a general quality issue, not an AI issue.
+* **Ignoring severity.** A 20% CFR week of all-Low-severity bugs is much less urgent than an 8% CFR week of Critical bugs.
+
+### Related metric pages
+
+* [Change Failure Rate (CFR)](/gk-insights/ai-adoption/ai-adoption-dora-metrics#change-failure-rate-cfr)
+* [MTTR](/gk-insights/ai-adoption/ai-adoption-dora-metrics#mean-time-to-recovery-mttr)
+* [First-Pass Rate](/gk-insights/ai-adoption/ai-adoption-flow-metrics#first-pass-rate)
+* [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier)

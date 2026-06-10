@@ -12,7 +12,7 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to the Glossary and to the playbooks "Investigate a slow cycle time" and "Interpret a high CFR week", which have no pages in this repo yet. Those links were converted to plain text. -->
+<!-- FLAG FOR HUMAN REVIEW: Source Confluence pages link to the Glossary, which has no page in this repo yet. That link was converted to plain text. -->
 <!-- FLAG FOR HUMAN REVIEW: The "Reading your first dashboard", "For executives", and "For team leads" sections include screenshots in the source Confluence pages. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
 
 GitKraken Insights is the dashboard your engineering organization uses to see — in one place — how AI tools, code delivery, and team capacity actually interact. This section gets you oriented in about ten minutes.
@@ -335,9 +335,9 @@ These three settings drift over time and need a quarterly check:
 
 ### Where to drill further
 
-* **Investigating a slow team** → Playbook — Investigate a slow cycle time <!-- FLAG FOR HUMAN REVIEW: playbook not yet migrated -->
+* **Investigating a slow team** → [Playbook — Investigate a slow cycle time](/gk-insights/ai-adoption/ai-adoption-playbooks#investigate-a-slow-cycle-time)
 * **Planning a new tool rollout** → [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score)
-* **Quality regression** → Playbook — Interpret a high CFR week <!-- FLAG FOR HUMAN REVIEW: playbook not yet migrated -->
+* **Quality regression** → [Playbook — Interpret a high CFR week](/gk-insights/ai-adoption/ai-adoption-playbooks#interpret-a-high-cfr-week)
 
 ---
 
@@ -409,8 +409,8 @@ These are starting points, not laws. Your team's context can move the bar.
 
 ### Where to drill further
 
-* **A specific cycle time problem** → Playbook — Investigate a slow cycle time <!-- FLAG FOR HUMAN REVIEW: playbook not yet migrated -->
-* **A spike in customer bugs** → Playbook — Interpret a high CFR week <!-- FLAG FOR HUMAN REVIEW: playbook not yet migrated -->
+* **A specific cycle time problem** → [Playbook — Investigate a slow cycle time](/gk-insights/ai-adoption/ai-adoption-playbooks#investigate-a-slow-cycle-time)
+* **A spike in customer bugs** → [Playbook — Interpret a high CFR week](/gk-insights/ai-adoption/ai-adoption-playbooks#interpret-a-high-cfr-week)
 * **A developer struggling with adoption** → `/ai-adoption/developers`, filter to that person, expand the heatmap.
 
 ---

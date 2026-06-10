@@ -31,7 +31,7 @@ GitKraken Insights gives engineering leaders a single view of how AI tools, code
 | [Flow & Cycle Time Metrics](/gk-insights/ai-adoption/ai-adoption-flow-metrics) | How fast work moves through your system: Cycle Time, Review Cycles, First-Pass Rate, and WIP. |
 | [DORA & Quality Metrics](/gk-insights/ai-adoption/ai-adoption-dora-metrics) | The four DORA metrics: Deployment Frequency, Lead Time for Changes, Change Failure Rate (CFR), and Mean Time to Recovery (MTTR). |
 | [AI Impact & Cost Metrics](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics) | What AI is actually delivering, in time and dollars: Productivity Uplift, AI-Assisted Percentage, CapEx / OpEx Split, and Spend by Tier. |
-| [AI Adoption Playbooks](/gk-insights/ai-adoption/ai-adoption-playbooks) | Action-first guides: set tier weights for your org's maturity, and roll out AI tooling with the Adoption Score. |
+| [AI Adoption Playbooks](/gk-insights/ai-adoption/ai-adoption-playbooks) | Action-first guides: set tier weights, roll out AI tooling, investigate a slow cycle time, and interpret a high CFR week. |
 | [AI Adoption Settings](/gk-insights/ai-adoption/ai-adoption-settings) | Configuration reference — what each setting changes, and which metrics depend on it. |
 
 ---
