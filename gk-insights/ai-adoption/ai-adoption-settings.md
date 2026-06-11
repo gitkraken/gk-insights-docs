@@ -22,7 +22,11 @@ If you came from a metric page to look up a specific setting, jump to the anchor
 
 ---
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Settings → General — Maturity Factor, Developer Hourly Rate, Baseline Period, and Default Department. (Tier Weights, Direct Commit Weight, and Exclude Chore are stored in app_settings but not yet exposed in the form.)" Export to _images/ and add the figure here. -->
+<!-- FLAG FOR HUMAN REVIEW: The screenshot below (from a June 2026 build) shows Direct Commit Weight, Exclude Chore, and Tier Weights as editable fields in Settings → General, but this page's text (from the May 2026 Confluence source) says those settings are not yet exposed in the Settings UI. Verify which is current and update the "In Settings UI: not yet" notes if the UI has shipped. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-settings-general.png" class="help-center-img img-bordered" alt="Settings General tab in GitKraken Insights showing Company AI Readiness, Developer Hourly Rate, Baseline Period, and Default Department fields" />
+  <figcaption style="text-align: center; color: #888">Settings → General — Maturity Factor (Company AI Readiness %), Developer Hourly Rate, Baseline Period, and Default Department.</figcaption>
+</figure>
 
 ## General settings
 

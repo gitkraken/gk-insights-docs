@@ -12,7 +12,7 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: The Cycle Time and WIP sections include screenshots in the source Confluence pages. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
+<!-- FLAG FOR HUMAN REVIEW: The WIP section includes a screenshot in the source Confluence page ("Work In Progress (WIP)", caption: "WIP trend alongside other PR flow charts") that has not been exported yet. Export it to _images/ and add the figure where flagged. -->
 
 This family answers: **how fast does work move through your system, and where does it get stuck?**
 
@@ -145,7 +145,10 @@ Median industry numbers for typical web and services engineering teams:
 * **/ai-adoption/executive** — Cycle Time as one of the headline trend lines and a hero KPI.
 * **/ai-adoption/developers** — per-developer cycle time in the expanded developer detail.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Cycle Time and PR Volume trends with phase breakdown." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-team-lead-flow.png" class="help-center-img img-bordered" alt="Flow view in GitKraken Insights showing the cycle time trend broken down by phase next to the average changes per developer chart" />
+  <figcaption style="text-align: center; color: #888">Cycle Time and PR Volume trends with phase breakdown.</figcaption>
+</figure>
 
 ### Settings that affect it
 

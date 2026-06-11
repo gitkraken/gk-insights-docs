@@ -13,7 +13,6 @@ taxonomy:
 <kbd>Last updated: June 2026</kbd>
 
 <!-- NOTE: The Confluence Glossary page was intentionally not migrated. All terms it defines are documented in their dedicated metric pages; the cross-cutting terms (active developer, window, P90, Maturity Factor) are summarized in the "Glossary refresher" section below. -->
-<!-- FLAG FOR HUMAN REVIEW: The "Reading your first dashboard", "For executives", and "For team leads" sections include screenshots in the source Confluence pages. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
 
 GitKraken Insights is the dashboard your engineering organization uses to see — in one place — how AI tools, code delivery, and team capacity actually interact. This section gets you oriented in about ten minutes.
 
@@ -97,7 +96,10 @@ You'll see ranges throughout the help center labeled "Strong / Fair / Needs atte
 
 A guided 10-minute walkthrough of `/teams`, the page you land on when you log in. By the end you'll know what every column means and where to click next.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Flow & Delivery — hero KPI strip with team-pulse cards, plus the Flow tab's cycle-time-by-phase and changes-by-type charts." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-team-lead-flow.png" class="help-center-img img-bordered" alt="Flow and Delivery view in GitKraken Insights with the team-pulse KPI strip, cycle time by phase trend, and average changes per developer chart" />
+  <figcaption style="text-align: center; color: #888">Flow & Delivery — hero KPI strip with team-pulse cards, plus the Flow tab's cycle-time-by-phase and changes-by-type charts.</figcaption>
+</figure>
 
 ### Set the scope first
 
@@ -196,7 +198,10 @@ Now that you've read /teams, here are the obvious follow-up pages depending on w
 
 You don't have time to learn the product. You have time for four numbers and a story. This page is exactly that.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Executive view — hero KPI strip with cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-executive-view.png" class="help-center-img img-bordered" alt="Executive View in GitKraken Insights with hero KPI cards for cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage" />
+  <figcaption style="text-align: center; color: #888">Executive view — hero KPI strip with cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage.</figcaption>
+</figure>
 
 ### The four numbers
 
@@ -345,7 +350,10 @@ These three settings drift over time and need a quarterly check:
 
 You run one team day-to-day. You want a pulse on flow, blockers, and review health. This page is your weekly toolkit.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Team-pulse view — cycle-time-by-phase, changes-by-type, and adoption trend together." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-team-lead-flow.png" class="help-center-img img-bordered" alt="Team Lead Insights view in GitKraken Insights with flow KPI cards, cycle time by phase trend, and average changes per developer chart" />
+  <figcaption style="text-align: center; color: #888">Team-pulse view — cycle-time-by-phase, changes-by-type, and adoption trend together.</figcaption>
+</figure>
 
 ### Your weekly home: `/ai-adoption/teams`
 

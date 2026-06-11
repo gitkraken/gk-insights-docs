@@ -12,7 +12,6 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Each metric section below includes a screenshot in the source Confluence page. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
 
 This family answers a single question: **how much is your team actually using AI, and how deeply?**
 
@@ -161,7 +160,10 @@ A team average of 50–65 means a healthy mix with most developers in Explorer/R
 * **/executive** — hero KPI card "AI Adoption %" (percentage of devs at score ≥ 25) and a trend line.
 * **/ai-impact** — used as the cohort dimension for the productivity uplift analysis.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-developers.png" class="help-center-img img-bordered" alt="Developers page in GitKraken Insights showing the Top 10 developers widget, score trend chart, and the developer table with Adoption, Agentic, Providers, and Output Score columns" />
+  <figcaption style="text-align: center; color: #888">Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns.</figcaption>
+</figure>
 
 ### Settings that affect it
 
@@ -267,7 +269,10 @@ A team average above 40 is a strong signal that agentic workflows have taken roo
 * **/ai-adoption/ai-impact** — deep-dive autonomy analysis: tools-per-session distribution, top tools by usage, ranking of high-autonomy developers.
 * **/ai-adoption/executive** — trend line showing org agentic adoption over time.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-developers.png" class="help-center-img img-bordered" alt="Developers page in GitKraken Insights showing the Top 10 developers widget, score trend chart, and the developer table with Adoption, Agentic, Providers, and Output Score columns" />
+  <figcaption style="text-align: center; color: #888">Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns.</figcaption>
+</figure>
 
 ### Settings that affect it
 
@@ -397,7 +402,10 @@ If **On PTO % is unusually high** (>15%), check whether your PTO sync is working
 * **/ai-adoption/ai-tools-comparison** — cohort comparisons use tier as a key segmentation.
 * **/ai-adoption/ai-impact** — productivity analysis uses tier as the primary cohort dimension.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Executive view — hero KPI strip with cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-executive-view.png" class="help-center-img img-bordered" alt="Executive View in GitKraken Insights with hero KPI cards for cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage" />
+  <figcaption style="text-align: center; color: #888">Executive view — hero KPI strip with cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage.</figcaption>
+</figure>
 
 ### Settings that affect it
 
@@ -501,7 +509,11 @@ The default (0.75) is calibrated for "active rollout" — the most common state 
 * **Settings → General → "Company AI Readiness (%)"** — the input that controls it. Shows a live preview ("At this maturity, a perfect score is X points").
 * **Affects every page that displays Adoption, Agentic, or Output Norm scores.** Including /ai-adoption/developers, /ai-adoption/teams, /ai-adoption/executive, /ai-adoption/ai-tools-comparison, /ai-adoption/ai-impact.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Settings → General — Maturity Factor, Developer Hourly Rate, Baseline Period, and Default Department. (Tier Weights, Direct Commit Weight, and Exclude Chore are stored in app_settings but not yet exposed in the form.)" Export to _images/ and add the figure here. -->
+<!-- FLAG FOR HUMAN REVIEW: The screenshot below (from a June 2026 build) shows Direct Commit Weight, Exclude Chore, and Tier Weights as editable fields in Settings → General, but this page's text (from the May 2026 Confluence source) says those settings are not yet exposed in the Settings UI. Verify which is current and update the text if the UI has shipped. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-settings-general.png" class="help-center-img img-bordered" alt="Settings General tab in GitKraken Insights showing Company AI Readiness, Developer Hourly Rate, Baseline Period, and Default Department fields" />
+  <figcaption style="text-align: center; color: #888">Settings → General — Maturity Factor (Company AI Readiness %), Developer Hourly Rate, Baseline Period, and Default Department.</figcaption>
+</figure>
 
 ### Related metrics
 
@@ -599,7 +611,10 @@ The difference (15 points) is what Cursor adoption is contributing in that devel
 * **/developers** — expanded panel breaks down "Claude contribution" / "Codex contribution" / "Cursor contribution" so you can see what each tool is doing for a developer's score.
 * **Behind the scenes** in every Adoption Score on the dashboard.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-developers.png" class="help-center-img img-bordered" alt="Developers page in GitKraken Insights showing the Top 10 developers widget, score trend chart, and the developer table with Adoption, Agentic, Providers, and Output Score columns" />
+  <figcaption style="text-align: center; color: #888">Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns.</figcaption>
+</figure>
 
 ### Settings that affect it
 

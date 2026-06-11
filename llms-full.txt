@@ -1493,7 +1493,6 @@ taxonomy:
 <kbd>Last updated: June 2026</kbd>
 
 <!-- NOTE: The Confluence Glossary page was intentionally not migrated. All terms it defines are documented in their dedicated metric pages; the cross-cutting terms (active developer, window, P90, Maturity Factor) are summarized in the "Glossary refresher" section below. -->
-<!-- FLAG FOR HUMAN REVIEW: The "Reading your first dashboard", "For executives", and "For team leads" sections include screenshots in the source Confluence pages. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
 
 GitKraken Insights is the dashboard your engineering organization uses to see — in one place — how AI tools, code delivery, and team capacity actually interact. This section gets you oriented in about ten minutes.
 
@@ -1577,7 +1576,10 @@ You'll see ranges throughout the help center labeled "Strong / Fair / Needs atte
 
 A guided 10-minute walkthrough of `/teams`, the page you land on when you log in. By the end you'll know what every column means and where to click next.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Flow & Delivery — hero KPI strip with team-pulse cards, plus the Flow tab's cycle-time-by-phase and changes-by-type charts." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-team-lead-flow.png" class="help-center-img img-bordered" alt="Flow and Delivery view in GitKraken Insights with the team-pulse KPI strip, cycle time by phase trend, and average changes per developer chart" />
+  <figcaption style="text-align: center; color: #888">Flow & Delivery — hero KPI strip with team-pulse cards, plus the Flow tab's cycle-time-by-phase and changes-by-type charts.</figcaption>
+</figure>
 
 ### Set the scope first
 
@@ -1676,7 +1678,10 @@ Now that you've read /teams, here are the obvious follow-up pages depending on w
 
 You don't have time to learn the product. You have time for four numbers and a story. This page is exactly that.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Executive view — hero KPI strip with cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-executive-view.png" class="help-center-img img-bordered" alt="Executive View in GitKraken Insights with hero KPI cards for cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage" />
+  <figcaption style="text-align: center; color: #888">Executive view — hero KPI strip with cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage.</figcaption>
+</figure>
 
 ### The four numbers
 
@@ -1825,7 +1830,10 @@ These three settings drift over time and need a quarterly check:
 
 You run one team day-to-day. You want a pulse on flow, blockers, and review health. This page is your weekly toolkit.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Team-pulse view — cycle-time-by-phase, changes-by-type, and adoption trend together." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-team-lead-flow.png" class="help-center-img img-bordered" alt="Team Lead Insights view in GitKraken Insights with flow KPI cards, cycle time by phase trend, and average changes per developer chart" />
+  <figcaption style="text-align: center; color: #888">Team-pulse view — cycle-time-by-phase, changes-by-type, and adoption trend together.</figcaption>
+</figure>
 
 ### Your weekly home: `/ai-adoption/teams`
 
@@ -2013,7 +2021,6 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: Each metric section below includes a screenshot in the source Confluence page. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
 
 This family answers a single question: **how much is your team actually using AI, and how deeply?**
 
@@ -2162,7 +2169,10 @@ A team average of 50–65 means a healthy mix with most developers in Explorer/R
 * **/executive** — hero KPI card "AI Adoption %" (percentage of devs at score ≥ 25) and a trend line.
 * **/ai-impact** — used as the cohort dimension for the productivity uplift analysis.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-developers.png" class="help-center-img img-bordered" alt="Developers page in GitKraken Insights showing the Top 10 developers widget, score trend chart, and the developer table with Adoption, Agentic, Providers, and Output Score columns" />
+  <figcaption style="text-align: center; color: #888">Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns.</figcaption>
+</figure>
 
 ### Settings that affect it
 
@@ -2268,7 +2278,10 @@ A team average above 40 is a strong signal that agentic workflows have taken roo
 * **/ai-adoption/ai-impact** — deep-dive autonomy analysis: tools-per-session distribution, top tools by usage, ranking of high-autonomy developers.
 * **/ai-adoption/executive** — trend line showing org agentic adoption over time.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-developers.png" class="help-center-img img-bordered" alt="Developers page in GitKraken Insights showing the Top 10 developers widget, score trend chart, and the developer table with Adoption, Agentic, Providers, and Output Score columns" />
+  <figcaption style="text-align: center; color: #888">Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns.</figcaption>
+</figure>
 
 ### Settings that affect it
 
@@ -2398,7 +2411,10 @@ If **On PTO % is unusually high** (>15%), check whether your PTO sync is working
 * **/ai-adoption/ai-tools-comparison** — cohort comparisons use tier as a key segmentation.
 * **/ai-adoption/ai-impact** — productivity analysis uses tier as the primary cohort dimension.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Executive view — hero KPI strip with cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-executive-view.png" class="help-center-img img-bordered" alt="Executive View in GitKraken Insights with hero KPI cards for cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage" />
+  <figcaption style="text-align: center; color: #888">Executive view — hero KPI strip with cycle time, throughput, deploy frequency, AI adoption, and AI-assisted percentage.</figcaption>
+</figure>
 
 ### Settings that affect it
 
@@ -2502,7 +2518,11 @@ The default (0.75) is calibrated for "active rollout" — the most common state 
 * **Settings → General → "Company AI Readiness (%)"** — the input that controls it. Shows a live preview ("At this maturity, a perfect score is X points").
 * **Affects every page that displays Adoption, Agentic, or Output Norm scores.** Including /ai-adoption/developers, /ai-adoption/teams, /ai-adoption/executive, /ai-adoption/ai-tools-comparison, /ai-adoption/ai-impact.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Settings → General — Maturity Factor, Developer Hourly Rate, Baseline Period, and Default Department. (Tier Weights, Direct Commit Weight, and Exclude Chore are stored in app_settings but not yet exposed in the form.)" Export to _images/ and add the figure here. -->
+<!-- FLAG FOR HUMAN REVIEW: The screenshot below (from a June 2026 build) shows Direct Commit Weight, Exclude Chore, and Tier Weights as editable fields in Settings → General, but this page's text (from the May 2026 Confluence source) says those settings are not yet exposed in the Settings UI. Verify which is current and update the text if the UI has shipped. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-settings-general.png" class="help-center-img img-bordered" alt="Settings General tab in GitKraken Insights showing Company AI Readiness, Developer Hourly Rate, Baseline Period, and Default Department fields" />
+  <figcaption style="text-align: center; color: #888">Settings → General — Maturity Factor (Company AI Readiness %), Developer Hourly Rate, Baseline Period, and Default Department.</figcaption>
+</figure>
 
 ### Related metrics
 
@@ -2600,7 +2620,10 @@ The difference (15 points) is what Cursor adoption is contributing in that devel
 * **/developers** — expanded panel breaks down "Claude contribution" / "Codex contribution" / "Cursor contribution" so you can see what each tool is doing for a developer's score.
 * **Behind the scenes** in every Adoption Score on the dashboard.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-developers.png" class="help-center-img img-bordered" alt="Developers page in GitKraken Insights showing the Top 10 developers widget, score trend chart, and the developer table with Adoption, Agentic, Providers, and Output Score columns" />
+  <figcaption style="text-align: center; color: #888">Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns.</figcaption>
+</figure>
 
 ### Settings that affect it
 
@@ -2658,7 +2681,6 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: The Output Score section includes a screenshot in the source Confluence page. The image is a Confluence attachment without an exportable filename. Export it to _images/ and add the figure reference where flagged. -->
 
 This family answers: **what is your team shipping, and how much of it is substantive work?**
 
@@ -2839,7 +2861,10 @@ For teams, the per-active-dev rate is what to compare. A team averaging Output S
 * **/ai-adoption/ai-tools-comparison** — cohort comparison uses Output Score as a key metric.
 * **/ai-adoption/capex** — Output Score with CapEx vs OpEx classification for the capitalization grid.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-developers.png" class="help-center-img img-bordered" alt="Developers page in GitKraken Insights showing the Top 10 developers widget, score trend chart, and the developer table with Adoption, Agentic, Providers, and Output Score columns" />
+  <figcaption style="text-align: center; color: #888">Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns.</figcaption>
+</figure>
 
 ### Settings that affect it
 
@@ -3184,7 +3209,7 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: The Cycle Time and WIP sections include screenshots in the source Confluence pages. The images are Confluence attachments without exportable filenames. Export them to _images/ and add the figure references where flagged. -->
+<!-- FLAG FOR HUMAN REVIEW: The WIP section includes a screenshot in the source Confluence page ("Work In Progress (WIP)", caption: "WIP trend alongside other PR flow charts") that has not been exported yet. Export it to _images/ and add the figure where flagged. -->
 
 This family answers: **how fast does work move through your system, and where does it get stuck?**
 
@@ -3317,7 +3342,10 @@ Median industry numbers for typical web and services engineering teams:
 * **/ai-adoption/executive** — Cycle Time as one of the headline trend lines and a hero KPI.
 * **/ai-adoption/developers** — per-developer cycle time in the expanded developer detail.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Cycle Time and PR Volume trends with phase breakdown." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-team-lead-flow.png" class="help-center-img img-bordered" alt="Flow view in GitKraken Insights showing the cycle time trend broken down by phase next to the average changes per developer chart" />
+  <figcaption style="text-align: center; color: #888">Cycle Time and PR Volume trends with phase breakdown.</figcaption>
+</figure>
 
 ### Settings that affect it
 
@@ -5065,7 +5093,11 @@ If you came from a metric page to look up a specific setting, jump to the anchor
 
 ---
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Settings → General — Maturity Factor, Developer Hourly Rate, Baseline Period, and Default Department. (Tier Weights, Direct Commit Weight, and Exclude Chore are stored in app_settings but not yet exposed in the form.)" Export to _images/ and add the figure here. -->
+<!-- FLAG FOR HUMAN REVIEW: The screenshot below (from a June 2026 build) shows Direct Commit Weight, Exclude Chore, and Tier Weights as editable fields in Settings → General, but this page's text (from the May 2026 Confluence source) says those settings are not yet exposed in the Settings UI. Verify which is current and update the "In Settings UI: not yet" notes if the UI has shipped. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-settings-general.png" class="help-center-img img-bordered" alt="Settings General tab in GitKraken Insights showing Company AI Readiness, Developer Hourly Rate, Baseline Period, and Default Department fields" />
+  <figcaption style="text-align: center; color: #888">Settings → General — Maturity Factor (Company AI Readiness %), Developer Hourly Rate, Baseline Period, and Default Department.</figcaption>
+</figure>
 
 ## General settings
 

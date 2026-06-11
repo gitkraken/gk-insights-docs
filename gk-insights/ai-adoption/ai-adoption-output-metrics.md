@@ -12,7 +12,6 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: The Output Score section includes a screenshot in the source Confluence page. The image is a Confluence attachment without an exportable filename. Export it to _images/ and add the figure reference where flagged. -->
 
 This family answers: **what is your team shipping, and how much of it is substantive work?**
 
@@ -193,7 +192,10 @@ For teams, the per-active-dev rate is what to compare. A team averaging Output S
 * **/ai-adoption/ai-tools-comparison** — cohort comparison uses Output Score as a key metric.
 * **/ai-adoption/capex** — Output Score with CapEx vs OpEx classification for the capitalization grid.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-developers.png" class="help-center-img img-bordered" alt="Developers page in GitKraken Insights showing the Top 10 developers widget, score trend chart, and the developer table with Adoption, Agentic, Providers, and Output Score columns" />
+  <figcaption style="text-align: center; color: #888">Developers page — Top 10 developers, score trend, and the full developer table with Adoption, Agentic, Providers, and Output Score columns.</figcaption>
+</figure>
 
 ### Settings that affect it
 
