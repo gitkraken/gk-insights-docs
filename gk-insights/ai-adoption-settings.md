@@ -46,15 +46,15 @@ Also labeled **"Company AI Readiness %"** in the General tab. _In Settings UI: y
 
 **Why you'd raise or lower it.** - **Lower (0.50 – 0.70):** Early in your AI rollout. You want every developer to feel like there's runway. Few or no Power Users yet. - **Default (0.75):** Most orgs in active rollout. The tier ceiling pushes the top 10% to keep stretching. - **Higher (0.85 – 1.00):** Mature orgs with widespread, deep adoption where you want the scoring to reflect that maturity in absolute terms.
 
-**Affects:** [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score), [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score), [Output Norm](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+**Affects:** [Agent Adoption Score](/gk-insights/ai-adoption-agentic-metrics#agent-adoption-score), [Agent Autonomy Score](/gk-insights/ai-adoption-agentic-metrics#agent-autonomy-score), [Output Norm](/gk-insights/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier).
 
-→ Full section: [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
+→ Full section: [Maturity Factor](/gk-insights/ai-adoption-agentic-metrics#maturity-factor)
 
 ---
 
 ### Tier Weights
 
-Three positive numbers that say how much Adoption, Agentic, and Output each count toward the [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) composite. _In Settings UI: not yet — change via support (see panel above)._
+Three positive numbers that say how much Adoption, Agentic, and Output each count toward the [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) composite. _In Settings UI: not yet — change via support (see panel above)._
 
 | Weight | Default | App-settings key | What it emphasizes |
 | --- | --- | --- | --- |
@@ -70,9 +70,9 @@ Three positive numbers that say how much Adoption, Agentic, and Output each coun
 
 **Guardrails.** If you set all three to zero we fall back to the defaults (0.5 / 0.2 / 0.3) — never a "100% output, 0% everything else" boost. Negative or NaN values are rejected and the default for that key is used.
 
-**Affects:** [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) — and through it, the developer table sorting, the Top 10 widget, the executive ranking, and every breakdown chart that buckets by AI Tier.
+**Affects:** [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) — and through it, the developer table sorting, the Top 10 widget, the executive ranking, and every breakdown chart that buckets by AI Tier.
 
-→ See also: [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
+→ See also: [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
 
 ---
 
@@ -86,7 +86,7 @@ _In Settings UI: not yet — change via support._ App-settings key: `direct_comm
 | **Range** | 0.0 – 1.0 |
 | **Type** | Float |
 
-**What it does.** Scales direct commits (pushes straight to a default branch with no PR) relative to merged PRs in the [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) formula:
+**What it does.** Scales direct commits (pushes straight to a default branch with no PR) relative to merged PRs in the [Output Score](/gk-insights/ai-adoption-output-metrics#output-score) formula:
 
 ```
 Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort)
@@ -98,7 +98,7 @@ Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort)
 
 **When to change it.** - Lower toward 0 if your team uses direct commits primarily for trivial maintenance and you don't want them inflating Output Score. - Raise toward 1 if your team uses direct commits for substantive work (e.g. a Trunk-Based Development workflow).
 
-**Affects:** [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), [Output Norm](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+**Affects:** [Output Score](/gk-insights/ai-adoption-output-metrics#output-score), [Output Norm](/gk-insights/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier).
 
 ---
 
@@ -117,7 +117,7 @@ _In Settings UI: not yet — change via support._ App-settings key: `output_scor
 
 **When to turn off.** Rarely. The default reflects most orgs' definition of "real output". Turn off if you've explicitly decided chores are part of how you measure delivery — e.g. for an SRE team where dependency upgrades _are_ the job.
 
-**Affects:** [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), and downstream [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+**Affects:** [Output Score](/gk-insights/ai-adoption-output-metrics#output-score), and downstream [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier).
 
 ---
 
@@ -135,7 +135,7 @@ _In Settings UI: yes._
 
 **How to set it.** Use your fully-loaded internal developer cost rate (salary × benefits × overhead, divided by working hours). Most orgs land between $50 and $200/hour. If you don't have a precise number, the default $75 is a reasonable industry midpoint for a senior IC.
 
-**Affects:** [Productivity Uplift](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#productivity-uplift), [CapEx / OpEx Split](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#capex--opex-split), the AI Impact ROI cards.
+**Affects:** [Productivity Uplift](/gk-insights/ai-adoption-impact-cost-metrics#productivity-uplift), [CapEx / OpEx Split](/gk-insights/ai-adoption-impact-cost-metrics#capex--opex-split), the AI Impact ROI cards.
 
 ---
 
@@ -190,5 +190,5 @@ These behaviors are deliberately fixed in code. If you need them tunable, ask yo
 
 ## Related reading
 
-* [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
-* [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score)
+* [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
+* [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score)

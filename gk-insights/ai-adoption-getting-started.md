@@ -122,7 +122,7 @@ A composite "is this team set up to succeed with AI?" rating. Combines repositor
 
 The mean Agent Adoption Score across the team's active developers. A team average of 50 means a healthy mix; 80+ means a high-adoption team.
 
-→ [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score)
+→ [Agent Adoption Score](/gk-insights/ai-adoption-agentic-metrics#agent-adoption-score)
 
 #### Tier mix
 
@@ -130,13 +130,13 @@ Bars showing the team's distribution across Power User / Regular / Explorer / Em
 
 #### Cycle Time
 
-Average hours from a PR's first commit to merge. Lower is generally better, but not always — see the [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) section for nuance.
+Average hours from a PR's first commit to merge. Lower is generally better, but not always — see the [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time) section for nuance.
 
 #### Output Score (per active dev)
 
 Effort-weighted shipping rate, divided by the number of active developers on the team. A team that ships fewer but bigger PRs can have the same Output Score as a team that ships many small ones. Read this alongside the PR/DC count breakdown to know which pattern you're seeing.
 
-→ [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score)
+→ [Output Score](/gk-insights/ai-adoption-output-metrics#output-score)
 
 #### Power User %
 
@@ -260,13 +260,13 @@ The dashboard's job is to give you the first two. The third one is your call.
 
 * **Don't show individual developer scores in your monthly report.** It will get someone fired by a different chain of command than the dashboard was designed for. Aggregate by team or by tier mix instead.
 * **Don't read a single week.** Engineering work has 2–4 week natural cycles. Read trends, not weeks.
-* **Don't quote ROI to the dollar.** The [Productivity Uplift](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#productivity-uplift) number is a directional estimate. Use it for order-of-magnitude statements ("low single-digit millions in annualized productivity gain"), not for finance.
+* **Don't quote ROI to the dollar.** The [Productivity Uplift](/gk-insights/ai-adoption-impact-cost-metrics#productivity-uplift) number is a directional estimate. Use it for order-of-magnitude statements ("low single-digit millions in annualized productivity gain"), not for finance.
 
 ### Where to drill further
 
 If you want one more level of detail:
 
-* **For "is AI actually paying off?"** → [Productivity Uplift](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#productivity-uplift)
+* **For "is AI actually paying off?"** → [Productivity Uplift](/gk-insights/ai-adoption-impact-cost-metrics#productivity-uplift)
 * **For "where are we slow?"** → `/ai-adoption/ai-impact` (Cycle Time phase breakdown)
 * **For "which team needs attention?"** → `/ai-adoption/teams`
 
@@ -336,13 +336,13 @@ These three settings drift over time and need a quarterly check:
 | **Tier Weights** | Default 0.5 / 0.2 / 0.3. If your org has moved from "rolling out" to "extracting value", consider shifting weight toward Output. _(Currently a backend ops change — file a request with support.)_ |
 | **Baseline Period** | Default Nov 1 last year. If you launched a new AI tool mid-year, anchor the baseline to a month _before_ that launch so uplift math is meaningful. |
 
-→ [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
+→ [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
 
 ### Where to drill further
 
-* **Investigating a slow team** → [Playbook — Investigate a slow cycle time](/gk-insights/ai-adoption/ai-adoption-playbooks#investigate-a-slow-cycle-time)
-* **Planning a new tool rollout** → [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score)
-* **Quality regression** → [Playbook — Interpret a high CFR week](/gk-insights/ai-adoption/ai-adoption-playbooks#interpret-a-high-cfr-week)
+* **Investigating a slow team** → [Playbook — Investigate a slow cycle time](/gk-insights/ai-adoption-playbooks#investigate-a-slow-cycle-time)
+* **Planning a new tool rollout** → [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score)
+* **Quality regression** → [Playbook — Interpret a high CFR week](/gk-insights/ai-adoption-playbooks#interpret-a-high-cfr-week)
 
 ---
 
@@ -417,8 +417,8 @@ These are starting points, not laws. Your team's context can move the bar.
 
 ### Where to drill further
 
-* **A specific cycle time problem** → [Playbook — Investigate a slow cycle time](/gk-insights/ai-adoption/ai-adoption-playbooks#investigate-a-slow-cycle-time)
-* **A spike in customer bugs** → [Playbook — Interpret a high CFR week](/gk-insights/ai-adoption/ai-adoption-playbooks#interpret-a-high-cfr-week)
+* **A specific cycle time problem** → [Playbook — Investigate a slow cycle time](/gk-insights/ai-adoption-playbooks#investigate-a-slow-cycle-time)
+* **A spike in customer bugs** → [Playbook — Interpret a high CFR week](/gk-insights/ai-adoption-playbooks#interpret-a-high-cfr-week)
 * **A developer struggling with adoption** → `/ai-adoption/developers`, filter to that person, expand the heatmap.
 
 ---
@@ -487,7 +487,7 @@ The single biggest cause of "this number looks weird" tickets is roster drift. C
 | **Developer Hourly Rate** | $75 | Settings → General (input) | Annually, when your finance team updates the loaded rate |
 | **Baseline Period** | Nov 1 last year | Settings → General (month picker) | When you launch a new AI tool and want uplift relative to a specific pre-launch month |
 | **Default Department** | None | Settings → General (dropdown) | When your org structure shifts |
-| **Tier Weights** | 0.5 / 0.2 / 0.3 | _Not yet in the Settings UI — change via support_ | When you move from "rolling out" to "extracting value" — see the [Set tier weights playbook](/gk-insights/ai-adoption/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity) |
+| **Tier Weights** | 0.5 / 0.2 / 0.3 | _Not yet in the Settings UI — change via support_ | When you move from "rolling out" to "extracting value" — see the [Set tier weights playbook](/gk-insights/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity) |
 | **Direct Commit Weight** | 0.5 | _Not yet in the Settings UI — change via support_ | When your team's direct-commit workflow changes (e.g. moving to TBD) |
 | **Review Weight** | 0.5 | _Not yet in the Settings UI — change via support_ | When you want to emphasize or de-emphasize review work in Output Score |
 | **Exclude Chore from Output Score** | On | _Not yet in the Settings UI — change via support_ | Rarely. Default reflects most orgs' definition of "real output" |
@@ -522,5 +522,5 @@ For self-contained marketing builds (where there is no real backend at all), set
 ## Next
 
 * New here? → [Reading your first dashboard](#reading-your-first-dashboard)
-* Have a specific question already? → [AI Adoption metric pages](/gk-insights/ai-adoption/ai-adoption)
-* Need to set things up? → [For admins](#for-admins) and the [Settings reference](/gk-insights/ai-adoption/ai-adoption-settings)
+* Have a specific question already? → [AI Adoption metric pages](/gk-insights/ai-adoption)
+* Need to set things up? → [For admins](#for-admins) and the [Settings reference](/gk-insights/ai-adoption-settings)

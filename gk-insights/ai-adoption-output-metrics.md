@@ -168,7 +168,7 @@ Output Score is the dashboard's answer to the chronic problem that raw PR counts
 
 The review-credit term matters for the same reason. A senior engineer who spent the window doing high-quality reviews on substantive PRs has produced real value; the older Velocity metric ignored that work entirely.
 
-Output Score also threads cleanly into the [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) composite. Normalized to org P90 and scaled by Maturity Factor (we call that derived value **Output Norm**), it becomes the "shipping" leg of the composite alongside Adoption and Agentic.
+Output Score also threads cleanly into the [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) composite. Normalized to org P90 and scaled by Maturity Factor (we call that derived value **Output Norm**), it becomes the "shipping" leg of the composite alongside Adoption and Agentic.
 
 For leaders, the most useful reading is **Output Score over time alongside Adoption Score over time**. AI rollouts almost always show Adoption rising first, then Output rising 4–12 weeks later.
 
@@ -199,10 +199,10 @@ For teams, the per-active-dev rate is what to compare. A team averaging Output S
 
 ### Settings that affect it
 
-* [**Direct Commit Weight**](/gk-insights/ai-adoption/ai-adoption-settings#direct-commit-weight) — scales DC contribution (default 0.5).
-* [**Review Weight**](/gk-insights/ai-adoption/ai-adoption-settings) — scales review-credit contribution (default 0.5). Set to 0 to disable the review-credit term.
-* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption/ai-adoption-settings#exclude-chore-from-output-score) — strips Chore effort from the sums (default on).
-* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — does _not_ affect raw Output Score, but does affect **Output Norm** (the variant that feeds into AI Tier).
+* [**Direct Commit Weight**](/gk-insights/ai-adoption-settings#direct-commit-weight) — scales DC contribution (default 0.5).
+* [**Review Weight**](/gk-insights/ai-adoption-settings) — scales review-credit contribution (default 0.5). Set to 0 to disable the review-credit term.
+* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption-settings#exclude-chore-from-output-score) — strips Chore effort from the sums (default on).
+* [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — does _not_ affect raw Output Score, but does affect **Output Norm** (the variant that feeds into AI Tier).
 
 ### Related metrics
 
@@ -211,8 +211,8 @@ For teams, the per-active-dev rate is what to compare. A team averaging Output S
 | [Effort Score](#effort-score-complexity) | The per-PR / per-commit weights that Output Score sums over. |
 | [Throughput](#throughput) | Raw merged PR count. Use for same-team trend reading. Output Score is for cross-team comparison. |
 | [Direct Commits](#direct-commits) | The DC term of the formula. |
-| [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) | Output Norm is the Output leg of the composite. |
-| [CapEx / OpEx Split](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#capex--opex-split) | Categorizes the same effort sums for capitalization accounting. |
+| [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) | Output Norm is the Output leg of the composite. |
+| [CapEx / OpEx Split](/gk-insights/ai-adoption-impact-cost-metrics#capex--opex-split) | Categorizes the same effort sums for capitalization accounting. |
 
 ### How to improve it
 
@@ -242,7 +242,7 @@ A: An LLM classifier worker reads each PR or commit diff and assigns one of five
 A: Three common causes: (1) the PR's `auto_effort_score` hasn't been computed yet, (2) the PR's category is Chore and the "Exclude Chore" toggle is on, or (3) the PR merged outside the window you selected.
 
 **Q: Why are direct commits and reviews weighted lower than authored PRs?**
-A: Empirically, direct commits trend toward smaller, less-reviewed work, and a single review takes less effort than authoring the same PR. The 0.5 defaults reflect those averages. Tune via [Direct Commit Weight](/gk-insights/ai-adoption/ai-adoption-settings#direct-commit-weight) and [Review Weight](/gk-insights/ai-adoption/ai-adoption-settings).
+A: Empirically, direct commits trend toward smaller, less-reviewed work, and a single review takes less effort than authoring the same PR. The 0.5 defaults reflect those averages. Tune via [Direct Commit Weight](/gk-insights/ai-adoption-settings#direct-commit-weight) and [Review Weight](/gk-insights/ai-adoption-settings).
 
 **Q: Can I see what effort score a specific PR got?**
 A: Yes. /ai-adoption/data-explorer → PRs tab shows the Effort column for every PR, sortable.
@@ -311,15 +311,15 @@ None. Throughput is a raw count — no admin knobs change it. If you want effort
 | Metric | Relationship |
 | --- | --- |
 | [Output Score](#output-score) | The effort-weighted version of the same shipping activity. |
-| [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) | The "how fast" pair to Throughput's "how many." Read them together. |
-| [WIP](/gk-insights/ai-adoption/ai-adoption-flow-metrics#work-in-progress-wip) | Number of currently-open PRs. Throughput is the _outflow_; WIP is the _backlog_. |
-| [Deployment Frequency](/gk-insights/ai-adoption/ai-adoption-dora-metrics#deployment-frequency) | DORA's release-based sibling — same concept, counted from release events instead of merges. |
+| [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time) | The "how fast" pair to Throughput's "how many." Read them together. |
+| [WIP](/gk-insights/ai-adoption-flow-metrics#work-in-progress-wip) | Number of currently-open PRs. Throughput is the _outflow_; WIP is the _backlog_. |
+| [Deployment Frequency](/gk-insights/ai-adoption-dora-metrics#deployment-frequency) | DORA's release-based sibling — same concept, counted from release events instead of merges. |
 
 ### How to improve it
 
 * **Right-size PRs.** Teams shipping fewer-but-huge PRs often have low Throughput. The fix is usually upstream: smaller, more frequent merges. Track via Cycle Time alongside Throughput.
 * **Clear stale open PRs.** A high WIP with low Throughput is the classic review-bottleneck pattern. Walk the oldest open PRs each week.
-* **Reduce review cycles.** If every PR averages 2+ "changes requested" rounds, Throughput stalls. See [Review Cycles](/gk-insights/ai-adoption/ai-adoption-flow-metrics#review-cycles).
+* **Reduce review cycles.** If every PR averages 2+ "changes requested" rounds, Throughput stalls. See [Review Cycles](/gk-insights/ai-adoption-flow-metrics#review-cycles).
 
 ### Limitations and gotchas
 
@@ -397,8 +397,8 @@ Don't read direct commits in isolation — read them as part of the Output Score
 
 ### Settings that affect it
 
-* [**Direct Commit Weight**](/gk-insights/ai-adoption/ai-adoption-settings#direct-commit-weight) — the multiplier. 0 = ignore direct commits in Output. 1 = treat equally to PRs.
-* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption/ai-adoption-settings#exclude-chore-from-output-score) — affects whether Chore-category direct commits contribute to the effort sum.
+* [**Direct Commit Weight**](/gk-insights/ai-adoption-settings#direct-commit-weight) — the multiplier. 0 = ignore direct commits in Output. 1 = treat equally to PRs.
+* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption-settings#exclude-chore-from-output-score) — affects whether Chore-category direct commits contribute to the effort sum.
 
 ### Related metrics
 

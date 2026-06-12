@@ -130,9 +130,9 @@ After a weight change:
 
 ### Related
 
-* [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier)
-* [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
-* [Settings reference](/gk-insights/ai-adoption/ai-adoption-settings)
+* [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier)
+* [Maturity Factor](/gk-insights/ai-adoption-agentic-metrics#maturity-factor)
+* [Settings reference](/gk-insights/ai-adoption-settings)
 
 ---
 
@@ -196,7 +196,7 @@ Three operational views — each has a different cadence:
 **Goal:** Make AI tools the default, not the opt-in.
 
 1. **All new developers get licenses on day 1.** Built into onboarding. New hires landing in Emerging after 8 weeks is a process flag.
-2. **Watch the Maturing-team cohort.** Some teams will plateau at "everyone's an Explorer, no one's a Power User." That's the "broad but shallow" pattern — start working on the [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score) by running agentic-pattern workshops.
+2. **Watch the Maturing-team cohort.** Some teams will plateau at "everyone's an Explorer, no one's a Power User." That's the "broad but shallow" pattern — start working on the [Agent Autonomy Score](/gk-insights/ai-adoption-agentic-metrics#agent-autonomy-score) by running agentic-pattern workshops.
 
 #### Month 6 — Strategic review
 
@@ -228,23 +228,23 @@ If your trajectory has _Adoption climbing but Uplift flat at month 4+_, your rol
 
 * **Org-wide on day 1.** Spreads adoption too thin to track. Pilot, prove, then expand.
 * **Ignoring the trajectory in favor of the snapshot.** Adoption % at 30% is a great number if it was 5% three months ago. It's a bad number if it's been 30% for six months.
-* **Treating tier as a performance metric.** Read [How to think about developer scores](/gk-insights/ai-adoption/ai-adoption-getting-started#how-to-think-about-developer-scores) before any 1:1 about a developer's tier.
+* **Treating tier as a performance metric.** Read [How to think about developer scores](/gk-insights/ai-adoption-getting-started#how-to-think-about-developer-scores) before any 1:1 about a developer's tier.
 * **Not adjusting Maturity Factor with the rollout.** Default 0.75 is calibrated for active rollout. In month 1, lower it. In month 12, raise it. It's a knob for a reason.
 * **Picking AI adoption as the only metric to watch.** Pair it with Cycle Time and CFR. If you ship faster but break more things, you haven't won.
 
 ### Related
 
-* [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score)
-* [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score)
-* [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
+* [Agent Adoption Score](/gk-insights/ai-adoption-agentic-metrics#agent-adoption-score)
+* [Agent Autonomy Score](/gk-insights/ai-adoption-agentic-metrics#agent-autonomy-score)
+* [Maturity Factor](/gk-insights/ai-adoption-agentic-metrics#maturity-factor)
 * [Playbook — Set tier weights for your org's maturity](#set-tier-weights-for-your-orgs-maturity)
-* [For engineering leaders](/gk-insights/ai-adoption/ai-adoption-getting-started#for-engineering-leaders)
+* [For engineering leaders](/gk-insights/ai-adoption-getting-started#for-engineering-leaders)
 
 ---
 
 ## Investigate a slow cycle time
 
-> _Your team's [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) just crept past your tolerance. This playbook walks you from "something's wrong" to "I know which lever to pull" in about 30 minutes._
+> _Your team's [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time) just crept past your tolerance. This playbook walks you from "something's wrong" to "I know which lever to pull" in about 30 minutes._
 
 ### The problem
 
@@ -336,10 +336,10 @@ A reasonable expectation, having intervened on the dominant phase:
 
 ### Related metric pages
 
-* [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time)
-* [Review Cycles](/gk-insights/ai-adoption/ai-adoption-flow-metrics#review-cycles)
-* [WIP](/gk-insights/ai-adoption/ai-adoption-flow-metrics#work-in-progress-wip)
-* [First-Pass Rate](/gk-insights/ai-adoption/ai-adoption-flow-metrics#first-pass-rate)
+* [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time)
+* [Review Cycles](/gk-insights/ai-adoption-flow-metrics#review-cycles)
+* [WIP](/gk-insights/ai-adoption-flow-metrics#work-in-progress-wip)
+* [First-Pass Rate](/gk-insights/ai-adoption-flow-metrics#first-pass-rate)
 
 ---
 
@@ -410,7 +410,7 @@ A single spike that's already resolved. Often a bad release that's been hot-patc
 
 Genuine quality drift.
 
-**Action:** Pause non-critical feature work for the affected team for one sprint. Sample the recent bug reports — look for a common root cause. Strengthen pre-merge review on the affected repo(s). Consider mandatory reviewers if you've been relaxed about review. Look at [First-Pass Rate](/gk-insights/ai-adoption/ai-adoption-flow-metrics#first-pass-rate) over the same window. A First-Pass climbing alongside CFR is the rubber-stamping pattern — your reviewers aren't catching things.
+**Action:** Pause non-critical feature work for the affected team for one sprint. Sample the recent bug reports — look for a common root cause. Strengthen pre-merge review on the affected repo(s). Consider mandatory reviewers if you've been relaxed about review. Look at [First-Pass Rate](/gk-insights/ai-adoption-flow-metrics#first-pass-rate) over the same window. A First-Pass climbing alongside CFR is the rubber-stamping pattern — your reviewers aren't catching things.
 
 #### Pattern: Suddenly stepped up
 
@@ -443,7 +443,7 @@ A reasonable expectation after intervening on a real CFR climb:
 
 ### Related metric pages
 
-* [Change Failure Rate (CFR)](/gk-insights/ai-adoption/ai-adoption-dora-metrics#change-failure-rate-cfr)
-* [MTTR](/gk-insights/ai-adoption/ai-adoption-dora-metrics#mean-time-to-recovery-mttr)
-* [First-Pass Rate](/gk-insights/ai-adoption/ai-adoption-flow-metrics#first-pass-rate)
-* [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier)
+* [Change Failure Rate (CFR)](/gk-insights/ai-adoption-dora-metrics#change-failure-rate-cfr)
+* [MTTR](/gk-insights/ai-adoption-dora-metrics#mean-time-to-recovery-mttr)
+* [First-Pass Rate](/gk-insights/ai-adoption-flow-metrics#first-pass-rate)
+* [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier)

@@ -71,7 +71,7 @@ Three things to remember:
 2. **Org P90 is the ceiling, not 100.** Because we normalize against the org's 90th percentile, a single developer can't game the system by spamming prompts. The ceiling moves with the org.
 3. **Maturity Factor sets the headroom.** At 0.75, even a perfect (P90) developer scores 75. That's intentional — it leaves room for the _org_ to grow into higher numbers without retiering everyone overnight.
 
-See [How to think about developer scores](/gk-insights/ai-adoption/ai-adoption-getting-started#how-to-think-about-developer-scores) before drawing individual conclusions.
+See [How to think about developer scores](/gk-insights/ai-adoption-getting-started#how-to-think-about-developer-scores) before drawing individual conclusions.
 
 ---
 
@@ -167,7 +167,7 @@ A team average of 50–65 means a healthy mix with most developers in Explorer/R
 
 ### Settings that affect it
 
-* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — multiplies the final score. Lowering it lowers the tier ceiling for everyone.
+* [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — multiplies the final score. Lowering it lowers the tier ceiling for everyone.
 * **Cursor secondary boost** (env var `SCORE_SECONDARY_BOOST`, default 0.25) — how heavily Cursor contributes alongside Claude / Codex.
 * **Provider weights** (env vars `SCORE_WEIGHT_*`) — how much DailyUse / HourlySpread / Prompts / Output each contribute within a provider's score.
 
@@ -181,7 +181,7 @@ The four-factor weighting per provider is not currently exposed in the Settings 
 | [AI Tier](#ai-tier) | Adoption is one of three inputs into the composite Tier. |
 | [Maturity Factor](#maturity-factor) | The scalar that ceilings every Adoption Score in your org. |
 | [Cursor Boost](#cursor-boost) | Defines how Cursor adoption contributes to the headline Adoption Score. |
-| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | The shipping-side metric. High Adoption with flat Output is a common pattern in early rollouts. |
+| [Output Score](/gk-insights/ai-adoption-output-metrics#output-score) | The shipping-side metric. High Adoption with flat Output is a common pattern in early rollouts. |
 
 ### How to improve it
 
@@ -197,7 +197,7 @@ The four-factor weighting per provider is not currently exposed in the Settings 
 * **Pre-2026-03-05 Claude Code data doesn't exist.** Effective Weekdays adjusts for this automatically.
 * **Cursor data depends on the Cursor API being reachable.** If your Cursor sync is broken, devs who only use Cursor will show as Emerging.
 * **The org P90 ceiling moves with the cohort.** Hire a wave of Power Users and the bar rises for everyone. This is intentional but counter-intuitive.
-* **Direct provider events only.** We don't infer AI usage from PR co-author tags or other heuristics for the Adoption Score (that's [AI-Assisted Percentage](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#ai-assisted-percentage)).
+* **Direct provider events only.** We don't infer AI usage from PR co-author tags or other heuristics for the Adoption Score (that's [AI-Assisted Percentage](/gk-insights/ai-adoption-impact-cost-metrics#ai-assisted-percentage)).
 
 ### FAQ
 
@@ -276,7 +276,7 @@ A team average above 40 is a strong signal that agentic workflows have taken roo
 
 ### Settings that affect it
 
-* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — multiplies the final score (default 0.75).
+* [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — multiplies the final score (default 0.75).
 * The **agentic threshold** (10 tools per session) is not currently configurable. Ask your account manager if you need it tunable.
 
 ### Related metrics
@@ -285,7 +285,7 @@ A team average above 40 is a strong signal that agentic workflows have taken roo
 | --- | --- |
 | [Agent Adoption Score](#agent-adoption-score) | Parallel adoption measure. Adoption = consistency. Agentic = depth of autonomous use. |
 | [AI Tier](#ai-tier) | Agentic is one of three inputs into the composite Tier (default weight 0.2). See [How the metrics fit together](#how-the-metrics-fit-together) for the canonical composite formula and per-org configuration story. |
-| [Productivity Uplift](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#productivity-uplift) | Most productivity gains correlate with rising Autonomy, not Adoption. |
+| [Productivity Uplift](/gk-insights/ai-adoption-impact-cost-metrics#productivity-uplift) | Most productivity gains correlate with rising Autonomy, not Adoption. |
 
 ### How to improve it
 
@@ -409,10 +409,10 @@ If **On PTO % is unusually high** (>15%), check whether your PTO sync is working
 
 ### Settings that affect it
 
-* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — scales all three inputs, so it shifts the entire population up or down the tier ladder. _Configurable in Settings → General._
-* [**Tier Weights**](/gk-insights/ai-adoption/ai-adoption-settings#tier-weights) — controls how much Adoption / Agentic / Output each contribute. Defaults 0.5 / 0.2 / 0.3. _Per-org in_ `app_settings`_; not yet in the Settings UI — change via support._
-* [**Direct Commit Weight**](/gk-insights/ai-adoption/ai-adoption-settings#direct-commit-weight) — affects Output Score, which feeds into Output Norm. _Per-org in_ `app_settings`_; not yet in the Settings UI._
-* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption/ai-adoption-settings#exclude-chore-from-output-score) — same path through Output. _Per-org in_ `app_settings`_; not yet in the Settings UI._
+* [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — scales all three inputs, so it shifts the entire population up or down the tier ladder. _Configurable in Settings → General._
+* [**Tier Weights**](/gk-insights/ai-adoption-settings#tier-weights) — controls how much Adoption / Agentic / Output each contribute. Defaults 0.5 / 0.2 / 0.3. _Per-org in_ `app_settings`_; not yet in the Settings UI — change via support._
+* [**Direct Commit Weight**](/gk-insights/ai-adoption-settings#direct-commit-weight) — affects Output Score, which feeds into Output Norm. _Per-org in_ `app_settings`_; not yet in the Settings UI._
+* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption-settings#exclude-chore-from-output-score) — same path through Output. _Per-org in_ `app_settings`_; not yet in the Settings UI._
 
 ### Related metrics
 
@@ -420,12 +420,12 @@ If **On PTO % is unusually high** (>15%), check whether your PTO sync is working
 | --- | --- |
 | [Agent Adoption Score](#agent-adoption-score) | Input #1. Default weight 0.5. |
 | [Agent Autonomy Score](#agent-autonomy-score) | Input #2. Default weight 0.2. |
-| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Input #3 (via Output Norm). Default weight 0.3. |
+| [Output Score](/gk-insights/ai-adoption-output-metrics#output-score) | Input #3 (via Output Norm). Default weight 0.3. |
 | [Maturity Factor](#maturity-factor) | Scales all three inputs uniformly. |
 
 ### How to improve it
 
-* **To move developers from Emerging → Explorer**, focus on Adoption. See [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score).
+* **To move developers from Emerging → Explorer**, focus on Adoption. See [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score).
 * **To move developers from Regular → Power User**, focus on Agentic _and_ Output together. The top tier requires both depth of AI use and shipping at the org's top rate.
 * **To shift the org-level tier mix without retraining anyone**, tune the Tier Weights. Moving the weights toward Output emphasizes shippers; moving them toward Adoption emphasizes consistent users. (Currently a backend ops change — not yet self-serve.)
 * **To grade fairly across teams of different sizes**, look at _tier mix percentage_ rather than absolute counts.
@@ -521,7 +521,7 @@ The default (0.75) is calibrated for "active rollout" — the most common state 
 | --- | --- |
 | [Agent Adoption Score](#agent-adoption-score) | Multiplied by Maturity Factor as the final step. |
 | [Agent Autonomy Score](#agent-autonomy-score) | Multiplied by Maturity Factor as the final step. |
-| [Output Score → Output Norm](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Output Norm is multiplied by Maturity Factor. Raw Output Score itself is not. |
+| [Output Score → Output Norm](/gk-insights/ai-adoption-output-metrics#output-score) | Output Norm is multiplied by Maturity Factor. Raw Output Score itself is not. |
 | [AI Tier](#ai-tier) | Indirectly — the tier thresholds (25 / 55 / 80) stay fixed, but the inputs scale. |
 
 ### How to use it

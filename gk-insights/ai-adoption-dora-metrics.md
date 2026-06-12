@@ -141,7 +141,7 @@ Read the trend, not the band. A team that moved from Medium to High in six month
 | --- | --- |
 | [Lead Time for Changes](#lead-time-for-changes) | The other DORA velocity metric. Velocity = "fast and often" needs both. |
 | [CFR](#change-failure-rate-cfr) | Stability counterweight. High Deployment Frequency with low CFR is the goal. |
-| [Throughput](/gk-insights/ai-adoption/ai-adoption-output-metrics#throughput) | The merged-PR count metric. Often correlated with Deployment Frequency but measures merges, not releases. |
+| [Throughput](/gk-insights/ai-adoption-output-metrics#throughput) | The merged-PR count metric. Often correlated with Deployment Frequency but measures merges, not releases. |
 
 ### How to improve it
 
@@ -178,7 +178,7 @@ A: /ai-adoption/board-metrics with team filter applied, or /ai-adoption/executiv
 
 ### At a glance
 
-Lead Time for Changes is "how long does it take a change to go from first keystroke to live in production?" It is the end-to-end sibling of [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time). Cycle Time stops at merge; Lead Time keeps counting until the change is actually in production.
+Lead Time for Changes is "how long does it take a change to go from first keystroke to live in production?" It is the end-to-end sibling of [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time). Cycle Time stops at merge; Lead Time keeps counting until the change is actually in production.
 
 It is the DORA metric most often confused with Cycle Time. The difference matters: shipping fast (low Cycle Time) without actually deploying (high Lead Time) is the classic "engineering ships, ops sits on it" anti-pattern.
 
@@ -241,7 +241,7 @@ For most product engineering teams, High is the target. Elite requires fully-aut
 
 | Metric | Relationship |
 | --- | --- |
-| [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) | The first-commit-to-merge portion. Lead Time extends to the delivering release. |
+| [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time) | The first-commit-to-merge portion. Lead Time extends to the delivering release. |
 | [Deployment Frequency](#deployment-frequency) | The other DORA velocity metric. |
 
 ### How to improve it
@@ -336,8 +336,8 @@ A rising CFR trend is more concerning than a high baseline. Some teams have a le
 | --- | --- |
 | [Deployment Frequency](#deployment-frequency) | The DORA velocity pair. CFR is the stability counterweight. |
 | [MTTR](#mean-time-to-recovery-mttr) | The other stability metric — how fast you recover when CFR strikes. |
-| [First-Pass Rate](/gk-insights/ai-adoption/ai-adoption-flow-metrics#first-pass-rate) | High First-Pass + rising CFR = rubber-stamping risk. |
-| [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) | The CFR-by-Tier breakdown on /ai-adoption/ai-impact tells you whether AI adoption changes stability. |
+| [First-Pass Rate](/gk-insights/ai-adoption-flow-metrics#first-pass-rate) | High First-Pass + rising CFR = rubber-stamping risk. |
+| [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) | The CFR-by-Tier breakdown on /ai-adoption/ai-impact tells you whether AI adoption changes stability. |
 
 ### How to improve it
 
