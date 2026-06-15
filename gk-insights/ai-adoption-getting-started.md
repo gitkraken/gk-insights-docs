@@ -333,7 +333,7 @@ These three settings drift over time and need a quarterly check:
 | Setting | What to check |
 | --- | --- |
 | **Maturity Factor** | Still 0.75? If your org has matured, raise it. If your adoption % has plateaued for 2+ quarters, consider whether the ceiling is the constraint. |
-| **Tier Weights** | Default 0.5 / 0.2 / 0.3. If your org has moved from "rolling out" to "extracting value", consider shifting weight toward Output. _(Currently a backend ops change — file a request with support.)_ |
+| **Tier Weights** | Default 0.5 / 0.2 / 0.3. If your org has moved from "rolling out" to "extracting value", consider shifting weight toward Output. _(Editable in Settings → General.)_ |
 | **Baseline Period** | Default Nov 1 last year. If you launched a new AI tool mid-year, anchor the baseline to a month _before_ that launch so uplift math is meaningful. |
 
 → [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
@@ -487,10 +487,10 @@ The single biggest cause of "this number looks weird" tickets is roster drift. C
 | **Developer Hourly Rate** | $75 | Settings → General (input) | Annually, when your finance team updates the loaded rate |
 | **Baseline Period** | Nov 1 last year | Settings → General (month picker) | When you launch a new AI tool and want uplift relative to a specific pre-launch month |
 | **Default Department** | None | Settings → General (dropdown) | When your org structure shifts |
-| **Tier Weights** | 0.5 / 0.2 / 0.3 | _Not yet in the Settings UI — change via support_ | When you move from "rolling out" to "extracting value" — see the [Set tier weights playbook](/gk-insights/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity) |
-| **Direct Commit Weight** | 0.5 | _Not yet in the Settings UI — change via support_ | When your team's direct-commit workflow changes (e.g. moving to TBD) |
-| **Review Weight** | 0.5 | _Not yet in the Settings UI — change via support_ | When you want to emphasize or de-emphasize review work in Output Score |
-| **Exclude Chore from Output Score** | On | _Not yet in the Settings UI — change via support_ | Rarely. Default reflects most orgs' definition of "real output" |
+| **Tier Weights** | 0.5 / 0.2 / 0.3 | Settings → General | When you move from "rolling out" to "extracting value" — see the [Set tier weights playbook](/gk-insights/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity) |
+| **Direct Commit Weight** | 0.5 | Settings → General | When your team's direct-commit workflow changes (e.g. moving to TBD) |
+| **Review Weight** | 0.5 | Settings → General | When you want to emphasize or de-emphasize review work in Output Score |
+| **Exclude Chore from Output Score** | On | Settings → General | Rarely. Default reflects most orgs' definition of "real output" |
 
 ### What to do when a number looks wrong
 

@@ -59,7 +59,7 @@ tierScore = (0.5 × Agent Adoption) + (0.2 × Agent Autonomy) + (0.3 × Output N
 
 Each weight is read from `analytics.app_settings` per organization (keys: `tier_weight_adoption`, `tier_weight_agentic`, `tier_weight_output`) and renormalized to sum to 1.0. The tier-badge tooltip in the app renders the live values for every developer so the breakdown is always transparent.
 
-**What admins can change in Settings → General today:** Maturity Factor, Developer Hourly Rate, Baseline Period, and Default Department. The tier composite weights (`tier_weight_*`) and the Output Score sub-weights (`direct_commit_weight`, `review_weight`, `output_score_exclude_chore`) are per-org settings stored in `app_settings`, but the user-facing settings form does not yet expose them — changes require a backend request through support.
+**What admins can change in Settings → General:** Maturity Factor, Developer Hourly Rate, Baseline Period, and Default Department, plus the tier composite weights (`tier_weight_*`) and the Output Score sub-weights (`direct_commit_weight`, `review_weight`, `output_score_exclude_chore`). All are per-org settings stored in `app_settings` and editable directly in the settings form.
 
 ---
 
@@ -322,7 +322,7 @@ A: We want to separate "is the developer using AI?" (Adoption) from "is the deve
 
 ### At a glance
 
-The AI Tier is the dashboard's headline classification — every active developer lands in one of five tiers each window. It's a deliberate composite of three signals: how _consistently_ the developer is using AI (Adoption), how _autonomously_ (Agentic), and how _productively_ (Output Norm). The weights are configurable per-org (defaults 0.5 / 0.2 / 0.3); changing them today requires a backend ops request through support — see "The weighted blend" below.
+The AI Tier is the dashboard's headline classification — every active developer lands in one of five tiers each window. It's a deliberate composite of three signals: how _consistently_ the developer is using AI (Adoption), how _autonomously_ (Agentic), and how _productively_ (Output Norm). The weights are configurable per-org in Settings → General (defaults 0.5 / 0.2 / 0.3) — see "The weighted blend" below.
 
 The tier is what drives the Top 10 widget, the executive ranking, the breakdown charts that bucket by AI Tier, and the team-level tier mix bars on /ai-adoption/teams. If you only learn one composite metric in the dashboard, learn this one.
 
@@ -354,7 +354,7 @@ All three are already on the same 0–100 scale, and all three are already scale
 
 **The weighted blend.** The three weights — Adoption / Agentic / Output — are stored per-organization in `analytics.app_settings` under the keys `tier_weight_adoption`, `tier_weight_agentic`, and `tier_weight_output`. Defaults are 0.5 / 0.2 / 0.3. They're stored **raw**, then renormalized to sum to 1.0 on every read. So 0.5 / 0.2 / 0.3 renormalizes to 0.5 / 0.2 / 0.3 (already sums to 1); 1.0 / 0.5 / 0.5 renormalizes to 0.5 / 0.25 / 0.25.
 
-**Where to change them today.** The user-facing Settings UI (Settings → General) does not yet expose tier weights — the only keys the form writes are `maturity_factor`, `developer_hourly_rate`, `baseline_period_start`, and `default_department`. To change tier weights for an org, file a request with support and we'll set the `tier_weight_*` values directly. A self-serve form is planned but not in scope yet.
+**Where to change them.** The Settings → General form exposes tier weights alongside `maturity_factor`, `developer_hourly_rate`, `baseline_period_start`, and `default_department`. Edit the `tier_weight_*` values there and the change takes effect on the next read.
 
 If you set all three weights to zero (or negative), we fall back to defaults rather than producing a NaN. There's never a "100% output, 0% everything else" boost run.
 
@@ -410,9 +410,9 @@ If **On PTO % is unusually high** (>15%), check whether your PTO sync is working
 ### Settings that affect it
 
 * [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — scales all three inputs, so it shifts the entire population up or down the tier ladder. _Configurable in Settings → General._
-* [**Tier Weights**](/gk-insights/ai-adoption-settings#tier-weights) — controls how much Adoption / Agentic / Output each contribute. Defaults 0.5 / 0.2 / 0.3. _Per-org in_ `app_settings`_; not yet in the Settings UI — change via support._
-* [**Direct Commit Weight**](/gk-insights/ai-adoption-settings#direct-commit-weight) — affects Output Score, which feeds into Output Norm. _Per-org in_ `app_settings`_; not yet in the Settings UI._
-* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption-settings#exclude-chore-from-output-score) — same path through Output. _Per-org in_ `app_settings`_; not yet in the Settings UI._
+* [**Tier Weights**](/gk-insights/ai-adoption-settings#tier-weights) — controls how much Adoption / Agentic / Output each contribute. Defaults 0.5 / 0.2 / 0.3. _Per-org in_ `app_settings`_; editable in Settings → General._
+* [**Direct Commit Weight**](/gk-insights/ai-adoption-settings#direct-commit-weight) — affects Output Score, which feeds into Output Norm. _Per-org in_ `app_settings`_; editable in Settings → General._
+* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption-settings#exclude-chore-from-output-score) — same path through Output. _Per-org in_ `app_settings`_; editable in Settings → General._
 
 ### Related metrics
 
@@ -427,7 +427,7 @@ If **On PTO % is unusually high** (>15%), check whether your PTO sync is working
 
 * **To move developers from Emerging → Explorer**, focus on Adoption. See [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score).
 * **To move developers from Regular → Power User**, focus on Agentic _and_ Output together. The top tier requires both depth of AI use and shipping at the org's top rate.
-* **To shift the org-level tier mix without retraining anyone**, tune the Tier Weights. Moving the weights toward Output emphasizes shippers; moving them toward Adoption emphasizes consistent users. (Currently a backend ops change — not yet self-serve.)
+* **To shift the org-level tier mix without retraining anyone**, tune the Tier Weights. Moving the weights toward Output emphasizes shippers; moving them toward Adoption emphasizes consistent users. (Editable in Settings → General.)
 * **To grade fairly across teams of different sizes**, look at _tier mix percentage_ rather than absolute counts.
 
 ### Limitations and gotchas
@@ -509,7 +509,6 @@ The default (0.75) is calibrated for "active rollout" — the most common state 
 * **Settings → General → "Company AI Readiness (%)"** — the input that controls it. Shows a live preview ("At this maturity, a perfect score is X points").
 * **Affects every page that displays Adoption, Agentic, or Output Norm scores.** Including /ai-adoption/developers, /ai-adoption/teams, /ai-adoption/executive, /ai-adoption/ai-tools-comparison, /ai-adoption/ai-impact.
 
-<!-- FLAG FOR HUMAN REVIEW: The screenshot below (from a June 2026 build) shows Direct Commit Weight, Exclude Chore, and Tier Weights as editable fields in Settings → General, but this page's text (from the May 2026 Confluence source) says those settings are not yet exposed in the Settings UI. Verify which is current and update the text if the UI has shipped. -->
 <figure>
   <img src="/wp-content/uploads/ai-adoption-settings-general.png" class="help-center-img img-bordered" alt="Settings General tab in GitKraken Insights showing Company AI Readiness, Developer Hourly Rate, Baseline Period, and Default Department fields" />
   <figcaption style="text-align: center; color: #888">Settings → General — Maturity Factor (Company AI Readiness %), Developer Hourly Rate, Baseline Period, and Default Department.</figcaption>

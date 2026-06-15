@@ -18,11 +18,10 @@ Every admin-configurable setting that affects AI Adoption scores in GitKraken In
 
 If you came from a metric page to look up a specific setting, jump to the anchor of the same name.
 
-**What's in the Settings UI today vs. backend-only.** As of 2026-05-28, the Settings → General form writes these four keys: `maturity_factor`, `developer_hourly_rate`, `baseline_period_start`, `default_department`. The other per-org settings on this page — **Tier Weights**, **Direct Commit Weight**, **Exclude Chore from Output Score** — are stored in the same `app_settings` table but are not yet exposed in the UI form. To change those today, file a request with support and we'll set them directly. A self-serve form is on the roadmap.
+**Where these settings live.** All of the per-org settings on this page are editable in the Settings → General form and stored in the `app_settings` table. Alongside the core fields (`maturity_factor`, `developer_hourly_rate`, `baseline_period_start`, `default_department`), the form also exposes **Tier Weights**, **Direct Commit Weight**, **Review Weight**, and **Exclude Chore from Output Score**.
 
 ---
 
-<!-- FLAG FOR HUMAN REVIEW: The screenshot below (from a June 2026 build) shows Direct Commit Weight, Exclude Chore, and Tier Weights as editable fields in Settings → General, but this page's text (from the May 2026 Confluence source) says those settings are not yet exposed in the Settings UI. Verify which is current and update the "In Settings UI: not yet" notes if the UI has shipped. -->
 <figure>
   <img src="/wp-content/uploads/ai-adoption-settings-general.png" class="help-center-img img-bordered" alt="Settings General tab in GitKraken Insights showing Company AI Readiness, Developer Hourly Rate, Baseline Period, and Default Department fields" />
   <figcaption style="text-align: center; color: #888">Settings → General — Maturity Factor (Company AI Readiness %), Developer Hourly Rate, Baseline Period, and Default Department.</figcaption>
@@ -54,7 +53,7 @@ Also labeled **"Company AI Readiness %"** in the General tab. _In Settings UI: y
 
 ### Tier Weights
 
-Three positive numbers that say how much Adoption, Agentic, and Output each count toward the [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) composite. _In Settings UI: not yet — change via support (see panel above)._
+Three positive numbers that say how much Adoption, Agentic, and Output each count toward the [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) composite. _In Settings UI: yes._
 
 | Weight | Default | App-settings key | What it emphasizes |
 | --- | --- | --- | --- |
@@ -78,7 +77,7 @@ Three positive numbers that say how much Adoption, Agentic, and Output each coun
 
 ### Direct Commit Weight
 
-_In Settings UI: not yet — change via support._ App-settings key: `direct_commit_weight`.
+_In Settings UI: yes._ App-settings key: `direct_commit_weight`.
 
 |  |  |
 | --- | --- |
@@ -104,7 +103,7 @@ Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort)
 
 ### Exclude Chore from Output Score
 
-_In Settings UI: not yet — change via support._ App-settings key: `output_score_exclude_chore`.
+_In Settings UI: yes._ App-settings key: `output_score_exclude_chore`.
 
 |  |  |
 | --- | --- |

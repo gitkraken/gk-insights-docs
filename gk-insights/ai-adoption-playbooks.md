@@ -27,7 +27,7 @@ Action-first guides. Use these when you have a question like "how do I roll out 
 
 > _The default Tier Weights (0.5 Adoption / 0.2 Agentic / 0.3 Output) are tuned for orgs in active AI rollout. This playbook helps you decide whether to keep them or change them._
 
-**How to change Tier Weights today.** Tier Weights are stored per-org in `analytics.app_settings` as the keys `tier_weight_adoption`, `tier_weight_agentic`, and `tier_weight_output`. The Settings → General form does not yet expose them as user-editable sliders. To change weights today, file a request with support describing the new values you want; the change takes effect immediately for the current window. A self-serve form is on the roadmap.
+**How to change Tier Weights.** Tier Weights are stored per-org in `analytics.app_settings` as the keys `tier_weight_adoption`, `tier_weight_agentic`, and `tier_weight_output`. The Settings → General form exposes them as user-editable fields. Set the new values there; the change takes effect immediately for the current window.
 
 ### The problem
 
@@ -109,8 +109,8 @@ Don't optimize for one of these unless you have actually decided that is the org
 A practical sequence:
 
 1. **Note the current weights.** Hover any tier badge on /ai-adoption/developers — the tier-score tooltip shows the live weights for that developer's composite. Write the values down.
-2. **File a support request** with the three new values. Include a one-line reason ("we are Maturing and want to balance Adoption and Output equally").
-3. **Sanity check the new distribution.** Once support confirms the change, open /ai-adoption/developers and verify the tier distribution looks roughly as expected. If half your Regulars dropped to Explorer, the change was bigger than intended.
+2. **Set the three new values** in Settings → General. Note the reason for the change for your own records ("we are Maturing and want to balance Adoption and Output equally").
+3. **Sanity check the new distribution.** After saving the change, open /ai-adoption/developers and verify the tier distribution looks roughly as expected. If half your Regulars dropped to Explorer, the change was bigger than intended.
 4. **Announce the change** to your team via the channel you would use for any process change. Frame it as "we are shifting emphasis toward \[X\] to reflect \[Y\]." Reassure people that tier movement is by design, not a personal regression.
 5. **Don't request another change for at least a quarter.** Tier weights are strategic settings, not tactical knobs. Frequent changes erode trust in the dashboard.
 
@@ -203,7 +203,7 @@ Three operational views — each has a different cadence:
 **Goal:** Decide what's next.
 
 1. **Pull the 6-month report.** Org Adoption %, Power User %, Productivity Uplift, AI-Assisted %. Compare to month 1 baseline.
-2. **If the rollout worked:** Consider shifting Tier Weights toward Output (e.g. 0.4 / 0.2 / 0.4). You're now in the Maturing phase. (Tier Weights are configured in `app_settings` per-org — not yet in the Settings UI; file a request with support.)
+2. **If the rollout worked:** Consider shifting Tier Weights toward Output (e.g. 0.4 / 0.2 / 0.4). You're now in the Maturing phase. (Tier Weights are configured in `app_settings` per-org and editable in Settings → General.)
 3. **If parts didn't work:** Identify the laggard teams. They usually share a root cause (one team lead who's skeptical, one repo with bad CI, one process gap). Address structurally rather than per-developer.
 4. **Plan the next quarter:** Is the focus broadening adoption (still teams to onboard), deepening adoption (Power User % to grow), or extracting value (Output Score / Productivity Uplift to push)?
 
