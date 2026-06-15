@@ -12,7 +12,7 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- NOTE: This page documents the new AI Impact & Cost family and is distinct from the existing AI Impact Metrics page (gk-insights-ai-impact-metrics.md), which covers code quality and acceptance-rate metrics. -->
+> **Note:** This page covers the **AI Impact & Cost** family of the AI Adoption dashboard. For the code-quality and acceptance-rate metrics from connected AI providers, see [AI Impact Metrics](/gk-insights/gk-insights-ai-impact-metrics).
 
 This family answers: **is AI actually paying off?**
 

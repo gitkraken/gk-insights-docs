@@ -12,7 +12,7 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- NOTE: This page documents the DORA & Quality family of the AI Adoption dashboard. It is distinct from the existing DORA Metrics page (gk-insights-dora-metrics.md), which documents the Insights Dashboard Management metrics (Deploy Frequency, Change Lead Time, Mean Time to Repair/Recover, Defect Rate) with different definitions and calculation logic. -->
+> **Note:** This page covers the **DORA & Quality** family of the AI Adoption dashboard. For DORA metrics on the classic Insights dashboards — Deploy Frequency, Change Lead Time, Mean Time to Repair/Recover, and Defect Rate, which use different definitions and calculation logic — see [DORA Metrics](/gk-insights/gk-insights-dora-metrics).
 
 This family covers the industry-standard four DORA metrics — Deployment Frequency, Lead Time for Changes, Change Failure Rate, and Mean Time to Recovery — plus the customer-bug volume that powers CFR and MTTR.
 
