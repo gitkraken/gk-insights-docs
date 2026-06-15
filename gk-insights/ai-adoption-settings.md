@@ -12,9 +12,9 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: The source Confluence "Settings & Admin" page also documents Developers (Roster), Teams, Jira (CFR), Time Off (BambooHR), and Demo Mode sections. Those were not migrated here because they cover product-wide administration rather than AI Adoption. Decide whether they belong on a separate admin page. -->
-
 Every admin-configurable setting that affects AI Adoption scores in GitKraken Insights, organized by where it lives in the product, plus a one-line "what it changes."
+
+This page covers only the settings that affect AI Adoption scores. For product-wide administration — loading the developer roster, defining teams, wiring up Jira for CFR, syncing BambooHR PTO, and Demo Mode — see the [For admins](/gk-insights/ai-adoption-getting-started#for-admins) section of the Getting Started guide.
 
 If you came from a metric page to look up a specific setting, jump to the anchor of the same name.
 

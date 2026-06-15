@@ -3208,8 +3208,6 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: The WIP section includes a screenshot in the source Confluence page ("Work In Progress (WIP)", caption: "WIP trend alongside other PR flow charts") that has not been exported yet. Export it to _images/ and add the figure where flagged. -->
-
 This family answers: **how fast does work move through your system, and where does it get stuck?**
 
 Where the Output family asks "how much shipped?", Flow asks "how smooth was the journey from idea to merge?" These are the operational metrics — the ones team leads watch weekly and engineering leaders read for systemic patterns.
@@ -3626,7 +3624,10 @@ For org-level WIP, watch the _trend_. Sudden spikes always tell a story. Slow dr
 
 * **/ai-adoption/ai-impact** — WIP trend chart available as a breakdown view.
 
-<!-- FLAG FOR HUMAN REVIEW: Screenshot in source Confluence page. Caption: "WIP trend alongside other PR flow charts." Export to _images/ and add the figure here. -->
+<figure>
+  <img src="/wp-content/uploads/ai-adoption-wip-trend.png" class="help-center-img img-bordered" alt="Flow & Delivery board in GitKraken Insights showing KPI cards for Throughput, Cycle Time, Review Speed, PR First Pass, WIP, CFR, and AI Adoption, with the WIP card displaying the count of open PRs and how many are older than three days" />
+  <figcaption style="text-align: center; color: #888">WIP alongside other PR flow charts.</figcaption>
+</figure>
 
 ### Settings that affect it
 
@@ -5082,9 +5083,9 @@ taxonomy:
 ---
 <kbd>Last updated: June 2026</kbd>
 
-<!-- FLAG FOR HUMAN REVIEW: The source Confluence "Settings & Admin" page also documents Developers (Roster), Teams, Jira (CFR), Time Off (BambooHR), and Demo Mode sections. Those were not migrated here because they cover product-wide administration rather than AI Adoption. Decide whether they belong on a separate admin page. -->
-
 Every admin-configurable setting that affects AI Adoption scores in GitKraken Insights, organized by where it lives in the product, plus a one-line "what it changes."
+
+This page covers only the settings that affect AI Adoption scores. For product-wide administration — loading the developer roster, defining teams, wiring up Jira for CFR, syncing BambooHR PTO, and Demo Mode — see the [For admins](/gk-insights/ai-adoption/ai-adoption-getting-started#for-admins) section of the Getting Started guide.
 
 If you came from a metric page to look up a specific setting, jump to the anchor of the same name.
 
