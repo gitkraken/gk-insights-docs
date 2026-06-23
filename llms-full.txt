@@ -11,7 +11,7 @@ product: GitKraken Insights
 content_type: install
 audience: admin
 plan_required: GitKraken Insights
-integrations: [GitHub, GitLab, GitLab Self-Hosted, Bitbucket, Azure DevOps, Jira Cloud, Claude Code, Cursor, GitHub Copilot]
+integrations: [GitHub, GitLab, GitLab Self-Hosted, Bitbucket, Azure DevOps, Jira Cloud, Claude Code, Codex, Cursor, GitHub Copilot]
 status: GA
 taxonomy:
     category: gk-insights
