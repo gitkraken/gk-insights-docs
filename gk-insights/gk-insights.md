@@ -85,11 +85,11 @@ After the initial import is complete, rate limit issues are unlikely to recur.
 
 ### Connect an AI provider (optional)
 
-As of February 2026, GitKraken Insights only supports connections with Claude Code, Cursor and GitHub Copilot to enable AI insights.
+As of June 2026, GitKraken Insights only supports connections with Claude Code, Codex, Cursor, and GitHub Copilot to enable AI insights.
 
 To enable AI Impact insights, connect your preferred AI provider:
 1. In GitKraken.dev, go to [**Insights > Data Connection**](https://gitkraken.dev/insights/data-connections).
-2. Click to `Manage` with Claude Code, Cursor or Github Copilot.
+2. Click to `Manage` with Claude Code, Codex, Cursor or Github Copilot.
 3. In the new window, select the AI provider you wish to connect with and enter the provider Token.
 4. Click **Connect AI Provider** to finish the connection.
 <figure>
