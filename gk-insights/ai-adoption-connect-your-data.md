@@ -136,6 +136,31 @@ Jira gives Insights cycle-time start signals and customer-bug data, so AI Impact
 
 > **Scoped tokens aren't supported yet.** Jira's newer "API token with scopes" option won't work — use the plain **Create API token** option. (The Atlassian token page is easy to miss; the link above goes straight to it.)
 
+### Configure Change Failure Rate (CFR)
+
+Change Failure Rate — the percentage of your releases that produce a customer-reported bug — is one of the most valuable things Jira unlocks, but it needs two pieces of configuration. Until both are set, the CFR cards (on /ai-adoption/ai-impact, board-metrics, and executive) show zeros even when Jira is connected and healthy.
+
+**1. Tell Insights which Jira field marks a customer bug.** On your Jira connection, click **Edit**, expand **Advanced**, and set **Customer bug field ID** to the custom field your team uses to flag customer-reported bugs — for example `customfield_10042`. If you have more than one Jira instance, set it per instance.
+
+> **Finding the field ID:** In Jira, go to **Settings → Issues → Custom fields**, locate your "Customer Bug" field, and open **⋯ → Edit details** — the ID appears as `customfield_NNNNN` in the page URL. Admins can also list every field at `https://<your-site>.atlassian.net/rest/api/3/field` and match by name.
+
+> **This is the most common reason CFR shows zeros.** If the field ID is blank, no Jira issues are attributed as customer bugs, so CFR can't be calculated — even with Jira fully connected.
+
+**2. Make sure releases are being tracked.** CFR is *failing releases ÷ total releases*, so Insights needs to know what counts as a release. Go to **Settings → Releases** and set the **Signal** for each repository:
+
+- **Auto-detect** (default) — tries GitHub Releases first, then falls back to your CD workflow.
+- **GitHub Releases** — use the GitHub Releases API explicitly.
+- **Workflow file** — watch a specific GitHub Actions workflow (e.g. `cd.yaml`).
+- **Skip** — don't track releases for that repo.
+
+Once syncing completes, confirm the **# Releases** column shows a non-zero count.
+
+**What counts as a failure:** a customer bug (matching the field above) at **High** or **Highest / Critical** priority that's attributed to a release. Severity comes directly from the Jira **priority** field, so keep priorities consistent.
+
+**Verify it's working:** on the Jira connection, open **Status** and confirm the **Change Failure Rate** pipeline is healthy. Then check the CFR card on **/ai-adoption/ai-impact** — it should read `N bugs / M releases` rather than "Not configured."
+
+> **CFR is a lagging metric and syncs hourly.** New customer bugs take time to appear, and a bug reported weeks after a release lands in the week it's reported — not the week it shipped.
+
 ---
 
 ## Step 4 — Set your benchmarks
@@ -200,6 +225,7 @@ Give the rest of your stakeholders access so they can read the dashboards.
 | **Can't create the Cursor key / no usage data** | Key isn't team-level admin, or your Cursor role is too low | Have a Cursor team admin create a **team-level admin** key |
 | **Can't change Claude Code org settings** | You're an admin, not the org Owner | Only the Anthropic org **Owner** can apply the telemetry snippet |
 | **Jira token rejected** | A *scoped* token was created | Recreate with plain **Create API token** (no scopes) |
+| **CFR cards show zeros or "Not configured"** | The Customer bug field ID isn't set, or no releases are tracked | Set **Customer bug field ID** on the Jira connection (Advanced), and set a release **Signal** per repo in Settings → Releases — see [Configure CFR](#configure-change-failure-rate-cfr) |
 | **A developer appears twice** | Multiple identities not yet merged | Merge them in Settings → Developers (Step 5) |
 | **Setup email flagged by your IT as suspicious** | Some corporate filters flag new domains | Navigate directly to [gitkraken.dev](https://gitkraken.dev) instead of clicking the email link; tell your account team |
 
