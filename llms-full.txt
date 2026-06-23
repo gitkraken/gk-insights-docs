@@ -2880,7 +2880,7 @@ For teams, the per-active-dev rate is what to compare. A team averaging Output S
 | [Throughput](#throughput) | Raw merged PR count. Use for same-team trend reading. Output Score is for cross-team comparison. |
 | [Direct Commits](#direct-commits) | The DC term of the formula. |
 | [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) | Output Norm is the Output leg of the composite. |
-| [CapEx / OpEx Split](/gk-insights/ai-adoption-impact-cost-metrics#capex--opex-split) | Categorizes the same effort sums for capitalization accounting. |
+| [CapEx / OpEx Split](/gk-insights/ai-adoption-impact-cost-metrics#capex-opex-split) | Categorizes the same effort sums for capitalization accounting. |
 
 ### How to improve it
 
@@ -4156,7 +4156,7 @@ These numbers are _estimates_, not measurements. The dashboard is honest about t
 | --- | --- |
 | [**Productivity Uplift**](#productivity-uplift) | The headline ROI numbers. Volume speedup vs. baseline period, plus per-dev and Power-User comparisons within the current window. |
 | [**AI-Assisted Percentage**](#ai-assisted-percentage) | What % of shipped _changes_ (PRs + commits) had AI assistance. Weighted by lines changed. |
-| [**CapEx / OpEx Split**](#capex--opex-split) | Software capitalization breakdown. Which work counts as capitalizable engineering investment? |
+| [**CapEx / OpEx Split**](#capex-opex-split) | Software capitalization breakdown. Which work counts as capitalizable engineering investment? |
 | [**Spend by Tier**](#spend-by-tier) | AI tooling cost allocated across AI Tiers. Where is the money going, and is it landing on Power Users? |
 
 ---
@@ -5231,7 +5231,7 @@ _In Settings UI: yes._
 
 **How to set it.** Use your fully-loaded internal developer cost rate (salary × benefits × overhead, divided by working hours). Most orgs land between $50 and $200/hour. If you don't have a precise number, the default $75 is a reasonable industry midpoint for a senior IC.
 
-**Affects:** [Productivity Uplift](/gk-insights/ai-adoption-impact-cost-metrics#productivity-uplift), [CapEx / OpEx Split](/gk-insights/ai-adoption-impact-cost-metrics#capex--opex-split), the AI Impact ROI cards.
+**Affects:** [Productivity Uplift](/gk-insights/ai-adoption-impact-cost-metrics#productivity-uplift), [CapEx / OpEx Split](/gk-insights/ai-adoption-impact-cost-metrics#capex-opex-split), the AI Impact ROI cards.
 
 ---
 

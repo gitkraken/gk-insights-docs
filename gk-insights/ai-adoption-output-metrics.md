@@ -212,7 +212,7 @@ For teams, the per-active-dev rate is what to compare. A team averaging Output S
 | [Throughput](#throughput) | Raw merged PR count. Use for same-team trend reading. Output Score is for cross-team comparison. |
 | [Direct Commits](#direct-commits) | The DC term of the formula. |
 | [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) | Output Norm is the Output leg of the composite. |
-| [CapEx / OpEx Split](/gk-insights/ai-adoption-impact-cost-metrics#capex--opex-split) | Categorizes the same effort sums for capitalization accounting. |
+| [CapEx / OpEx Split](/gk-insights/ai-adoption-impact-cost-metrics#capex-opex-split) | Categorizes the same effort sums for capitalization accounting. |
 
 ### How to improve it
 

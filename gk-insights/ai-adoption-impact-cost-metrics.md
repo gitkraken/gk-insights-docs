@@ -28,7 +28,7 @@ These numbers are _estimates_, not measurements. The dashboard is honest about t
 | --- | --- |
 | [**Productivity Uplift**](#productivity-uplift) | The headline ROI numbers. Volume speedup vs. baseline period, plus per-dev and Power-User comparisons within the current window. |
 | [**AI-Assisted Percentage**](#ai-assisted-percentage) | What % of shipped _changes_ (PRs + commits) had AI assistance. Weighted by lines changed. |
-| [**CapEx / OpEx Split**](#capex--opex-split) | Software capitalization breakdown. Which work counts as capitalizable engineering investment? |
+| [**CapEx / OpEx Split**](#capex-opex-split) | Software capitalization breakdown. Which work counts as capitalizable engineering investment? |
 | [**Spend by Tier**](#spend-by-tier) | AI tooling cost allocated across AI Tiers. Where is the money going, and is it landing on Power Users? |
 
 ---
