@@ -138,9 +138,17 @@ Jira gives Insights cycle-time start signals and customer-bug data, so AI Impact
 
 ### Configure Change Failure Rate (CFR)
 
-Change Failure Rate — the percentage of your releases that produce a customer-reported bug — is one of the most valuable things Jira unlocks, but it needs two pieces of configuration. Until both are set, the CFR cards (on /ai-adoption/ai-impact, board-metrics, and executive) show zeros even when Jira is connected and healthy.
+**What is CFR?** Change Failure Rate is the DORA stability metric — the percentage of your releases that produce a customer-reported bug. Setting it up is what powers the CFR cards on /ai-adoption/ai-impact, board-metrics, and executive. (See the [Change Failure Rate (CFR)](/gk-insights/ai-adoption-dora-metrics#change-failure-rate-cfr) metric page for how to read it.)
 
-**1. Tell Insights which Jira field marks a customer bug.** On your Jira connection, click **Edit**, expand **Advanced**, and set **Customer bug field ID** to the custom field your team uses to flag customer-reported bugs — for example `customfield_10042`. If you have more than one Jira instance, set it per instance.
+CFR needs two pieces of configuration. Until both are set, those cards show zeros even when Jira is connected and healthy.
+
+**1. Point Insights at your Jira "customer bug" field.**
+
+**Where the setting is:** Insights → **Settings → Data Connections** → the **Jira** card → open its **connection modal** → expand the **Advanced** section → **Customer bug field ID**.
+
+Set it to the custom Jira field your team uses to flag customer-reported defects — for example `customfield_10042`. If you have more than one Jira instance, set it on each one.
+
+*[Screenshot needed: Jira connection modal → Advanced → "Customer bug field ID" field.]*
 
 > **Finding the field ID:** In Jira, go to **Settings → Issues → Custom fields**, locate your "Customer Bug" field, and open **⋯ → Edit details** — the ID appears as `customfield_NNNNN` in the page URL. Admins can also list every field at `https://<your-site>.atlassian.net/rest/api/3/field` and match by name.
 
