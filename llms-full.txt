@@ -26,7 +26,7 @@ Instead of surface-level stats, GitKraken Insights shows how work connects to te
 > **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
 > **Integrations:** GitHub, GitLab (cloud and self-hosted), Bitbucket, Azure DevOps, Jira Cloud
-> **AI providers:** Claude Code, Cursor, GitHub Copilot (optional)
+> **AI providers:** Claude Code, Codex, Cursor, GitHub Copilot (optional)
 
 <figure>
   <img src="/wp-content/uploads/insights-dashboard-oct-2025.png" srcset="/wp-content/uploads/insights-dashboard-oct-2025@2x.png" class="help-center-img img-bordered" alt="Dashboard view of GitKraken Insights metrics and charts for development activity" />
@@ -57,7 +57,7 @@ In addition, you can connect AI providers to enable AI Impact insights (like Dup
 ### 1. Import your repositories
 
 1. In GitKraken.dev, go to **Insights > Data Connection**.  
-2. Click to connect with GitHub, GitLab, GitLab Self-Hosted, Azure DevOps, Claude Code, Cursor, GitHub Copilot, Bitbucket, or Jira Cloud.
+2. Click to connect with GitHub, GitLab, GitLab Self-Hosted, Azure DevOps, Claude Code, Codex, Cursor, GitHub Copilot, Bitbucket, or Jira Cloud.
 3. Authorize GitKraken Insights to connect with GitHub.  
 4. Select which repositories to track. Use the filter option at the top of the page to quickly narrow down the list.  
 

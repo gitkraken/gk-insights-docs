@@ -82,7 +82,7 @@ See [How to think about developer scores](/gk-insights/ai-adoption-getting-start
 * **/ai-adoption/ai-tools-comparison** — cohort comparisons (e.g. team A vs. team B, or Claude vs. Codex users).
 * **/ai-adoption/executive** — hero KPI ("AI Adoption %") and trend lines.
 * **/ai-adoption/ai-impact** — autonomy deep dive and Business Impact / ROI.
-* Adjacent surfaces in the same nav family: **/ai-adoption/board-metrics**, **/ai-adoption/capex**, **/ai-adoption/settings/data-connections**, **/ai-adoption/data-explorer**, **/ai-adoption/settings/\***.
+* Adjacent surfaces in the same nav family: **/ai-adoption/board-metrics**, **/ai-adoption/capex**, **/ai-adoption/data-connections**, **/ai-adoption/data-explorer**, **/ai-adoption/settings/\***.
 
 ---
 
