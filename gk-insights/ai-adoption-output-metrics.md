@@ -200,7 +200,7 @@ For teams, the per-active-dev rate is what to compare. A team averaging Output S
 ### Settings that affect it
 
 * [**Direct Commit Weight**](/gk-insights/ai-adoption-settings#direct-commit-weight) — scales DC contribution (default 0.5).
-* [**Review Weight**](/gk-insights/ai-adoption-settings) — scales review-credit contribution (default 0.5). Set to 0 to disable the review-credit term.
+* [**Review Weight**](/gk-insights/ai-adoption-settings#review-weight) — scales review-credit contribution (default 0.5). Set to 0 to disable the review-credit term.
 * [**Exclude Chore from Output Score**](/gk-insights/ai-adoption-settings#exclude-chore-from-output-score) — strips Chore effort from the sums (default on).
 * [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — does _not_ affect raw Output Score, but does affect **Output Norm** (the variant that feeds into AI Tier).
 
@@ -242,7 +242,7 @@ A: An LLM classifier worker reads each PR or commit diff and assigns one of five
 A: Three common causes: (1) the PR's `auto_effort_score` hasn't been computed yet, (2) the PR's category is Chore and the "Exclude Chore" toggle is on, or (3) the PR merged outside the window you selected.
 
 **Q: Why are direct commits and reviews weighted lower than authored PRs?**
-A: Empirically, direct commits trend toward smaller, less-reviewed work, and a single review takes less effort than authoring the same PR. The 0.5 defaults reflect those averages. Tune via [Direct Commit Weight](/gk-insights/ai-adoption-settings#direct-commit-weight) and [Review Weight](/gk-insights/ai-adoption-settings).
+A: Empirically, direct commits trend toward smaller, less-reviewed work, and a single review takes less effort than authoring the same PR. The 0.5 defaults reflect those averages. Tune via [Direct Commit Weight](/gk-insights/ai-adoption-settings#direct-commit-weight) and [Review Weight](/gk-insights/ai-adoption-settings#review-weight).
 
 **Q: Can I see what effort score a specific PR got?**
 A: Yes. /ai-adoption/data-explorer → PRs tab shows the Effort column for every PR, sortable.

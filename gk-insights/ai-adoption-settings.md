@@ -101,6 +101,32 @@ Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort)
 
 ---
 
+### Review Weight
+
+_In Settings UI: yes._ App-settings key: `review_weight`.
+
+|  |  |
+| --- | --- |
+| **Default** | 0.5 |
+| **Range** | 0.0 – 1.0 |
+| **Type** | Float |
+
+**What it does.** Scales review-credit — effort from PRs a developer formally reviewed (state `APPROVED` or `CHANGES_REQUESTED`) — relative to authored PRs in the [Output Score](/gk-insights/ai-adoption-output-metrics#output-score) formula:
+
+```
+Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort) + ReviewWeight × SUM(reviewed-PR effort)
+```
+
+* **0.0** — review work is ignored entirely (the review-credit term disappears from the score)
+* **0.5** (default) — a review counts half as much as authoring a PR of equivalent effort
+* **1.0** — reviewing a PR counts as much as authoring it
+
+**When to change it.** - Lower toward 0 if you don't want review activity contributing to Output Score. - Raise toward 1 if review is a first-class deliverable on your team and you want senior reviewers' work reflected at full weight.
+
+**Affects:** [Output Score](/gk-insights/ai-adoption-output-metrics#output-score), [Output Norm](/gk-insights/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier).
+
+---
+
 ### Exclude Chore from Output Score
 
 _In Settings UI: yes._ App-settings key: `output_score_exclude_chore`.

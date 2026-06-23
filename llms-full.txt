@@ -51,7 +51,7 @@ Once your access is approved, you can connect GitKraken Insights to your reposit
 
 Currently, Insights supports connections with GitHub, GitLab (cloud and self-hosted), Bitbucket, Azure DevOps, and Jira Cloud.
 
-In addition, you can connect AI providers to enable AI Impact insights (like Duplicated Code, Prompt Acceptance Rate, and more). To learn how GitKraken Insights measures AI adoption across your organization, see [AI Adoption](/gk-insights/ai-adoption/ai-adoption).
+In addition, you can connect AI providers to enable AI Impact insights (like Duplicated Code, Prompt Acceptance Rate, and more). To learn how GitKraken Insights measures AI adoption across your organization, see [AI Adoption](/gk-insights/ai-adoption).
 ---
 
 ### 1. Import your repositories
@@ -1448,14 +1448,14 @@ GitKraken Insights gives engineering leaders a single view of how AI tools, code
 
 | Page | What it covers |
 | --- | --- |
-| [Getting Started with AI Adoption](/gk-insights/ai-adoption/ai-adoption-getting-started) | A short tour organized by what you do, with quickstarts for executives, engineering leaders, team leads, and admins. |
-| [Adoption & Agentic Metrics](/gk-insights/ai-adoption/ai-adoption-agentic-metrics) | How much your team is actually using AI, and how autonomously: Agent Adoption Score, Agent Autonomy Score, AI Tier, Maturity Factor, and Cursor Boost. |
-| [Output & Throughput Metrics](/gk-insights/ai-adoption/ai-adoption-output-metrics) | What your team ships: Output Score, Throughput, Direct Commits, and Effort Score (Complexity). |
-| [Flow & Cycle Time Metrics](/gk-insights/ai-adoption/ai-adoption-flow-metrics) | How fast work moves through your system: Cycle Time, Review Cycles, First-Pass Rate, and WIP. |
-| [DORA & Quality Metrics](/gk-insights/ai-adoption/ai-adoption-dora-metrics) | The four DORA metrics: Deployment Frequency, Lead Time for Changes, Change Failure Rate (CFR), and Mean Time to Recovery (MTTR). |
-| [AI Impact & Cost Metrics](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics) | What AI is actually delivering, in time and dollars: Productivity Uplift, AI-Assisted Percentage, CapEx / OpEx Split, and Spend by Tier. |
-| [AI Adoption Playbooks](/gk-insights/ai-adoption/ai-adoption-playbooks) | Action-first guides: set tier weights, roll out AI tooling, investigate a slow cycle time, and interpret a high CFR week. |
-| [AI Adoption Settings](/gk-insights/ai-adoption/ai-adoption-settings) | Configuration reference — what each setting changes, and which metrics depend on it. |
+| [Getting Started with AI Adoption](/gk-insights/ai-adoption-getting-started) | A short tour organized by what you do, with quickstarts for executives, engineering leaders, team leads, and admins. |
+| [Adoption & Agentic Metrics](/gk-insights/ai-adoption-agentic-metrics) | How much your team is actually using AI, and how autonomously: Agent Adoption Score, Agent Autonomy Score, AI Tier, Maturity Factor, and Cursor Boost. |
+| [Output & Throughput Metrics](/gk-insights/ai-adoption-output-metrics) | What your team ships: Output Score, Throughput, Direct Commits, and Effort Score (Complexity). |
+| [Flow & Cycle Time Metrics](/gk-insights/ai-adoption-flow-metrics) | How fast work moves through your system: Cycle Time, Review Cycles, First-Pass Rate, and WIP. |
+| [DORA & Quality Metrics](/gk-insights/ai-adoption-dora-metrics) | The four DORA metrics: Deployment Frequency, Lead Time for Changes, Change Failure Rate (CFR), and Mean Time to Recovery (MTTR). |
+| [AI Impact & Cost Metrics](/gk-insights/ai-adoption-impact-cost-metrics) | What AI is actually delivering, in time and dollars: Productivity Uplift, AI-Assisted Percentage, CapEx / OpEx Split, and Spend by Tier. |
+| [AI Adoption Playbooks](/gk-insights/ai-adoption-playbooks) | Action-first guides: set tier weights, roll out AI tooling, investigate a slow cycle time, and interpret a high CFR week. |
+| [AI Adoption Settings](/gk-insights/ai-adoption-settings) | Configuration reference — what each setting changes, and which metrics depend on it. |
 
 ---
 
@@ -1602,7 +1602,7 @@ A composite "is this team set up to succeed with AI?" rating. Combines repositor
 
 The mean Agent Adoption Score across the team's active developers. A team average of 50 means a healthy mix; 80+ means a high-adoption team.
 
-→ [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score)
+→ [Agent Adoption Score](/gk-insights/ai-adoption-agentic-metrics#agent-adoption-score)
 
 #### Tier mix
 
@@ -1610,13 +1610,13 @@ Bars showing the team's distribution across Power User / Regular / Explorer / Em
 
 #### Cycle Time
 
-Average hours from a PR's first commit to merge. Lower is generally better, but not always — see the [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) section for nuance.
+Average hours from a PR's first commit to merge. Lower is generally better, but not always — see the [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time) section for nuance.
 
 #### Output Score (per active dev)
 
 Effort-weighted shipping rate, divided by the number of active developers on the team. A team that ships fewer but bigger PRs can have the same Output Score as a team that ships many small ones. Read this alongside the PR/DC count breakdown to know which pattern you're seeing.
 
-→ [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score)
+→ [Output Score](/gk-insights/ai-adoption-output-metrics#output-score)
 
 #### Power User %
 
@@ -1740,13 +1740,13 @@ The dashboard's job is to give you the first two. The third one is your call.
 
 * **Don't show individual developer scores in your monthly report.** It will get someone fired by a different chain of command than the dashboard was designed for. Aggregate by team or by tier mix instead.
 * **Don't read a single week.** Engineering work has 2–4 week natural cycles. Read trends, not weeks.
-* **Don't quote ROI to the dollar.** The [Productivity Uplift](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#productivity-uplift) number is a directional estimate. Use it for order-of-magnitude statements ("low single-digit millions in annualized productivity gain"), not for finance.
+* **Don't quote ROI to the dollar.** The [Productivity Uplift](/gk-insights/ai-adoption-impact-cost-metrics#productivity-uplift) number is a directional estimate. Use it for order-of-magnitude statements ("low single-digit millions in annualized productivity gain"), not for finance.
 
 ### Where to drill further
 
 If you want one more level of detail:
 
-* **For "is AI actually paying off?"** → [Productivity Uplift](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#productivity-uplift)
+* **For "is AI actually paying off?"** → [Productivity Uplift](/gk-insights/ai-adoption-impact-cost-metrics#productivity-uplift)
 * **For "where are we slow?"** → `/ai-adoption/ai-impact` (Cycle Time phase breakdown)
 * **For "which team needs attention?"** → `/ai-adoption/teams`
 
@@ -1816,13 +1816,13 @@ These three settings drift over time and need a quarterly check:
 | **Tier Weights** | Default 0.5 / 0.2 / 0.3. If your org has moved from "rolling out" to "extracting value", consider shifting weight toward Output. _(Editable in Settings → General.)_ |
 | **Baseline Period** | Default Nov 1 last year. If you launched a new AI tool mid-year, anchor the baseline to a month _before_ that launch so uplift math is meaningful. |
 
-→ [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
+→ [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
 
 ### Where to drill further
 
-* **Investigating a slow team** → [Playbook — Investigate a slow cycle time](/gk-insights/ai-adoption/ai-adoption-playbooks#investigate-a-slow-cycle-time)
-* **Planning a new tool rollout** → [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score)
-* **Quality regression** → [Playbook — Interpret a high CFR week](/gk-insights/ai-adoption/ai-adoption-playbooks#interpret-a-high-cfr-week)
+* **Investigating a slow team** → [Playbook — Investigate a slow cycle time](/gk-insights/ai-adoption-playbooks#investigate-a-slow-cycle-time)
+* **Planning a new tool rollout** → [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score)
+* **Quality regression** → [Playbook — Interpret a high CFR week](/gk-insights/ai-adoption-playbooks#interpret-a-high-cfr-week)
 
 ---
 
@@ -1897,8 +1897,8 @@ These are starting points, not laws. Your team's context can move the bar.
 
 ### Where to drill further
 
-* **A specific cycle time problem** → [Playbook — Investigate a slow cycle time](/gk-insights/ai-adoption/ai-adoption-playbooks#investigate-a-slow-cycle-time)
-* **A spike in customer bugs** → [Playbook — Interpret a high CFR week](/gk-insights/ai-adoption/ai-adoption-playbooks#interpret-a-high-cfr-week)
+* **A specific cycle time problem** → [Playbook — Investigate a slow cycle time](/gk-insights/ai-adoption-playbooks#investigate-a-slow-cycle-time)
+* **A spike in customer bugs** → [Playbook — Interpret a high CFR week](/gk-insights/ai-adoption-playbooks#interpret-a-high-cfr-week)
 * **A developer struggling with adoption** → `/ai-adoption/developers`, filter to that person, expand the heatmap.
 
 ---
@@ -1967,7 +1967,7 @@ The single biggest cause of "this number looks weird" tickets is roster drift. C
 | **Developer Hourly Rate** | $75 | Settings → General (input) | Annually, when your finance team updates the loaded rate |
 | **Baseline Period** | Nov 1 last year | Settings → General (month picker) | When you launch a new AI tool and want uplift relative to a specific pre-launch month |
 | **Default Department** | None | Settings → General (dropdown) | When your org structure shifts |
-| **Tier Weights** | 0.5 / 0.2 / 0.3 | Settings → General | When you move from "rolling out" to "extracting value" — see the [Set tier weights playbook](/gk-insights/ai-adoption/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity) |
+| **Tier Weights** | 0.5 / 0.2 / 0.3 | Settings → General | When you move from "rolling out" to "extracting value" — see the [Set tier weights playbook](/gk-insights/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity) |
 | **Direct Commit Weight** | 0.5 | Settings → General | When your team's direct-commit workflow changes (e.g. moving to TBD) |
 | **Review Weight** | 0.5 | Settings → General | When you want to emphasize or de-emphasize review work in Output Score |
 | **Exclude Chore from Output Score** | On | Settings → General | Rarely. Default reflects most orgs' definition of "real output" |
@@ -2002,8 +2002,8 @@ For self-contained marketing builds (where there is no real backend at all), set
 ## Next
 
 * New here? → [Reading your first dashboard](#reading-your-first-dashboard)
-* Have a specific question already? → [AI Adoption metric pages](/gk-insights/ai-adoption/ai-adoption)
-* Need to set things up? → [For admins](#for-admins) and the [Settings reference](/gk-insights/ai-adoption/ai-adoption-settings)
+* Have a specific question already? → [AI Adoption metric pages](/gk-insights/ai-adoption)
+* Need to set things up? → [For admins](#for-admins) and the [Settings reference](/gk-insights/ai-adoption-settings)
 
 ---
 
@@ -2080,7 +2080,7 @@ Three things to remember:
 2. **Org P90 is the ceiling, not 100.** Because we normalize against the org's 90th percentile, a single developer can't game the system by spamming prompts. The ceiling moves with the org.
 3. **Maturity Factor sets the headroom.** At 0.75, even a perfect (P90) developer scores 75. That's intentional — it leaves room for the _org_ to grow into higher numbers without retiering everyone overnight.
 
-See [How to think about developer scores](/gk-insights/ai-adoption/ai-adoption-getting-started#how-to-think-about-developer-scores) before drawing individual conclusions.
+See [How to think about developer scores](/gk-insights/ai-adoption-getting-started#how-to-think-about-developer-scores) before drawing individual conclusions.
 
 ---
 
@@ -2176,7 +2176,7 @@ A team average of 50–65 means a healthy mix with most developers in Explorer/R
 
 ### Settings that affect it
 
-* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — multiplies the final score. Lowering it lowers the tier ceiling for everyone.
+* [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — multiplies the final score. Lowering it lowers the tier ceiling for everyone.
 * **Cursor secondary boost** (env var `SCORE_SECONDARY_BOOST`, default 0.25) — how heavily Cursor contributes alongside Claude / Codex.
 * **Provider weights** (env vars `SCORE_WEIGHT_*`) — how much DailyUse / HourlySpread / Prompts / Output each contribute within a provider's score.
 
@@ -2190,7 +2190,7 @@ The four-factor weighting per provider is not currently exposed in the Settings 
 | [AI Tier](#ai-tier) | Adoption is one of three inputs into the composite Tier. |
 | [Maturity Factor](#maturity-factor) | The scalar that ceilings every Adoption Score in your org. |
 | [Cursor Boost](#cursor-boost) | Defines how Cursor adoption contributes to the headline Adoption Score. |
-| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | The shipping-side metric. High Adoption with flat Output is a common pattern in early rollouts. |
+| [Output Score](/gk-insights/ai-adoption-output-metrics#output-score) | The shipping-side metric. High Adoption with flat Output is a common pattern in early rollouts. |
 
 ### How to improve it
 
@@ -2206,7 +2206,7 @@ The four-factor weighting per provider is not currently exposed in the Settings 
 * **Pre-2026-03-05 Claude Code data doesn't exist.** Effective Weekdays adjusts for this automatically.
 * **Cursor data depends on the Cursor API being reachable.** If your Cursor sync is broken, devs who only use Cursor will show as Emerging.
 * **The org P90 ceiling moves with the cohort.** Hire a wave of Power Users and the bar rises for everyone. This is intentional but counter-intuitive.
-* **Direct provider events only.** We don't infer AI usage from PR co-author tags or other heuristics for the Adoption Score (that's [AI-Assisted Percentage](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#ai-assisted-percentage)).
+* **Direct provider events only.** We don't infer AI usage from PR co-author tags or other heuristics for the Adoption Score (that's [AI-Assisted Percentage](/gk-insights/ai-adoption-impact-cost-metrics#ai-assisted-percentage)).
 
 ### FAQ
 
@@ -2285,7 +2285,7 @@ A team average above 40 is a strong signal that agentic workflows have taken roo
 
 ### Settings that affect it
 
-* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — multiplies the final score (default 0.75).
+* [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — multiplies the final score (default 0.75).
 * The **agentic threshold** (10 tools per session) is not currently configurable. Ask your account manager if you need it tunable.
 
 ### Related metrics
@@ -2294,7 +2294,7 @@ A team average above 40 is a strong signal that agentic workflows have taken roo
 | --- | --- |
 | [Agent Adoption Score](#agent-adoption-score) | Parallel adoption measure. Adoption = consistency. Agentic = depth of autonomous use. |
 | [AI Tier](#ai-tier) | Agentic is one of three inputs into the composite Tier (default weight 0.2). See [How the metrics fit together](#how-the-metrics-fit-together) for the canonical composite formula and per-org configuration story. |
-| [Productivity Uplift](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#productivity-uplift) | Most productivity gains correlate with rising Autonomy, not Adoption. |
+| [Productivity Uplift](/gk-insights/ai-adoption-impact-cost-metrics#productivity-uplift) | Most productivity gains correlate with rising Autonomy, not Adoption. |
 
 ### How to improve it
 
@@ -2418,10 +2418,10 @@ If **On PTO % is unusually high** (>15%), check whether your PTO sync is working
 
 ### Settings that affect it
 
-* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — scales all three inputs, so it shifts the entire population up or down the tier ladder. _Configurable in Settings → General._
-* [**Tier Weights**](/gk-insights/ai-adoption/ai-adoption-settings#tier-weights) — controls how much Adoption / Agentic / Output each contribute. Defaults 0.5 / 0.2 / 0.3. _Per-org in_ `app_settings`_; editable in Settings → General._
-* [**Direct Commit Weight**](/gk-insights/ai-adoption/ai-adoption-settings#direct-commit-weight) — affects Output Score, which feeds into Output Norm. _Per-org in_ `app_settings`_; editable in Settings → General._
-* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption/ai-adoption-settings#exclude-chore-from-output-score) — same path through Output. _Per-org in_ `app_settings`_; editable in Settings → General._
+* [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — scales all three inputs, so it shifts the entire population up or down the tier ladder. _Configurable in Settings → General._
+* [**Tier Weights**](/gk-insights/ai-adoption-settings#tier-weights) — controls how much Adoption / Agentic / Output each contribute. Defaults 0.5 / 0.2 / 0.3. _Per-org in_ `app_settings`_; editable in Settings → General._
+* [**Direct Commit Weight**](/gk-insights/ai-adoption-settings#direct-commit-weight) — affects Output Score, which feeds into Output Norm. _Per-org in_ `app_settings`_; editable in Settings → General._
+* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption-settings#exclude-chore-from-output-score) — same path through Output. _Per-org in_ `app_settings`_; editable in Settings → General._
 
 ### Related metrics
 
@@ -2429,12 +2429,12 @@ If **On PTO % is unusually high** (>15%), check whether your PTO sync is working
 | --- | --- |
 | [Agent Adoption Score](#agent-adoption-score) | Input #1. Default weight 0.5. |
 | [Agent Autonomy Score](#agent-autonomy-score) | Input #2. Default weight 0.2. |
-| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Input #3 (via Output Norm). Default weight 0.3. |
+| [Output Score](/gk-insights/ai-adoption-output-metrics#output-score) | Input #3 (via Output Norm). Default weight 0.3. |
 | [Maturity Factor](#maturity-factor) | Scales all three inputs uniformly. |
 
 ### How to improve it
 
-* **To move developers from Emerging → Explorer**, focus on Adoption. See [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score).
+* **To move developers from Emerging → Explorer**, focus on Adoption. See [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score).
 * **To move developers from Regular → Power User**, focus on Agentic _and_ Output together. The top tier requires both depth of AI use and shipping at the org's top rate.
 * **To shift the org-level tier mix without retraining anyone**, tune the Tier Weights. Moving the weights toward Output emphasizes shippers; moving them toward Adoption emphasizes consistent users. (Editable in Settings → General.)
 * **To grade fairly across teams of different sizes**, look at _tier mix percentage_ rather than absolute counts.
@@ -2529,7 +2529,7 @@ The default (0.75) is calibrated for "active rollout" — the most common state 
 | --- | --- |
 | [Agent Adoption Score](#agent-adoption-score) | Multiplied by Maturity Factor as the final step. |
 | [Agent Autonomy Score](#agent-autonomy-score) | Multiplied by Maturity Factor as the final step. |
-| [Output Score → Output Norm](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Output Norm is multiplied by Maturity Factor. Raw Output Score itself is not. |
+| [Output Score → Output Norm](/gk-insights/ai-adoption-output-metrics#output-score) | Output Norm is multiplied by Maturity Factor. Raw Output Score itself is not. |
 | [AI Tier](#ai-tier) | Indirectly — the tier thresholds (25 / 55 / 80) stay fixed, but the inputs scale. |
 
 ### How to use it
@@ -2836,7 +2836,7 @@ Output Score is the dashboard's answer to the chronic problem that raw PR counts
 
 The review-credit term matters for the same reason. A senior engineer who spent the window doing high-quality reviews on substantive PRs has produced real value; the older Velocity metric ignored that work entirely.
 
-Output Score also threads cleanly into the [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) composite. Normalized to org P90 and scaled by Maturity Factor (we call that derived value **Output Norm**), it becomes the "shipping" leg of the composite alongside Adoption and Agentic.
+Output Score also threads cleanly into the [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) composite. Normalized to org P90 and scaled by Maturity Factor (we call that derived value **Output Norm**), it becomes the "shipping" leg of the composite alongside Adoption and Agentic.
 
 For leaders, the most useful reading is **Output Score over time alongside Adoption Score over time**. AI rollouts almost always show Adoption rising first, then Output rising 4–12 weeks later.
 
@@ -2867,10 +2867,10 @@ For teams, the per-active-dev rate is what to compare. A team averaging Output S
 
 ### Settings that affect it
 
-* [**Direct Commit Weight**](/gk-insights/ai-adoption/ai-adoption-settings#direct-commit-weight) — scales DC contribution (default 0.5).
-* [**Review Weight**](/gk-insights/ai-adoption/ai-adoption-settings) — scales review-credit contribution (default 0.5). Set to 0 to disable the review-credit term.
-* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption/ai-adoption-settings#exclude-chore-from-output-score) — strips Chore effort from the sums (default on).
-* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — does _not_ affect raw Output Score, but does affect **Output Norm** (the variant that feeds into AI Tier).
+* [**Direct Commit Weight**](/gk-insights/ai-adoption-settings#direct-commit-weight) — scales DC contribution (default 0.5).
+* [**Review Weight**](/gk-insights/ai-adoption-settings#review-weight) — scales review-credit contribution (default 0.5). Set to 0 to disable the review-credit term.
+* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption-settings#exclude-chore-from-output-score) — strips Chore effort from the sums (default on).
+* [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — does _not_ affect raw Output Score, but does affect **Output Norm** (the variant that feeds into AI Tier).
 
 ### Related metrics
 
@@ -2879,8 +2879,8 @@ For teams, the per-active-dev rate is what to compare. A team averaging Output S
 | [Effort Score](#effort-score-complexity) | The per-PR / per-commit weights that Output Score sums over. |
 | [Throughput](#throughput) | Raw merged PR count. Use for same-team trend reading. Output Score is for cross-team comparison. |
 | [Direct Commits](#direct-commits) | The DC term of the formula. |
-| [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) | Output Norm is the Output leg of the composite. |
-| [CapEx / OpEx Split](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#capex--opex-split) | Categorizes the same effort sums for capitalization accounting. |
+| [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) | Output Norm is the Output leg of the composite. |
+| [CapEx / OpEx Split](/gk-insights/ai-adoption-impact-cost-metrics#capex--opex-split) | Categorizes the same effort sums for capitalization accounting. |
 
 ### How to improve it
 
@@ -2910,7 +2910,7 @@ A: An LLM classifier worker reads each PR or commit diff and assigns one of five
 A: Three common causes: (1) the PR's `auto_effort_score` hasn't been computed yet, (2) the PR's category is Chore and the "Exclude Chore" toggle is on, or (3) the PR merged outside the window you selected.
 
 **Q: Why are direct commits and reviews weighted lower than authored PRs?**
-A: Empirically, direct commits trend toward smaller, less-reviewed work, and a single review takes less effort than authoring the same PR. The 0.5 defaults reflect those averages. Tune via [Direct Commit Weight](/gk-insights/ai-adoption/ai-adoption-settings#direct-commit-weight) and [Review Weight](/gk-insights/ai-adoption/ai-adoption-settings).
+A: Empirically, direct commits trend toward smaller, less-reviewed work, and a single review takes less effort than authoring the same PR. The 0.5 defaults reflect those averages. Tune via [Direct Commit Weight](/gk-insights/ai-adoption-settings#direct-commit-weight) and [Review Weight](/gk-insights/ai-adoption-settings#review-weight).
 
 **Q: Can I see what effort score a specific PR got?**
 A: Yes. /ai-adoption/data-explorer → PRs tab shows the Effort column for every PR, sortable.
@@ -2979,15 +2979,15 @@ None. Throughput is a raw count — no admin knobs change it. If you want effort
 | Metric | Relationship |
 | --- | --- |
 | [Output Score](#output-score) | The effort-weighted version of the same shipping activity. |
-| [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) | The "how fast" pair to Throughput's "how many." Read them together. |
-| [WIP](/gk-insights/ai-adoption/ai-adoption-flow-metrics#work-in-progress-wip) | Number of currently-open PRs. Throughput is the _outflow_; WIP is the _backlog_. |
-| [Deployment Frequency](/gk-insights/ai-adoption/ai-adoption-dora-metrics#deployment-frequency) | DORA's release-based sibling — same concept, counted from release events instead of merges. |
+| [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time) | The "how fast" pair to Throughput's "how many." Read them together. |
+| [WIP](/gk-insights/ai-adoption-flow-metrics#work-in-progress-wip) | Number of currently-open PRs. Throughput is the _outflow_; WIP is the _backlog_. |
+| [Deployment Frequency](/gk-insights/ai-adoption-dora-metrics#deployment-frequency) | DORA's release-based sibling — same concept, counted from release events instead of merges. |
 
 ### How to improve it
 
 * **Right-size PRs.** Teams shipping fewer-but-huge PRs often have low Throughput. The fix is usually upstream: smaller, more frequent merges. Track via Cycle Time alongside Throughput.
 * **Clear stale open PRs.** A high WIP with low Throughput is the classic review-bottleneck pattern. Walk the oldest open PRs each week.
-* **Reduce review cycles.** If every PR averages 2+ "changes requested" rounds, Throughput stalls. See [Review Cycles](/gk-insights/ai-adoption/ai-adoption-flow-metrics#review-cycles).
+* **Reduce review cycles.** If every PR averages 2+ "changes requested" rounds, Throughput stalls. See [Review Cycles](/gk-insights/ai-adoption-flow-metrics#review-cycles).
 
 ### Limitations and gotchas
 
@@ -3065,8 +3065,8 @@ Don't read direct commits in isolation — read them as part of the Output Score
 
 ### Settings that affect it
 
-* [**Direct Commit Weight**](/gk-insights/ai-adoption/ai-adoption-settings#direct-commit-weight) — the multiplier. 0 = ignore direct commits in Output. 1 = treat equally to PRs.
-* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption/ai-adoption-settings#exclude-chore-from-output-score) — affects whether Chore-category direct commits contribute to the effort sum.
+* [**Direct Commit Weight**](/gk-insights/ai-adoption-settings#direct-commit-weight) — the multiplier. 0 = ignore direct commits in Output. 1 = treat equally to PRs.
+* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption-settings#exclude-chore-from-output-score) — affects whether Chore-category direct commits contribute to the effort sum.
 
 ### Related metrics
 
@@ -3359,8 +3359,8 @@ No other admin settings affect Cycle Time. It is a measurement.
 | [Review Cycles](#review-cycles) | The cause of long Review phase. Read together. |
 | [First-Pass Rate](#first-pass-rate) | Inversely correlated with Review phase length. |
 | [WIP](#work-in-progress-wip) | High WIP often causes high Pickup (reviewers overloaded). |
-| [Throughput](/gk-insights/ai-adoption/ai-adoption-output-metrics#throughput) | Outflow rate vs. how-long-each-takes. |
-| [Lead Time for Changes](/gk-insights/ai-adoption/ai-adoption-dora-metrics#lead-time-for-changes) | DORA's first-commit-to-deploy version. Similar but production-scoped. |
+| [Throughput](/gk-insights/ai-adoption-output-metrics#throughput) | Outflow rate vs. how-long-each-takes. |
+| [Lead Time for Changes](/gk-insights/ai-adoption-dora-metrics#lead-time-for-changes) | DORA's first-commit-to-deploy version. Similar but production-scoped. |
 
 ### How to improve it
 
@@ -3392,7 +3392,7 @@ A: Pre-release weeks accumulate PRs that were held back for the release. They me
 A: Median tells you "what is typical." Mean tells you "what is the headline number including outliers." For leadership reports, lead with median; mention mean as a tail signal.
 
 **Q: How is Cycle Time different from Lead Time?**
-A: Cycle Time is first commit → merge. [Lead Time](/gk-insights/ai-adoption/ai-adoption-dora-metrics#lead-time-for-changes) (DORA) is first commit → production deploy.
+A: Cycle Time is first commit → merge. [Lead Time](/gk-insights/ai-adoption-dora-metrics#lead-time-for-changes) (DORA) is first commit → production deploy.
 
 ---
 
@@ -3463,7 +3463,7 @@ None. Review Cycles is a measurement.
 | --- | --- |
 | [First-Pass Rate](#first-pass-rate) | The "0 cycles" percentage, expressed as a positive metric. |
 | [Cycle Time](#cycle-time) | Long Review phase is usually high Review Cycles. |
-| [Effort Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#effort-score-complexity) | High-effort PRs tend to have more review cycles. Track together. |
+| [Effort Score](/gk-insights/ai-adoption-output-metrics#effort-score-complexity) | High-effort PRs tend to have more review cycles. Track together. |
 
 ### How to improve it
 
@@ -3529,7 +3529,7 @@ It is especially valuable as a leading indicator for AI adoption ROI. When teams
 | **35 – 54%** | Fair — every other PR needs a revision round. Investigate PR size and spec clarity. |
 | **< 35%** | Needs attention — review is doing the heavy lifting of design or spec work. |
 
-**One nuance:** rates above \~85% can also signal _rubber-stamping_. If a team's First-Pass Rate is 95% _and_ CFR is rising, your reviewers may not be looking hard enough. Read First-Pass Rate alongside [CFR](/gk-insights/ai-adoption/ai-adoption-dora-metrics#change-failure-rate-cfr).
+**One nuance:** rates above \~85% can also signal _rubber-stamping_. If a team's First-Pass Rate is 95% _and_ CFR is rising, your reviewers may not be looking hard enough. Read First-Pass Rate alongside [CFR](/gk-insights/ai-adoption-dora-metrics#change-failure-rate-cfr).
 
 ### Where it appears
 
@@ -3545,7 +3545,7 @@ None. First-Pass Rate is a measurement.
 | --- | --- |
 | [Review Cycles](#review-cycles) | First-Pass Rate is "the % at 0 cycles" — same data, different framing. |
 | [Cycle Time](#cycle-time) | High First-Pass Rate tightens the Review phase. |
-| [CFR](/gk-insights/ai-adoption/ai-adoption-dora-metrics#change-failure-rate-cfr) | Always read together. High First-Pass + high CFR = rubber-stamping. |
+| [CFR](/gk-insights/ai-adoption-dora-metrics#change-failure-rate-cfr) | Always read together. High First-Pass + high CFR = rubber-stamping. |
 
 ### How to improve it
 
@@ -3638,7 +3638,7 @@ None. WIP is a raw count.
 | Metric | Relationship |
 | --- | --- |
 | [Cycle Time](#cycle-time) | High WIP often causes a long Pickup phase (reviewers overloaded). |
-| [Throughput](/gk-insights/ai-adoption/ai-adoption-output-metrics#throughput) | Outflow rate. WIP / Throughput ≈ average days a PR sits open. |
+| [Throughput](/gk-insights/ai-adoption-output-metrics#throughput) | Outflow rate. WIP / Throughput ≈ average days a PR sits open. |
 | [Review Cycles](#review-cycles) | Indirectly — PRs with many cycles contribute to higher WIP. |
 
 ### How to improve it
@@ -3811,7 +3811,7 @@ Read the trend, not the band. A team that moved from Medium to High in six month
 | --- | --- |
 | [Lead Time for Changes](#lead-time-for-changes) | The other DORA velocity metric. Velocity = "fast and often" needs both. |
 | [CFR](#change-failure-rate-cfr) | Stability counterweight. High Deployment Frequency with low CFR is the goal. |
-| [Throughput](/gk-insights/ai-adoption/ai-adoption-output-metrics#throughput) | The merged-PR count metric. Often correlated with Deployment Frequency but measures merges, not releases. |
+| [Throughput](/gk-insights/ai-adoption-output-metrics#throughput) | The merged-PR count metric. Often correlated with Deployment Frequency but measures merges, not releases. |
 
 ### How to improve it
 
@@ -3848,7 +3848,7 @@ A: /ai-adoption/board-metrics with team filter applied, or /ai-adoption/executiv
 
 ### At a glance
 
-Lead Time for Changes is "how long does it take a change to go from first keystroke to live in production?" It is the end-to-end sibling of [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time). Cycle Time stops at merge; Lead Time keeps counting until the change is actually in production.
+Lead Time for Changes is "how long does it take a change to go from first keystroke to live in production?" It is the end-to-end sibling of [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time). Cycle Time stops at merge; Lead Time keeps counting until the change is actually in production.
 
 It is the DORA metric most often confused with Cycle Time. The difference matters: shipping fast (low Cycle Time) without actually deploying (high Lead Time) is the classic "engineering ships, ops sits on it" anti-pattern.
 
@@ -3911,7 +3911,7 @@ For most product engineering teams, High is the target. Elite requires fully-aut
 
 | Metric | Relationship |
 | --- | --- |
-| [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) | The first-commit-to-merge portion. Lead Time extends to the delivering release. |
+| [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time) | The first-commit-to-merge portion. Lead Time extends to the delivering release. |
 | [Deployment Frequency](#deployment-frequency) | The other DORA velocity metric. |
 
 ### How to improve it
@@ -4006,8 +4006,8 @@ A rising CFR trend is more concerning than a high baseline. Some teams have a le
 | --- | --- |
 | [Deployment Frequency](#deployment-frequency) | The DORA velocity pair. CFR is the stability counterweight. |
 | [MTTR](#mean-time-to-recovery-mttr) | The other stability metric — how fast you recover when CFR strikes. |
-| [First-Pass Rate](/gk-insights/ai-adoption/ai-adoption-flow-metrics#first-pass-rate) | High First-Pass + rising CFR = rubber-stamping risk. |
-| [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) | The CFR-by-Tier breakdown on /ai-adoption/ai-impact tells you whether AI adoption changes stability. |
+| [First-Pass Rate](/gk-insights/ai-adoption-flow-metrics#first-pass-rate) | High First-Pass + rising CFR = rubber-stamping risk. |
+| [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) | The CFR-by-Tier breakdown on /ai-adoption/ai-impact tells you whether AI adoption changes stability. |
 
 ### How to improve it
 
@@ -4257,26 +4257,26 @@ Don't quote the dollar value to two decimal places. "About $50K per week in annu
 
 ### Settings that affect it
 
-* [**Baseline Period**](/gk-insights/ai-adoption/ai-adoption-settings#baseline-period) — sets the historical comparison window. Move it when you have launched a new tool and want to anchor uplift to a specific pre-launch month.
-* [**Developer Hourly Rate**](/gk-insights/ai-adoption/ai-adoption-settings#developer-hourly-rate) — translates additional hours into additional dollars.
-* [**Maturity Factor**](/gk-insights/ai-adoption/ai-adoption-settings#maturity-factor) — indirectly, by shifting the underlying Adoption / Output baselines that feed the active vs. other comparison.
+* [**Baseline Period**](/gk-insights/ai-adoption-settings#baseline-period) — sets the historical comparison window. Move it when you have launched a new tool and want to anchor uplift to a specific pre-launch month.
+* [**Developer Hourly Rate**](/gk-insights/ai-adoption-settings#developer-hourly-rate) — translates additional hours into additional dollars.
+* [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — indirectly, by shifting the underlying Adoption / Output baselines that feed the active vs. other comparison.
 
 ### Related metrics
 
 | Metric | Relationship |
 | --- | --- |
-| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | The shipping-rate signal that underpins changes-per-dev-per-week. |
+| [Output Score](/gk-insights/ai-adoption-output-metrics#output-score) | The shipping-rate signal that underpins changes-per-dev-per-week. |
 | [AI-Assisted Percentage](#ai-assisted-percentage) | Confirms that the output gain came from AI-touched work. |
-| [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) | Lower Cycle Time generally accompanies the speedup story. |
+| [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time) | Lower Cycle Time generally accompanies the speedup story. |
 | [Spend by Tier](#spend-by-tier) | Pairs with uplift for ROI math. |
 
 ### How to improve it
 
 The honest answer: improve the inputs.
 
-* **Raise changes per dev per week** by following the [Output Score improvement guidance](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score).
-* **Raise AI-Assisted %** by deepening adoption in the cohort that is already using AI lightly — see the [Agent Adoption Score playbook](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score).
-* **Lower Cycle Time** via review process and PR-size discipline ([Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time)).
+* **Raise changes per dev per week** by following the [Output Score improvement guidance](/gk-insights/ai-adoption-output-metrics#output-score).
+* **Raise AI-Assisted %** by deepening adoption in the cohort that is already using AI lightly — see the [Agent Adoption Score playbook](/gk-insights/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score).
+* **Lower Cycle Time** via review process and PR-size discipline ([Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time)).
 * **Don't try to improve uplift directly.** It is a derived metric. Optimizing the inputs is the only way to move it honestly.
 
 ### Limitations and gotchas
@@ -4314,7 +4314,7 @@ A: "This is our directional estimate of productivity gain attributable to AI ado
 
 ### At a glance
 
-AI-Assisted % is the behavioral counterpart to [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score). Where Adoption asks "is this developer using AI?", AI-Assisted % asks "did this developer use AI _on this specific change_?" The two diverge surprisingly often. A developer can be a heavy daily Claude user (high Adoption) and ship most of this week's PRs without touching it (low AI-Assisted on those changes).
+AI-Assisted % is the behavioral counterpart to [Agent Adoption Score](/gk-insights/ai-adoption-agentic-metrics#agent-adoption-score). Where Adoption asks "is this developer using AI?", AI-Assisted % asks "did this developer use AI _on this specific change_?" The two diverge surprisingly often. A developer can be a heavy daily Claude user (high Adoption) and ship most of this week's PRs without touching it (low AI-Assisted on those changes).
 
 The metric is line-weighted, so a 2,000-line AI-assisted refactor counts more than a 30-line AI-assisted typo fix.
 
@@ -4374,9 +4374,9 @@ The right target for your team depends on what you ship. Heavy infrastructure an
 
 | Metric | Relationship |
 | --- | --- |
-| [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score) | The user-level adoption measure. AI-Assisted % is the work-level counterpart. |
+| [Agent Adoption Score](/gk-insights/ai-adoption-agentic-metrics#agent-adoption-score) | The user-level adoption measure. AI-Assisted % is the work-level counterpart. |
 | [Productivity Uplift](#productivity-uplift) | AI-Assisted % is a confirming signal — higher AI-Assisted → stronger uplift narrative. |
-| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Independent — Output Score doesn't filter by AI-assisted status. |
+| [Output Score](/gk-insights/ai-adoption-output-metrics#output-score) | Independent — Output Score doesn't filter by AI-assisted status. |
 
 ### How to improve it
 
@@ -4481,15 +4481,15 @@ The ratio shifts predictably with team type. SRE teams are mostly OpEx by design
 
 ### Settings that affect it
 
-* [**Developer Hourly Rate**](/gk-insights/ai-adoption/ai-adoption-settings#developer-hourly-rate) — translates hours into capitalized and expensed dollars in the cost rollup.
+* [**Developer Hourly Rate**](/gk-insights/ai-adoption-settings#developer-hourly-rate) — translates hours into capitalized and expensed dollars in the cost rollup.
 * Manual `capex_opex` override per PR or commit — settable from /ai-adoption/data-explorer when the auto-classification produces the wrong answer.
 
 ### Related metrics
 
 | Metric | Relationship |
 | --- | --- |
-| [Effort Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#effort-score-complexity) | Effort feeds into the hours estimate. |
-| [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) | Same shipped work, different aggregation. |
+| [Effort Score](/gk-insights/ai-adoption-output-metrics#effort-score-complexity) | Effort feeds into the hours estimate. |
+| [Output Score](/gk-insights/ai-adoption-output-metrics#output-score) | Same shipped work, different aggregation. |
 
 ### How to use it
 
@@ -4589,7 +4589,7 @@ The total dollar number is also informative: divide by total developers and you 
 
 | Metric | Relationship |
 | --- | --- |
-| [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) | The grouping dimension. |
+| [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) | The grouping dimension. |
 | [Productivity Uplift](#productivity-uplift) | Spend / Uplift = ROI. Most healthy rollouts have uplift >> spend by an order of magnitude. |
 
 ### How to use it
@@ -4749,9 +4749,9 @@ After a weight change:
 
 ### Related
 
-* [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier)
-* [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
-* [Settings reference](/gk-insights/ai-adoption/ai-adoption-settings)
+* [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier)
+* [Maturity Factor](/gk-insights/ai-adoption-agentic-metrics#maturity-factor)
+* [Settings reference](/gk-insights/ai-adoption-settings)
 
 ---
 
@@ -4815,7 +4815,7 @@ Three operational views — each has a different cadence:
 **Goal:** Make AI tools the default, not the opt-in.
 
 1. **All new developers get licenses on day 1.** Built into onboarding. New hires landing in Emerging after 8 weeks is a process flag.
-2. **Watch the Maturing-team cohort.** Some teams will plateau at "everyone's an Explorer, no one's a Power User." That's the "broad but shallow" pattern — start working on the [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score) by running agentic-pattern workshops.
+2. **Watch the Maturing-team cohort.** Some teams will plateau at "everyone's an Explorer, no one's a Power User." That's the "broad but shallow" pattern — start working on the [Agent Autonomy Score](/gk-insights/ai-adoption-agentic-metrics#agent-autonomy-score) by running agentic-pattern workshops.
 
 #### Month 6 — Strategic review
 
@@ -4847,23 +4847,23 @@ If your trajectory has _Adoption climbing but Uplift flat at month 4+_, your rol
 
 * **Org-wide on day 1.** Spreads adoption too thin to track. Pilot, prove, then expand.
 * **Ignoring the trajectory in favor of the snapshot.** Adoption % at 30% is a great number if it was 5% three months ago. It's a bad number if it's been 30% for six months.
-* **Treating tier as a performance metric.** Read [How to think about developer scores](/gk-insights/ai-adoption/ai-adoption-getting-started#how-to-think-about-developer-scores) before any 1:1 about a developer's tier.
+* **Treating tier as a performance metric.** Read [How to think about developer scores](/gk-insights/ai-adoption-getting-started#how-to-think-about-developer-scores) before any 1:1 about a developer's tier.
 * **Not adjusting Maturity Factor with the rollout.** Default 0.75 is calibrated for active rollout. In month 1, lower it. In month 12, raise it. It's a knob for a reason.
 * **Picking AI adoption as the only metric to watch.** Pair it with Cycle Time and CFR. If you ship faster but break more things, you haven't won.
 
 ### Related
 
-* [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score)
-* [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score)
-* [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
+* [Agent Adoption Score](/gk-insights/ai-adoption-agentic-metrics#agent-adoption-score)
+* [Agent Autonomy Score](/gk-insights/ai-adoption-agentic-metrics#agent-autonomy-score)
+* [Maturity Factor](/gk-insights/ai-adoption-agentic-metrics#maturity-factor)
 * [Playbook — Set tier weights for your org's maturity](#set-tier-weights-for-your-orgs-maturity)
-* [For engineering leaders](/gk-insights/ai-adoption/ai-adoption-getting-started#for-engineering-leaders)
+* [For engineering leaders](/gk-insights/ai-adoption-getting-started#for-engineering-leaders)
 
 ---
 
 ## Investigate a slow cycle time
 
-> _Your team's [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time) just crept past your tolerance. This playbook walks you from "something's wrong" to "I know which lever to pull" in about 30 minutes._
+> _Your team's [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time) just crept past your tolerance. This playbook walks you from "something's wrong" to "I know which lever to pull" in about 30 minutes._
 
 ### The problem
 
@@ -4955,10 +4955,10 @@ A reasonable expectation, having intervened on the dominant phase:
 
 ### Related metric pages
 
-* [Cycle Time](/gk-insights/ai-adoption/ai-adoption-flow-metrics#cycle-time)
-* [Review Cycles](/gk-insights/ai-adoption/ai-adoption-flow-metrics#review-cycles)
-* [WIP](/gk-insights/ai-adoption/ai-adoption-flow-metrics#work-in-progress-wip)
-* [First-Pass Rate](/gk-insights/ai-adoption/ai-adoption-flow-metrics#first-pass-rate)
+* [Cycle Time](/gk-insights/ai-adoption-flow-metrics#cycle-time)
+* [Review Cycles](/gk-insights/ai-adoption-flow-metrics#review-cycles)
+* [WIP](/gk-insights/ai-adoption-flow-metrics#work-in-progress-wip)
+* [First-Pass Rate](/gk-insights/ai-adoption-flow-metrics#first-pass-rate)
 
 ---
 
@@ -5029,7 +5029,7 @@ A single spike that's already resolved. Often a bad release that's been hot-patc
 
 Genuine quality drift.
 
-**Action:** Pause non-critical feature work for the affected team for one sprint. Sample the recent bug reports — look for a common root cause. Strengthen pre-merge review on the affected repo(s). Consider mandatory reviewers if you've been relaxed about review. Look at [First-Pass Rate](/gk-insights/ai-adoption/ai-adoption-flow-metrics#first-pass-rate) over the same window. A First-Pass climbing alongside CFR is the rubber-stamping pattern — your reviewers aren't catching things.
+**Action:** Pause non-critical feature work for the affected team for one sprint. Sample the recent bug reports — look for a common root cause. Strengthen pre-merge review on the affected repo(s). Consider mandatory reviewers if you've been relaxed about review. Look at [First-Pass Rate](/gk-insights/ai-adoption-flow-metrics#first-pass-rate) over the same window. A First-Pass climbing alongside CFR is the rubber-stamping pattern — your reviewers aren't catching things.
 
 #### Pattern: Suddenly stepped up
 
@@ -5062,10 +5062,10 @@ A reasonable expectation after intervening on a real CFR climb:
 
 ### Related metric pages
 
-* [Change Failure Rate (CFR)](/gk-insights/ai-adoption/ai-adoption-dora-metrics#change-failure-rate-cfr)
-* [MTTR](/gk-insights/ai-adoption/ai-adoption-dora-metrics#mean-time-to-recovery-mttr)
-* [First-Pass Rate](/gk-insights/ai-adoption/ai-adoption-flow-metrics#first-pass-rate)
-* [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier)
+* [Change Failure Rate (CFR)](/gk-insights/ai-adoption-dora-metrics#change-failure-rate-cfr)
+* [MTTR](/gk-insights/ai-adoption-dora-metrics#mean-time-to-recovery-mttr)
+* [First-Pass Rate](/gk-insights/ai-adoption-flow-metrics#first-pass-rate)
+* [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier)
 
 ---
 
@@ -5085,7 +5085,7 @@ taxonomy:
 
 Every admin-configurable setting that affects AI Adoption scores in GitKraken Insights, organized by where it lives in the product, plus a one-line "what it changes."
 
-This page covers only the settings that affect AI Adoption scores. For product-wide administration — loading the developer roster, defining teams, wiring up Jira for CFR, syncing BambooHR PTO, and Demo Mode — see the [For admins](/gk-insights/ai-adoption/ai-adoption-getting-started#for-admins) section of the Getting Started guide.
+This page covers only the settings that affect AI Adoption scores. For product-wide administration — loading the developer roster, defining teams, wiring up Jira for CFR, syncing BambooHR PTO, and Demo Mode — see the [For admins](/gk-insights/ai-adoption-getting-started#for-admins) section of the Getting Started guide.
 
 If you came from a metric page to look up a specific setting, jump to the anchor of the same name.
 
@@ -5116,15 +5116,15 @@ Also labeled **"Company AI Readiness %"** in the General tab. _In Settings UI: y
 
 **Why you'd raise or lower it.** - **Lower (0.50 – 0.70):** Early in your AI rollout. You want every developer to feel like there's runway. Few or no Power Users yet. - **Default (0.75):** Most orgs in active rollout. The tier ceiling pushes the top 10% to keep stretching. - **Higher (0.85 – 1.00):** Mature orgs with widespread, deep adoption where you want the scoring to reflect that maturity in absolute terms.
 
-**Affects:** [Agent Adoption Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-adoption-score), [Agent Autonomy Score](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#agent-autonomy-score), [Output Norm](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+**Affects:** [Agent Adoption Score](/gk-insights/ai-adoption-agentic-metrics#agent-adoption-score), [Agent Autonomy Score](/gk-insights/ai-adoption-agentic-metrics#agent-autonomy-score), [Output Norm](/gk-insights/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier).
 
-→ Full section: [Maturity Factor](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#maturity-factor)
+→ Full section: [Maturity Factor](/gk-insights/ai-adoption-agentic-metrics#maturity-factor)
 
 ---
 
 ### Tier Weights
 
-Three positive numbers that say how much Adoption, Agentic, and Output each count toward the [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) composite. _In Settings UI: yes._
+Three positive numbers that say how much Adoption, Agentic, and Output each count toward the [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) composite. _In Settings UI: yes._
 
 | Weight | Default | App-settings key | What it emphasizes |
 | --- | --- | --- | --- |
@@ -5140,9 +5140,9 @@ Three positive numbers that say how much Adoption, Agentic, and Output each coun
 
 **Guardrails.** If you set all three to zero we fall back to the defaults (0.5 / 0.2 / 0.3) — never a "100% output, 0% everything else" boost. Negative or NaN values are rejected and the default for that key is used.
 
-**Affects:** [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier) — and through it, the developer table sorting, the Top 10 widget, the executive ranking, and every breakdown chart that buckets by AI Tier.
+**Affects:** [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) — and through it, the developer table sorting, the Top 10 widget, the executive ranking, and every breakdown chart that buckets by AI Tier.
 
-→ See also: [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
+→ See also: [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
 
 ---
 
@@ -5156,7 +5156,7 @@ _In Settings UI: yes._ App-settings key: `direct_commit_weight`.
 | **Range** | 0.0 – 1.0 |
 | **Type** | Float |
 
-**What it does.** Scales direct commits (pushes straight to a default branch with no PR) relative to merged PRs in the [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score) formula:
+**What it does.** Scales direct commits (pushes straight to a default branch with no PR) relative to merged PRs in the [Output Score](/gk-insights/ai-adoption-output-metrics#output-score) formula:
 
 ```
 Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort)
@@ -5168,7 +5168,33 @@ Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort)
 
 **When to change it.** - Lower toward 0 if your team uses direct commits primarily for trivial maintenance and you don't want them inflating Output Score. - Raise toward 1 if your team uses direct commits for substantive work (e.g. a Trunk-Based Development workflow).
 
-**Affects:** [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), [Output Norm](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+**Affects:** [Output Score](/gk-insights/ai-adoption-output-metrics#output-score), [Output Norm](/gk-insights/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier).
+
+---
+
+### Review Weight
+
+_In Settings UI: yes._ App-settings key: `review_weight`.
+
+|  |  |
+| --- | --- |
+| **Default** | 0.5 |
+| **Range** | 0.0 – 1.0 |
+| **Type** | Float |
+
+**What it does.** Scales review-credit — effort from PRs a developer formally reviewed (state `APPROVED` or `CHANGES_REQUESTED`) — relative to authored PRs in the [Output Score](/gk-insights/ai-adoption-output-metrics#output-score) formula:
+
+```
+Output Score = SUM(PR effort) + DirectCommitWeight × SUM(DC effort) + ReviewWeight × SUM(reviewed-PR effort)
+```
+
+* **0.0** — review work is ignored entirely (the review-credit term disappears from the score)
+* **0.5** (default) — a review counts half as much as authoring a PR of equivalent effort
+* **1.0** — reviewing a PR counts as much as authoring it
+
+**When to change it.** - Lower toward 0 if you don't want review activity contributing to Output Score. - Raise toward 1 if review is a first-class deliverable on your team and you want senior reviewers' work reflected at full weight.
+
+**Affects:** [Output Score](/gk-insights/ai-adoption-output-metrics#output-score), [Output Norm](/gk-insights/ai-adoption-output-metrics#output-score), [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier).
 
 ---
 
@@ -5187,7 +5213,7 @@ _In Settings UI: yes._ App-settings key: `output_score_exclude_chore`.
 
 **When to turn off.** Rarely. The default reflects most orgs' definition of "real output". Turn off if you've explicitly decided chores are part of how you measure delivery — e.g. for an SRE team where dependency upgrades _are_ the job.
 
-**Affects:** [Output Score](/gk-insights/ai-adoption/ai-adoption-output-metrics#output-score), and downstream [AI Tier](/gk-insights/ai-adoption/ai-adoption-agentic-metrics#ai-tier).
+**Affects:** [Output Score](/gk-insights/ai-adoption-output-metrics#output-score), and downstream [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier).
 
 ---
 
@@ -5205,7 +5231,7 @@ _In Settings UI: yes._
 
 **How to set it.** Use your fully-loaded internal developer cost rate (salary × benefits × overhead, divided by working hours). Most orgs land between $50 and $200/hour. If you don't have a precise number, the default $75 is a reasonable industry midpoint for a senior IC.
 
-**Affects:** [Productivity Uplift](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#productivity-uplift), [CapEx / OpEx Split](/gk-insights/ai-adoption/ai-adoption-impact-cost-metrics#capex--opex-split), the AI Impact ROI cards.
+**Affects:** [Productivity Uplift](/gk-insights/ai-adoption-impact-cost-metrics#productivity-uplift), [CapEx / OpEx Split](/gk-insights/ai-adoption-impact-cost-metrics#capex--opex-split), the AI Impact ROI cards.
 
 ---
 
@@ -5260,8 +5286,8 @@ These behaviors are deliberately fixed in code. If you need them tunable, ask yo
 
 ## Related reading
 
-* [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
-* [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score)
+* [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
+* [Playbook — Roll out AI tooling with the Adoption Score](/gk-insights/ai-adoption-playbooks#roll-out-ai-tooling-with-the-adoption-score)
 
 ---
 
