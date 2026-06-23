@@ -204,7 +204,7 @@ _In Settings UI: yes._
 
 These behaviors are deliberately fixed in code. If you need them tunable, ask your account manager — they're candidates for a future setting.
 
-* **Tier thresholds** (Emerging < 25, Explorer 25–54, Regular 55–79, Power User ≥ 80). The Maturity Factor is the intended knob for shifting tier population, not the thresholds themselves.
+* **Tier band values** (Emerging < 25, Explorer 25–54, Regular 55–79, Power User ≥ 80). These are the standard bands a score maps to. You don't shift tier population by moving the bands — you move the score ceiling with the [Maturity Factor](#maturity-factor) (above), which _is_ configurable.
 * **Small-cohort fallback** (5 developers; synthetic P90 of 5.0 effort/week).
 * **Agentic threshold** (10 tools in a session to count as "agentic").
 * **Cursor secondary boost** (25% — set via `SCORE_SECONDARY_BOOST` env var if needed).

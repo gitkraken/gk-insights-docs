@@ -2157,9 +2157,9 @@ The score is **descriptive, not evaluative**. A senior developer working on a qu
 | **25–54** | Explorer — using AI but not yet daily, or shallow integration |
 | **0–24** | Emerging — minimal or no AI usage in the window |
 
-These ranges assume the default 0.75 Maturity Factor. If you've adjusted it, the bands shift proportionally — at 1.0 Maturity, the same percentile distribution lands \~25% higher on the absolute scale.
+These tier bands are fixed reference points — they do **not** move with the Maturity Factor. What moves is the _score_: the Maturity Factor sets the ceiling (Maturity Factor × 100), so at the default 0.75 the highest achievable score is 75 — the top of Regular — and the Power User band (≥ 80) only opens up as you raise the Maturity Factor toward 1.0. See [Maturity Factor](#maturity-factor) for how to size it.
 
-A team average of 50–65 means a healthy mix with most developers in Explorer/Regular. A team average above 75 means broad Power User adoption. A team average below 30 is your "rollout has stalled" signal.
+A team average of 50–65 means a healthy mix with most developers in Explorer/Regular. At the default 0.75 Maturity Factor, a team average approaching the 75 ceiling means broad, deep adoption across the team — you raise the Maturity Factor before the Power User band fills in. A team average below 30 is your "rollout has stalled" signal.
 
 ### Where it appears
 
@@ -5275,7 +5275,7 @@ _In Settings UI: yes._
 
 These behaviors are deliberately fixed in code. If you need them tunable, ask your account manager — they're candidates for a future setting.
 
-* **Tier thresholds** (Emerging < 25, Explorer 25–54, Regular 55–79, Power User ≥ 80). The Maturity Factor is the intended knob for shifting tier population, not the thresholds themselves.
+* **Tier band values** (Emerging < 25, Explorer 25–54, Regular 55–79, Power User ≥ 80). These are the standard bands a score maps to. You don't shift tier population by moving the bands — you move the score ceiling with the [Maturity Factor](#maturity-factor) (above), which _is_ configurable.
 * **Small-cohort fallback** (5 developers; synthetic P90 of 5.0 effort/week).
 * **Agentic threshold** (10 tools in a session to count as "agentic").
 * **Cursor secondary boost** (25% — set via `SCORE_SECONDARY_BOOST` env var if needed).

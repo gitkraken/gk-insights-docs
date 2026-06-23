@@ -148,9 +148,9 @@ The score is **descriptive, not evaluative**. A senior developer working on a qu
 | **25–54** | Explorer — using AI but not yet daily, or shallow integration |
 | **0–24** | Emerging — minimal or no AI usage in the window |
 
-These ranges assume the default 0.75 Maturity Factor. If you've adjusted it, the bands shift proportionally — at 1.0 Maturity, the same percentile distribution lands \~25% higher on the absolute scale.
+These tier bands are fixed reference points — they do **not** move with the Maturity Factor. What moves is the _score_: the Maturity Factor sets the ceiling (Maturity Factor × 100), so at the default 0.75 the highest achievable score is 75 — the top of Regular — and the Power User band (≥ 80) only opens up as you raise the Maturity Factor toward 1.0. See [Maturity Factor](#maturity-factor) for how to size it.
 
-A team average of 50–65 means a healthy mix with most developers in Explorer/Regular. A team average above 75 means broad Power User adoption. A team average below 30 is your "rollout has stalled" signal.
+A team average of 50–65 means a healthy mix with most developers in Explorer/Regular. At the default 0.75 Maturity Factor, a team average approaching the 75 ceiling means broad, deep adoption across the team — you raise the Maturity Factor before the Power User band fills in. A team average below 30 is your "rollout has stalled" signal.
 
 ### Where it appears
 
