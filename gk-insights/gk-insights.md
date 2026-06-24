@@ -5,7 +5,7 @@ product: GitKraken Insights
 content_type: install
 audience: admin
 plan_required: GitKraken Insights
-integrations: [GitHub, GitLab, GitLab Self-Hosted, Bitbucket, Azure DevOps, Jira Cloud, Claude Code, Cursor, GitHub Copilot]
+integrations: [GitHub, GitLab, GitLab Self-Hosted, Bitbucket, Azure DevOps, Jira Cloud, Claude Code, Codex, Cursor, GitHub Copilot]
 status: GA
 taxonomy:
     category: gk-insights
@@ -20,7 +20,7 @@ Instead of surface-level stats, GitKraken Insights shows how work connects to te
 > **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
 > **Integrations:** GitHub, GitLab (cloud and self-hosted), Bitbucket, Azure DevOps, Jira Cloud
-> **AI providers:** Claude Code, Cursor, GitHub Copilot (optional)
+> **AI providers:** Claude Code, Codex, Cursor, GitHub Copilot (optional)
 
 <figure>
   <img src="/wp-content/uploads/insights-dashboard-oct-2025.png" srcset="/wp-content/uploads/insights-dashboard-oct-2025@2x.png" class="help-center-img img-bordered" alt="Dashboard view of GitKraken Insights metrics and charts for development activity" />
@@ -45,13 +45,13 @@ Once your access is approved, you can connect GitKraken Insights to your reposit
 
 Currently, Insights supports connections with GitHub, GitLab (cloud and self-hosted), Bitbucket, Azure DevOps, and Jira Cloud.
 
-In addition, you can connect AI providers to enable AI Impact insights (like Duplicated Code, Prompt Acceptance Rate, and more).
+In addition, you can connect AI providers to enable AI Impact insights (like Duplicated Code, Prompt Acceptance Rate, and more). To learn how GitKraken Insights measures AI adoption across your organization, see [AI Adoption](/gk-insights/ai-adoption).
 ---
 
 ### 1. Import your repositories
 
 1. In GitKraken.dev, go to **Insights > Data Connection**.  
-2. Click to connect with GitHub, GitLab, GitLab Self-Hosted, Azure DevOps, Claude Code, Cursor, GitHub Copilot, Bitbucket, or Jira Cloud. 
+2. Click to connect with GitHub, GitLab, GitLab Self-Hosted, Azure DevOps, Claude Code, Codex, Cursor, GitHub Copilot, Bitbucket, or Jira Cloud. 
 3. Authorize GitKraken Insights to connect with GitHub.  
 4. Select which repositories to track. Use the filter option at the top of the page to quickly narrow down the list.  
 
@@ -85,11 +85,11 @@ After the initial import is complete, rate limit issues are unlikely to recur.
 
 ### Connect an AI provider (optional)
 
-As of February 2026, GitKraken Insights only supports connections with Claude Code, Cursor and GitHub Copilot to enable AI insights.
+As of June 2026, GitKraken Insights only supports connections with Claude Code, Codex, Cursor, and GitHub Copilot to enable AI insights.
 
 To enable AI Impact insights, connect your preferred AI provider:
 1. In GitKraken.dev, go to [**Insights > Data Connection**](https://gitkraken.dev/insights/data-connections).
-2. Click to `Manage` with Claude Code, Cursor or Github Copilot.
+2. Click to `Manage` with Claude Code, Codex, Cursor or Github Copilot.
 3. In the new window, select the AI provider you wish to connect with and enter the provider Token.
 4. Click **Connect AI Provider** to finish the connection.
 <figure>
