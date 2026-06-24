@@ -202,7 +202,28 @@ AI code-review bots — such as **GitHub Copilot review** or Atlassian **Rovo** 
 
 ---
 
-## Step 6 — Invite your team
+## Step 6 — Organize your teams
+
+Teams are how Insights groups developers for analysis. They power the **Teams Readiness** view, **AI-Tools Comparison** cohorts, and most slice-and-dice filters — and the **Default Department** benchmark pre-selects a department's teams when people first open the dashboard. Setting up a few teams makes the whole product more useful.
+
+**Where to do it:** Insights → **Settings → Teams**.
+
+1. Click **Add team**.
+2. Give it a **Name** (e.g. "Platform"), and optionally a **Department** (e.g. "Engineering") and a **GitHub team slug** (e.g. "platform") to align it with your GitHub team. You can also add a team icon.
+3. Save with **Add team**. Repeat for each team — usually one per function or org unit.
+
+**Assign developers to teams.** You can assign people while creating teams in the guided setup (a two-panel Teams / People view), and adjust membership any time afterward from Settings → Teams. Two things to know:
+
+- Only people in your **GitKraken org** can be assigned to a team. Contributors detected from GitHub but not yet in your org appear as **"Invite to your org to assign"** — invite them first (Step 7), then add them.
+- You don't have to get this perfect up front. After each sync, newly detected commit authors show up automatically, ready to be assigned.
+
+*[Screenshot needed: Settings → Teams with the "Add team" modal.]*
+
+> **Teams only need to be set up once** — they're reused across every view and filter. Start with your real org structure; you can split or merge later.
+
+---
+
+## Step 7 — Invite your team
 
 Give the rest of your stakeholders access so they can read the dashboards.
 
