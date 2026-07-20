@@ -20,7 +20,7 @@ GitKraken Insights is the dashboard your engineering organization uses to see â€
 
 ## What this product does, in one sentence
 
-It connects your GitHub or Bitbucket, your AI coding tool telemetry (Claude Code, Codex, Cursor), your Jira customer bugs, and your BambooHR PTO calendar, and produces a small set of trustworthy numbers for engineering leadership.
+It connects your GitHub, Bitbucket, or Azure DevOps, your AI coding tool telemetry (Claude Code, Codex, Cursor), your Jira customer bugs, and your BambooHR PTO calendar, and produces a small set of trustworthy numbers for engineering leadership.
 
 ## What this product does _not_ do
 
@@ -447,7 +447,7 @@ Every metric on the dashboard is downstream of one of these syncs. If a number l
 
 | Sync | Source | Interval | Owns |
 | --- | --- | --- | --- |
-| **Git provider sync** | GitHub PAT or Bitbucket API token | Every few minutes | PRs, direct commits, reviews |
+| **Git provider sync** | GitHub PAT, Bitbucket API token, or Azure DevOps PAT | Every few minutes | PRs, direct commits, reviews |
 | **AI events sync** | OpenTelemetry export from your AI tools (Claude Code / Codex) to GitKraken storage | Every 5 min, with 12 h safety lag | Adoption, agentic, AI-assisted detection |
 | **Cursor sync** | Cursor API | Every 5 min, with 12 h safety lag | Cursor adoption |
 | **CFR sync** | Jira | Every hour | Customer bugs, CFR %, MTTR |

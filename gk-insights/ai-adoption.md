@@ -17,7 +17,7 @@ GitKraken Insights gives engineering leaders a single view of how AI tools, code
 > **Plan:** GitKraken Insights
 > **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
-> **Prerequisite:** Connected GitHub or Bitbucket and at least one AI provider (Claude Code, Codex, or Cursor). See [Connect Your Data](/gk-insights/ai-adoption-connect-your-data).
+> **Prerequisite:** Connected GitHub, Bitbucket, or Azure DevOps and at least one AI provider (Claude Code, Codex, or Cursor). See [Connect Your Data](/gk-insights/ai-adoption-connect-your-data).
 
 ---
 

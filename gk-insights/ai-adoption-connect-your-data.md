@@ -1,18 +1,18 @@
 ---
 title: Connect Your Data — Setting Up AI Adoption
-description: A step-by-step setup guide for AI Adoption in GitKraken Insights — gather the right access, connect GitHub or Bitbucket, your AI coding tools (Claude Code, Codex, Cursor), and Jira, map developer identities, and invite your team.
+description: A step-by-step setup guide for AI Adoption in GitKraken Insights — gather the right access, connect GitHub, Bitbucket, or Azure DevOps, your AI coding tools (Claude Code, Codex, Cursor), and Jira, map developer identities, and invite your team.
 product: GitKraken Insights
 content_type: how-to
 audience: admin
 plan_required: GitKraken Insights
-integrations: [GitHub, Bitbucket, Claude Code, Codex, Cursor, Jira Cloud]
+integrations: [GitHub, Bitbucket, Azure DevOps, Claude Code, Codex, Cursor, Jira Cloud]
 status: GA
 taxonomy:
     category: gk-insights
 ---
 <kbd>Last updated: July 2026</kbd>
 
-This is the hands-on setup guide for AI Adoption in GitKraken Insights. By the end, your organization's GitHub or Bitbucket activity and AI coding-tool telemetry will be flowing into the dashboard, your developers will be mapped to a single identity, and your team will have access.
+This is the hands-on setup guide for AI Adoption in GitKraken Insights. By the end, your organization's GitHub, Bitbucket, or Azure DevOps activity and AI coding-tool telemetry will be flowing into the dashboard, your developers will be mapped to a single identity, and your team will have access.
 
 Plan on **15–20 minutes of active work**, plus up to a day for the first full data sync to complete in the background.
 
@@ -34,11 +34,12 @@ The single biggest cause of stalled setups is discovering mid-stream that the pe
 | **GitKraken organization** | Owner or Admin of your gk.dev org | Manage data connections, invite teammates |
 | **GitHub** *(if you use GitHub)* | An org admin (to create an org-level token) | Generate the GitHub access token |
 | **Bitbucket** *(if you use Bitbucket)* | An admin of your Bitbucket workspace | Generate a Bitbucket-specific Atlassian API token |
+| **Azure DevOps** *(if you use Azure DevOps)* | An admin on your Azure DevOps organization | Create a PAT with Code (Read) |
 | **Claude Code / Codex** | The **Owner** of your Anthropic (Claude Code) organization — *admins cannot do this* | Paste the telemetry snippet into org-managed settings |
 | **Cursor** | A Cursor **team admin** | Create a team-level admin API key |
 | **Jira** (optional) | A Jira admin | Create an API token |
 
-> **Start your git-provider token request now.** In larger orgs, getting approval to create a GitHub or Bitbucket token with the right scope can take days — sometimes weeks. It's the most common bottleneck, so kick it off before anything else.
+> **Start your git-provider token request now.** In larger orgs, getting approval to create a GitHub, Bitbucket, or Azure DevOps token with the right scope can take days — sometimes weeks. It's the most common bottleneck, so kick it off before anything else.
 
 > **Only Owners and Admins can connect data.** If you open Settings → Data Connections and see a read-only banner, you'll need an org Owner or Admin to either make the connections or grant you access.
 
@@ -46,7 +47,7 @@ The single biggest cause of stalled setups is discovering mid-stream that the pe
 
 ## Step 1 — Connect your git provider
 
-Your git provider is the foundation. It powers every PR, commit, contributor, and cycle-time metric — without it, the dashboards stay empty. Connect **GitHub or Bitbucket**, whichever hosts your repositories.
+Your git provider is the foundation. It powers every PR, commit, contributor, and cycle-time metric — without it, the dashboards stay empty. Connect **GitHub, Bitbucket, or Azure DevOps**, whichever hosts your repositories.
 
 ### GitHub
 
@@ -127,6 +128,41 @@ Once connected, Bitbucket data begins syncing in the background and continues ov
 - **First sync reaches back ~90 days.** Bitbucket history older than about three months isn't backfilled, so long-range trends fill in going forward rather than retroactively.
 - **AI-assisted detection is more conservative than on GitHub.** For Bitbucket, an AI co-author trailer is read from the pull request's title and description; it isn't scanned from individual merge-commit messages. Teams that rely on commit-level `Co-authored-by` trailers may see AI-Assisted read lower on Bitbucket than on GitHub — connecting an AI provider (which adds activity-based detection) is the best way to close that gap.
 - **Author identity.** Bitbucket identifies contributors by their Atlassian account rather than a login or email, so you may need to resolve a Bitbucket account when merging developer identities in Settings → Developers.
+
+### Azure DevOps
+
+Connect Azure DevOps if your repositories live in an Azure DevOps organization. Like GitHub, it powers every PR, commit, contributor, and cycle-time metric.
+
+> **Azure DevOps Services (cloud) only.** The connection supports `dev.azure.com` / `*.visualstudio.com` organizations. Azure DevOps **Server (on-premises)** is not supported.
+
+1. In gitkraken.dev, open **Insights → Settings → Data Connections**.
+2. On the **Azure DevOps** card, click **Connect**.
+3. In the connect modal, enter your **Host domain** — your organization URL, e.g. `https://dev.azure.com/your-org` — and an **Azure API token** (a personal access token; see scopes below), then click **Validate**.
+4. Optionally pick a **Project** to narrow the repository list, and add any **repositories to skip**. One connection covers **all projects and repositories** in the organization unless you skip them.
+5. Click **Connect**.
+
+#### Required token scopes
+
+Create the PAT from your Azure DevOps organization at **User settings → Personal access tokens → New Token**, scoped to the organization you're connecting.
+
+**Required** — core PR, commit, contributor, and cycle-time metrics:
+
+- **Code** → *Read*
+
+**Recommended** — each unlocks a signal; the connection works without them:
+
+- **Identity** → *Read* — resolves commit-author emails so developer identity mapping is clean. Without it, some authors sync without an email and are harder to merge.
+- **Build** → *Read* — lets Insights ingest successful pipeline builds as deployments (feeds Deployment Frequency and Lead Time). Without it, build-based deployments are skipped — tag-based and release-branch-merge signals still work.
+
+> All scopes are read-only. Grant **Code (Read)** at minimum; add **Identity (Read)** and **Build (Read)** for full fidelity.
+
+Once connected, Azure DevOps data begins syncing in the background and continues over the next several hours.
+
+#### Good to know about Azure DevOps
+
+- **One organization per connection.** Sync spans every project and repository in that organization; use **repositories to skip** to exclude ones you don't want measured. Add another connection for a second organization.
+- **First sync is full; incremental catch-up reaches back ~90 days.** The initial import pulls full history per repo; after an outage, incremental runs rewind about 90 days.
+- **Cloud only** — see the note above.
 
 ---
 
@@ -232,7 +268,7 @@ You can change all of these at any time. For what each setting affects, see the 
 
 ## Step 5 — Map developer identities
 
-This is the step that makes or breaks clean data. The same person often shows up under several identities — a GitHub or Bitbucket login, one or more commit emails, a Jira account. Until those are merged, your leaderboards and adoption metrics double-count, and you end up with "parallel universes" of the same developer.
+This is the step that makes or breaks clean data. The same person often shows up under several identities — a GitHub, Bitbucket, or Azure DevOps identity, one or more commit emails, a Jira account. Until those are merged, your leaderboards and adoption metrics double-count, and you end up with "parallel universes" of the same developer.
 
 1. After your git provider has been processing for a bit (allow ~12 hours), open **Settings → Developers**.
 2. Review the detected identities. Where you recognize duplicates of the same person, use **Merge** to combine them.
@@ -262,7 +298,7 @@ Give the rest of your stakeholders access so they can read the dashboards.
 
 ## What to expect after setup
 
-- **First data:** the last month of GitHub or Bitbucket activity typically appears within a few hours; a full year usually lands within one to two days.
+- **First data:** the last month of GitHub, Bitbucket, or Azure DevOps activity typically appears within a few hours; a full year usually lands within one to two days.
 - **AI tool data:** starts flowing on each developer's next Claude Code / Codex / Cursor session — there's no backfill before the connection was made.
 - **Sync status:** each connection on the Data Connections page shows a health status. If a connection looks degraded or errored, that's the first place to check — and let your account team know.
 

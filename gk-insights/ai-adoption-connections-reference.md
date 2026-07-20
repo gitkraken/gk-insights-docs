@@ -5,7 +5,7 @@ product: GitKraken Insights
 content_type: reference
 audience: admin
 plan_required: GitKraken Insights
-integrations: [GitHub, Bitbucket, Claude Code, Codex, Cursor, Jira Cloud]
+integrations: [GitHub, Bitbucket, Azure DevOps, Claude Code, Codex, Cursor, Jira Cloud]
 status: GA
 taxonomy:
     category: gk-insights
@@ -27,6 +27,7 @@ This is the at-a-glance reference for **what each AI Adoption connection needs**
 |----------|-----------|------------|--------------|
 | **GitHub** | Fine-grained or classic PAT | GitHub org admin | Token's resource owner = your org |
 | **Bitbucket** | Scoped Atlassian API token + account email | Bitbucket workspace admin | Select workspace(s) to sync |
+| **Azure DevOps** | PAT (Code: Read) + org URL | Azure DevOps org admin | Cloud only; one org per connection |
 | **Claude Code** | OTel snippet (no key) | Anthropic org **Owner** | Owner applies org-managed settings |
 | **OpenAI Codex** | OTel snippet (no key) | AI-tool org owner | Same OTel connection as Claude Code |
 | **Cursor** | Team-level **admin** API key | Cursor team admin | Must be a team key, not personal |
@@ -62,6 +63,20 @@ Connect **at least one AI provider** (Claude Code, Codex, or Cursor) plus a git 
 
 - **Good to know:** first sync reaches back ~90 days; AI co-author detection reads the PR title/description (not merge-commit bodies), so it's more conservative than on GitHub.
 
+## Azure DevOps
+
+- **Credential:** an Azure DevOps **personal access token (PAT)** plus your **Host domain** (organization URL, e.g. `https://dev.azure.com/your-org`). Create the PAT at **User settings → Personal access tokens**, scoped to that organization.
+- **Scopes:**
+
+| Scope | Needed for |
+|-------|-----------|
+| **Code** (Read) | Repos, commits, PRs, reviews — **required** (nothing syncs without it) |
+| **Identity** (Read) | *Recommended* — resolves author emails for clean developer identity mapping |
+| **Build** (Read) | *Recommended* — ingests successful pipeline builds as deployments (Deployment Frequency, Lead Time) |
+
+- **Scope:** one **organization per connection**; sync covers all projects and repositories in it (use "repositories to skip" to exclude). Add another connection for a second org.
+- **Good to know:** **Azure DevOps Services (cloud) only** — no Azure DevOps Server / on-prem. First sync is full history; incremental catch-up reaches back ~90 days.
+
 ## Claude Code & OpenAI Codex (OpenTelemetry)
 
 - **No API key.** These report via **OpenTelemetry**: you paste a configuration snippet — with your org's telemetry token already embedded — into your AI tool's **organization-managed settings**.
@@ -91,7 +106,7 @@ Connect **at least one AI provider** (Claude Code, Codex, or Cursor) plus a git 
 ## Notes
 
 - **Multiple connections per provider** are supported; give each a recognizable **Name**.
-- **GitLab** activity is included through GitKraken's git integration rather than a self-service token connection here; talk to your account team about GitLab coverage.
+- **GitLab** support for AI Adoption is in development and not yet available to connect. Your account team can share timing.
 - If you open Data Connections and see a **read-only banner**, ask an org Owner or Admin to connect or to grant you access.
 
 ## Related pages

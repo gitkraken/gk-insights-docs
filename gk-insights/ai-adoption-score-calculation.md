@@ -17,7 +17,7 @@ This page is the single reference for **how the AI Adoption scores are calculate
 > **Plan:** GitKraken Insights
 > **Platform:** Browser only via [gitkraken.dev](https://gitkraken.dev)
 > **Role:** Lead, Admin, or Owner
-> **Prerequisite:** Connected GitHub or Bitbucket and at least one AI provider. See [Connect Your Data](/gk-insights/ai-adoption-connect-your-data).
+> **Prerequisite:** Connected GitHub, Bitbucket, or Azure DevOps and at least one AI provider. See [Connect Your Data](/gk-insights/ai-adoption-connect-your-data).
 
 ---
 
