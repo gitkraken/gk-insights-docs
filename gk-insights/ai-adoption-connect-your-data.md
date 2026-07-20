@@ -91,8 +91,6 @@ Once connected, GitHub data begins syncing in the background and continues over 
 
 Connect Bitbucket instead if your repositories live in a Bitbucket workspace. Like GitHub, it powers every PR, commit, contributor, and cycle-time metric.
 
-> **Don't see a Bitbucket card?** Bitbucket support is rolling out and may not be enabled for your organization yet. If the card isn't on your Data Connections page, contact your account team to have it turned on.
-
 1. In gitkraken.dev, open **Insights → Settings → Data Connections**.
 2. On the **Bitbucket** card, click **Connect**.
 3. In the **Connect Bitbucket** modal, optionally give the connection a **Name**, then enter your **Atlassian account email** and a **Bitbucket API token** (see scopes below), and click **Validate**.

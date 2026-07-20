@@ -154,6 +154,8 @@ Effort comes from an LLM classifier (`auto_effort_score`) and can be manually ov
 4. Multiply DC sum by `DCWeight` and review sum by `ReviewWeight`.
 5. Add the three terms.
 
+> **Why "Reviewed" here won't match GitHub's review count.** Insights counts a PR as reviewed only when a developer left a formal **Approve** or **Request changes** — plain comments and dismissed reviews don't count — and it counts each PR once per reviewer, only for PRs **merged inside the window**, excluding self-reviews and bots. GitHub's own "reviews" number is broader, so the two will legitimately differ.
+
 **Team aggregate.** For team rows on /ai-adoption/teams, the score is the team total divided by the count of active developers on the team. This per-active-dev rate is what makes team scores comparable across team sizes.
 
 **The Chore asymmetry.** When the "Exclude Chore" toggle is on (default), Chore-category items are excluded from the **effort sums** — but the **counts shown in the cell stay raw**. So a developer who shipped 5 PRs and 12 direct commits will always show "5 PRs · 12 direct" in the breakdown, even if half were chores. This asymmetry exists so developers whose window happened to be mostly chores don't disappear from the developer table.
