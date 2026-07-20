@@ -446,7 +446,7 @@ Every metric on the dashboard is downstream of one of these syncs. If a number l
 | Sync | Source | Interval | Owns |
 | --- | --- | --- | --- |
 | **Git provider sync** | GitHub PAT or Bitbucket API token | Every few minutes | PRs, direct commits, reviews |
-| **AI events sync** | Snowflake OTEL export (Claude / Codex) | Every 5 min, with 12 h safety lag | Adoption, agentic, AI-assisted detection |
+| **AI events sync** | OpenTelemetry export from your AI tools (Claude Code / Codex) to GitKraken storage | Every 5 min, with 12 h safety lag | Adoption, agentic, AI-assisted detection |
 | **Cursor sync** | Cursor API | Every 5 min, with 12 h safety lag | Cursor adoption |
 | **CFR sync** | Jira | Every hour | Customer bugs, CFR %, MTTR |
 | **Release sync** | GitHub Releases / configured release event | Every few minutes | Deployment Frequency, Lead Time |
