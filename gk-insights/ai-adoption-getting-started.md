@@ -219,6 +219,8 @@ Percent of your active developers at Explorer tier or above (score ≥ 25). This
 
 Percent of _changes_ (PRs + direct commits, weighted by lines changed) where the developer used AI in or around the change. Different from Adoption %: a developer can have AI installed (counts toward Adoption) without using it on a given change (doesn't count toward AI-Assisted).
 
+> **How this is detected — and why it can read low.** AI-Assisted is inferred by _association_: a change counts when it carries an AI co-author trailer **or** the developer had AI activity within ~1 hour of the change. Teams whose developers use AI without the `Co-authored-by` trailer — or whose AI tool isn't connected as a provider — will see AI-Assisted read lower than reality. See [AI Impact & Cost Metrics → AI-Assisted Percentage](/gk-insights/ai-adoption-impact-cost-metrics#ai-assisted-percentage) for the full detection logic and its limits.
+
 **Read it as:** a behavioral indicator. The closer this gets to AI Adoption %, the more thoroughly AI is integrated into actual work.
 
 #### 3. Cycle Time

@@ -357,7 +357,7 @@ The dashboard's CFR is honest about what it's measuring (customer-reported bugs 
 
 #### Step 1 — Look at the trend, not the snapshot (3 min)
 
-Open `/impact`. Look at the **CFR trend chart** (left side, severity-stacked).
+Open `/ai-adoption/ai-impact`. Look at the **CFR trend chart** (left side, severity-stacked).
 
 * **If the spike is one week and CFR is back to baseline before and after**, you have a localized incident, not a trend.
 * **If CFR has been climbing for 3+ weeks**, you have a real quality drift.
@@ -388,7 +388,7 @@ Patterns to spot:
 
 #### Step 4 — Look at AI Tier breakdown (5 min)
 
-This is where the dashboard does something unique. Click into `/ai-impact` and look at **CFR by AI Tier**.
+This is where the dashboard does something unique. Click into `/ai-adoption/ai-impact` and look at **CFR by AI Tier**.
 
 The question: **does CFR scale with AI tier?**
 

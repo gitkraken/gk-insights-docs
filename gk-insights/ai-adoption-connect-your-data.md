@@ -102,14 +102,21 @@ Connect Bitbucket instead if your repositories live in a Bitbucket workspace. Li
 
 #### Required token scopes
 
-Bitbucket connects with a **scoped Atlassian API token**. Create it at [**id.atlassian.com → Security → API tokens**](https://id.atlassian.com/manage-profile/security/api-tokens) using **Create API token with scopes**, and include at least these scopes:
+Bitbucket connects with a **scoped Atlassian API token**. Create it at [**id.atlassian.com → Security → API tokens**](https://id.atlassian.com/manage-profile/security/api-tokens) using **Create API token with scopes**.
+
+**Required** — core PR, commit, contributor, and cycle-time metrics:
 
 - `read:account`
-- `read:pipeline:bitbucket`
-- `read:pullrequest:bitbucket`
-- `read:repository:bitbucket`
-- `admin:repository:bitbucket`
 - `read:workspace:bitbucket`
+- `read:repository:bitbucket`
+- `read:pullrequest:bitbucket`
+
+**Optional** — unlock additional signals; the connection works without them:
+
+- `read:pipeline:bitbucket` — lets Insights ingest Bitbucket Pipelines runs as deployments (feeds Deployment Frequency and Lead Time). Without it, pipeline ingestion is skipped — not an error.
+- `admin:repository:bitbucket` — lets Insights read branch restrictions for repo-readiness scoring. Without it, that signal is recorded as "unknown" and excluded from the score.
+
+> Granting all six matches the scope list shown in the connection modal and enables every feature. If your organization prefers least-privilege, the four **Required** scopes are enough to populate the dashboards.
 
 Once connected, Bitbucket data begins syncing in the background and continues over the next several hours.
 

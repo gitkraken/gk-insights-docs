@@ -169,9 +169,10 @@ A team average of 50–65 means a healthy mix with most developers in Explorer/R
 
 * [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — multiplies the final score. Lowering it lowers the tier ceiling for everyone.
 * **Cursor secondary boost** (env var `SCORE_SECONDARY_BOOST`, default 0.25) — how heavily Cursor contributes alongside Claude / Codex.
-* **Provider weights** (env vars `SCORE_WEIGHT_*`) — how much DailyUse / HourlySpread / Prompts / Output each contribute within a provider's score.
+* **Four-factor blend weights** (env vars `SCORE_WEIGHT_*`) — how much DailyUse / HourlySpread / Prompts / Output each contribute *within* a single provider's score.
+* [**Provider Weights**](/gk-insights/ai-adoption-settings#provider-weights) — how much each connected provider counts relative to the others. Editable in Settings → General.
 
-The four-factor weighting per provider is not currently exposed in the Settings UI. Ask your account manager if you need it tunable.
+The four-factor blend *within* a provider's score is not exposed in the Settings UI (ask your account manager if you need it tuned). The per-provider **Provider Weights** — how providers combine with each other — **are** editable in Settings → General.
 
 ### Related metrics
 
