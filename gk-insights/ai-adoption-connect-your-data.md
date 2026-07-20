@@ -91,9 +91,13 @@ Once connected, GitHub data begins syncing in the background and continues over 
 
 Connect Bitbucket instead if your repositories live in a Bitbucket workspace. Like GitHub, it powers every PR, commit, contributor, and cycle-time metric.
 
+> **Don't see a Bitbucket card?** Bitbucket support is rolling out and may not be enabled for your organization yet. If the card isn't on your Data Connections page, contact your account team to have it turned on.
+
 1. In gitkraken.dev, open **Insights → Settings → Data Connections**.
 2. On the **Bitbucket** card, click **Connect**.
-3. In the **Connect Bitbucket** modal, optionally give the connection a **Name**, then enter your **Atlassian account email** and a **Bitbucket API token** (see scopes below), click **Validate**, then **Connect**.
+3. In the **Connect Bitbucket** modal, optionally give the connection a **Name**, then enter your **Atlassian account email** and a **Bitbucket API token** (see scopes below), and click **Validate**.
+4. Once the token validates, choose the **workspace(s) to sync** from the list (you can select more than one, up to 20). If a workspace doesn't appear, you can type its slug manually.
+5. Click **Connect**.
 
 <figure>
   <img src="/wp-content/uploads/connect-bitbucket-modal.png" class="help-center-img img-bordered" alt="Connect Bitbucket modal in GitKraken Insights showing an optional connection name field, the list of scoped Atlassian API token scopes required, and the Atlassian account email and Bitbucket API token fields" />
@@ -119,6 +123,12 @@ Bitbucket connects with a **scoped Atlassian API token**. Create it at [**id.atl
 > Granting all six matches the scope list shown in the connection modal and enables every feature. If your organization prefers least-privilege, the four **Required** scopes are enough to populate the dashboards.
 
 Once connected, Bitbucket data begins syncing in the background and continues over the next several hours.
+
+#### Good to know about Bitbucket
+
+- **First sync reaches back ~90 days.** Bitbucket history older than about three months isn't backfilled, so long-range trends fill in going forward rather than retroactively.
+- **AI-assisted detection is more conservative than on GitHub.** For Bitbucket, an AI co-author trailer is read from the pull request's title and description; it isn't scanned from individual merge-commit messages. Teams that rely on commit-level `Co-authored-by` trailers may see AI-Assisted read lower on Bitbucket than on GitHub — connecting an AI provider (which adds activity-based detection) is the best way to close that gap.
+- **Author identity.** Bitbucket identifies contributors by their Atlassian account rather than a login or email, so you may need to resolve a Bitbucket account when merging developer identities in Settings → Developers.
 
 ---
 
