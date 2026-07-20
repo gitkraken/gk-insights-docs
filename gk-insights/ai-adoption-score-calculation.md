@@ -110,7 +110,7 @@ AI Tier score = w_adoption × Adoption
               + w_output   × Output Norm
 ```
 
-- **Default weights:** Adoption **0.5** / Autonomy **0.2** / Output **0.3**. Org-tunable in [Settings → General](/gk-insights/ai-adoption-settings#tier-weights); stored raw and **renormalized to sum to 1.0** on read. If all three are set to zero, the defaults are restored.
+- **Default weights:** Adoption **0.5** / Autonomy **0.2** / Output **0.3**. Org-tunable in [Settings → General](/gk-insights/ai-adoption-settings#tier-weights); each must be **greater than 0** (the form rejects 0, negatives, and non-numbers), and the three are stored raw and **renormalized to sum to 1.0** on read.
 - **Tier bands** (fixed):
 
 | Tier | Score |

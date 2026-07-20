@@ -357,7 +357,7 @@ All three are already on the same 0–100 scale, and all three are already scale
 
 **Where to change them.** The Settings → General form exposes tier weights alongside `maturity_factor`, `developer_hourly_rate`, `baseline_period_start`, and `default_department`. Edit the `tier_weight_*` values there and the change takes effect on the next read.
 
-If you set all three weights to zero (or negative), we fall back to defaults rather than producing a NaN. There's never a "100% output, 0% everything else" boost run.
+Each weight must be greater than 0 — the Settings form rejects 0, negatives, and non-numbers — so there's never a "100% output, 0% everything else" boost run.
 
 **Classification.** Once the composite score is computed, it's mapped to a tier: 80+ = **Power User**, 55–79 = **Regular**, 25–54 = **Explorer**, <25 = **Emerging**. The Emerging label is used consistently across the backend enum, the UI badge, the onboarding tour, and the Top-10 widget.
 
@@ -450,8 +450,8 @@ A: On-PTO developers are excluded from average score, Power User %, active-adopt
 **Q: Can a single developer's tier change just because the org changed?**
 A: Yes. Tier is normalized to the org P90 for Output, and the P90 caps for Adoption / Agentic are also org-wide.
 
-**Q: I set Tier Weights to 0.7 / 0.0 / 0.3 — what happens to Agentic?**
-A: Agentic is silently weighted at 0 in the composite. Renormalization still works. Agentic Score still displays separately on the developer detail panel.
+**Q: Can I set an Agentic weight of 0 to drop it from the composite?**
+A: No — the Settings form requires each weight to be greater than 0. To de-emphasize Agentic, set a small positive weight (e.g. 0.05); after renormalization it contributes very little. The Agentic Score still displays separately on the developer detail panel regardless of its weight.
 
 ---
 

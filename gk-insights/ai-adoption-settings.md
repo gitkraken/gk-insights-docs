@@ -67,7 +67,7 @@ Three positive numbers that say how much Adoption, Agentic, and Output each coun
 
 **How to think about tuning.** - Adoption-heavy (e.g. 0.7 / 0.1 / 0.2): "We care that everyone is _trying_ AI. Output will follow." - Output-heavy (e.g. 0.3 / 0.1 / 0.6): "We've moved past the rollout phase — now we care about delivery." - Balanced (the default): A signal that AI use without output is incomplete, and output without AI is the old way.
 
-**Guardrails.** If you set all three to zero we fall back to the defaults (0.5 / 0.2 / 0.3) — never a "100% output, 0% everything else" boost. Negative or NaN values are rejected and the default for that key is used.
+**Guardrails.** Each weight must be a number **greater than 0** — the Settings form rejects 0, negatives, and non-numbers ("Must be greater than 0"). So you can't fully zero out a dimension; to de-emphasize one, enter a small positive value (e.g. 0.05). There's never a "100% output, 0% everything else" state. Values are stored raw and renormalized to sum to 100%.
 
 **Affects:** [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) — and through it, the developer table sorting, the Top 10 widget, the executive ranking, and every breakdown chart that buckets by AI Tier.
 
