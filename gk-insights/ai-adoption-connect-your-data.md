@@ -236,12 +236,15 @@ Set it to the custom Jira field your team uses to flag customer-reported defects
 
 > **This is the most common reason CFR shows zeros.** If the field ID is blank, no Jira issues are attributed as customer bugs, so CFR can't be calculated — even with Jira fully connected.
 
-**2. Make sure releases are being tracked.** CFR is *failing releases ÷ total releases*, so Insights needs to know what counts as a release. Go to **Settings → Releases** and set the **Signal** for each repository:
+**2. Make sure releases are being tracked.** CFR is *failing releases ÷ total releases*, so Insights needs to know what counts as a release. Go to **Settings → Releases** and set the **Signal** for each repository. The available signals depend on the repo's git provider:
 
-- **Auto-detect** (default) — tries GitHub Releases first, then falls back to your CD workflow.
-- **GitHub Releases** — use the GitHub Releases API explicitly.
-- **Workflow file** — watch a specific GitHub Actions workflow (e.g. `cd.yaml`).
+- **Auto-detect** (default) — Insights picks the provider's native release signal. For GitHub it tries GitHub Releases first, then falls back to your CD workflow; for Bitbucket this option is labeled **Bitbucket Pipelines**.
+- **GitHub** repos: **GitHub releases**, **Workflow file** (a specific GitHub Actions workflow, e.g. `cd.yaml`), or **Release branch merge**.
+- **Azure DevOps** repos: **Azure releases** (Git tags), **Workflow file** (a specific pipeline definition), or **Release branch merge**.
+- **Bitbucket** repos: **Bitbucket Pipelines** or **Release branch merge**.
 - **Skip** — don't track releases for that repo.
+
+> **Release branch merge** is set per repository (it carries a branch pattern/base), so it isn't available in the bulk/batch action — configure it one repo at a time.
 
 Once syncing completes, confirm the **# Releases** column shows a non-zero count.
 
