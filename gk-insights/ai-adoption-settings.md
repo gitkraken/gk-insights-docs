@@ -18,7 +18,7 @@ This page covers only the settings that affect AI Adoption scores. For product-w
 
 If you came from a metric page to look up a specific setting, jump to the anchor of the same name.
 
-**Where these settings live.** All of the per-org settings on this page are editable in the Settings → General form and stored in the `app_settings` table. Alongside the core fields (`maturity_factor`, `developer_hourly_rate`, `baseline_period_start`, `default_department`), the form also exposes **Tier Weights**, **Direct Commit Weight**, **Review Weight**, and **Exclude Chore from Output Score**.
+**Where these settings live.** All of the per-org settings on this page are editable in the Settings → General form and stored in the `app_settings` table. Alongside the core fields (`maturity_factor`, `developer_hourly_rate`, `baseline_period_start`, `default_department`), the form also exposes **Tier Weights**, **Provider Weights**, **Direct Commit Weight**, **Review Weight**, and **Exclude Chore from Output Score**.
 
 ---
 
@@ -67,11 +67,23 @@ Three positive numbers that say how much Adoption, Agentic, and Output each coun
 
 **How to think about tuning.** - Adoption-heavy (e.g. 0.7 / 0.1 / 0.2): "We care that everyone is _trying_ AI. Output will follow." - Output-heavy (e.g. 0.3 / 0.1 / 0.6): "We've moved past the rollout phase — now we care about delivery." - Balanced (the default): A signal that AI use without output is incomplete, and output without AI is the old way.
 
-**Guardrails.** If you set all three to zero we fall back to the defaults (0.5 / 0.2 / 0.3) — never a "100% output, 0% everything else" boost. Negative or NaN values are rejected and the default for that key is used.
+**Guardrails.** Each weight must be a number **greater than 0** — the Settings form rejects 0, negatives, and non-numbers ("Must be greater than 0"). So you can't fully zero out a dimension; to de-emphasize one, enter a small positive value (e.g. 0.05). There's never a "100% output, 0% everything else" state. Values are stored raw and renormalized to sum to 100%.
 
 **Affects:** [AI Tier](/gk-insights/ai-adoption-agentic-metrics#ai-tier) — and through it, the developer table sorting, the Top 10 widget, the executive ranking, and every breakdown chart that buckets by AI Tier.
 
 → See also: [Playbook — Set tier weights for your org's maturity](/gk-insights/ai-adoption-playbooks#set-tier-weights-for-your-orgs-maturity)
+
+### Provider Weights
+
+When your org connects more than one AI provider, **Provider Weights** control how much each provider counts toward the **Adoption** and **Autonomy** scores. Each connected provider gets one weight, applied to both dimensions.
+
+**Default:** every provider is weighted **1** (equal). Raise a provider's weight to make its usage count for more, or lower it to de-emphasize a provider you trust less as a signal.
+
+**Where it is:** Settings → General, the **Provider Weights** section.
+
+**Not the same as the four-factor blend.** Provider Weights decide how providers combine _with each other_. They're distinct from the fixed four-factor blend (Daily Use / Hourly Spread / Prompts / Output) that computes each provider's individual score — see [What's not configurable](#whats-not-configurable-yet).
+
+**Affects:** [Agent Adoption Score](/gk-insights/ai-adoption-agentic-metrics#agent-adoption-score) and [Agent Autonomy Score](/gk-insights/ai-adoption-agentic-metrics#agent-autonomy-score).
 
 ---
 
@@ -208,7 +220,7 @@ These behaviors are deliberately fixed in code. If you need them tunable, ask yo
 * **Small-cohort fallback** (5 developers; synthetic P90 of 5.0 effort/week).
 * **Agentic threshold** (10 tools in a session to count as "agentic").
 * **Cursor secondary boost** (25% — set via `SCORE_SECONDARY_BOOST` env var if needed).
-* **Provider weight structures** (the four-factor blend per provider). Tunable via `SCORE_WEIGHT_*` env vars.
+* **The four-factor blend within each provider's score** (Daily Use / Hourly Spread / Prompts / Output). Tunable via `SCORE_WEIGHT_*` env vars. _(This is separate from the per-provider [Provider Weights](#provider-weights) setting above, which **is** configurable in the UI.)_
 * **Sync safety lag** (12h default per provider; `SNOWFLAKE_SYNC_SAFETY_LAG_HOURS`, `CODEX_SYNC_SAFETY_LAG_HOURS`, `CURSOR_SYNC_SAFETY_LAG_HOURS`).
 
 ---

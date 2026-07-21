@@ -5,7 +5,7 @@ product: GitKraken Insights
 content_type: reference
 audience: all
 plan_required: GitKraken Insights
-integrations: [GitHub, GitLab, GitLab Self-Hosted, Bitbucket, Azure DevOps, Jira Cloud]
+integrations: [GitHub, Bitbucket, Azure DevOps, Jira Cloud]
 status: GA
 taxonomy:
     category: gk-insights
@@ -37,7 +37,7 @@ DORA splits these into two velocity metrics and two stability metrics. A high-pe
 
 A few practical adaptations worth knowing:
 
-* **Deployment Frequency** counts tagged releases (or configured release events) per window. You need release detection configured for each repo — without it, the metric shows an empty state.
+* **Deployment Frequency** counts release events per window, using each repo's configured [release signal](#release-signals-by-provider). You need release detection configured for each repo — without it, the metric shows an empty state.
 * **Lead Time** measures from _first commit_ to _delivering release_. It does not start at issue creation. If you enable JIRA integration with the "Include JIRA start time" option, Lead Time extends backward to include time from the issue's in-progress transition.
 * **CFR** is the rate of _releases that produced a customer-reported bug_, not the rate of all bugs. The signal is your Jira "Customer Bug = Yes" field. Internal bugs caught in QA don't count — a deliberate choice so CFR focuses on bugs that actually shipped and reached customers.
 * **MTTR** measures mean hours from Jira incident open to resolved. It uses the same Jira customer-bug stream as CFR.
@@ -69,7 +69,7 @@ If Deployment Frequency rises while CFR also rises, AI is enabling faster but wo
 ## Required integrations
 
 * **CFR & MTTR** require the Jira integration with the Customer Bug custom field configured (`JIRA_CUSTOMER_BUG_FIELD_ID` env var). Without it, both metrics show an empty state.
-* **Lead Time and Deployment Frequency** require release detection configured per repo (tagged releases, GitHub Releases, or a configured release event). Without it, both metrics show an empty state.
+* **Lead Time and Deployment Frequency** require release detection configured per repo. The available signals depend on the git provider (GitHub Releases, Git tags, a CI/pipeline build, or release-branch merges — see [Release signals by provider](#release-signals-by-provider)). Without release detection, both metrics show an empty state.
 
 ---
 
@@ -81,7 +81,7 @@ If Deployment Frequency rises while CFR also rises, AI is enabling faster but wo
 
 ### At a glance
 
-Deployment Frequency is "how often does new code reach production?" It is the simplest of the DORA metrics and the one most teams already track informally. The dashboard counts deployments as _tagged releases_ (or configured release events) per window.
+Deployment Frequency is "how often does new code reach production?" It is the simplest of the DORA metrics and the one most teams already track informally. The dashboard counts deployments as _release events_ per window — where "release event" is whatever [release signal](#release-signals-by-provider) you've configured for each repo (a GitHub Release, a Git tag, a CI/pipeline build, or a release-branch merge).
 
 The metric is most useful as a trend line and as a cohort comparison (team A vs. team B), not as an absolute target. "Three deploys per week" doesn't mean much without context.
 
@@ -90,8 +90,9 @@ The metric is most useful as a trend line and as a cohort comparison (team A vs.
 ```
 Deployment Frequency = count(releases in window) / time-unit
 
-  where a release = a tagged release, GitHub Release, or
-                    configured release event on a tracked repo
+  where a release = the configured release signal for the repo
+                    (GitHub Release, Git tag, CI/pipeline build,
+                     or release-branch merge)
 ```
 
 Expressed as deploys per day, week, or month depending on cadence and team activity.
@@ -100,9 +101,24 @@ Expressed as deploys per day, week, or month depending on cadence and team activ
 
 **Source.** The backend reads release events from `analytics.github_releases` (the canonical metric name is `release_count`). A repo must have release detection configured for its deployments to appear; without it the metric shows an empty state for that repo.
 
-**What counts as a release.** A tagged release, a GitHub Release, or any other release event the writer captures for the repo. Pre-releases are excluded.
+**What counts as a release.** Whatever release signal is configured for the repo (see below). Pre-releases are excluded.
 
 **Aggregation.** For a team, we count all releases across the team's repos. For an org, all releases across all repos in the filter.
+
+### Release signals by provider
+
+Release detection is configured per repository in **Settings → Releases**. The signals available depend on the repo's git provider — set one, or leave it on **Auto-detect** to use the provider's native default:
+
+| Provider | Signals | Auto-detect uses |
+| --- | --- | --- |
+| **GitHub** | GitHub Releases · Workflow file (a GitHub Actions workflow, e.g. `cd.yaml`) · Release branch merge | GitHub Releases, falling back to your CD workflow |
+| **Azure DevOps** | Azure releases (Git tags) · Workflow file (a pipeline definition) · Release branch merge | Git tags / pipeline builds |
+| **Bitbucket** | Bitbucket Pipelines · Release branch merge | Bitbucket Pipelines |
+
+Notes:
+- **Azure DevOps** pipeline-build detection (the *Workflow file* signal) requires the PAT to include the **Build (Read)** scope; without it, tag- and release-branch-merge signals still work. See [Connect Your Data → Azure DevOps](/gk-insights/ai-adoption-connect-your-data#azure-devops).
+- **Release branch merge** is configured per repo (it carries a branch pattern), so it isn't offered in the bulk/batch release action.
+- **Skip** turns off release detection for a repo — its deployments won't count toward Deployment Frequency, Lead Time, or CFR.
 
 ### Why it matters
 
@@ -133,7 +149,7 @@ Read the trend, not the band. A team that moved from Medium to High in six month
 
 ### Settings that affect it
 
-* **Release detection** — repo-level configuration. Your admin needs to wire up tagged releases or a configured release event for each repo you want to track.
+* **Release detection** — repo-level configuration in Settings → Releases. Your admin sets a [release signal](#release-signals-by-provider) (or leaves Auto-detect) for each repo you want to track; the options depend on the git provider.
 
 ### Related metrics
 

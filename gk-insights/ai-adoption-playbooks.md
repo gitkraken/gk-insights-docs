@@ -100,7 +100,7 @@ Don't optimize for one of these unless you have actually decided that is the org
 ### Things to know before you change weights
 
 1. **Weights are renormalized to sum to 1.0 on every read.** So setting 1.0 / 0.5 / 0.5 yields effective 0.5 / 0.25 / 0.25. Most people find it clearer to choose values that already sum to 1.
-2. **All three weights must be strictly positive.** Zero or negative values are rejected; the default for that key is used instead. There is never a "100% output, 0% everything else" state.
+2. **All three weights must be greater than 0.** The Settings form rejects 0, negative, and non-numeric values ("Must be greater than 0"), so you can't save a "100% output, 0% everything else" state. To de-emphasize a dimension, use a small positive value (e.g. 0.05) rather than 0.
 3. **Changes affect every developer immediately.** No retroactive recomputation of historical snapshots, but the _current_ window updates as soon as the keys are set. Plan an announcement.
 4. **The tier thresholds (25 / 55 / 80) don't move.** Changing weights _will_ re-tier some developers. Some will move up, some down.
 
@@ -357,7 +357,7 @@ The dashboard's CFR is honest about what it's measuring (customer-reported bugs 
 
 #### Step 1 — Look at the trend, not the snapshot (3 min)
 
-Open `/impact`. Look at the **CFR trend chart** (left side, severity-stacked).
+Open `/ai-adoption/ai-impact`. Look at the **CFR trend chart** (left side, severity-stacked).
 
 * **If the spike is one week and CFR is back to baseline before and after**, you have a localized incident, not a trend.
 * **If CFR has been climbing for 3+ weeks**, you have a real quality drift.
@@ -388,7 +388,7 @@ Patterns to spot:
 
 #### Step 4 — Look at AI Tier breakdown (5 min)
 
-This is where the dashboard does something unique. Click into `/ai-impact` and look at **CFR by AI Tier**.
+This is where the dashboard does something unique. Click into `/ai-adoption/ai-impact` and look at **CFR by AI Tier**.
 
 The question: **does CFR scale with AI tier?**
 

@@ -5,7 +5,7 @@ product: GitKraken Insights
 content_type: reference
 audience: all
 plan_required: GitKraken Insights
-integrations: [GitHub, GitLab, GitLab Self-Hosted, Bitbucket, Azure DevOps]
+integrations: [GitHub, Bitbucket, Azure DevOps]
 status: GA
 taxonomy:
     category: gk-insights
@@ -153,6 +153,8 @@ Effort comes from an LLM classifier (`auto_effort_score`) and can be manually ov
 3. Sum effort across PRs they formally reviewed (state `APPROVED` or `CHANGES_REQUESTED`; the same PR can credit multiple reviewers).
 4. Multiply DC sum by `DCWeight` and review sum by `ReviewWeight`.
 5. Add the three terms.
+
+> **Why "Reviewed" here won't match GitHub's review count.** Insights counts a PR as reviewed only when a developer left a formal **Approve** or **Request changes** — plain comments and dismissed reviews don't count — and it counts each PR once per reviewer, only for PRs **merged inside the window**, excluding self-reviews and bots. GitHub's own "reviews" number is broader, so the two will legitimately differ.
 
 **Team aggregate.** For team rows on /ai-adoption/teams, the score is the team total divided by the count of active developers on the team. This per-active-dev rate is what makes team scores comparable across team sizes.
 
