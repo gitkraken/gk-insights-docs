@@ -10,7 +10,7 @@ status: GA
 taxonomy:
     category: gk-insights
 ---
-<kbd>Last updated: June 2026</kbd>
+<kbd>Last updated: August 2026</kbd>
 
 
 This family answers a single question: **how much is your team actually using AI, and how deeply?**
@@ -35,10 +35,10 @@ It's the most-read group of metrics in the dashboard because it surfaces the rol
 
 Adoption Score is built from per-provider scoring (Claude, Codex, Cursor) using a four-factor blend:
 
-1. **Daily Use** — consistency across the window
-2. **Hourly Spread** — diversity within days
-3. **Prompts** — volume of interactions
-4. **Output** — token production depth
+1. **Daily Regularity** — how consistently AI shows up across the working days in the window
+2. **Hourly Spread** — how much of the workday AI is woven into
+3. **Prompt Depth** — volume of interactions per active day
+4. **Token Output** — depth of AI output per active day
 
 Claude Code and Codex events are _unioned_ at the factor level (days, hours, prompts, tokens merged together — not averaged) and scored as one **primary** score. Cursor is scored independently and added as a **secondary boost** (default 25% of the Cursor score).
 
@@ -57,9 +57,9 @@ Agentic is a separate, parallel measurement that runs against **Claude Code and 
 tierScore = (0.5 × Agent Adoption) + (0.2 × Agent Autonomy) + (0.3 × Output Norm)
 ```
 
-Each weight is read from `analytics.app_settings` per organization (keys: `tier_weight_adoption`, `tier_weight_agentic`, `tier_weight_output`) and renormalized to sum to 1.0. The tier-badge tooltip in the app renders the live values for every developer so the breakdown is always transparent.
+Each weight is stored per organization and renormalized to sum to 1.0. The tier-badge tooltip in the app renders the live values for every developer so the breakdown is always transparent.
 
-**What admins can change in Settings → General:** Maturity Factor, Developer Hourly Rate, Baseline Period, and Default Department, plus the tier composite weights (`tier_weight_*`) and the Output Score sub-weights (`direct_commit_weight`, `review_weight`, `output_score_exclude_chore`). All are per-org settings stored in `app_settings` and editable directly in the settings form.
+**What admins can change in Settings → General:** Maturity Factor, Developer Hourly Rate, Baseline Period, and Default Department, plus the tier composite weights and the Output Score sub-weights (Direct Commit Weight, Review Weight, and Exclude Chore). All are per-organization settings, editable directly in the settings form.
 
 ---
 
@@ -105,29 +105,29 @@ Adoption Score = min(Primary + 0.25 × Cursor, 100) × Maturity Factor
         Cursor  = four-factor blend of Cursor (added if non-null)
 ```
 
-The four factors per provider, each capped at the org's P90 and weighted into the 100-point scale, are:
+The four factors per provider, weighted into the 100-point scale, are (default weights in parentheses):
 
-* **Daily Use** — weekdays with ≥1 event / effective weekdays
-* **Hourly Spread** — avg distinct hours per day with ≥2 prompts / org P90 spread
-* **Prompts** — prompts per weekday / org P90 prompts
-* **Output Tokens** — output tokens per weekday / org P90 tokens
+* **Daily Regularity** (35%) — weekdays with ≥1 prompt ÷ effective weekdays. This factor is a straight share of your working days — it is _not_ normalized to the org P90.
+* **Hourly Spread** (25%) — avg distinct hours per active day with ≥2 prompts ÷ org P90 spread
+* **Prompt Depth** (25%) — prompts per active weekday ÷ org P90 prompts
+* **Token Output** (15%) — output tokens per active weekday ÷ org P90 tokens
 
 ### How GitKraken Insights calculates it
 
 **Step 1 — Per-provider scoring.** For each provider (Claude Code, Codex, Cursor), we compute four normalized factors:
 
-* **Daily Use:** the fraction of effective weekdays in the window where the developer had at least one AI event. Effective weekdays subtracts weekdays before the provider was instrumented (Claude Code data starts March 5, 2026) and subtracts PTO weekdays.
+* **Daily Regularity:** the fraction of effective weekdays in the window where the developer sent at least one prompt. Effective weekdays subtracts weekdays before the provider was instrumented (Claude Code data starts March 5, 2026) and subtracts PTO weekdays. Unlike the other three factors, this is a raw fraction of working days — it is not benchmarked against the org P90.
 * **Hourly Spread:** the average number of distinct hours per active weekday where the developer ran ≥2 prompts. Captures "AI is integrated into their workday" vs. "AI is one batch at the end of the day."
-* **Prompts:** total prompts divided by active weekdays.
-* **Output Tokens:** total output tokens divided by active weekdays. A proxy for the _depth_ of each AI interaction.
+* **Prompt Depth:** total prompts divided by active weekdays.
+* **Token Output:** total output tokens divided by active weekdays. A proxy for the _depth_ of each AI interaction.
 
-Each factor is divided by the corresponding **org P90 cap** (the 90th-percentile value across all active developers in the window) and capped at 1.0. So a developer at the org's 90th percentile or above on a factor scores the max contribution for that factor.
+The last three factors are each divided by the corresponding **org P90 cap** (the 90th-percentile value across all active developers in the window) and capped at 1.0, so a developer at or above the org's 90th percentile on a factor scores the max contribution for it. (Daily Regularity is already a 0–1 share of working days, so it isn't P90-normalized.)
 
-The four normalized factors are then weighted (DailyUse, HourlySpread, Prompts, Output) and summed to a 0–100 provider score.
+The four normalized factors are then weighted (Daily Regularity 35%, Hourly Spread 25%, Prompt Depth 25%, Token Output 15% by default) and summed to a 0–100 provider score.
 
 **Step 2 — Union Claude + Codex into the Primary score.** We don't average the two providers — we _union_ their events at the factor level. A developer using Claude in the morning and Codex in the afternoon gets credit for the combined daily spread, not two separate fractional scores. This avoids penalizing devs who use multiple tools.
 
-**Step 3 — Add the Cursor boost.** If the developer has Cursor data, we compute their Cursor score independently and add it to the Primary at a 25% rate (configurable via the `SCORE_SECONDARY_BOOST` env var). The total is capped at 100 before maturity scaling.
+**Step 3 — Add the Cursor boost.** If the developer has Cursor data, we compute their Cursor score independently and add it to the Primary at a 25% rate (adjustable — ask your account manager). The total is capped at 100 before maturity scaling.
 
 **Step 4 — Scale by Maturity Factor.** The final value is multiplied by the org's Maturity Factor (default 0.75). At the default setting, a developer at the org's P90 on every factor scores 75 — leaving headroom to grow into the Power User band (≥80).
 
@@ -168,10 +168,10 @@ A team average of 50–65 means a healthy mix with most developers in Explorer/R
 ### Settings that affect it
 
 * [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — multiplies the final score. Lowering it lowers the tier ceiling for everyone.
-* **Cursor secondary boost** (env var `SCORE_SECONDARY_BOOST`, default 0.25) — how heavily Cursor contributes alongside Claude / Codex.
-* **Provider weights** (env vars `SCORE_WEIGHT_*`) — how much DailyUse / HourlySpread / Prompts / Output each contribute within a provider's score.
+* **Cursor secondary boost** (default 0.25) — how heavily Cursor contributes alongside Claude / Codex.
+* **Four-factor weights** (defaults: Daily Regularity 35%, Hourly Spread 25%, Prompt Depth 25%, Token Output 15%) — how much each factor contributes within a provider's score.
 
-The four-factor weighting per provider is not currently exposed in the Settings UI. Ask your account manager if you need it tunable.
+The Cursor boost and the four-factor weights are set at the organization level and aren't editable in the Settings UI today. Ask your account manager if you need them tuned.
 
 ### Related metrics
 
@@ -205,13 +205,13 @@ The four-factor weighting per provider is not currently exposed in the Settings 
 A: Because averaging penalizes developers who use multiple tools. A dev who uses Claude in the morning and Codex in the afternoon should get full daily-use credit. Unioning the events at the factor level achieves that cleanly.
 
 **Q: A developer shows score 0 but I know they're using Claude. What happened?**
-A: Check (1) the developer's `is_active` flag, (2) whether their email aliases are mapped if they have multiple work emails, and (3) whether the date range pre-dates the provider's data start (March 5, 2026 for Claude). One of those almost always explains it.
+A: Check (1) whether the developer is marked active, (2) whether their email aliases are mapped if they have multiple work emails, and (3) whether the date range pre-dates the provider's data start (March 5, 2026 for Claude). One of those almost always explains it.
 
 **Q: Why does Cursor count for less than Claude Code or Codex?**
-A: Cursor's event stream is more sparse and less structured than the OTEL exports from Claude / Codex. We use it as confirmatory signal rather than primary evidence — hence the 25% boost rate. Adjustable via env var.
+A: Cursor's event stream is more sparse and less structured than the telemetry from Claude / Codex. We use it as confirmatory signal rather than primary evidence — hence the 25% boost rate. This rate is adjustable — ask your account manager.
 
 **Q: Can I see the four-factor breakdown for a single developer?**
-A: Yes. Click any developer on /developers to expand them. The agentic panel shows DailyUse, HourlySpread, Prompts, and Output as bars with the developer's value and the org P90 cap.
+A: Yes. Click any developer on /developers to expand them. The panel shows Daily Regularity, Hourly Spread, Prompt Depth, and Token Output as bars with the developer's value and, for the three P90-normalized factors, the org P90 cap.
 
 ---
 
@@ -231,15 +231,15 @@ Where the [Agent Adoption Score](#agent-adoption-score) measures _how consistent
 Agentic Score = min(intensity / OrgP90Intensity, 1.0) × 100 × Maturity Factor
 ```
 
-Where `intensity` is a developer-level aggregate of `tool_result` events from Claude Code and Codex sessions with at least 10 tools used. Returns 0 when the org has no P90 intensity (no data).
+Where `intensity` is a developer-level count of tool executions from Claude Code and Codex sessions that ran 10 or more tools. Returns 0 when the org has no P90 intensity (no data).
 
 ### How GitKraken Insights calculates it
 
-**What counts as an "agentic session."** We define an agentic session as one where the developer used at least 10 distinct tools (e.g. file_read, file_edit, bash_run, web_search, etc.) within a single session. The 10-tool threshold is the heuristic that separates "I asked Claude a question and it called a tool to answer" from "Claude is doing real multi-step work."
+**What counts as an "agentic session."** We define an agentic session as one where the AI ran at least 10 tool executions (tool calls such as reading a file, editing code, running a command, or searching the web) within a single session. It's the total number of tool calls, not the number of _distinct_ tool types — ten uses of the same tool still qualifies. The 10-tool threshold is the heuristic that separates "I asked Claude a question and it called a tool to answer" from "Claude is doing real multi-step work."
 
-**Providers included.** Only Claude Code and Codex sessions contribute to Agentic intensity (the backend filters on `provider IN ('claude_code', 'codex')`). Cursor activity is excluded because Cursor's event stream doesn't expose per-session tool calls in a way we can score; Cursor still contributes to the [Agent Adoption Score](#agent-adoption-score) via the Cursor Boost.
+**Providers included.** Only Claude Code and Codex sessions contribute to Agentic intensity. Cursor activity is excluded because Cursor's event stream doesn't expose per-session tool calls in a way we can score; Cursor still contributes to the [Agent Adoption Score](#agent-adoption-score) via the Cursor Boost.
 
-**Intensity.** For each developer, we aggregate `tool_result` events from their agentic sessions over the window. The result is a single intensity number — higher means more agentic activity.
+**Intensity.** For each developer, we total the tool executions from their agentic sessions over the window. The result is a single intensity number — higher means more agentic activity.
 
 **Normalization.** We compute the **org-wide P90 intensity** across all active developers in the window. The developer's intensity is divided by the org P90 and capped at 1.0. This is the same normalization pattern as Adoption — the bar is your team, not an industry average.
 
@@ -298,7 +298,7 @@ A team average above 40 is a strong signal that agentic workflows have taken roo
 
 * **The 10-tool threshold is heuristic.** A developer running 9-tool sessions all day will score lower than one running occasional 10-tool sessions.
 * **Tool count ≠ value.** A 50-tool session that achieved nothing scores higher than a 10-tool session that shipped a feature. Use Autonomy alongside Output Score for the full picture.
-* **Cursor does not contribute to Autonomy.** Cursor's API doesn't expose per-session tool-call events in a way we can score, so the agentic intensity sum filters to `provider = 'claude_code'` and `provider = 'codex'` only. Cursor still feeds Agent Adoption via the Cursor Boost.
+* **Cursor does not contribute to Autonomy.** Cursor's API doesn't expose per-session tool-call events in a way we can score, so agentic intensity counts Claude Code and Codex sessions only. Cursor still feeds Agent Adoption via the Cursor Boost.
 * **Org P90 moves with the cohort.** As your team matures, the bar rises.
 
 ### FAQ
@@ -352,15 +352,15 @@ Tier:
 
 All three are already on the same 0–100 scale, and all three are already scaled by the Maturity Factor. They're directly comparable.
 
-**The weighted blend.** The three weights — Adoption / Agentic / Output — are stored per-organization in `analytics.app_settings` under the keys `tier_weight_adoption`, `tier_weight_agentic`, and `tier_weight_output`. Defaults are 0.5 / 0.2 / 0.3. They're stored **raw**, then renormalized to sum to 1.0 on every read. So 0.5 / 0.2 / 0.3 renormalizes to 0.5 / 0.2 / 0.3 (already sums to 1); 1.0 / 0.5 / 0.5 renormalizes to 0.5 / 0.25 / 0.25.
+**The weighted blend.** The three weights — Adoption / Agentic / Output — are stored per organization. Defaults are 0.5 / 0.2 / 0.3. They're stored **raw**, then renormalized to sum to 1.0 on every read. So 0.5 / 0.2 / 0.3 renormalizes to 0.5 / 0.2 / 0.3 (already sums to 1); 1.0 / 0.5 / 0.5 renormalizes to 0.5 / 0.25 / 0.25.
 
-**Where to change them.** The Settings → General form exposes tier weights alongside `maturity_factor`, `developer_hourly_rate`, `baseline_period_start`, and `default_department`. Edit the `tier_weight_*` values there and the change takes effect on the next read.
+**Where to change them.** The Settings → General form exposes the tier weights alongside Maturity Factor, Developer Hourly Rate, Baseline Period, and Default Department. Edit the weights there and the change takes effect on the next read.
 
 If you set all three weights to zero (or negative), we fall back to defaults rather than producing a NaN. There's never a "100% output, 0% everything else" boost run.
 
 **Classification.** Once the composite score is computed, it's mapped to a tier: 80+ = **Power User**, 55–79 = **Regular**, 25–54 = **Explorer**, <25 = **Emerging**. The Emerging label is used consistently across the backend enum, the UI badge, the onboarding tour, and the Top-10 widget.
 
-**The PTO override.** If a developer was on PTO for _every_ weekday in the selected window, they're forced to the **On PTO** tier regardless of underlying scores. PTO override is checked first — if `ptoFlag` is true, we return `(0, OnPTO)` immediately and skip the composite math.
+**The PTO override.** If a developer was on PTO for _every_ weekday in the selected window, they're forced to the **On PTO** tier regardless of underlying scores. The PTO check runs first — when it applies, the developer is placed On PTO immediately and the composite math is skipped.
 
 **Window length matters.** If the selected window is less than 7 days, the Output Norm is forced to zero (rates can't be computed over sub-week windows). Tier still works in that case, but it's effectively a 2-input composite for short windows.
 
@@ -410,9 +410,9 @@ If **On PTO % is unusually high** (>15%), check whether your PTO sync is working
 ### Settings that affect it
 
 * [**Maturity Factor**](/gk-insights/ai-adoption-settings#maturity-factor) — scales all three inputs, so it shifts the entire population up or down the tier ladder. _Configurable in Settings → General._
-* [**Tier Weights**](/gk-insights/ai-adoption-settings#tier-weights) — controls how much Adoption / Agentic / Output each contribute. Defaults 0.5 / 0.2 / 0.3. _Per-org in_ `app_settings`_; editable in Settings → General._
-* [**Direct Commit Weight**](/gk-insights/ai-adoption-settings#direct-commit-weight) — affects Output Score, which feeds into Output Norm. _Per-org in_ `app_settings`_; editable in Settings → General._
-* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption-settings#exclude-chore-from-output-score) — same path through Output. _Per-org in_ `app_settings`_; editable in Settings → General._
+* [**Tier Weights**](/gk-insights/ai-adoption-settings#tier-weights) — controls how much Adoption / Agentic / Output each contribute. Defaults 0.5 / 0.2 / 0.3. _Per-organization; editable in Settings → General._
+* [**Direct Commit Weight**](/gk-insights/ai-adoption-settings#direct-commit-weight) — affects Output Score, which feeds into Output Norm. _Per-organization; editable in Settings → General._
+* [**Exclude Chore from Output Score**](/gk-insights/ai-adoption-settings#exclude-chore-from-output-score) — same path through Output. _Per-organization; editable in Settings → General._
 
 ### Related metrics
 
@@ -481,7 +481,7 @@ Applied to:
 
 It is not calculated — it is set. Admins choose a value in Settings → General under the label **"Company AI Readiness %"**.
 
-The setting is stored in the `app_settings` table as `maturity_factor`. The backend reads it dynamically and threads it through every score computation. If the setting is absent or invalid (outside \[0.01, 1.0\]), the default 0.75 is used.
+It's an organization-level setting that the scoring reads on every computation and threads through every score. If it's unset or invalid (outside \[0.01, 1.0\]), the default 0.75 is used.
 
 There is no per-team, per-developer, or per-page override. It is one value, applied uniformly.
 
@@ -528,7 +528,6 @@ The default (0.75) is calibrated for "active rollout" — the most common state 
 * **Announce before you change.** Lowering Maturity Factor from 0.85 → 0.75 will move a chunk of Regulars down to Explorer overnight. Tell people _before_ the next /ai-adoption/teams snapshot is taken.
 * **Pair changes with milestones.** "We have hit 70% Regular+. We are raising the Maturity Factor to 0.85 to reflect that the bar has been reached. Some of you will drop a tier; that is by design — we are raising the ceiling because you have earned it."
 * **Don't change it more than twice a year.** It is a strategic setting, not a tactical knob.
-* **Use it intentionally during demos.** Demo profiles ship with Maturity Factor 0.75 so the headline tier distribution looks like a real org. Don't reset it for show-and-tell.
 
 ### Limitations and gotchas
 
@@ -562,7 +561,7 @@ A: No. It is intentionally one global value. Per-team Maturity Factor would defe
 
 ### At a glance
 
-GitKraken Insights treats Claude Code and Codex as "primary" AI tools and Cursor as a "secondary" one. Primary tools have their events unioned at the factor level into one combined score. Cursor is scored independently and _added_ to that primary score at a discount — the Cursor Boost rate — before the final score is capped at 100. The default discount is 25%, configurable via an environment variable.
+GitKraken Insights treats Claude Code and Codex as "primary" AI tools and Cursor as a "secondary" one. Primary tools have their events unioned at the factor level into one combined score. Cursor is scored independently and _added_ to that primary score at a discount — the Cursor Boost rate — before the final score is capped at 100. The default discount is 25%, and it can be adjusted at the organization level.
 
 This page exists so admins understand why a developer's Cursor activity contributes meaningfully to their Adoption Score but doesn't dominate it.
 
@@ -575,11 +574,11 @@ Final Adoption (pre-maturity) = min(Primary + secondaryBoost × Cursor, 100)
   secondaryBoost = 0.25 (default)
 ```
 
-If Cursor data is absent (`nil`), the boost term is dropped entirely — no Cursor activity, no boost.
+If there's no Cursor data, the boost term is dropped entirely — no Cursor activity, no boost.
 
 ### How GitKraken Insights calculates it
 
-**Step 1.** Per-provider scoring for Cursor runs the same four-factor blend (Daily Use, Hourly Spread, Prompts, Output) used for Claude and Codex — see [Agent Adoption Score](#agent-adoption-score) for the mechanics.
+**Step 1.** Per-provider scoring for Cursor runs the same four-factor blend (Daily Regularity, Hourly Spread, Prompt Depth, Token Output) used for Claude and Codex — see [Agent Adoption Score](#agent-adoption-score) for the mechanics.
 
 **Step 2.** The resulting Cursor score (0–100) is multiplied by the `secondaryBoost` rate (default 0.25 = 25%). So a developer at Cursor=80 contributes 80 × 0.25 = 20 points of additional adoption.
 
@@ -617,7 +616,7 @@ The difference (15 points) is what Cursor adoption is contributing in that devel
 
 ### Settings that affect it
 
-* `SCORE_SECONDARY_BOOST` environment variable. Default 0.25. Range 0.0 to 1.0+. Changing it requires a backend restart.
+* **Cursor secondary boost** — default 0.25, range 0.0 to 1.0+. Set at the organization level.
 
 The Cursor Boost rate is not currently exposed in the Settings UI. Ask your account manager if you need it tunable.
 
@@ -650,7 +649,7 @@ In most orgs, the default 0.25 is the right answer. Touch it only when your prov
 A: Their event streams aren't comparable enough at the field level. We'd need consistent prompt counts, token counts, and tool counts across all three providers to union them; Cursor doesn't currently export that consistently. As Cursor's API matures, this could change.
 
 **Q: A developer uses Cursor exclusively and shows score 15. Is that right?**
-A: At default settings, yes. Cursor=80 × 0.25 boost × 0.75 Maturity Factor = 15. If your org is Cursor-first, raise `SCORE_SECONDARY_BOOST` to 0.75 or 1.0 to give Cursor users a fair share of the score.
+A: At default settings, yes. Cursor=80 × 0.25 boost × 0.75 Maturity Factor = 15. If your org is Cursor-first, ask your account manager to raise the Cursor boost to 0.75 or 1.0 to give Cursor users a fair share of the score.
 
 **Q: Why default 25% and not 50%?**
 A: Empirically, the data we get from Cursor today is roughly a quarter as rich as what we get from Claude / Codex OTEL traces. 25% reflects "Cursor counts about as much as the data we have on it." If Cursor's event coverage improves, we'd raise the default.
