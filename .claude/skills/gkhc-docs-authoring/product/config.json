@@ -1,0 +1,78 @@
+{
+  "_comment": "Product config of the gkhc-docs-authoring skill for GitKraken Insights. Written by hand (not by seed_products.py, which skips this key). Describes the merged Insights docs on gitkraken/gk-insights-docs expo (gk-insights/, category gk-insights, GKHC_DOCS_CATEGORY), merged 2026-11-11 from gk-insights-docs-expo.",
+  "key": "insights",
+  "name": "GitKraken Insights",
+  "category": "gk-insights",
+  "content_dir": "gk-insights",
+  "images_dir": "_images",
+  "home_slug": "ai-adoption-home",
+  "nav_file": null,
+  "max_depth": 5,
+  "toc_levels": [
+    2,
+    3
+  ],
+  "code_default_label": "Code",
+  "nav": {
+    "sections": [
+      "home",
+      "getting-started",
+      "connect-your-data",
+      "metrics",
+      "playbooks",
+      "admin",
+      "hidden"
+    ],
+    "section_fallback": true,
+    "parent_must_be_index": true,
+    "every_page_in_nav": false,
+    "card_fields_required": true,
+    "slug_prefix": "ai-adoption",
+    "_every_page_in_nav_note": "Off since the 2026-11-11 merge: gk-insights/ also holds the classic gk-insights-* pages, surveys.md and the exploration-v* drafts, which sit outside the nav."
+  },
+  "features": {
+    "metric_pipeline": true,
+    "playbooks": true,
+    "settings_specs": true
+  },
+  "checks": {
+    "missing_link_target": "error",
+    "missing_image": "error",
+    "figures_only": true,
+    "ignore_link_targets": [
+      "login"
+    ]
+  },
+  "metadata": {
+    "check": "off",
+    "_note": "FRONTMATTER-SCHEMA.md covers the 8 redesign repos; Insights' metadata belongs to the Insights project until its go-live.",
+    "conditional": [],
+    "optional": [],
+    "constants": {
+      "product": "GitKraken Insights"
+    },
+    "defaults": {},
+    "plan_required": [],
+    "plan_required_vocabulary": "error",
+    "aliases": {},
+    "extra_fields": []
+  },
+  "other_category_pages": {},
+  "known_wp_images": {
+    "/wp-content/uploads/Insights-Dashboard.png": [
+      "gk-insights-dashboard-management"
+    ],
+    "/wp-content/uploads/import-repos.png": [
+      "exploration-v1-css-only",
+      "exploration-v2-html-css-cards",
+      "exploration-v3-interactive",
+      "gk-insights"
+    ],
+    "/wp-content/uploads/import-repos@2x.png": [
+      "exploration-v1-css-only",
+      "exploration-v2-html-css-cards",
+      "exploration-v3-interactive",
+      "gk-insights"
+    ]
+  }
+}
